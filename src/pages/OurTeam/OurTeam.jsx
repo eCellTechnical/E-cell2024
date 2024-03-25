@@ -26,7 +26,7 @@ import shud from "../../assets/OurTeam/shud.jpg";
 import Snigdha from "../../assets/OurTeam/Snigdha.jpg";
 import tanya from "../../assets/OurTeam/tanya.jpg";
 import Unnati from "../../assets/OurTeam/unnati.jpg";
-import Vaibhav from "../../assets/OurTeam/vaibhav.jpg";
+import Vaibhav from "../../assets/OurTeam/Vaibhav.jpg";
 import yash from "../../assets/OurTeam/yash.webp";
 import Payal from "../../assets/OurTeam/Payal verma.jpg";
 import Aditi from "../../assets/OurTeam/Aditi Nim.jpg";
