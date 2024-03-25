@@ -47,6 +47,11 @@ import Vanshika from "../../assets/OurTeam/Vanshika Mehrotra.jpg";
 import Saksham from "../../assets/OurTeam/Saksham.jpg";
 import Shiv from "../../assets/OurTeam/Shiv.png";
 import Saumya from "../../assets/OurTeam/Saumya.jpg";
+import Abhishek from "../../assets/OurTeam/Abhishek sharma 2nd year.jpg";
+import Anish from "../../assets/OurTeam/Anish.jpg";
+import Anjali from "../../assets/OurTeam/Anjali sharma.jpg";
+import Arush from "../../assets/OurTeam/Arush Dixit_.jpg";
+import TANUSHKA from "../../assets/OurTeam/TANUSHKA NEHRA.jpeg";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 function OurTeam() {
@@ -384,6 +389,7 @@ function OurTeam() {
       gmail: "arushd2005@gmail.com",
       linkedIn:
         "https://www.linkedin.com/in/arushdixit98?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      imgUrl: Arush,
     },
     // {
     //   name: "Yashica Agarwal",
@@ -399,21 +405,23 @@ function OurTeam() {
     //   linkedIn:
     //     "https://www.linkedin.com/in/riddhi-yadav-901b28293?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
     // },
-    // {
-    //   name: "Anjali Sharma",
-    //   domain: "Public Relation Member",
-    //   gmail: "anjali34490@gmail.com",
-    //   linkedIn:
-    //     "https://www.linkedin.com/in/anjali-sharma-448a9b292?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-    // },
+    {
+      name: "Anjali Sharma",
+      domain: "Public Relation Member",
+      gmail: "anjali34490@gmail.com",
+      linkedIn:
+        "https://www.linkedin.com/in/anjali-sharma-448a9b292?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      imgUrl: Anjali,
+    },
 
-    // {
-    //   name: "Abhishek sharma",
-    //   domain: "Corporate Relation Member",
-    //   gmail: "abhishek.2226it1057@kiet.edu",
-    //   linkedIn:
-    //     "https://www.linkedin.com/in/abhishek-sharma-a14878225?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-    // },
+    {
+      name: "Abhishek sharma",
+      domain: "Corporate Relation Member",
+      gmail: "abhishek.2226it1057@kiet.edu",
+      linkedIn:
+        "https://www.linkedin.com/in/abhishek-sharma-a14878225?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      imgUrl: Abhishek,
+    },
     // {
     //   name: "Pratham Mishra",
     //   domain: "Event Management Member",
@@ -451,13 +459,22 @@ function OurTeam() {
     //   gmail: "utkarshgoyal07@gmail.com",
     //   linkedIn: "https://www.linkedin.com/in/utkarsh-goyal-74a81524b/",
     // },
-    // {
-    //   name: "Anish kumar",
-    //   domain: "Event Management Member",
-    //   gmail: "anissh946@gmail.com",
-    //   linkedIn:
-    //     "https://www.linkedin.com/in/anish-kumar-126140295?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-    // },
+    {
+      name: "Anish kumar",
+      domain: "Event Management Member",
+      gmail: "anissh946@gmail.com",
+      linkedIn:
+        "https://www.linkedin.com/in/anish-kumar-126140295?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      imgUrl: Anish,
+    },
+    {
+      name: "Tanushka Nehra",
+      domain: "Public Relation Member",
+      gmail: "tanushkanehra553@gmail.com",
+      linkedIn:
+        "https://www.linkedin.com/in/tanushka-nehra-b93ba724b?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3Bz1ldb4DwQ0maqMlD4%2BHABA%3D%3D",
+      imgUrl: TANUSHKA,
+    },
   ];
 
   const { pathname } = useLocation();
