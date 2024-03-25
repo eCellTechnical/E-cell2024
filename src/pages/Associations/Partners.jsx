@@ -1,4 +1,4 @@
-import "./partners.css";
+import "./Partners.css";
 import sponsor1 from "../../assets/associations/BLUE LEAVES.png";
 import sponsor2 from "../../assets/associations/CAMPUS MEDIA.png";
 import sponsor3 from "../../assets/associations/DONALDS PASTRY SHOP.jpeg";
