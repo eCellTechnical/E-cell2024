@@ -1,0 +1,155 @@
+.footer {
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  padding: 0;
+  overflow: hidden;
+  border-top: 1px solid rgb(68, 68, 68);
+}
+
+
+
+.upperfoot {
+  height: 40%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-around;
+}
+
+.footer .upperfoot .box {
+  height: 40%;
+  width: 33%;
+}
+
+.footer .upperfoot .box h4 {
+  font-size: 1.5rem;
+  color: #4d55bb;
+}
+
+.footer .upperfoot .footbox .box h4 {
+  font-size: 1.5rem;
+  color: #4d55bb;
+}
+
+.footer .upperfoot .box .handle a {
+  transition: 0.2s;
+}
+
+.footer .upperfoot .box .handle a:hover {
+  background: transparent;
+  transform: scale(0.98);
+
+  color: #4d55ba;
+}
+
+.footer .footbox {
+  background-image: url("../..//assets/footer/foot.png");
+  height: 40%;
+  width: 65%;
+  display: flex;
+  justify-content: space-between;
+  background-repeat: no-repeat;
+  background-size: cover;
+  align-items: flex-start;
+}
+
+.footer .footbox .box {
+  height: 100%;
+  width: 50%;
+}
+
+.footer .footbox .box .upper {
+  display: flex;
+}
+
+.footer .footbox .box .upper .inner {
+  display: flex;
+  flex-direction: column;
+  transition: 1s;
+}
+
+.footer .footbox .box .upper .inner a {
+  display: block;
+}
+.footer .footbox .box .upper .inner a:hover {
+  color: #ffae00;
+}
+
+.footer .footbox .box h4 i {
+  color: #ffae00;
+}
+
+.footer .lowerfoot {
+  width: 100vw;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (width< 650px) {
+  .footer {
+    width: 100%;
+  }
+
+  .footer .upperfoot .box p {
+    text-align: center;
+  }
+  .upperfoot {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  .footer .footbox {
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+  }
+
+  .footer .upperfoot .box {
+    height: auto;
+    width: 100%;
+  }
+  .footer .footbox .box {
+    height: 100%;
+    width: 100%;
+  }
+
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer .footbox {
+    width: 100%;
+  }
+
+  .button--submit {
+    border-radius: 6px;
+    margin-top: 1rem;
+  }
+
+  .input {
+    border-radius: 1px;
+  }
+
+  h4 {
+    text-align: center;
+  }
+
+  .footer .footbox .box .upper {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .footer .lowerfoot {
+    text-align: center;
+  }
+}

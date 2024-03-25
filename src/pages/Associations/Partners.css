@@ -1,0 +1,64 @@
+:root {
+  --total-brand: 21;
+  --logo-width: 9rem;
+  --total-logo-width: calc(var(--total-brand) * var(--logo-width) * 2);
+}
+
+section h1 {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.slider {
+  position: relative;
+  width: 100vw;
+  height: 6rem;
+  background-color: rgba(101, 18, 18, 0);
+  box-shadow: 0.8rem 1.4rem -0.2rem #0001;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.slider::before,
+.slider::after {
+  position: absolute;
+  content: "";
+  height: 100%;
+  width: var(--logo-width);
+  z-index: 55;
+}
+
+.slider::before {
+  left: 0;
+}
+.slider::after {
+  right: 0;
+}
+
+.slider ul.brands {
+  list-style: none;
+  width: var(--total-logo-width);
+  display: flex;
+  animation: slideleft 14s linear infinite;
+}
+
+.slider ul.brands:hover {
+  animation-play-state: paused;
+}
+
+@keyframes slideleft {
+  100% {
+    transform: translateX(calc(-100% / 2));
+  }
+}
+
+ul.brands li.brand-logo {
+  width: var(--logo-width);
+  font-size: 2rem;
+  text-align: center;
+  margin-left: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

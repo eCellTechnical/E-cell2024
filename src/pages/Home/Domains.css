@@ -1,0 +1,78 @@
+.TechDomain {
+  transition: all 0.1s linear;
+  transform: rotate3d(1, 0, 0, 45deg);
+}
+
+.head {
+  position: relative;
+}
+
+.head::after {
+  content: " ";
+  position: absolute;
+  width: 95%;
+  height: 3px;
+  left: 50%;
+  bottom: -5px;
+  transform: translateX(-50%);
+  background: hsla(191, 75%, 60%, 1);
+
+  background: linear-gradient(
+    90deg,
+    hsla(191, 75%, 60%, 1) 0%,
+    hsla(248, 87%, 36%, 1) 100%
+  );
+
+  background: -moz-linear-gradient(
+    90deg,
+    hsla(191, 75%, 60%, 1) 0%,
+    hsla(248, 87%, 36%, 1) 100%
+  );
+
+  background: -webkit-linear-gradient(
+    90deg,
+    hsla(191, 75%, 60%, 1) 0%,
+    hsla(248, 87%, 36%, 1) 100%
+  );
+
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#4DC9E6", endColorstr="#210CAE", GradientType=1 );
+}
+
+.TechDrop {
+  border-radius: 50%;
+  filter: blur(25px);
+  box-shadow: inset 0 100px 10px #fca51aa4;
+  transform: rotate3d(1, 0, 0.2, 45deg);
+}
+.PrDrop {
+  border-radius: 50%;
+  filter: blur(25px);
+  box-shadow: inset 0 100px 10px #358bc6a4;
+  transform: rotate3d(1, 0, 0.2, 45deg);
+}
+.EventDrop {
+  border-radius: 50%;
+  filter: blur(25px);
+  box-shadow: inset 0 100px 10px #0071e3a4;
+  transform: rotate3d(1, 0, 0.2, 45deg);
+}
+.GraphicsDrop {
+  border-radius: 50%;
+  filter: blur(25px);
+  box-shadow: inset 0 100px 10px #23edcba4;
+  transform: rotate3d(1, 0, 0.2, 45deg);
+}
+.CrDrop {
+  border-radius: 50%;
+  filter: blur(25px);
+  box-shadow: inset 0 100px 10px #4ad8fea4;
+  transform: rotate3d(1, 0, 0.2, 45deg);
+}
+
+.Tech:hover .TechDomain,
+.Pr:hover .TechDomain,
+.Event:hover .TechDomain,
+.Cr:hover .TechDomain,
+.Graphics:hover .TechDomain {
+  transform: translateY(15px) rotate3d(1, 0, 0, 50deg);
+}

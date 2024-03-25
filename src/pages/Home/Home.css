@@ -1,0 +1,262 @@
+:root {
+  --hero-z-index: 2;
+  --trailer-z-index: 1;
+}
+
+.hero {
+  height: calc(100vh + 2px);
+  width: calc(100% + 2px);
+  position: fixed;
+  z-index: var(--hero-z-index);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+.hero__top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.hero__bottom {
+  width: 100%;
+  background: #000000;
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  text-align: center;
+}
+.hero__top .filler {
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+}
+.filler-white {
+  background-color: #000000;
+}
+.hero__illustration {
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.hero__illustration .filler:first-child {
+  padding-top: 200px;
+}
+.hero-icon {
+  width: 200px;
+  height: 200px;
+  background: #000000;
+  margin: 0 auto;
+  -webkit-clip-path: polygon(
+    0 0,
+    50% 50%,
+    100.5% 0,
+    100.5% 100%,
+    50% 50%,
+    0 100%
+  );
+  clip-path: polygon(0 0, 50% 50%, 100.5% 0, 100.5% 100%, 50% 50%, 0 100%);
+}
+
+.hero h1 {
+  font-weight: lighter;
+  margin: 0;
+  opacity: 1;
+}
+
+.trailer {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  z-index: var(--trailer-z-index);
+  background-color: #000;
+}
+.video-wrapper {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-transform-origin: center;
+  -ms-transform-origin: center;
+  transform-origin: center;
+}
+.video {
+  height: 100vh;
+  width: 100%;
+  background-size: cover;
+  top: 0;
+}
+
+.past-threshold .trailer {
+  position: absolute;
+  height: 200vh;
+}
+.past-threshold .video-wrapper {
+  margin-top: 100vh;
+}
+
+.content {
+  transition: all 1s linear;
+}
+.section {
+  height: 100%;
+  display: -ms-grid;
+  margin: 0;
+  display: grid;
+  place-items: center;
+}
+
+.scroll-down-animation {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  right: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.Sd {
+  text-align: center;
+}
+
+.mouse {
+  margin: 0 auto;
+  display: block;
+  border-radius: 50px;
+  height: 45px;
+  width: 28px;
+  position: relative;
+}
+
+.move {
+  position: absolute;
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+  left: 50%;
+  right: 50%;
+  transform: translateX(-50%, -50%);
+  animation: move 1.5s linear infinite;
+}
+
+@keyframes move {
+  0% {
+    transform: translate(-50%, 8px);
+    opacity: 0;
+  }
+  50% {
+    transform: translate(-50%, 18px);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, 28px);
+    opacity: 0;
+  }
+}
+
+.t1::after {
+  position: absolute;
+  content: "";
+  width: 100vw;
+  height: 110vh;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0.25),
+    rgba(255, 255, 255, 0.3)
+  );
+}
+
+.t2::after {
+  position: absolute;
+  content: "";
+  width: 100vw;
+  height: 110vh;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.2),
+    rgba(0, 0, 0, 0.3),
+    rgba(0, 0, 0, 0.3),
+    rgba(0, 0, 0, 0.32),
+    rgba(0, 0, 0, 0.7)
+  );
+}
+
+.slideOdd {
+  animation: slideMoveOdd 20s linear infinite;
+}
+.slideEven {
+  animation: slideMoveEven 20s linear infinite;
+}
+
+.midSlide {
+  left: 0%;
+  right: 0%;
+  transform: translateX(15%) translateY(0%);
+  animation: midMove 10s linear infinite;
+}
+
+@keyframes slideMoveOdd {
+  50% {
+    transform: translateX(-440%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes slideMoveEven {
+  50% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-440%);
+  }
+}
+
+@keyframes midMove {
+  50% {
+    transform: translateX(15%) translateY(-100%);
+  }
+  100% {
+    transform: translateX(15%) translateY(0%);
+  }
+}
+
+.mobImg {
+  transform: scale(1);
+  animation: mobImgAnimation 3s linear forwards;
+  animation-delay: 1s;
+}
+
+@keyframes mobImgAnimation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1);
+  }
+  100% {
+    display: none;
+    transform: scale(40);
+  }
+}

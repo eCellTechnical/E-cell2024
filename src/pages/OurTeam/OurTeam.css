@@ -1,0 +1,28 @@
+.team-member-img {
+  transition: 0.3s linear;
+  object-fit: cover;
+}
+
+.team-member:hover .team-member-img {
+  filter: grayscale(100%);
+}
+.team-member:hover .teamHover {
+  opacity: 1;
+}
+.team-member:hover .teamHover img {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+}
+
+.teamHover {
+  opacity: 0;
+  pointer-events: none;
+  transition: all linear 0.3s;
+}
+.teamHover img {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(50px);
+  transition: all linear 0.3s;
+}

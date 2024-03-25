@@ -1,0 +1,81 @@
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="password"],
+select {
+  padding: 8px;
+  margin-bottom: 10px;
+}
+
+input:focus {
+  outline: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+
+textarea:focus {
+  outline: none;
+  border-top: none; 
+  border-left: none;
+  border-right: none;
+}
+
+.btn {
+  background-color: #0d6efd !important;
+  border-color: #0d6efd !important;
+  padding: 8px 13px;
+  border-radius: 5px;
+  cursor: pointer !important;
+  pointer-events: all;
+  z-index: 10 !important;
+}
+
+.bbb[data-theme="dark"] .MuiStepLabel-label.Mui-active {
+  color: rgb(255, 255, 255) !important;
+  font-weight: bold;
+  font-size: large;
+}
+.bbb[data-theme="light"] .MuiStepLabel-label.Mui-active {
+  color: rgb(0, 0, 0) !important;
+  font-weight: bold;
+  font-size: large;
+}
+
+
+.bbb[data-theme="dark"] .MuiStepLabel-label.Mui-disabled {
+  color: rgb(148, 148, 148);
+  font-size: large;
+}
+.bbb[data-theme="light"] .MuiStepLabel-label.Mui-disabled {
+  color: rgb(148, 148, 148);
+  font-size: large;
+}
+
+.bbb[data-theme="dark"] .MuiStepLabel-label.Mui-completed {
+  color: rgb(255, 255, 255) !important;
+  font-size: large;
+}
+.bbb[data-theme="light"] .MuiStepLabel-label.Mui-completed {
+  color: rgb(0, 0, 0) !important;
+  font-size: large;
+}
+
+#bb {
+  color: black !important;
+}
+#bbb {
+  color: black !important;
+}
+
+#nextBtn,
+#prevBtn,
+#submitBtn {
+  background-color: transparent !important;
+  border: 2px solid #4d55ba !important;
+}
+
+#submittedBtn {
+  background-color: #4d55ba !important;
+  color: white;
+}

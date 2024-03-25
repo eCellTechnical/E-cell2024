@@ -1,0 +1,92 @@
+.navbar {
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  background-color: rgba(77, 85, 186, 0.21);
+}
+
+.discover,
+.initiatives,
+.learn,
+.endeavour,
+.incubator,
+.contact {
+  transition: transform 100ms linear;
+}
+
+.discover:hover p:nth-child(1),
+.initiatives:hover p:nth-child(1),
+.learn:hover p:nth-child(1),
+.endeavour:hover,
+.incubator:hover,
+.contact:hover {
+  transform: scale(1.05);
+}
+
+.childLinks {
+  transition: all 100ms linear;
+}
+.childLinks:hover {
+  transform: scale(1.02);
+}
+
+.discover:hover .discoverMenu {
+  display: flex ;
+  opacity: 1;
+}
+.initiatives:hover .initiativesMenu {
+  display: flex ;
+  opacity: 1;
+}
+.learn:hover .learnMenu {
+  display: flex;
+  opacity: 1;
+}
+
+.discoverMenu,
+.initiativesMenu,
+.learnMenu {
+  transition: all 0.5s;
+  display: none;
+  opacity: 0;
+  backdrop-filter: blur(16px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+}
+
+.toggle {
+  background-color: #3e272700;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  box-shadow: 0 0 50px 20px rgba(0, 0, 0, 0.1);
+  line-height: 1;
+}
+
+.input {
+  display: none;
+}
+
+.icon {
+  grid-column: 1 / 1;
+  grid-row: 1 / 1;
+  transition: transform 500ms;
+}
+
+.icon--moon {
+  transition-delay: 200ms;
+}
+
+.icon--sun {
+  transform: scale(0);
+}
+
+#switch:checked + .icon--moon {
+  transform: rotate(360deg) scale(0);
+}
+
+#switch:checked ~ .icon--sun {
+  transition-delay: 200ms;
+  transform: scale(1) rotate(360deg);
+}
