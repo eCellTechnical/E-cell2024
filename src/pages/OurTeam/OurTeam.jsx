@@ -19,7 +19,7 @@ import harsh2 from "../../assets/OurTeam/harsh2.jpg";
 import Jassi from "../../assets/OurTeam/jassi11.jpg";
 import Madhav from "../../assets/OurTeam/madhav.jpeg";
 import Mansi from "../../assets/OurTeam/Mansi.png";
-import naksh from "../../assets/OurTeam/Naksh.jpg";
+import naksh from "../../assets/OurTeam/Naksh.jpeg";
 import Pulkit from "../../assets/OurTeam/pulkit.jpeg";
 import shashwat from "../../assets/OurTeam/Shashwat.jpg";
 import shud from "../../assets/OurTeam/shud.jpg";
