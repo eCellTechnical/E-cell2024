@@ -44,12 +44,12 @@ export default function Foot() {
               >
                 <FaInstagram className=" h-8 w-8 test-black dark:text-white hover:text-[#4d55ba] cursor-pointer transition-all duration-150" />
               </a>
-              <a href="#" target="_blank" rel="noreferrer">
+              {/* <a href="#" target="_blank" rel="noreferrer">
                 <FaFacebook className=" h-7 w-7 test-black dark:text-white hover:text-[#4d55ba] cursor-pointer transition-all duration-150" />
               </a>
               <a href="#" target="_blank" rel="noreferrer">
                 <FaTelegram className=" h-7 w-7 test-black dark:text-white hover:text-[#4d55ba] cursor-pointer transition-all duration-150" />
-              </a>
+              </a> */}
               <a
                 href="https://www.linkedin.com/company/e-cell-kiet/"
                 target="_blank"
@@ -299,8 +299,9 @@ export default function Foot() {
           </div>
         </div>
 
-        <div className="lowerfoot !w-[100vw] font-medium dark:font-medium">
-          <h3 className="">@ E-Cell 2024</h3>
+        <div className="lowerfoot !w-[100vw] font-medium dark:font-medium flex justify-between">
+          <h3 className="w-1/2 pl-8">@ IGNITEX SOLUTIONS PVT. LTD.</h3>
+          <h3 className="w-1/2 text-right pr-8">@ E-Cell 2024</h3>
         </div>
       </div>
     </>
