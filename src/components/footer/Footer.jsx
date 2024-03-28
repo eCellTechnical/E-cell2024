@@ -300,8 +300,8 @@ export default function Foot() {
         </div>
 
         <div className="lowerfoot !w-[100vw] font-medium dark:font-medium flex justify-between">
-          <h3 className="w-1/2 pl-8">@ IGNITEX SOLUTIONS PVT. LTD.</h3>
-          <h3 className="w-1/2 text-right pr-8">@ E-Cell 2024</h3>
+          <h3 className="w-1/2 pl-8">IGNITEX SOLUTIONS PVT. LTD.</h3>
+          <h3 className="w-1/2 text-right pr-8">E-Cell 2024</h3>
         </div>
       </div>
     </>
