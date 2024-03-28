@@ -57,7 +57,7 @@ function Navbar() {
           {themeMode == "dark" ? (
             <img
               src={
-                "https://res.cloudinary.com/dwtytn7fl/image/upload/v1710338873/white_logo_br_njek7f.webp"
+                "https://res.cloudinary.com/dwtytn7fl/image/upload/q_auto/f_auto/v1710338873/white_logo_br_njek7f.webp"
               }
               onClick={() => history("/")}
               className="w-14 h-14 lg:w-14 lg:h-14 z-20 "
@@ -66,7 +66,7 @@ function Navbar() {
           ) : (
             <img
               src={
-                "https://res.cloudinary.com/dwtytn7fl/image/upload/v1710338873/black_logo_br_nmqmyp.webp"
+                "https://res.cloudinary.com/dwtytn7fl/image/upload/q_auto/f_auto/v1710338873/black_logo_br_nmqmyp.webp"
               }
               onClick={() => history("/")}
               className="w-14 h-14 lg:w-14 lg:h-14 z-20 "
@@ -722,11 +722,7 @@ function Navbar() {
           >
             Endeavour
           </a>
-          <a
-            href="https://tbi-kiet.in/"
-            target="_blank"
-            rel="noreferrer"
-          >
+          <a href="https://tbi-kiet.in/" target="_blank" rel="noreferrer">
             Incubator
           </a>
           <a

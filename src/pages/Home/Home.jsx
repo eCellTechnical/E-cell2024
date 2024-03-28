@@ -141,7 +141,7 @@ pointer-events-none hero "
           <div className="video">
             <video
               src={
-                "https://res.cloudinary.com/drue0u6zt/video/upload/v1711560131/vqjbhu3lhf2bvtpvl7ou.mp4"
+                "https://res.cloudinary.com/drue0u6zt/video/upload/q_auto/f_auto/v1711560131/vqjbhu3lhf2bvtpvl7ou.mp4"
               }
               autoPlay
               loop
@@ -150,7 +150,7 @@ pointer-events-none hero "
             ></video>
             <video
               src={
-                "https://res.cloudinary.com/drue0u6zt/video/upload/v1711559913/ndaw6ohm4rughddmzlw0.mp4"
+                "https://res.cloudinary.com/drue0u6zt/video/upload/q_auto/f_auto/v1711559913/ndaw6ohm4rughddmzlw0.mp4"
               }
               autoPlay
               loop
