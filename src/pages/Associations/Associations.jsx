@@ -1,5 +1,6 @@
 import prevAssociations from "../../assets/associations/prev-associations.webp";
 import "./Associations.css";
+import prevAssociationsMob from "../../assets/associations/Instagram_post_-_1-ezgif.com-crop.webp";
 
 import { useEffect, lazy, Suspense } from "react";
 const Loader = lazy(() => import("../../components/Loader/Loader"));
@@ -34,7 +35,11 @@ function Associations() {
           >
             <img
               src={prevAssociations}
-              className="speaker-imgrounded-tr-[20%] rounded-lg rounded-bl-[20%]"
+              className="speaker-imgrounded-tr-[20%] hidden md:flex rounded-lg "
+            />
+            <img
+              src={prevAssociationsMob}
+              className="speaker-imgrounded-tr-[20%] flex md:hidden rounded-lg "
             />
           </div>
         </div>

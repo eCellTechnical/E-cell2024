@@ -3,6 +3,7 @@ import "./Home.css";
 import { useSpring, animated } from "react-spring";
 import { useInView } from "react-intersection-observer";
 import prevAssociations from "../../assets/associations/prev-associations.webp";
+import prevAssociationsMob from "../../assets/associations/Instagram_post_-_1-ezgif.com-crop.webp";
 
 const WhatIsECell = lazy(() => import("./WhatIsECell.jsx"));
 // const WhatWeDo = lazy(() => import("./WhatWeDo2.jsx"));
@@ -201,7 +202,11 @@ pointer-events-none hero "
             >
               <img
                 src={prevAssociations}
-                className="speaker-imgrounded-tr-[20%] rounded-lg rounded-bl-[20%]"
+                className="speaker-imgrounded-tr-[20%] hidden md:flex rounded-lg "
+              />
+              <img
+                src={prevAssociationsMob}
+                className="speaker-imgrounded-tr-[20%] flex md:hidden rounded-lg "
               />
             </div>
           </div>
