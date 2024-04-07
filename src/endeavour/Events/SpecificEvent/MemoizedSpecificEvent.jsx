@@ -36,7 +36,7 @@ const SpecificEvent = () => {
         alert("Wrong Username or Password");
       }
     } catch (error) {
-      console.error("Error fetching event data:", error);
+      console.error("Error fetching event data :(");
     }
   }, [eventId]);
 
@@ -67,7 +67,7 @@ const SpecificEvent = () => {
           setDisable(false);
         }
       } catch (error) {
-        console.error("Error fetching user data:", error);
+        console.error("Error fetching user data :(");
       }
     },
     [event]
@@ -125,7 +125,7 @@ const SpecificEvent = () => {
           alert(data);
         }
       } catch (error) {
-        console.error("Error registering team:", error);
+        console.error("Error registering team :(");
         alert("Error, Please Try again after sometime");
       }
     },
@@ -188,7 +188,7 @@ const SpecificEvent = () => {
       const razor = new window.Razorpay(options);
       razor.open();
     } catch (error) {
-      console.error("Error processing payment:", error);
+      console.error("Error processing payment :( ");
     }
   };
 

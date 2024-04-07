@@ -20,7 +20,7 @@ function EndeavourAdmin() {
         `https://e-cell2024backend-production.up.railway.app/admin/is-authorised`,
         { adminId: admin }
       );
-      console.log(res.data);
+      // console.log(res.data);
       if (res.data == false) {
         history("/endeavour");
         alert("Don't be over smart :)");

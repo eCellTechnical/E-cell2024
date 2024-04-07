@@ -41,7 +41,7 @@ function EditUser() {
         }
       }
     } catch (e) {
-      console.error("Error fetching User:", e);
+      console.error("Error fetching User :(");
     }
     setDisable(false);
   };
@@ -49,7 +49,7 @@ function EditUser() {
   const editsubmit = async (data2) => {
     setDisable(true);
     if (user.userName == data2.username && user.email == data2.useremail) {
-      console.log(user.userName, data2.username);
+      // console.log(user.userName, data2.username);
       alert("No change to make");
     } else {
       try {
@@ -65,7 +65,7 @@ function EditUser() {
         setEditedEmail("");
         setEditedUsername("");
       } catch (error) {
-        console.error("Error fetching User:", error);
+        console.error("Error fetching User :(");
       }
     }
     setDisable(false);

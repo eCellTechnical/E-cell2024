@@ -23,7 +23,7 @@ function ContactUs() {
       })
       .then(
         () => {
-          console.log("SUCCESS!");
+          // console.log("SUCCESS!");
           e.target.reset();
           setSubmitte(true);
           setTimeout(() => {
@@ -31,7 +31,8 @@ function ContactUs() {
           }, 2000);
         },
         (error) => {
-          console.log("FAILED...", error.text);
+          // console.log("FAILED...", error.text);
+          alert("Some Error Occurs, Try Again");
         }
       );
   };

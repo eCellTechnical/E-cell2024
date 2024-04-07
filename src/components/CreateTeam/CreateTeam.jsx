@@ -16,7 +16,7 @@ function CreateTeam() {
     ];
 
     const filteredData = teamMembers.filter((member) => member.length > 0);
-    console.log(filteredData);
+    // console.log(filteredData);
     try {
       const response = await axios.post(
         `https://e-cell2024backend-production.up.railway.app/admin/create-team`,

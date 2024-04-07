@@ -119,7 +119,7 @@ function EndeavourProfile() {
           setDisable(false);
         }
       } catch (error) {
-        console.error("Error fetching user data:", error);
+        console.error("Error fetching user data  :(");
       }
     },
     [teamDetails]
@@ -156,7 +156,7 @@ function EndeavourProfile() {
       setGender(response.data.user.gender);
       setCity(response.data.user.city);
     } catch (error) {
-      console.error("Error fetching events:", error);
+      console.error("Error fetching profile :(");
     }
   }, []);
 
@@ -201,7 +201,7 @@ function EndeavourProfile() {
         alert("Successfully Updated");
       }
     } catch (error) {
-      console.error("Error fetching events:", error);
+      console.error("Error fetching profile :(");
     }
     setEdit(false);
   };
@@ -229,10 +229,10 @@ function EndeavourProfile() {
       }
       if (response.data.members) {
         setMembers(response.data.members);
-        console.log(response.data.members);
+        // console.log(response.data.members);
       }
     } catch (error) {
-      console.error("Error fetching events:", error);
+      console.error("Error fetching profile :(");
     }
     setTab(1);
   };
@@ -250,7 +250,7 @@ function EndeavourProfile() {
         setEventNamePayment(response.data.eventname);
       }
     } catch (error) {
-      console.error("Error fetching events:", error);
+      console.error("Error fetching profile :(");
     }
     setTab(2);
   };

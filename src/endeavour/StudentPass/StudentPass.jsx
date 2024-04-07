@@ -20,10 +20,11 @@ function StudentPass() {
         })
         .catch((e) => {
           alert("wrong details");
-          console.log(e);
+          // console.log(e);
         });
     } catch (error) {
-      console.log(error);
+      // console.log(error);
+      alert("Internal server error");
     }
   }
   useEffect(() => {

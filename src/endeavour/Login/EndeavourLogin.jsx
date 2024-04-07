@@ -55,7 +55,7 @@ function EndeavourLogin() {
         }
       }
     } catch (error) {
-      console.error("Error during Google login:", error);
+      console.error("Error during Google login :(");
     }
   };
 

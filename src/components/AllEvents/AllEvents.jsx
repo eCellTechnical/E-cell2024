@@ -14,7 +14,7 @@ function AllEvents() {
       );
       setEvents(response.data);
     } catch (error) {
-      console.error("Error fetching events:", error);
+      console.error("Error fetching events :(");
     }
   }, []);
 
