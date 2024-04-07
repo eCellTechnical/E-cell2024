@@ -294,7 +294,7 @@ function EndeavourProfile() {
           </butto>
         </div>
 
-        <div className="!fixed left-0 right-0 bottom-0 flex md:hidden bg-white dark:bg-black p-4 justify-around">
+        <div className="!fixed left-0 right-0 bottom-0 flex md:hidden bg-white dark:bg-black p-4 justify-around z-50">
           <img
             onClick={profileClicked}
             src={
