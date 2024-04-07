@@ -10,7 +10,7 @@ function WhatIsECell() {
       >
         <img
           src={
-            "https://res.cloudinary.com/dwtytn7fl/image/upload/v1710786666/Animation_-_1705429785180_vzylgr.gif"
+            "https://res.cloudinary.com/dwtytn7fl/image/upload/q_auto/f_auto/v1710786666/Animation_-_1705429785180_vzylgr.gif"
           }
           alt=""
           className="lg:flex w-3/4 lg:w-2/3 opacity-90 ml-[-10px] lg:ml-[-80px]"

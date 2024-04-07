@@ -21,7 +21,7 @@ function WhatWeDo() {
           <div className="flex flex-col justify-center items-center">
             <img
               src={
-                "https://res.cloudinary.com/dwtytn7fl/image/upload/v1710786539/Animation_-_1705531097237_hmh6pv.gif"
+                "https://res.cloudinary.com/dwtytn7fl/image/upload/q_auto/f_auto/v1710786539/Animation_-_1705531097237_hmh6pv.gif"
               }
               alt=""
               className="lg:flex w-[60%]"
@@ -43,8 +43,8 @@ function WhatWeDo() {
             <img
               src={
                 themeMode == "dark"
-                  ? "https://res.cloudinary.com/dwtytn7fl/image/upload/v1710786540/Animation_-_1705531132837_n6wffe.gif"
-                  : "https://res.cloudinary.com/dwtytn7fl/image/upload/v1710786543/Animation_-_1705531132837_1_qf8c04.gif"
+                  ? "https://res.cloudinary.com/dwtytn7fl/image/upload/q_auto/f_auto/v1710786540/Animation_-_1705531132837_n6wffe.gif"
+                  : "https://res.cloudinary.com/dwtytn7fl/image/upload/q_auto/f_auto/v1710786543/Animation_-_1705531132837_1_qf8c04.gif"
               }
               alt=""
               className="lg:flex w-[85%]"
@@ -65,7 +65,7 @@ function WhatWeDo() {
           <div className="flex flex-col justify-center items-center ">
             <img
               src={
-                "https://res.cloudinary.com/dwtytn7fl/image/upload/v1710786548/Animation_-_1705531218146_bf4zav.gif"
+                "https://res.cloudinary.com/dwtytn7fl/image/upload/q_auto/f_auto/v1710786548/Animation_-_1705531218146_bf4zav.gif"
               }
               alt=""
               className="lg:flex w-[35%]"

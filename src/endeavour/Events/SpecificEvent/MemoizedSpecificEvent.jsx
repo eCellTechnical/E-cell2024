@@ -170,7 +170,7 @@ const SpecificEvent = () => {
         name: `${event.name}`,
         description: `${event.name}`,
         image:
-          "https://res.cloudinary.com/dwtytn7fl/image/upload/v1700479048/cmxocblhvvpbkl7xk407.png",
+          "https://res.cloudinary.com/dwtytn7fl/image/upload/q_auto/f_auto/v1700479048/cmxocblhvvpbkl7xk407.png",
         order_id: order.id,
         callback_url: `https://e-cell2024backend-production.up.railway.app/api/paymentverification/${localStorage.getItem(
           "userId"
