@@ -14,8 +14,8 @@ export default function Foot() {
   const { themeMode } = useTheme();
   return (
     <>
-      <div className="footer !z-10   border-white/65 bg-white dark:bg-black text-black dark:text-white border-t-[1px] border-t-[#b1b1b17d]">
-        <div className="upperfoot p-8 border-b-[1px] border-b-[#8a8a8a92]">
+      <div className="footer z-10   border-white/65 bg-white dark:bg-black text-black dark:text-white border-t-[1px] border-t-[#b1b1b17d]">
+        <div className="upperfoot bg-white dark:bg-black z-10 p-8 border-b-[1px] border-b-[#8a8a8a92]">
           <div className="box flex flex-col lg:flex-col items-center lg:items-start">
             <h4 className="text-lg font-bold mb-5">Subscribe to E-Cell</h4>
             <p className="text-md mb-2 font-medium dark:font-light">
@@ -44,12 +44,12 @@ export default function Foot() {
               >
                 <FaInstagram className=" h-8 w-8 test-black dark:text-white hover:text-[#4d55ba] cursor-pointer transition-all duration-150" />
               </a>
-              {/* <a href="#" target="_blank" rel="noreferrer">
+              <a href="#" target="_blank" rel="noreferrer">
                 <FaFacebook className=" h-7 w-7 test-black dark:text-white hover:text-[#4d55ba] cursor-pointer transition-all duration-150" />
               </a>
               <a href="#" target="_blank" rel="noreferrer">
                 <FaTelegram className=" h-7 w-7 test-black dark:text-white hover:text-[#4d55ba] cursor-pointer transition-all duration-150" />
-              </a> */}
+              </a>
               <a
                 href="https://www.linkedin.com/company/e-cell-kiet/"
                 target="_blank"
@@ -91,12 +91,12 @@ export default function Foot() {
                   ecell@kiet.edu
                 </span>
               </p>
-              {/* <p className="mb-4 font-semibold dark:font-medium">
+              <p className="mb-4 font-semibold dark:font-medium">
                 Phone No. :-{" "}
                 <span className="font-medium dark:font-light">
                   +91 999999999
                 </span>
-              </p> */}
+              </p>
             </div>
 
             <div className="box ">
@@ -119,8 +119,8 @@ export default function Foot() {
                   <a
                     href="https://medium.com/@ECELLKIET"
                     target="_blank"
-                    rel="noreferrer"
                     className="!flex !flex-row items-center justify-normal mb-2 font-semibold dark:font-medium cursor-pointer"
+                    rel="noreferrer"
                   >
                     {" "}
                     <img
@@ -179,9 +179,8 @@ export default function Foot() {
                     href="https://merchant.razorpay.com/policy/NqJMeEHhqG0ABL/terms"
                     target="_blank"
                     rel="noreferrer"
-                    className="!flex !flex-row items-center justify-normal mb-2 font-semibold dark:font-medium cursor-pointer"
+                    className="!flex !flex-row items-center justify-normal font-semibold dark:font-medium mb-2 cursor-pointer"
                   >
-                    {" "}
                     <img
                       src={
                         themeMode == "dark" ? greaterThanDark : greaterThanLight
@@ -195,7 +194,7 @@ export default function Foot() {
                     href="https://merchant.razorpay.com/policy/NqJMeEHhqG0ABL/contact_us"
                     target="_blank"
                     rel="noreferrer"
-                    className="!flex !flex-row items-center justify-normal mb-2 font-semibold dark:font-medium cursor-pointer"
+                    className="!flex !flex-row items-center justify-normal font-semibold dark:font-medium mb-2 cursor-pointer"
                   >
                     {" "}
                     <img
@@ -299,9 +298,11 @@ export default function Foot() {
           </div>
         </div>
 
-        <div className="lowerfoot !w-[100vw] font-medium dark:font-medium flex justify-between">
+        <div className="lowerfoot bg-white dark:bg-black z-10 !w-[100vw] font-medium text-xs md:text-sm dark:font-medium flex justify-between">
           <h3 className="w-1/2 pl-8">IGNITEX SOLUTIONS PVT. LTD.</h3>
-          <h3 className="w-1/2 text-right pr-8">E-Cell 2024</h3>
+          <h3 className="w-1/2 text-right pr-10 border-l-[1px] border-[#b6b6b6]">
+            Made with ❤️ E-Cell 2024
+          </h3>
         </div>
       </div>
     </>

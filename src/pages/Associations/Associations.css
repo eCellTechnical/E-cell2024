@@ -1,3 +1,7 @@
+
+
+/* general styles */
+
 :root {
   --clr-neutral-100: hsl(0, 0%, 100%);
   --clr-primary-100: hsl(205, 15%, 58%);
@@ -5,6 +9,7 @@
   --clr-primary-800: hsl(217, 33%, 17%);
   --clr-primary-900: hsl(218, 33%, 9%);
 }
+
 
 .tag-list {
   margin: 0;

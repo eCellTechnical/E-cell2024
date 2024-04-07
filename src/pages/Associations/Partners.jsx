@@ -89,7 +89,7 @@ function Partners() {
   ];
   return (
     <section>
-      <div className="slider before:bg-gradient-to-l before:from-transparent before:to-white before:dark:to-black after:bg-gradient-to-r after:from-transparent after:to-white after:dark:to-black">
+      <div className="slider  before:bg-gradient-to-l before:from-transparent before:to-white before:dark:to-black after:bg-gradient-to-r after:from-transparent after:to-white after:dark:to-black">
         <ul className="brands">
           {logos.map((logo, index) => (
             <li key={index} className="brand-logo">

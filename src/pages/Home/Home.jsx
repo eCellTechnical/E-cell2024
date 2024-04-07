@@ -2,11 +2,10 @@ import React, { useEffect, useState, lazy, Suspense } from "react";
 import "./Home.css";
 import { useSpring, animated } from "react-spring";
 import { useInView } from "react-intersection-observer";
+
 import prevAssociations from "../../assets/associations/prev-associations.webp";
 import prevAssociationsMob from "../../assets/associations/Instagram_post_-_1-ezgif.com-crop.webp";
-
 const WhatIsECell = lazy(() => import("./WhatIsECell.jsx"));
-// const WhatWeDo = lazy(() => import("./WhatWeDo2.jsx"));
 const Domains = lazy(() => import("./Domains.jsx"));
 const TimeLine = lazy(() => import("./TimeLine.jsx"));
 import Partners from "../Associations/Partners.jsx";
@@ -38,6 +37,7 @@ function Home() {
   const handleScroll = () => {
     const newScrollY = window.scrollY;
     setScrollY(newScrollY);
+
     // Check if the scale is greater than or equal to 20
     setIsGreater(1 + newScrollY / 25 >= 25);
   };
@@ -142,7 +142,7 @@ pointer-events-none hero "
           <div className="video">
             <video
               src={
-                "https://res.cloudinary.com/drue0u6zt/video/upload/q_auto/f_auto/v1711560131/vqjbhu3lhf2bvtpvl7ou.mp4"
+                "https://res.cloudinary.com/drue0u6zt/video/upload/v1711560131/vqjbhu3lhf2bvtpvl7ou.mp4"
               }
               autoPlay
               loop
@@ -151,7 +151,7 @@ pointer-events-none hero "
             ></video>
             <video
               src={
-                "https://res.cloudinary.com/drue0u6zt/video/upload/q_auto/f_auto/v1711559913/ndaw6ohm4rughddmzlw0.mp4"
+                "https://res.cloudinary.com/drue0u6zt/video/upload/v1711559913/ndaw6ohm4rughddmzlw0.mp4"
               }
               autoPlay
               loop
@@ -194,11 +194,11 @@ pointer-events-none hero "
               Previous <span className="text-[#4d55ba]">Association</span>
             </h3>
           </div>
-          <div className="flex flex-wrap md:flex-wrap justify-center items-center mt-8 w-full">
+          <div className="flex flex-wrap md:flex-wrap justify-center items-center mt-2 md:mt-8 w-full">
             <div
               data-aos="zoom-in"
               data-aos-delay="0"
-              className="events flex flex-wrap justify-center items-center m-5 rounded-tr-[25%] w-[80%] md:w-[60%] rounded-lg "
+              className="events flex flex-wrap justify-center items-center m-5 mb-0 rounded-tr-[25%] w-[80%] md:w-[60%] rounded-lg "
             >
               <img
                 src={prevAssociations}

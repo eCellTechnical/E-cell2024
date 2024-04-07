@@ -39,30 +39,35 @@
 }
 
 .TechDrop {
+  /* background-color: #fca51a; */
   border-radius: 50%;
   filter: blur(25px);
   box-shadow: inset 0 100px 10px #fca51aa4;
   transform: rotate3d(1, 0, 0.2, 45deg);
 }
 .PrDrop {
+  /* background-color: #fca51a; */
   border-radius: 50%;
   filter: blur(25px);
   box-shadow: inset 0 100px 10px #358bc6a4;
   transform: rotate3d(1, 0, 0.2, 45deg);
 }
 .EventDrop {
+  /* background-color: #fca51a; */
   border-radius: 50%;
   filter: blur(25px);
   box-shadow: inset 0 100px 10px #0071e3a4;
   transform: rotate3d(1, 0, 0.2, 45deg);
 }
 .GraphicsDrop {
+  /* background-color: #fca51a; */
   border-radius: 50%;
   filter: blur(25px);
   box-shadow: inset 0 100px 10px #23edcba4;
   transform: rotate3d(1, 0, 0.2, 45deg);
 }
 .CrDrop {
+  /* background-color: #fca51a; */
   border-radius: 50%;
   filter: blur(25px);
   box-shadow: inset 0 100px 10px #4ad8fea4;

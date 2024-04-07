@@ -1,0 +1,131 @@
+$n:5; /* number of images*/
+
+.past-winner-container{
+  margin-top: 5vh;
+  display: flex;
+  color: black;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.gallery  {
+  --d: 10s; /* duration */
+  
+  display: grid;
+  width: 300px;
+}
+.gallery > img {
+  grid-area: 1/1;
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border: 10px solid #f2f2f2;
+  box-shadow: 0 0 4px #0007;
+  z-index: 2;
+  animation: 
+    slide var(--d) infinite,
+    z-order var(--d) infinite steps(1);
+}
+.gallery img:last-child {
+  animation-name: slide, z-order-last;
+}
+
+@for $i from 1 to ($n + 1) {
+  .gallery > img:nth-child(#{$i}) {
+    animation-delay: calc(#{(1 - $i)/$n}*var(--d));
+    --r: #{(-20 + random(40))*1deg};
+  }
+}
+
+@keyframes slide {
+  #{50/$n}%  {transform: translateX(120%) rotate(var(--r))}
+  0%,
+  100%,
+  #{100/$n}% {transform: translateX(0%)   rotate(var(--r))}
+}
+
+@keyframes z-order {
+  #{50/$n}%,
+  #{100/$n}% {z-index: 1}
+  #{100 - 100/$n}% {z-index: 2}
+}
+
+@keyframes z-order-last {
+  #{50/$n}%,
+  #{100/$n}% {z-index: 1}
+  #{100 - 50/$n}% {z-index: 2}
+}
+
+.glimpses-text{
+  font: 20px;
+}
+
+// body {
+//   margin: 0;
+//   min-height: 100vh;
+//   display: grid;
+//   place-content: center;
+//   background: #CDB380;
+//   overflow: hidden;
+// }
+
+.glimpses-heading{
+  font-family:"repo-medium";
+  letter-spacing: 5px;
+  font-size: 4em;
+  margin-bottom: 30px;
+  padding: 0px 15px;
+  font-size: 50px;
+}
+ .glimpses-text{
+  text-align: justify;
+  display: inline-block;
+ }
+.glimpses{
+  display: flex;
+  gap: 1rem;
+  // padding-top: 150rem;
+  width: 100vw;
+  overflow: hidden;
+}
+.left{
+  width: 43vw;
+  padding: 5rem;
+  padding-left: 10rem;
+  margin-left: 20px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.right{
+  width: 40vw;
+  text-align: left;
+}
+
+@media screen and (max-width: 600px) {
+  .glimpses{flex-direction: column; gap: 0;}
+  .left{
+    width: 100%;
+    padding: 5rem;
+    // padding-left: 10rem;
+    // transform: translateX(25%);
+  }
+  .right{
+    width: 90vw;
+    text-align: left;
+    padding: 2rem;
+  }
+
+  .glimpses-text{
+    display: none;
+    text-align: center;
+   }
+ 
+  .gallery  {
+    width: 220px;
+  }
+  .past-winner-container{
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+}

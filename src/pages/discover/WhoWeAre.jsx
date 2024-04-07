@@ -8,6 +8,11 @@ function WhoWeAre() {
           data-aos="fade-right"
           className="w-full lg:w-full flex justify-center items-center "
         >
+          {/* <Lottie
+            animationData={lot}
+            loop={true}
+            className="z-[1] lg:flex w-3/4 lg:w-2/3 opacity-100 "
+          /> */}
           <img
             src={lot1}
             alt=""

@@ -21,7 +21,7 @@ function WhatWeDo() {
           <div className="flex flex-col justify-center items-center">
             <img
               src={
-                "https://res.cloudinary.com/dwtytn7fl/image/upload/q_auto/f_auto/v1710786539/Animation_-_1705531097237_hmh6pv.gif"
+                "https://res.cloudinary.com/dwtytn7fl/image/upload/v1710786539/Animation_-_1705531097237_hmh6pv.gif"
               }
               alt=""
               className="lg:flex w-[60%]"
@@ -43,8 +43,8 @@ function WhatWeDo() {
             <img
               src={
                 themeMode == "dark"
-                  ? "https://res.cloudinary.com/dwtytn7fl/image/upload/q_auto/f_auto/v1710786540/Animation_-_1705531132837_n6wffe.gif"
-                  : "https://res.cloudinary.com/dwtytn7fl/image/upload/q_auto/f_auto/v1710786543/Animation_-_1705531132837_1_qf8c04.gif"
+                  ? "https://res.cloudinary.com/dwtytn7fl/image/upload/v1710786540/Animation_-_1705531132837_n6wffe.gif"
+                  : "https://res.cloudinary.com/dwtytn7fl/image/upload/v1710786543/Animation_-_1705531132837_1_qf8c04.gif"
               }
               alt=""
               className="lg:flex w-[85%]"
@@ -65,7 +65,7 @@ function WhatWeDo() {
           <div className="flex flex-col justify-center items-center ">
             <img
               src={
-                "https://res.cloudinary.com/dwtytn7fl/image/upload/q_auto/f_auto/v1710786548/Animation_-_1705531218146_bf4zav.gif"
+                "https://res.cloudinary.com/dwtytn7fl/image/upload/v1710786548/Animation_-_1705531218146_bf4zav.gif"
               }
               alt=""
               className="lg:flex w-[35%]"
@@ -82,6 +82,63 @@ function WhatWeDo() {
           </div>
         </div>
       </div>
+
+      {/* <div className="containerr flex flex-col md:flex-row justify-center items-center md:justify-center ">
+        <div className="card !w-[70%] md:!w-[25%] lg:!w-[22%] bg-white dark:bg-[#ffffff1a] !shadow-2xl shadow-black">
+          <div className="content">
+            <div className="w-1/2 flex justify-center flex-col items-center mb-0">
+              <img src={lot1} alt="" className="lg:flex " />
+              <h3 className="h3 mt-1 text-black dark:text-white font-semibold">
+                Ideate
+              </h3>
+            </div>
+            <div className="contentmove">
+              <p className="mt-[-1em] text-[#4b4b4b] dark:text-[#a6a6a6] !font-semibold dark:!font-normal">
+                To start your search for that drop-dead idea that&apos;s going
+                to set the world on fire, open yourself to the possibilities and
+                you will be bound to become a winner.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="card !w-[70%] md:!w-[22%] bg-white dark:bg-[#ffffff1a] !shadow-2xl shadow-black">
+          <div className="content">
+            <div className="w-[70%] flex justify-center flex-col items-center mb-0">
+              <img
+                src={themeMode == "dark" ? lot21 : lot22}
+                alt=""
+                className="lg:flex "
+              />
+              <h3 className="h3 mt-1 text-black dark:text-white font-semibold">
+                Create
+              </h3>
+            </div>
+            <div className="contentmove ">
+              <p className="mt-[-1em] text-[#4b4b4b] dark:text-[#a6a6a6] !font-semibold dark:!font-normal">
+                Create an entrepreneurship community where we ideate, innovate
+                and mold your idea into a full-fledged running venture.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div className="card !w-[70%] md:!w-[22%] bg-white dark:bg-[#ffffff1a] !shadow-2xl shadow-black">
+          <div className="content">
+            <div className="w-[35%] flex justify-center flex-col items-center mb-0">
+              <img src={lot3} alt="" className="lg:flex " />
+              <h3 className="h3 mt-1 text-black dark:text-white font-semibold">
+                Incubate
+              </h3>
+            </div>
+            <div className="contentmove ">
+              <p className="mt-[-1em] text-[#4b4b4b] dark:text-[#a6a6a6] !font-semibold dark:!font-normal">
+                Your idea needs to get nurtured in order to reach full strength
+                and to be able to breathe and grow independently.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div> */}
     </div>
   );
 }

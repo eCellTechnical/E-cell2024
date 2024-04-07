@@ -15,6 +15,7 @@
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-around;
+  /* border-bottom: 1px solid rgb(68, 68, 68); */
 }
 
 .footer .upperfoot .box {
@@ -70,6 +71,7 @@
 }
 
 .footer .footbox .box .upper .inner a {
+  /* color: rgb(238, 238, 238); */
   display: block;
 }
 .footer .footbox .box .upper .inner a:hover {

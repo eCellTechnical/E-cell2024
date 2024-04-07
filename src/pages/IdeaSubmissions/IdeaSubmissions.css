@@ -3,25 +3,29 @@ input[type="email"],
 input[type="number"],
 input[type="password"],
 select {
+  /* width: 100%; */
   padding: 8px;
   margin-bottom: 10px;
+  /* border: 1px solid #ccc; */
+  /* border-radius: 5px; */
 }
 
 input:focus {
-  outline: none;
-  border-top: none;
+  outline: none; /* Remove the default outline */
+  border-top: none; /* Remove the border */
   border-left: none;
   border-right: none;
 }
 
 textarea:focus {
-  outline: none;
-  border-top: none; 
+  outline: none; /* Remove the default outline */
+  border-top: none; /* Remove the border */
   border-left: none;
   border-right: none;
 }
 
 .btn {
+  /* color: #fff; */
   background-color: #0d6efd !important;
   border-color: #0d6efd !important;
   padding: 8px 13px;
@@ -42,6 +46,8 @@ textarea:focus {
   font-size: large;
 }
 
+/* [data-theme="light"] */
+/* [data-theme="dark"] */
 
 .bbb[data-theme="dark"] .MuiStepLabel-label.Mui-disabled {
   color: rgb(148, 148, 148);

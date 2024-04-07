@@ -27,6 +27,7 @@ button.learn-more .circle {
   height: 3rem;
   background: #4d55ba;
   border-radius: 1.625rem;
+  /* color: #fff; */
 }
 
 button.learn-more .circle .icon {
@@ -36,6 +37,7 @@ button.learn-more .circle .icon {
   bottom: 0;
   margin: auto;
   background: #fff;
+  /* color: #fff; */
 }
 
 button.learn-more .circle .icon.arrow {

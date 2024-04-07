@@ -1,15 +1,20 @@
+
 .main {
   width: 100%;
   height: auto;
   display: grid;
   place-items: center;
+  /* background-color: rgb(0, 0, 0); */
   padding: 50px 0;
   margin-top: -50px;
+  /* margin-top: -100px; */
+  /* z-index: -1; */
 }
 .main .head {
   font-size: 49px;
   position: relative;
   margin-bottom: 100px;
+  /* z-index: -1; */
 }
 .main .head::after {
   content: " ";
@@ -42,12 +47,14 @@
   filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#4DC9E6", endColorstr="#210CAE", GradientType=1 );
 }
 
+/* Container Css Start  */
 
 .container {
   width: 60%;
   height: auto;
   margin: auto 0;
   position: relative;
+  /* z-index: -1; */
 }
 .container ul {
   list-style: none;
@@ -176,6 +183,7 @@ ul li .heading {
 }
 ul li p {
   font-size: 13px;
+  /* color: #666; */
   color: #fff;
 
   line-height: 18px;

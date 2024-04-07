@@ -48,6 +48,7 @@ function ContactUs() {
             autoplay
             className="z-[1] lg:flex lg:w-full opacity-90  lg:ml-[-80px]"
           />
+          {/* <img src={email} alt="" /> */}
         </div>
         <div data-aos="fade-left" className="w-full">
           <div className="w-full  flex flex-col justify-content items-center">
