@@ -80,7 +80,7 @@ function OurTeam() {
 
     {
       name: "Akshat Dwivedi",
-      domain: "Overall Coordinators",
+      domain: "Overall Coordinator",
       imgUrl: Akshat,
       linkedIn: "",
       gmail: "",
