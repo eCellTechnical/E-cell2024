@@ -808,7 +808,7 @@ function Navbar() {
               {!localStorage.getItem("userId") ? (
                 <>
                   <Link to="/endeavour/login">
-                    <button className="border-2 py-2 px-6 border-[#6d6d6d] dark:border-white text-black dark:text-white font-semibold ">
+                    <button className="border-2 py-2 px-6 border-[#6d6d6d] dark:border-white text-black dark:text-white font-semibold  ">
                       Sign In
                     </button>
                   </Link>
@@ -1205,14 +1205,14 @@ function Navbar() {
                 <Link
                   onClick={() => setEndeavourMainMenu(0)}
                   to="/endeavour/login"
-                  className="border-4 border-[#818aff] dark:border-white p-2 rounded-full w-[45%] flex justify-center items-center text-white bg-[#5860c4] font-semibold"
+                  className="border-4 border-[#818aff] dark:border-white p-2  w-[45%] flex justify-center items-center text-white bg-[#5860c4] font-semibold"
                 >
                   Sign In
                 </Link>
                 <Link
                   onClick={() => setEndeavourMainMenu(0)}
                   to="/endeavour/register"
-                  className="border-4 border-[#6c75ff] dark:border-white p-2 rounded-full w-[45%] flex justify-center items-center font-semibold"
+                  className="border-4 border-[#6c75ff] dark:border-white p-2 w-[45%] flex justify-center items-center font-semibold"
                 >
                   Sign Up
                 </Link>
