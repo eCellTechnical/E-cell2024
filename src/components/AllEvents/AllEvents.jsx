@@ -1,8 +1,16 @@
 import axios from "axios";
-import { useEffect, useState, useCallback, useMemo } from "react";
+import {
+  useEffect,
+  useState,
+  useCallback,
+  useMemo,
+  lazy,
+  Suspense,
+} from "react";
 import { Link } from "react-router-dom";
 import "./AllEvents.css";
 
+const Card = lazy(() => import("../../components/Card/Card"));
 import Button from "./button/button";
 function AllEvents() {
   const [events, setEvents] = useState([]);
@@ -64,6 +72,9 @@ function AllEvents() {
       </h1>
       <div className="mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mx-3 mt-4 ">
+          <Suspense fallback={<div>Loading...</div>}>
+            <Card />
+          </Suspense>
           {renderedCards}
         </div>
       </div>
