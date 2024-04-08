@@ -107,7 +107,7 @@ function Partners() {
     },
     {
       image: sponsor16,
-      name: "Ford",
+      name: "PrepInsta",
       position: "Partner",
     },
     {
