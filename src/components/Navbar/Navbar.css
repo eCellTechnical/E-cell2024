@@ -3,10 +3,15 @@
   -webkit-backdrop-filter: blur(16px) saturate(180%);
   background-color: rgba(77, 85, 186, 0.21);
 }
-.navbarEndeavourLight {
+/* .navbarEndeavourLight {
   backdrop-filter: blur(16px) saturate(180%);
   -webkit-backdrop-filter: blur(16px) saturate(180%);
   background-color: rgba(255, 255, 255, 0.8);
+} */
+.navbarEndeavourLight {
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  background-color: rgba(77, 85, 186, 0.21);
 }
 
 /* .slash {
