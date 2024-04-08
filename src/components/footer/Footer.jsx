@@ -92,12 +92,12 @@ export default function Foot() {
                   ecell@kiet.edu
                 </span>
               </p>
-              <p className="mb-4 font-semibold dark:font-medium">
+              {/* <p className="mb-4 font-semibold dark:font-medium">
                 Phone No. :-{" "}
                 <span className="font-medium dark:font-light">
                   +91 999999999
                 </span>
-              </p>
+              </p> */}
             </div>
 
             <div className="box ">
