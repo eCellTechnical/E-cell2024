@@ -4,6 +4,7 @@ import { fadeIn } from "../../styles/Variant.js";
 import linkedInIcon from "../../assets/OurTeam/socialMedia/icons8-linkedin.svg";
 import gamilIcon from "../../assets/OurTeam/socialMedia/icons8-gmail.svg";
 import "./OurTeam.css";
+import riddhi from "../../assets/OurTeam/Riddhi.jpg"
 import divym from "../../assets/OurTeam/Divyam.jpeg"
 import shruti from "../../assets/OurTeam/Shruti.jpeg"
 import Akshat from "../../assets/OurTeam/akshat.jpg";
@@ -387,7 +388,7 @@ function OurTeam() {
     {
       name: "Yashica Agarwal",
       domain: "Graphics Member",
-      gmail: "",
+      gmail: "yashica.agarwal3@gmail.com",
       linkedIn:
         "https://www.linkedin.com/in/yashica-agarwal-9b1493297?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
       imgUrl: yashica,
@@ -415,6 +416,14 @@ function OurTeam() {
       linkedIn:
         "",
       imgUrl: shruti,
+    },
+    {
+      name: "Riddhi Yadav",
+      domain: "Graphics Member",
+      gmail: "yriddhi51@gmail.com",
+      linkedIn:
+        "https://www.linkedin.com/in/riddhi-yadav-901b28293?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      imgUrl: riddhi,
     },
 
     // {
