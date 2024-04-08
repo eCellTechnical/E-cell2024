@@ -80,10 +80,8 @@ const Organizer = () => {
           <div className="flex flex-wrap justify-center">
             {speaker.map((data, index) => {
               return (
-                <motion.div
-                  variants={fadeIn("up", 0.1)}
-                  initial="hidden"
-                  whileInView={"show"}
+                <div
+                  data-aos="fade-up"
                   key={index}
                   className="speaker_profile justify-center w-60 my-10"
                 >
@@ -100,7 +98,7 @@ const Organizer = () => {
                   <div className="speaker_description font-bold text-lg text-black dark:text-white justify-around text-center flex">
                     {data.position}
                   </div>
-                </motion.div>
+                </div>
               );
             })}
           </div>
