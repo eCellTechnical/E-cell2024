@@ -52,7 +52,7 @@ function Partners() {
     },
     {
       image: sponsor5,
-      name: "Figma",
+      name: "Innovacer",
       position: "Partner",
     },
     {
@@ -67,12 +67,12 @@ function Partners() {
     },
     {
       image: sponsor8,
-      name: "Coca Cola",
+      name: "Ideaprenur",
       position: "Partner",
     },
     {
       image: sponsor9,
-      name: "Jio",
+      name: "Replit",
       position: "Partner",
     },
     {
@@ -87,7 +87,7 @@ function Partners() {
     },
     {
       image: sponsor12,
-      name: "Ford",
+      name: "DU Beat",
       position: "Partner",
     },
     {
@@ -117,12 +117,12 @@ function Partners() {
     },
     {
       image: sponsor18,
-      name: "Ford",
+      name: "Verbwire",
       position: "Partner",
     },
     {
       image: sponsor19,
-      name: "Ford",
+      name: "Youth Incorporated",
       position: "Partner",
     },
     {
