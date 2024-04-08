@@ -64,33 +64,47 @@ const Organizer = () => {
         >
           Revealing Soon...(❁´◡`❁)
         </div>
-        {/* <div className="flex flex-wrap justify-center">
-          {speaker.map((data, index) => {
-            return (
-              <motion.div
-                variants={fadeIn("up", 0.1)}
-                initial="hidden"
-                whileInView={"show"}
-                key={index}
-                className="speaker_profile justify-center w-60 my-10"
-              >
-                <center>
-                  <img
-                    className="speaker_image h-[15rem] w-[15rem] rounded-full mb-2 border-4 flex border-[#4d55ba] dark:border-white"
-                    src={data.image}
-                    alt="2"
-                  />
-                </center>
-                <div className="speaker_description font-bold text-xl tetx-black dark:text-white justify-around flex">
-                  {data.name}
-                </div>
-                <div className="speaker_description font-bold text-lg text-black dark:text-white justify-around text-center flex">
-                  {data.position}
-                </div>
-              </motion.div>
-            );
-          })}
-        </div> */}
+      </div>
+      <div className="flex justify-center pb-10  max-[415px]:ml-5 ">
+        <div>
+          <h1 className="text-3xl md:text-5xl font-bold text-black dark:text-white">
+            Our <span className="text-[#4d55ba]">Speakers</span>
+          </h1>
+        </div>
+      </div>
+      <div className="Speaker_big_box w-[100%] m-auto flex flex-wrap justify-center">
+        <div
+          data-aos="fade-up"
+          className="mt-10 mb-10 !font-bold md:!font-bold text-lg md:text-2xl text-black dark:text-white"
+        >
+          <div className="flex flex-wrap justify-center">
+            {speaker.map((data, index) => {
+              return (
+                <motion.div
+                  variants={fadeIn("up", 0.1)}
+                  initial="hidden"
+                  whileInView={"show"}
+                  key={index}
+                  className="speaker_profile justify-center w-60 my-10"
+                >
+                  <center>
+                    <img
+                      className="speaker_image h-[15rem] w-[15rem] rounded-full mb-2 border-4 flex border-[#4d55ba] dark:border-white"
+                      src={data.image}
+                      alt="2"
+                    />
+                  </center>
+                  <div className="speaker_description font-bold text-xl tetx-black dark:text-white justify-around flex">
+                    {data.name}
+                  </div>
+                  <div className="speaker_description font-bold text-lg text-black dark:text-white justify-around text-center flex">
+                    {data.position}
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
       </div>
     </div>
   );
