@@ -65,10 +65,10 @@ const Organizer = () => {
           Revealing Soon...(❁´◡`❁)
         </div>
       </div>
-      <div className="flex justify-center pb-10  max-[415px]:ml-5 ">
+      <div className="flex justify-center pb-10 mt-11  max-[415px]:ml-5 ">
         <div>
           <h1 className="text-3xl md:text-5xl font-bold text-black dark:text-white">
-            Our <span className="text-[#4d55ba]">Speakers</span>
+            Past <span className="text-[#4d55ba]">Speakers</span>
           </h1>
         </div>
       </div>
