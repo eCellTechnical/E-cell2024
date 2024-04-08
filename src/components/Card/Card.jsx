@@ -30,6 +30,7 @@ const Card = () => {
               <Link
                 to={item.Link}
                 rel="noopener noreferrer"
+                target="_blank"
                 className="h-10 w-10"
               >
                 <Button data={item.BtnData} />
