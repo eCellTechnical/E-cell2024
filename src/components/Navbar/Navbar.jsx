@@ -1177,7 +1177,7 @@ function Navbar() {
               onClick={() => setEndeavourMainMenu(0)}
               to="/endeavour/events"
             >
-              Event
+              Events
             </Link>
             <Link
               onClick={() => setEndeavourMainMenu(0)}

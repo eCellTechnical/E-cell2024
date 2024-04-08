@@ -53,7 +53,7 @@ const Organizer = () => {
       <div className="flex justify-center pb-10  max-[415px]:ml-5 ">
         <div>
           <h1 className="text-3xl md:text-5xl font-bold text-black dark:text-white">
-            Past <span className="text-[#4d55ba]">Speakers</span>
+            Our <span className="text-[#4d55ba]">Speakers</span>
           </h1>
         </div>
       </div>
