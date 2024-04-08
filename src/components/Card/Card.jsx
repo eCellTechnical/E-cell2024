@@ -28,7 +28,7 @@ const Card = () => {
                 {item.Description}
               </span>
               <Link
-                to={item.link}
+                to={item.Link}
                 rel="noopener noreferrer"
                 className="h-10 w-10"
               >
