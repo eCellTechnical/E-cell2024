@@ -812,12 +812,12 @@ function Navbar() {
               {!localStorage.getItem("userId") ? (
                 <>
                   <Link to="/endeavour/login">
-                    <button className="border-2 py-2 px-6 border-[#6d6d6d] dark:border-white text-black dark:text-white font-semibold  ">
+                    <button className="border-2 py-2 px-6 border-[#000] dark:border-white text-black dark:text-white font-semibold  ">
                       Sign In
                     </button>
                   </Link>
                   <Link to="/endeavour/register">
-                    <button className="border-2 py-2 px-6  border-[#6d6d6d] dark:border-white text-black dark:text-white font-semibold">
+                    <button className="border-2 py-2 px-6  border-[#000] dark:border-white text-black dark:text-white font-semibold">
                       Sign Up
                     </button>
                   </Link>
