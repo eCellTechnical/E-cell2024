@@ -45,12 +45,12 @@ export default function Foot() {
               >
                 <FaInstagram className=" h-8 w-8 test-black dark:text-white hover:text-[#4d55ba] cursor-pointer transition-all duration-150" />
               </a>
-              <a href="#" target="_blank" rel="noreferrer">
+              {/* <a href="#" target="_blank" rel="noreferrer">
                 <FaFacebook className=" h-7 w-7 test-black dark:text-white hover:text-[#4d55ba] cursor-pointer transition-all duration-150" />
               </a>
               <a href="#" target="_blank" rel="noreferrer">
                 <FaTelegram className=" h-7 w-7 test-black dark:text-white hover:text-[#4d55ba] cursor-pointer transition-all duration-150" />
-              </a>
+              </a> */}
               <a
                 href="https://www.linkedin.com/company/e-cell-kiet/"
                 target="_blank"
