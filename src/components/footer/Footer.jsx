@@ -37,7 +37,7 @@ export default function Foot() {
                 </span>
               </p>
             </div>
-            <div className="handle flex flex-row items-center justify-between w-[80%] lg:w-[70%] ">
+            <div className="handle flex flex-row items-center justify-between w-[70%] lg:w-[50%] ">
               <a
                 href="https://www.instagram.com/kietecell/"
                 target="_blank"
