@@ -103,7 +103,7 @@ function Domains() {
             <div className="absolute z-[1] top-14 left-3  h-16 w-24 CrDrop"></div>
           </div>
           <h2 className="text-[#4ad8fe] !text-xl !font-semibold">
-            Coorporate Relation
+            Corporate Relations
           </h2>
           <div className="w-full h-[2.5px] bg-[#4ad8fe] mt-2"></div>
           <p className=" text-sm dark:text-[#FFF9] text-black mt-1 w-[93%] text-center sm:text-start">
