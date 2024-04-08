@@ -86,7 +86,7 @@ export default function Foot() {
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               ></iframe>
-              <p className="mt-3 mb-2 font-semibold dark:font-medium">
+              <p className="mt-4 mb-4 font-semibold dark:font-medium">
                 Mail us at :-{" "}
                 <span className="font-medium dark:font-light">
                   ecell@kiet.edu
