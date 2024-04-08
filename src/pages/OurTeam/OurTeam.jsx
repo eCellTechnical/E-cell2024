@@ -306,7 +306,7 @@ function OurTeam() {
     },
     {
       name: "Nandita Sarkar",
-      domain: "Corporate Member",
+      domain: "Technical Member",
       gmail: "nanditasarkar1128@gmail.com",
       linkedIn: "https://www.linkedin.com/in/nandita-sarkar-b420aa296",
       imgUrl: nandita,
