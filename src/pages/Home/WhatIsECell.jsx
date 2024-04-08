@@ -22,7 +22,7 @@ function WhatIsECell() {
       >
         <div className="flex justify-center items-center lg:justify-start">
           <h2 className="!font-medium !text-4xl lg:!text-5xl ">
-            What is <span className="text-[#4d55ba]">E-cell</span> ?
+            What is <span className="text-[#4d55ba]">E-Cell</span> ?
           </h2>
           <TiLightbulb className="ml-2 self-center w-8 h-10" />
         </div>
