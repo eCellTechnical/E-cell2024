@@ -562,7 +562,7 @@ function Navbar() {
           <div
             className={`${
               mainMenu ? "translate-x-0" : "translate-x-full"
-            } transition-all duration-200 lg:hidden  absolute w-[100vw] h-[94.5vh] bg-[#ffffff] dark:bg-[#090909] !z-[-1] text-[#000] dark:text-white mt-[8.6vh] flex flex-col justify-between py-36 items-center text-5xl font-bold`}
+            } transition-all duration-200 lg:hidden  absolute w-[100vw] h-[94.5vh] bg-[#ffffff] dark:bg-[#090909] !z-[-1] text-[#000] dark:text-white mt-[8.6vh] flex flex-col justify-between py-28 items-center text-3xl font-bold`}
           >
             <div className="flex flex-col justify-center items-center mb-2">
               <div
