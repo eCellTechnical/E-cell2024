@@ -1,6 +1,6 @@
 import "./Footer.css";
 
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaInstagram } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
 import { FaTelegram } from "react-icons/fa";
@@ -9,6 +9,7 @@ import { FaYoutube } from "react-icons/fa";
 import greaterThanDark from "../../assets/footer/greaterthandark.svg";
 import greaterThanLight from "../../assets/footer/greaterthanlight.svg";
 import useTheme from "../../context/theme";
+
 export default function Foot() {
   const history = useNavigate();
   const { themeMode } = useTheme();
@@ -208,6 +209,19 @@ export default function Foot() {
                   </a>
                 </div>
                 <div className="inner">
+                  <Link
+                    to={"/endeavour"}
+                    className="!flex !flex-row items-center justify-normal mb-2 font-semibold dark:font-medium cursor-pointer"
+                  >
+                    <img
+                      src={
+                        themeMode == "dark" ? greaterThanDark : greaterThanLight
+                      }
+                      alt=""
+                      className="w-2 h-2 mr-2"
+                    />
+                    Endeavour
+                  </Link>
                   <a
                     onClick={() => history("/ideasubmissions")}
                     className="!flex !flex-row items-center justify-normal mb-2 font-semibold dark:font-medium cursor-pointer"
@@ -220,21 +234,6 @@ export default function Foot() {
                       className="w-2 h-2 mr-2"
                     />
                     Idea Submission
-                  </a>
-                  <a
-                    href="https://discord.com/invite/R29Eh6hwPn"
-                    target="_blank"
-                    className="!flex !flex-row items-center justify-normal mb-2 font-semibold dark:font-medium cursor-pointer"
-                    rel="noreferrer"
-                  >
-                    <img
-                      src={
-                        themeMode == "dark" ? greaterThanDark : greaterThanLight
-                      }
-                      alt=""
-                      className="w-2 h-2 mr-2"
-                    />
-                    Discord
                   </a>
                   <a
                     onClick={() => history("/ourteam")}
