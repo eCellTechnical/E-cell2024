@@ -68,6 +68,12 @@ function EndeavourHomePage() {
               <Counter />
             </Suspense>
           </div>
+
+          <div className="dark:bg-black bg-white pt-16 z-10 w-full">
+            <Suspense fallback={<div>Loading...</div>}>
+              <AllEvents />
+            </Suspense>
+          </div>
           <div className="w-full z-10">
             <Suspense fallback={<div>Loading...</div>}>
               <Sponsors />
@@ -76,11 +82,6 @@ function EndeavourHomePage() {
           <div className="w-full dark:bg-gray-900 bg-white pt-16 pb-10 z-10">
             <Suspense fallback={<div>Loading...</div>}>
               <Speakers />
-            </Suspense>
-          </div>
-          <div className="dark:bg-black bg-white pt-16 z-10 w-full">
-            <Suspense fallback={<div>Loading...</div>}>
-              <AllEvents />
             </Suspense>
           </div>
         </div>
