@@ -163,7 +163,7 @@ function OurTeam() {
     },
     {
       name: "Govind Chaubey",
-      domain: "Corporate Relations",
+      domain: "Corporate Member",
       imgUrl: govind,
       linkedIn: "",
       gmail: "Chaubeygovind123@gmail.com",
@@ -229,7 +229,7 @@ function OurTeam() {
 
     {
       name: "Harsh Raj",
-      domain: "Events Member",
+      domain: "Event Member",
       imgUrl: harshraj,
       linkedIn: "https://www.linkedin.com/in/harsh-raj-b46ab1264/",
       gmail: "rajjais135@gmail.com",
@@ -258,7 +258,7 @@ function OurTeam() {
     },
     {
       name: "Gurpreet Singh",
-      domain: "Corporate Relations Member",
+      domain: "Corporate Member",
       mail: "gskochar24@gmail.com",
       linkedIn:
         "https://www.linkedin.com/in/gurpreet-singh-kochar?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
@@ -319,7 +319,7 @@ function OurTeam() {
     },
     {
       name: "Nandita Sarkar",
-      domain: "Corporate Relations Member",
+      domain: "Corporate Member",
       gmail: "nanditasarkar1128@gmail.com",
       linkedIn: "https://www.linkedin.com/in/nandita-sarkar-b420aa296",
       imgUrl: nandita,
@@ -342,7 +342,7 @@ function OurTeam() {
     },
     {
       name: "Navya Srivastava",
-      domain: "Corporate Relation Member",
+      domain: "Corporate Member",
       gmail: "navya.srivas03@gmail.com",
       linkedIn: "linkedin.com/in/navya-srivastava-7365a1282",
       imgUrl: navya,
@@ -350,7 +350,7 @@ function OurTeam() {
 
     {
       name: "Kshitij Sharma",
-      domain: "Corporate Relation Member",
+      domain: "Corporate Member",
       gmail: "kshitijsharma1901@gmail.com",
       linkedIn: "https://linkedin.com/in/kshitij-sharma-67b745289",
       imgUrl: kshitij,
