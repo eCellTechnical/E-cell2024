@@ -4,6 +4,7 @@ import { fadeIn } from "../../styles/Variant.js";
 import linkedInIcon from "../../assets/OurTeam/socialMedia/icons8-linkedin.svg";
 import gamilIcon from "../../assets/OurTeam/socialMedia/icons8-gmail.svg";
 import "./OurTeam.css";
+import abhimanyu from "../../assets/OurTeam/Abhimanyu .jpg"
 import riddhi from "../../assets/OurTeam/Riddhi.jpg"
 import divym from "../../assets/OurTeam/Divyam.jpeg"
 import shruti from "../../assets/OurTeam/Shruti.jpeg"
@@ -207,6 +208,14 @@ function OurTeam() {
       linkedIn: "",
       gmail: "",
     },
+    {
+      name: "Abhimanyu Jaiswal",
+      domain: "Graphics Member",
+      imgUrl: abhimanyu,
+      linkedIn: "",
+      gmail: "",
+    },
+
     {
       name: "Vaibhav Choudhary",
       domain: "Event Member",
