@@ -1164,11 +1164,12 @@ function Navbar() {
                 </div>
               </div>
             </div>
-          </div>
+            </div>
+            
           <div
             className={`${
               endeavourMainMenu ? "translate-x-0" : "translate-x-full"
-            } transition-all duration-200 lg:hidden   w-[100vw] h-[94.5vh] fixed bg-[#ffffff] dark:bg-[#090909] text-[#000] dark:text-white mt-[8.6vh] flex flex-col justify-between py-28 items-center text-4xl font-bold !z-[100]`}
+            } transition-all duration-200 lg:hidden   w-[100vw] h-[94.5vh] fixed bg-[#ffffff] dark:bg-[#090909] text-[#000] dark:text-white mt-[8.6vh] flex flex-col justify-between py-28 items-center text-3xl font-bold !z-[100]`}
           >
             <Link onClick={() => setEndeavourMainMenu(0)} to="/endeavour">
               Home
@@ -1201,11 +1202,11 @@ function Navbar() {
               Contact Us
             </a>
             {!userId ? (
-              <div className="flex text-3xl justify-around w-[90%]">
+              <div className="flex text-2xl justify-around w-[90%]">
                 <Link
                   onClick={() => setEndeavourMainMenu(0)}
                   to="/endeavour/login"
-                  className="border-4 border-[#818aff] dark:border-white p-2  w-[45%] flex justify-center items-center text-white bg-[#5860c4] font-semibold"
+                  className="border-4 border-[#818aff] dark:border-white p-2  w-[40%] flex justify-center items-center text-white bg-[#5860c4] font-semibold"
                 >
                   Sign In
                 </Link>
