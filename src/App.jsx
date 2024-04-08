@@ -61,7 +61,6 @@ const Error404 = React.lazy(() => import("./pages/ErrorPage/Error404"));
 
 import Aos from "aos";
 import "aos/dist/aos.css";
-// import Speakers from "./endeavour/Speakers/Speakers";
 
 function App() {
   const [themeMode, setThemeMode] = useState("dark");

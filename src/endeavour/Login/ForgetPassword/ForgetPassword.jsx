@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
-import img from "../../../assets/ForgetPassword/astronaut-and-jellyfish-wallpaper-2560x1080_14.jpg";
 import img1 from "../../../assets/Login/forget pass.jpeg";
 function ForgetPassword() {
   const history = useNavigate();
