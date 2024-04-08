@@ -1168,7 +1168,7 @@ function Navbar() {
           <div
             className={`${
               endeavourMainMenu ? "translate-x-0" : "translate-x-full"
-            } transition-all duration-200 lg:hidden   w-[100vw] h-[94.5vh] fixed bg-[#ffffff] dark:bg-[#090909] text-[#000] dark:text-white mt-[8.6vh] flex flex-col justify-between py-36 items-center text-5xl font-bold !z-[100]`}
+            } transition-all duration-200 lg:hidden   w-[100vw] h-[94.5vh] fixed bg-[#ffffff] dark:bg-[#090909] text-[#000] dark:text-white mt-[8.6vh] flex flex-col justify-between py-28 items-center text-4xl font-bold !z-[100]`}
           >
             <Link onClick={() => setEndeavourMainMenu(0)} to="/endeavour">
               Home

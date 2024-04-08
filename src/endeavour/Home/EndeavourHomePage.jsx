@@ -42,7 +42,7 @@ function EndeavourHomePage() {
               <img
                 src={image}
                 alt="Endeavour"
-                className="w-[30rem] h-[15rem] z-20 md:w-[50rem] md:h-[21rem]"
+                className="w-[27rem] h-[13rem] z-10 md:w-[45rem] md:h-[21rem]"
               />
               <div className="w-full flex justify-center items-center z-20 -mt-14">
                 <Link
