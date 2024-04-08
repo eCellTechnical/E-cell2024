@@ -117,7 +117,7 @@ function OurTeam() {
     },
     {
       name: "Unnati Mishra",
-      domain: "Technical Member",
+      domain: "Technical Head",
       imgUrl: Unnati,
       linkedIn: "",
       gmail: "",
