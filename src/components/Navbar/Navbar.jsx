@@ -760,7 +760,11 @@ function Navbar() {
         </div>
       ) : (
         <div className="relative">
-          <div className="fixed navbar  z-50 hidden md:flex flex-row w-[100vw] justify-between text-white px-8 p-3 pl-[4%]">
+          <div
+            className={`${
+              themeMode == "light" ? "navbarEndeavourLight" : "navbar"
+            } fixed  z-50 hidden md:flex flex-row w-[100vw] justify-between text-white px-8 p-3 pl-[4%]`}
+          >
             <div className="hidden md:flex justify-between items-center w-[20%]">
               <img
                 src={
@@ -981,7 +985,11 @@ function Navbar() {
             </div>
           </div>
 
-          <div className="fixed navbar z-50 flex md:hidden flex-row w-[100vw] justify-between items-center text-white p-3 px-4">
+          <div
+            className={`${
+              themeMode == "light" ? "navbarEndeavourLight" : "navbar"
+            } fixed  z-50 flex md:hidden flex-row w-[100vw] justify-between items-center text-white p-3 px-4`}
+          >
             <div className="flex md:hidden justify-center items-center">
               <img
                 src={
@@ -1164,12 +1172,12 @@ function Navbar() {
                 </div>
               </div>
             </div>
-            </div>
-            
+          </div>
+
           <div
             className={`${
               endeavourMainMenu ? "translate-x-0" : "translate-x-full"
-            } transition-all duration-200 lg:hidden   w-[100vw] h-[94.5vh] fixed bg-[#ffffff] dark:bg-[#090909] text-[#000] dark:text-white mt-[8.6vh] flex flex-col justify-between py-28 items-center text-3xl font-bold !z-[100]`}
+            }  transition-all duration-200 lg:hidden   w-[100vw] h-[94.5vh] fixed bg-[#ffffff] dark:bg-[#090909] text-[#000] dark:text-white mt-[8.6vh] flex flex-col justify-between py-28 items-center text-3xl font-bold !z-[100]`}
           >
             <Link onClick={() => setEndeavourMainMenu(0)} to="/endeavour">
               Home
