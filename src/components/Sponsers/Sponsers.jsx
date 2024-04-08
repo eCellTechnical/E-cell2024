@@ -149,7 +149,7 @@ function Partners() {
             Sponsors
           </span>
         </h1>
-        <div className="flex flex-wrap  justify-around pb-11">
+        <div className="flex flex-wrap w-full justify-around pb-11">
           {Sponsors.map((sponsor, index) => (
             <motion.div
               variants={fadeIn("up", 0.1)}
