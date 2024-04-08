@@ -411,7 +411,7 @@ function OurTeam() {
     {
       name: "Shruti Mishra",
       domain: "Public Relations Member",
-      gmail: "divyamasthanaprofessional.001@gmail.com",
+      gmail: "",
       linkedIn:
         "",
       imgUrl: shruti,
