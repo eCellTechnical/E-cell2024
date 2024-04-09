@@ -100,7 +100,7 @@ function OurTeam() {
     },
     {
       name: "Garvit Singh",
-      domain: "Event Head",
+      domain: "Events Head",
       imgUrl: Garvit,
       linkedIn: "",
       gmail: "",
@@ -185,7 +185,7 @@ function OurTeam() {
 
     {
       name: "Sudhanshu",
-      domain: "Event Member",
+      domain: "Events Member",
       imgUrl: shud,
       linkedIn: "",
       gmail: "",
@@ -221,7 +221,7 @@ function OurTeam() {
 
     {
       name: "Vaibhav Choudhary",
-      domain: "Event Member",
+      domain: "Events Member",
       imgUrl: Vaibhav,
       linkedIn: "",
       gmail: "",
@@ -229,7 +229,7 @@ function OurTeam() {
 
     {
       name: "Harsh Raj",
-      domain: "Event Member",
+      domain: "Events Member",
       imgUrl: harshraj,
       linkedIn: "https://www.linkedin.com/in/harsh-raj-b46ab1264/",
       gmail: "rajjais135@gmail.com",
@@ -287,7 +287,7 @@ function OurTeam() {
     },
     {
       name: "Srishti Verma",
-      domain: "Event Member",
+      domain: "Events Member",
       gmail: "srishtiverma358@gmail.com",
       linkedIn: "https://www.linkedin.com/in/srishti-verma-458a8a271/",
       imgUrl: Srishti,
@@ -348,7 +348,7 @@ function OurTeam() {
 
     {
       name: "Karan Kapil",
-      domain: "Event Member",
+      domain: "Events Member",
       gmail: "karankapil8279@gmail.com",
       linkedIn:
         "https://www.linkedin.com/in/karan-kapil-b06a3927a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
@@ -372,7 +372,7 @@ function OurTeam() {
 
     {
       name: "Prasasth Tripathi",
-      domain: "Event Member",
+      domain: "Events Member",
       gmail: "amittiwary5677@gmail.com",
       linkedIn:
         "https://www.linkedin.com/in/prasasth-tripathi-bb2b99205?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
@@ -397,7 +397,7 @@ function OurTeam() {
     },
     {
       name: "Payal Verma",
-      domain: "Event Member",
+      domain: "Events Member",
       gmail: "payalvermaseema@gmail.com",
       linkedIn:
         "https://www.linkedin.com/in/payal-verma-509244296?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
