@@ -85,6 +85,15 @@ const SpecificEvent = () => {
     }
   }, [event, formData]);
 
+  const handleRemoveMembers = (index) => {
+    // setFormData([]);
+    setFormData((prevState) => {
+      const updatedFormData = [...prevState];
+      updatedFormData.splice(index, 1); // Remove the field at the specified index
+      return updatedFormData;
+    });
+  };
+
   const handleChange = useCallback((event, index) => {
     const { name, value } = event.target;
     setFormData((prevState) =>
@@ -363,15 +372,21 @@ const SpecificEvent = () => {
                       </button>
                     </div>
                   </div>
+                  <p
+                    className="my-3 font-semibold text-md text-red-600 cursor-cell"
+                    onClick={() => handleRemoveMembers(index)}
+                  >
+                    - Remove Member
+                  </p>
                 </div>
               </div>
             ))}
             <div>
               <p
-                className="my-3 font-semibold text-md text-black dark:text-white cursor-cell"
+                className="my-3 font-bold text-lg text-black dark:text-white cursor-cell"
                 onClick={handleAddMember}
               >
-                +Add members
+                + Add member
               </p>
             </div>
             <input
