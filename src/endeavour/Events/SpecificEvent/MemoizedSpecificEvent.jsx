@@ -22,15 +22,15 @@ const SpecificEvent = () => {
       const data = response.data;
       if (data) {
         setEvent(data.event);
-        if (data.payment === "Done") {
-          setPayment(1);
-          if (data.registration === "Done") {
-            setIsRegistered(1);
-          } else if (data.registration === "Not Done") {
-            setIsRegistered(0);
+        if (data.registration === "Done") {
+          setIsRegistered(1);
+          if (data.payment === "Done") {
+            setPayment(1);
+          } else if (data.payment === "Not Done") {
+            setPayment(0);
           }
-        } else if (data.payment === "Not Done") {
-          setPayment(0);
+        } else if (data.registration === "Not Done") {
+          setIsRegistered(0);
         }
       } else {
         alert("Wrong Username or Password");
@@ -407,32 +407,34 @@ const SpecificEvent = () => {
         </div>
         <div className="p-2 mt-3 w-full">
           <button
-            className={`border-4 dark:border-4 border-[#a2a8ff] dark:border-[#a2a8ff] bg-[#4d55ba] dark:bg-[#ffffff] text-white dark:text-black rounded-lg font-semibold text-lg py-2 cursor-pointer z-10 ${
-              (payment === 0 || isRegistered === 1) && "hidden"
-            } w-full `}
-            onClick={handleRegister}
-          >
-            Create Team
-          </button>
-          <button
-            className={`border-2 border-[#868eff] bg-[#4d55ba] text-white rounded-lg font-semibold text-lg z-10  py-2 cursor-pointer ${
-              (payment === 1 || isRegistered === 1) && "hidden"
-            } w-full`}
-            onClick={() => checkoutHandler(event.price)}
+            className={`border-4 dark:border-4 border-[#a2a8ff] dark:border-[#a2a8ff] bg-[#4d55ba] dark:bg-[#ffffff] text-white dark:text-black rounded-lg font-semibold text-lg py-2 cursor-pointer z-10  w-full ${
+              isRegistered === 1 && "hidden"
+            }`}
+            onClick={() => {
+              if (isRegistered == 1) {
+                return alert("Already registered");
+              }
+              handleRegister();
+            }}
           >
             Register Now
           </button>
-          <p
-            className={`${
-              (payment === 1 || isRegistered === 1) && "hidden"
-            } text-black text-center dark:text-[#909090] mt-1`}
-          >
-            ** Team will be created after payment **
-          </p>
           <button
-            className={`border-[#868eff] border-2  flex justify-center items-center  rounded-lg z-10  text-black dark:text-white bg-transparent font-semibold text-lg py-2  ${
-              isRegistered === 1 ? "flex " : "hidden"
-            } w-full cursor-not-allowed`}
+            className={`border-2 flex justify-center items-center border-[#868eff] bg-[#4d55ba] text-white rounded-lg font-semibold text-lg  py-2 z-10 cursor-pointer  w-full ${
+              isRegistered === 0
+                ? "hidden"
+                : `${payment === 0 ? `flex` : `hidden`}`
+            }`}
+            onClick={() => checkoutHandler(event.price)}
+          >
+            Pay Rs. {event.price}
+          </button>
+          <button
+            className={`border-[#868eff] border-2  flex justify-center items-center  rounded-lg  text-black dark:text-white bg-transparent font-semibold text-lg py-2  z-10  w-full cursor-not-allowed ${
+              isRegistered === 1
+                ? `${payment == 1 ? "flex" : "hidden"}`
+                : "hidden"
+            }`}
           >
             All Done ! See You At Event
           </button>
