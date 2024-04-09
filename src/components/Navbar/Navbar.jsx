@@ -258,7 +258,7 @@ function Navbar() {
                 onClick={() => history("/endeavour")}
                 className="endeavour font-medium text-black dark:text-white px-5"
               >
-                Endeavour
+                Endeavour'24
               </a>
               <a
                 href="https://tbi-kiet.in/"
@@ -737,7 +737,7 @@ function Navbar() {
               }}
               className=""
             >
-              Endeavour
+              Endeavour'24
             </a>
             <a
               href="https://tbi-kiet.in/"
