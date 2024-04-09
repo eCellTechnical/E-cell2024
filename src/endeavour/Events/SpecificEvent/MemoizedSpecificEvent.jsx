@@ -240,7 +240,7 @@ const SpecificEvent = () => {
                       .split(".")
                       ?.filter((item) => item.trim() !== "")
                       ?.map((listItem, index) => (
-                        <li key={index}>{listItem}</li>
+                        <li key={index}>{listItem}.</li>
                       ))}
                   </div>
                 )}

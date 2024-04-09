@@ -82,7 +82,7 @@ function Navbar() {
               }
               onClick={() => history("/")}
               className="w-14 h-14 lg:w-14 lg:h-14 z-20 cursor-pointer"
-              alt="logo"
+              alt="E-Cell logo"
             />
           </div>
 
@@ -105,7 +105,7 @@ function Navbar() {
                   <div className="m-5 w-1/4 flex flex-row items-center justify-start childLinks">
                     <img
                       src={themeMode == "dark" ? galleryIcon : galleryIconWhite}
-                      alt=""
+                      alt="discover"
                       className="w-10 h-10 m-3"
                     />
                     <div onClick={() => history("/gallery")}>
@@ -118,7 +118,7 @@ function Navbar() {
                   <div className="m-5 w-1/4 flex flex-row items-center justify-start childLinks">
                     <img
                       src={themeMode == "dark" ? speakerIcon : speakerIconWhite}
-                      alt=""
+                      alt="speakers"
                       className="w-8 h-8 m-3"
                     />
                     <div onClick={() => history("/pastspeakers")}>
@@ -131,7 +131,7 @@ function Navbar() {
                   <div className="m-5 w-1/4 flex flex-row items-center justify-start childLinks">
                     <img
                       src={themeMode == "dark" ? eventIcon : eventIconWhite}
-                      alt=""
+                      alt="events"
                       className="w-9 h-8 m-3"
                     />
                     <div onClick={() => history("/events")}>
@@ -144,7 +144,7 @@ function Navbar() {
                   <div className="m-5 w-1/4 flex flex-row items-center justify-start childLinks">
                     <img
                       src={themeMode == "dark" ? teamIcon : teamIconWhite}
-                      alt=""
+                      alt="Our Team"
                       className="w-8 h-8 m-3"
                     />
                     <div onClick={() => history("/ourteam")}>
@@ -157,7 +157,7 @@ function Navbar() {
                   <div className="m-5 w-1/4 flex flex-row items-center justify-start childLinks">
                     <img
                       src={themeMode == "dark" ? colabIcon : colabIconWhite}
-                      alt=""
+                      alt="Associations"
                       className="w-9 h-9 m-3"
                     />
                     <div onClick={() => history("/associations")}>
@@ -177,7 +177,7 @@ function Navbar() {
                   <div className="m-5 w-1/4 flex flex-row items-center justify-start childLinks">
                     <img
                       src={themeMode == "dark" ? ideaIcon : ideaIconWhite}
-                      alt=""
+                      alt="Idea Submission"
                       className="w-10 h-10 m-3"
                     />
                     <div onClick={() => history("/ideasubmissions")}>
@@ -193,7 +193,7 @@ function Navbar() {
                   <div className="m-5 w-1/4 flex flex-row items-center justify-start childLinks">
                     <img
                       src={themeMode == "dark" ? growIcon : growIconWhite}
-                      alt=""
+                      alt="Grow With Us"
                       className="w-9 h-9 m-3"
                     />
                     <div onClick={() => history("/ideasubmissions")}>
@@ -210,7 +210,7 @@ function Navbar() {
                   <div className="m-5 w-1/4 flex flex-row items-center justify-start childLinks">
                     <img
                       src={themeMode == "dark" ? discordIcon : discordIconWhite}
-                      alt=""
+                      alt="E-community"
                       className="w-10 h-10 m-3"
                     />
                     <a
@@ -231,7 +231,7 @@ function Navbar() {
                 <p className="font-medium text-black dark:text-white">Learn</p>
                 <div className="learnMenu Menu absolute w-[100vw]  top-[100%] left-[0]  flex flex-wrap p-8 px-20 justify-center bg-[#ffffffe6] dark:bg-[#000000e6]">
                   <div className="m-5 w-1/4 flex flex-row items-center justify-start childLinks">
-                    <img src={bloggerIcon} alt="" className="w-10 h-10 m-3" />
+                    <img src={bloggerIcon} alt="Blog" className="w-10 h-10 m-3" />
                     <a
                       href="https://medium.com/@ECELLKIET"
                       target="_blank"
@@ -244,7 +244,7 @@ function Navbar() {
                     </a>
                   </div>
                   <div className="m-5 w-1/4 flex flex-row items-center justify-start childLinks">
-                    <img src={questionIcon} alt="" className="w-10 h-10 m-3" />
+                    <img src={questionIcon} alt="FAQ" className="w-10 h-10 m-3" />
                     <div onClick={() => history("/")}>
                       <h2 className="text-[#4d55ba] text-2xl">FAQ</h2>
                       <p className="text-md font-normal text-black dark:text-white">
@@ -774,7 +774,7 @@ function Navbar() {
                 }
                 onClick={() => history("/")}
                 className="w-14 h-14 lg:w-14 lg:h-14 z-20 cursor-pointer"
-                alt="logo"
+                alt="E-Cell logo"
               />
             </div>
             <div className="w-[60%] hidden md:flex justify-between items-center">
@@ -827,7 +827,7 @@ function Navbar() {
                   <img
                     src={themeMode == "dark" ? profilew : profileb}
                     className="w-10 h-10 cursor-pointer"
-                    alt="hello"
+                    alt="Profile"
                   />
 
                   <div
@@ -999,7 +999,7 @@ function Navbar() {
                 }
                 onClick={() => history("/")}
                 className="w-12 h-12 z-20 cursor-pointer"
-                alt="logo"
+                alt="E-Cell logo"
               />
             </div>
 
@@ -1148,7 +1148,7 @@ function Navbar() {
                   <img
                     src={themeMode == "dark" ? profilew : profileb}
                     className="w-10 h-10"
-                    alt="hello"
+                    alt="Profile"
                   />
                 </Link>
               </div>
