@@ -4,6 +4,7 @@ import { fadeIn } from "../../styles/Variant.js";
 import linkedInIcon from "../../assets/OurTeam/socialMedia/icons8-linkedin.svg";
 import gamilIcon from "../../assets/OurTeam/socialMedia/icons8-gmail.svg";
 import "./OurTeam.css";
+import abhishek from "../../assets/OurTeam/Abhishek sharma 2nd year.jpg"
 import abhimanyu from "../../assets/OurTeam/Abhimanyu .jpg"
 import riddhi from "../../assets/OurTeam/Riddhi.jpg"
 import divym from "../../assets/OurTeam/Divyam.jpeg"
@@ -110,15 +111,16 @@ function OurTeam() {
       linkedIn: "",
       gmail: "",
     },
+    
+  ];
+  const Members = [
     {
       name: "Unnati Mishra",
-      domain: "Technical Head",
+      domain: "Technical Member",
       imgUrl: Unnati,
       linkedIn: "",
       gmail: "",
     },
-  ];
-  const Members = [
     {
       name: "Yash Kumar Singh",
       domain: "Technical Member",
@@ -243,6 +245,13 @@ function OurTeam() {
       name: "Arpita Dwivedi",
       domain: "Graphics Member",
       imgUrl: arpita,
+      linkedIn: "",
+      gmail: "",
+    },
+    {
+      name: "Abhishek Sharma",
+      domain: "Corporate Member",
+      imgUrl: abhishek,
       linkedIn: "",
       gmail: "",
     },
