@@ -87,6 +87,7 @@ const SpecificEvent = () => {
 
   const handleRemoveMembers = (index) => {
     // setFormData([]);
+    setDisable(true);
     setFormData((prevState) => {
       const updatedFormData = [...prevState];
       updatedFormData.splice(index, 1); // Remove the field at the specified index
