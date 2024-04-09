@@ -59,6 +59,16 @@ function CreateTeam() {
     setDisable(false);
   };
 
+  const eventsDetails = [
+    { eventId: "6611852e883214b109d2e89e", eventName: "Market-Watch" },
+    { eventId: "6611852e883214b109d2e89f", eventName: "B-Quiz" },
+    { eventId: "6611852e883214b109d2e8a0", eventName: "B-Plan" },
+    { eventId: "6611852e883214b109d2e8a1", eventName: "IPL Mania" },
+    { eventId: "6611874dc1d2ef7cfdd0154b", eventName: "Movie-A-thon" },
+    { eventId: "66118a00c6665db651249ee8", eventName: "E-Sports(BGMI)" },
+    { eventId: "66126286c559174d3c6f41ae", eventName: "Treasure Hunt" },
+  ];
+
   return (
     <div className="w-full flex flex-col items-center">
       <h1 className="font-bold text-4xl underline mb-8">Create Team</h1>
@@ -73,9 +83,13 @@ function CreateTeam() {
           {...register("eventId")}
           className="bg-transparent border-2 border-black rounded-md p-2 font-semibold focus:outline-none"
         >
-          <option value="65f7033109b431537383fb95">Sample Event</option>
-          <option value="65f74e33a298c3e1b3a7872e">Sample Event 2</option>
-          <option value="65fb1f0b174e4e7ed69da1a3">Sample Event 4</option>
+          {eventsDetails.map((event, index) => {
+            return (
+              <option key={index} className="flex" value={event.eventId}>
+                {event.eventName}
+              </option>
+            );
+          })}
         </select>
         <button
           type="submit"
