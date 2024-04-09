@@ -92,6 +92,7 @@ const SpecificEvent = () => {
       updatedFormData.splice(index, 1); // Remove the field at the specified index
       return updatedFormData;
     });
+    setDisable(false);
   };
 
   const handleChange = useCallback((event, index) => {
