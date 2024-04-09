@@ -54,6 +54,7 @@ import Saksham from "../../assets/OurTeam/Saksham.jpg";
 import Shiv from "../../assets/OurTeam/Shiv.png";
 import Saumya from "../../assets/OurTeam/Saumya.jpg";
 import yashpr from "../../assets/OurTeam/Yashpr.jpeg";
+import anish from "../../assets/OurTeam/Anish.jpg"
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 function OurTeam() {
@@ -261,6 +262,13 @@ function OurTeam() {
       gmail: "parul18062004@gmail.com",
       linkedIn: "https://www.linkedin.com/in/parul-yadav02",
       imgUrl: Parul,
+    },
+    {
+      name: " Anish Kumar",
+      domain: "Events Member",
+      gmail: "anissh946@gmail.com",
+      linkedIn: "http://www.linkedin.com/in/anish-kumar-126140295",
+      imgUrl: anish,
     },
     {
       name: "Gurpreet Singh",
