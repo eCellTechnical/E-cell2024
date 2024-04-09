@@ -86,7 +86,7 @@ export default function Counter() {
             onExit={() => setCounterOn(false)}
           >
             <h1 className="font-bold text-lg md:text-3xl ">
-              {counterOn ? <CountUp start={0} end={2} duration={3} /> : "2"}
+              {counterOn ? <CountUp start={0} end={11} duration={3} /> : "11"}
               Lac+
             </h1>
           </ScrollTrigger>

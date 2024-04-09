@@ -412,7 +412,7 @@ const SpecificEvent = () => {
             } w-full `}
             onClick={handleRegister}
           >
-            Register Now
+            Create Team
           </button>
           <button
             className={`border-2 border-[#868eff] bg-[#4d55ba] text-white rounded-lg font-semibold text-lg z-10  py-2 cursor-pointer ${
@@ -420,7 +420,7 @@ const SpecificEvent = () => {
             } w-full`}
             onClick={() => checkoutHandler(event.price)}
           >
-            Pay Rs. {event.price}
+            Register Now
           </button>
           <button
             className={`border-[#868eff] border-2  flex justify-center items-center  rounded-lg z-10  text-black dark:text-white bg-transparent font-semibold text-lg py-2  ${
