@@ -44,7 +44,7 @@ function AllEvents() {
       <article
         data-aos="fade-up"
         key={index}
-        className="card__article relative"
+        className="card__article relative w-[28%]"
       >
         <img src={event.poster} alt="image" className="card__img" />
         <div className="card__data flex flex-col justify-center items-center">
@@ -70,8 +70,8 @@ function AllEvents() {
       >
         All <span className="text-[#4d55ba] ">Events</span>
       </h1>
-      <div className="mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mx-3 mt-4 ">
+      <div className="mx-auto px-4 w-full">
+        <div className="flex flex-wrap w-full justify-center items-center gap-4 mx-3 mt-4">
           <Suspense fallback={<div>Loading...</div>}>
             <Card />
           </Suspense>
