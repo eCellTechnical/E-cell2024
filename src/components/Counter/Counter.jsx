@@ -113,7 +113,7 @@ export default function Counter() {
             </h1>
           </ScrollTrigger>
           <h2 className="font-bold text-base md:text-2xl  text-black dark:text-white">
-            Competetions
+            Competitions
           </h2>
         </div>
         <div

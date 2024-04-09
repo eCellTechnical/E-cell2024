@@ -40,7 +40,7 @@ const Organizer = () => {
     {
       image: RamveerTanwar,
       name: "Ranveer Tanwar",
-      position: "Founter @ Say Earth",
+      position: "Founder @ Say Earth",
     },
     {
       image: SourabhGoyal,
