@@ -422,6 +422,13 @@ const SpecificEvent = () => {
           >
             Register Now
           </button>
+          <p
+            className={`${
+              (payment === 1 || isRegistered === 1) && "hidden"
+            } text-black text-center dark:text-[#909090] mt-1`}
+          >
+            ** Team will be created after payment **
+          </p>
           <button
             className={`border-[#868eff] border-2  flex justify-center items-center  rounded-lg z-10  text-black dark:text-white bg-transparent font-semibold text-lg py-2  ${
               isRegistered === 1 ? "flex " : "hidden"
