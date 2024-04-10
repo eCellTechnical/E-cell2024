@@ -20,9 +20,9 @@ const SpecificEvent = () => {
         { userId: localStorage.getItem("userId") }
       );
       const data = response.data;
-
       if (data) {
         setEvent(data.event);
+        // console.log(data.event);
         if (data.event.minMembers) {
           if (data.event.minMembers == 3) {
             setFormData((prevState) => [
@@ -45,7 +45,7 @@ const SpecificEvent = () => {
         alert("Wrong Username or Password");
       }
     } catch (error) {
-      console.error("Error fetching event data :(");
+      console.error("Error fetching event data:", error);
     }
   }, [eventId]);
 
