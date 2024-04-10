@@ -20,8 +20,15 @@ const SpecificEvent = () => {
         { userId: localStorage.getItem("userId") }
       );
       const data = response.data;
+
       if (data) {
         setEvent(data.event);
+        if (data.event.minMembers == 3) {
+          setFormData((prevState) => [
+            ...prevState,
+            { userId: "", readonlyValue: "" }, // Add empty member data
+          ]);
+        }
         if (data.registration === "Done") {
           setIsRegistered(1);
           if (data.payment === "Done") {
@@ -114,6 +121,9 @@ const SpecificEvent = () => {
       const filteredData = filteredData1.filter(
         (item) => item.readonlyValue !== ""
       );
+      if (event.minMembers == 3 && filteredData.length < 2) {
+        return alert("Can't have less than 3 members");
+      }
       try {
         const response = await axios.post(
           `https://e-cell2024backend-production.up.railway.app/registerteam`,
@@ -140,7 +150,7 @@ const SpecificEvent = () => {
         alert("Error, Please Try again after sometime");
       }
     },
-    [eventId, formData, teamName]
+    [eventId, formData, teamName, event.minMembers]
   );
 
   const handleRegister = useCallback(() => {
