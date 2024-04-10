@@ -23,11 +23,13 @@ const SpecificEvent = () => {
 
       if (data) {
         setEvent(data.event);
-        if (data.event.minMembers == 3) {
-          setFormData((prevState) => [
-            ...prevState,
-            { userId: "", readonlyValue: "" }, // Add empty member data
-          ]);
+        if (data.event.minMembers) {
+          if (data.event.minMembers == 3) {
+            setFormData((prevState) => [
+              ...prevState,
+              { userId: "", readonlyValue: "" }, // Add empty member data
+            ]);
+          }
         }
         if (data.registration === "Done") {
           setIsRegistered(1);
@@ -167,9 +169,9 @@ const SpecificEvent = () => {
   const checkIfLeaderForPayment = async (amount) => {
     try {
       const response = await axios.get(
-        `${
-          import.meta.env.VITE_BACKEND_URL
-        }/isLeaderforpayment/${localStorage.getItem("userId")}/${eventId}`
+        `https://e-cell2024backend-production.up.railway.app/isLeaderforpayment/${localStorage.getItem(
+          "userId"
+        )}/${eventId}`
       );
       console.log(response.data);
       if (response.data) {
