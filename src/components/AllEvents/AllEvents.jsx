@@ -44,7 +44,7 @@ function AllEvents() {
       <article
         data-aos="fade-up"
         key={index}
-        className="card__article relative w-[28%]"
+        className="card__article relative w-[80%] md:w-[28%]"
       >
         <img src={event.poster} alt="image" className="card__img" />
         <div className="card__data flex flex-col justify-center items-center">

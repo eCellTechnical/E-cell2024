@@ -17,7 +17,7 @@ const Card = () => {
       {CardsData.map((item, index) => (
         <article
           key={index}
-          className="card__article relative w-[28%]"
+          className="card__article relative w-[80%] md:w-[28%]"
           data-aos="fade-up"
         >
           <img src={item.src} alt="image" className="card__img" />
