@@ -164,6 +164,29 @@ const SpecificEvent = () => {
     }
   }, [history, isRegistered]);
 
+  const checkIfLeaderForPayment = async (amount) => {
+    try {
+      const response = await axios.get(
+        `${
+          import.meta.env.VITE_BACKEND_URL
+        }/isLeaderforpayment/${localStorage.getItem("userId")}/${eventId}`
+      );
+      console.log(response.data);
+      if (response.data) {
+        if (response.data.msg == "leader") {
+          checkoutHandler(amount);
+        } else if (response.data.msg == "Not a Leader") {
+          alert("Only leader can do payment");
+        }
+      }
+    } catch (error) {
+      // console.error("Error registering team:", error);
+      alert("Error, Please Try again after sometime");
+    }
+
+    // checkoutHandler(amount);
+  };
+
   const checkoutHandler = async (amount) => {
     if (!localStorage.getItem("userId")) {
       return history("/endeavour/login");
@@ -435,7 +458,7 @@ const SpecificEvent = () => {
                 ? "hidden"
                 : `${payment === 0 ? `flex` : `hidden`}`
             }`}
-            onClick={() => checkoutHandler(event.price)}
+            onClick={() => checkIfLeaderForPayment(event.price)}
           >
             Pay Rs. {event.price}
           </button>
