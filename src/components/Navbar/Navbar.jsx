@@ -77,8 +77,8 @@ function Navbar() {
             <img
               src={
                 themeMode == "dark"
-                  ? "https://res.cloudinary.com/dwtytn7fl/image/upload/q_auto/f_auto/v1710338873/white_logo_br_njek7f.webp"
-                  : "https://res.cloudinary.com/dwtytn7fl/image/upload/q_auto/f_auto/v1710338873/black_logo_br_nmqmyp.webp"
+                  ? "https://res.cloudinary.com/dl49ki1ob/image/upload/v1713197882/E-Cell_BlackBG_bwki19.png"
+                  : "https://res.cloudinary.com/dl49ki1ob/image/upload/v1713197882/E-Cell_WhiteBG_b8eb42.png"
               }
               onClick={() => history("/")}
               className="w-14 h-14 lg:w-14 lg:h-14 z-20 cursor-pointer"
@@ -769,8 +769,8 @@ function Navbar() {
               <img
                 src={
                   themeMode == "dark"
-                    ? "https://res.cloudinary.com/dwtytn7fl/image/upload/q_auto/f_auto/v1710338873/white_logo_br_njek7f.webp"
-                    : "https://res.cloudinary.com/dwtytn7fl/image/upload/q_auto/f_auto/v1710338873/black_logo_br_nmqmyp.webp"
+                    ? "https://res.cloudinary.com/dl49ki1ob/image/upload/v1713197882/E-Cell_BlackBG_bwki19.png"
+                    : "https://res.cloudinary.com/dl49ki1ob/image/upload/v1713197882/E-Cell_WhiteBG_b8eb42.png"
                 }
                 onClick={() => history("/")}
                 className="w-14 h-14 lg:w-14 lg:h-14 z-20 cursor-pointer"
@@ -994,8 +994,8 @@ function Navbar() {
               <img
                 src={
                   themeMode == "dark"
-                    ? "https://res.cloudinary.com/dwtytn7fl/image/upload/q_auto/f_auto/v1710338873/white_logo_br_njek7f.webp"
-                    : "https://res.cloudinary.com/dwtytn7fl/image/upload/q_auto/f_auto/v1710338873/black_logo_br_nmqmyp.webp"
+                    ? "https://res.cloudinary.com/dl49ki1ob/image/upload/v1713197882/E-Cell_BlackBG_bwki19.png"
+                    : "https://res.cloudinary.com/dl49ki1ob/image/upload/v1713197882/E-Cell_WhiteBG_b8eb42.png"
                 }
                 onClick={() => history("/")}
                 className="w-12 h-12 z-20 cursor-pointer"
