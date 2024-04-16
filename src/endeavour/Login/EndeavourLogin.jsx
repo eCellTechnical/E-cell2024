@@ -44,7 +44,7 @@ function EndeavourLogin() {
               localStorage.setItem("token", res.data.token);
               return history(`/endeavour/super-admin/${res.data.userId}`);
             }
-            toast.success("Successfully LogedIn", {
+            toast.success("Successfully Logged In", {
               position: "top-center",
               autoClose: 3000,
               hideProgressBar: false,
@@ -111,7 +111,7 @@ function EndeavourLogin() {
               theme: "colored",
             });
           } else if (res.data.exists == "exists") {
-            toast.success("Successfully LogedIn", {
+            toast.success("Successfully Logged In", {
               position: "top-center",
               autoClose: 3000,
               hideProgressBar: false,
