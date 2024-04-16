@@ -170,6 +170,7 @@ const SpecificEvent = () => {
         (item) => item.readonlyValue !== ""
       );
       if (event.minMembers == 3 && filteredData.length < 2) {
+        setDisable(false);
         return toast.warn("Can't have less than 3 members", {
           position: "top-center",
           autoClose: 3000,
