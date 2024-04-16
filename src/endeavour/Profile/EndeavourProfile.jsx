@@ -122,7 +122,6 @@ function EndeavourProfile() {
         });
       }
     } catch {
-      alert("Error Adding Member :(");
       toast.error("Error Adding Member :(", {
         position: "top-center",
         autoClose: 3000,

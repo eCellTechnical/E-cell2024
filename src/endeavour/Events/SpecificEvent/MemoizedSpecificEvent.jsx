@@ -188,7 +188,6 @@ const SpecificEvent = () => {
         );
         const data = response.data;
         if (data === "Team Created Successfully") {
-          alert(data);
           setIsRegistered(1);
           setRegister(0);
           setDisable(false);
