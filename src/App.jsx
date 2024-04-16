@@ -2,6 +2,9 @@ import React, { Suspense, useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { ThemeProvider } from "./context/theme";
 
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 // Lazy-loaded components
 const Loader = React.lazy(() => import("./components/Loader/Loader"));
 const Navbar = React.lazy(() => import("./components/Navbar/Navbar"));
@@ -102,6 +105,7 @@ function App() {
       <Router>
         <ThemeProvider value={{ themeMode, lightTheme, darkTheme }}>
           <Navbar />
+          <ToastContainer />
           <Suspense fallback={<Loader />}>
             <Routes>
               <Route path="/" element={<Home />} />

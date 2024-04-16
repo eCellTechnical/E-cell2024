@@ -3,6 +3,7 @@ import { useEffect, useState, useCallback } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 
 import profileIconw from "../../assets/navbar/Endeavour/icons8-male-user-100 (1).png";
 import profileIconb from "../../assets/navbar/Endeavour/icons8-male-user-100 (2).png";
@@ -62,15 +63,33 @@ function EndeavourProfile() {
           response.data.teamDetails[0].teamlength ==
         0
       ) {
-        return alert("Team is Already full");
+        return toast.warn("Team is Already full", {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          theme: "colored",
+        });
       }
       setAddMember(1);
       // console.log(response.data.teamDetails);
       setTeamDetails(response.data.teamDetails);
     } else if (response.data.msg == "not a leader") {
-      alert("Only Leader Can Add New Member");
+      toast.warn("Only Leader Can Add New Member", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        theme: "colored",
+      });
     } else {
-      alert("Only Leader Can Add Members");
+      toast.warn("Only Leader Can Add New Member", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        theme: "colored",
+      });
     }
   };
   const handleAddTeamMember = async (data, e) => {
@@ -86,12 +105,31 @@ function EndeavourProfile() {
         }
       );
       if (response.data.message == "Team not found") {
-        alert(response.data.message);
+        toast.warn("Team not found", {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          theme: "colored",
+        });
       } else {
-        alert(response.data.message);
+        toast.warn(response.data.message, {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          theme: "colored",
+        });
       }
     } catch {
       alert("Error Adding Member :(");
+      toast.error("Error Adding Member :(", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        theme: "colored",
+      });
     }
     setAddMember(0);
     setDisable(false);
@@ -102,7 +140,13 @@ function EndeavourProfile() {
   const handleSearch = useCallback(
     async (memberId) => {
       if (memberId == localStorage.getItem("userId")) {
-        return alert("Can't add yourself as a member");
+        return toast.warn("Can't add yourself as a member", {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          theme: "colored",
+        });
       }
       try {
         const response = await axios.post(
@@ -111,15 +155,40 @@ function EndeavourProfile() {
         );
         const data = response.data;
         if (data === "Already In A Team") {
-          alert(`${memberId} Already Joined A Team`);
+          toast.warn(`${memberId} Already Joined A Team`, {
+            position: "top-center",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            theme: "colored",
+          });
         } else if (data === "User Not Exists") {
-          alert(`No user with this User ID exists`);
+          toast.warn("No user with this User ID exists", {
+            position: "top-center",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            theme: "colored",
+          });
         } else {
           setMemberName(data);
           setDisable(false);
+          toast.success("Member found", {
+            position: "top-center",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            theme: "colored",
+          });
         }
       } catch (error) {
-        console.error("Error fetching user data  :(");
+        toast.error("Error fetching user data  :(", {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          theme: "colored",
+        });
       }
     },
     [teamDetails]
@@ -137,10 +206,22 @@ function EndeavourProfile() {
       );
 
       if (response.data.err) {
-        alert(response.data.err);
+        toast.error(response.data.err, {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          theme: "colored",
+        });
         history("/endeavour");
       } else if (response.data.msg == "invalid token") {
-        alert("invalid Token");
+        toast.error("Invalid token", {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          theme: "colored",
+        });
         history("/endeavour");
       }
 
@@ -156,7 +237,13 @@ function EndeavourProfile() {
       setGender(response.data.user.gender);
       setCity(response.data.user.city);
     } catch (error) {
-      console.error("Error fetching profile :(");
+      toast.error("Error fetching profile :(", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        theme: "colored",
+      });
     }
   }, []);
 
@@ -192,16 +279,40 @@ function EndeavourProfile() {
         }
       );
       if (response.data.err) {
-        alert(response.data.err);
+        toast.error(response.data.err, {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          theme: "colored",
+        });
         history("/endeavour");
       } else if (response.data.msg == "invalid token") {
-        alert("invalid Token");
+        toast.error("Invalid token", {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          theme: "colored",
+        });
         history("/endeavour");
       } else if (response.data == "Successfully Updated") {
-        alert("Successfully Updated");
+        toast.success("Successfully Updated", {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          theme: "colored",
+        });
       }
     } catch (error) {
-      console.error("Error fetching profile :(");
+      toast.error("Internal Server Error", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        theme: "colored",
+      });
     }
     setEdit(false);
   };
@@ -232,7 +343,13 @@ function EndeavourProfile() {
         // console.log(response.data.members);
       }
     } catch (error) {
-      console.error("Error fetching profile :(");
+      toast.error("Internal Server Error", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        theme: "colored",
+      });
     }
     setTab(1);
   };
@@ -250,7 +367,13 @@ function EndeavourProfile() {
         setEventNamePayment(response.data.eventname);
       }
     } catch (error) {
-      console.error("Error fetching profile :(");
+      toast.error("Internal Server Error", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        theme: "colored",
+      });
     }
     setTab(2);
   };

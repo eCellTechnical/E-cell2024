@@ -5,7 +5,8 @@ import { Link } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth"; // Corrected import
 import { firebaseAuth } from "../../../config/firebaseConfig";
-import img from "../../assets/Register/astronaut_portal_neon_frame_glow_dark_4k_hd_creative-3840x2160.jpg";
+import { toast } from "react-toastify";
+// import img from "../../assets/Register/astronaut_portal_neon_frame_glow_dark_4k_hd_creative-3840x2160.jpg";
 import img1 from "../../assets/Login/signup.jpeg";
 function EndeavourRegister() {
   const history = useNavigate();
@@ -54,13 +55,31 @@ function EndeavourRegister() {
         );
 
         if (res.data.created) {
-          alert("Account Registered Successfully");
+          toast.success("Account Registered Successfully", {
+            position: "top-center",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            theme: "colored",
+          });
           history("/endeavour/login");
         } else if (res.data == "User Already Exists") {
-          alert("User Already Exists");
+          toast.warn("User Already Exists", {
+            position: "top-center",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            theme: "colored",
+          });
         }
       } catch (error) {
-        alert("Internal error");
+        toast.error("Internal Server Error", {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          theme: "colored",
+        });
       }
     }
   };
@@ -70,7 +89,13 @@ function EndeavourRegister() {
     e.preventDefault();
     if (delayedSearchTerm == 0 || validUserName == 0) {
       setDisable(false);
-      return alert("choose valid user name");
+      return toast.warn("Choose valid user name", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        theme: "colored",
+      });
     }
     try {
       await axios
@@ -82,23 +107,59 @@ function EndeavourRegister() {
         })
         .then((res) => {
           if (res.data.msg == "User saved :)") {
-            alert("User saved :)");
+            toast.success("Account Registered Successfully", {
+              position: "top-center",
+              autoClose: 3000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              theme: "colored",
+            });
             history("/endeavour/login");
           } else if (res.data == "User Already Exists") {
-            alert("User Already Exists");
+            toast.warn("User Already Exists", {
+              position: "top-center",
+              autoClose: 3000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              theme: "colored",
+            });
           } else if (res.data == "Error saving user:") {
-            alert("Wrong Username or Password");
+            toast.error("Error saving user :(", {
+              position: "top-center",
+              autoClose: 3000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              theme: "colored",
+            });
           } else if (res.data == "Error saving user :(") {
-            alert("Error saving user :(");
+            toast.error("Error saving user :(", {
+              position: "top-center",
+              autoClose: 3000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              theme: "colored",
+            });
           }
         })
         .catch((e) => {
-          alert("wrong details");
+          toast.error("Internal server error", {
+            position: "top-center",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            theme: "colored",
+          });
           // console.log(e);
         });
     } catch (error) {
       // console.log(error);
-      alert("Internal server error");
+      toast.error("Internal server error", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        theme: "colored",
+      });
     }
     setDisable(false);
   }

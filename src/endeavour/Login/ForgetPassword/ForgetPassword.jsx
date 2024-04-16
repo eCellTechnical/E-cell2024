@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { toast } from "react-toastify";
+
 import img1 from "../../../assets/Login/forget pass.jpeg";
 function ForgetPassword() {
   const history = useNavigate();
@@ -23,16 +25,34 @@ function ForgetPassword() {
         })
         .then((res) => {
           if (res.data == "Success") {
-            alert("Successfully send the OTP");
+            toast.success("Successfully send the OTP", {
+              position: "top-center",
+              autoClose: 3000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              theme: "colored",
+            });
             setTypedOTP("");
             setFormStep(2);
           }
         })
         .catch(() => {
-          alert("Internal Server Error");
+          toast.error("Internal Server Error", {
+            position: "top-center",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            theme: "colored",
+          });
         });
     } catch (error) {
-      alert("Internal Server Error");
+      toast.error("Internal Server Error", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        theme: "colored",
+      });
     }
     setDisable(0);
   }
@@ -51,18 +71,42 @@ function ForgetPassword() {
           )
           .then((res) => {
             if (res.data == "Success") {
-              alert("Successfully send the password reset link");
+              toast.success("Successfully send the password reset link", {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                theme: "colored",
+              });
               history("/endeavour/login");
             }
           })
           .catch(() => {
-            alert("Internal Server Error");
+            toast.error("Internal Server Error", {
+              position: "top-center",
+              autoClose: 3000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              theme: "colored",
+            });
           });
       } catch (error) {
-        alert("Internal Server Error");
+        toast.error("Internal Server Error", {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          theme: "colored",
+        });
       }
     } else {
-      alert("Wrong OTP");
+      toast.warn("Wrong OTP", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        theme: "colored",
+      });
     }
     setDisable(0);
   }

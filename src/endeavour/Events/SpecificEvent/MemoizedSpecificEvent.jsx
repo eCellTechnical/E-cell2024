@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback, memo } from "react";
 import axios from "axios";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const SpecificEvent = () => {
   const [disable, setDisable] = useState(false);
@@ -42,10 +43,22 @@ const SpecificEvent = () => {
           setIsRegistered(0);
         }
       } else {
-        alert("Wrong Username or Password");
+        toast.warn("Error fetching event", {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          theme: "colored",
+        });
       }
     } catch (error) {
-      console.error("Error fetching event data:", error);
+      toast.error("Internal Server Error", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        theme: "colored",
+      });
     }
   }, [eventId]);
 
@@ -53,7 +66,13 @@ const SpecificEvent = () => {
     async (memberId, index) => {
       setDisable(true);
       if (memberId == localStorage.getItem("userId")) {
-        return alert("Can't add yourself as a member");
+        return toast.warn("Can't add yourself as a member", {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          theme: "colored",
+        });
       }
       try {
         const response = await axios.post(
@@ -63,10 +82,22 @@ const SpecificEvent = () => {
         const data = response.data;
         if (data === "Already In A Team") {
           setDisable(true);
-          alert(`${memberId} Already Joined A Team`);
+          toast.warn(`${memberId} Already Joined A Team`, {
+            position: "top-center",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            theme: "colored",
+          });
         } else if (data === "User Not Exists") {
           setDisable(true);
-          alert(`No user with this User ID exists`);
+          toast.warn("No user with this User ID exists", {
+            position: "top-center",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            theme: "colored",
+          });
         } else {
           setFormData((prevState) =>
             prevState.map((member, i) =>
@@ -76,7 +107,13 @@ const SpecificEvent = () => {
           setDisable(false);
         }
       } catch (error) {
-        console.error("Error fetching user data :(");
+        toast.error("Internal Server Error", {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          theme: "colored",
+        });
       }
     },
     [event]
@@ -90,7 +127,16 @@ const SpecificEvent = () => {
         { userId: "", readonlyValue: "" }, // Add empty member data
       ]);
     } else {
-      alert(`Can't Add more than ${event.teamSize} Members (Leader Included)`);
+      toast.warn(
+        `Can't Add more than ${event.teamSize} Members (Leader Included)`,
+        {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          theme: "colored",
+        }
+      );
     }
   }, [event, formData]);
 
@@ -124,7 +170,13 @@ const SpecificEvent = () => {
         (item) => item.readonlyValue !== ""
       );
       if (event.minMembers == 3 && filteredData.length < 2) {
-        return alert("Can't have less than 3 members");
+        return toast.warn("Can't have less than 3 members", {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          theme: "colored",
+        });
       }
       try {
         const response = await axios.post(
@@ -140,16 +192,34 @@ const SpecificEvent = () => {
           setIsRegistered(1);
           setRegister(0);
           setDisable(false);
+          toast.success("Team Created Successfully", {
+            position: "top-center",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            theme: "colored",
+          });
         } else if (
           data === "User Not Exists" ||
           data === "Error, Please Try again after sometime"
         ) {
           setDisable(true);
-          alert(data);
+          toast.error("Error, Please Try again after sometime", {
+            position: "top-center",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            theme: "colored",
+          });
         }
       } catch (error) {
-        console.error("Error registering team :(");
-        alert("Error, Please Try again after sometime");
+        toast.error("Error, Please Try again after sometime", {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          theme: "colored",
+        });
       }
     },
     [eventId, formData, teamName, event.minMembers]
@@ -161,7 +231,13 @@ const SpecificEvent = () => {
         setRegister(1);
       }
     } else {
-      alert("First Login to register");
+      toast.warn("Login to register", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        theme: "colored",
+      });
       history("/endeavour/login");
     }
   }, [history, isRegistered]);
@@ -178,12 +254,24 @@ const SpecificEvent = () => {
         if (response.data.msg == "leader") {
           checkoutHandler(amount);
         } else if (response.data.msg == "Not a Leader") {
-          alert("Only leader can do payment");
+          toast.warn("Only leader can do payment", {
+            position: "top-center",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            theme: "colored",
+          });
         }
       }
     } catch (error) {
       // console.error("Error registering team:", error);
-      alert("Error, Please Try again after sometime");
+      toast.error("Error, Please Try again after sometime", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        theme: "colored",
+      });
     }
 
     // checkoutHandler(amount);

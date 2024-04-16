@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-import img from "../../../assets/ForgetPassword/wallpaper.jpg";
+import { toast } from "react-toastify";
+// import img from "../../../assets/ForgetPassword/wallpaper.jpg";
 import img1 from "../../../assets/Login/reset pass.jpeg";
 function ResetPassword() {
   const history = useNavigate();
@@ -17,7 +18,13 @@ function ResetPassword() {
     setDisable(1);
     if (password !== repass) {
       setDisable(0);
-      return alert("Password Does not match");
+      return toast.warn("Password Does not match", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        theme: "colored",
+      });
     }
     try {
       await axios
@@ -31,17 +38,41 @@ function ResetPassword() {
         )
         .then((res) => {
           if (res.data == "Successfully Changed the password") {
-            alert("Successfully Changed the password");
+            toast.success("Successfully Changed the password", {
+              position: "top-center",
+              autoClose: 3000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              theme: "colored",
+            });
             history("/endeavour/login");
           } else if (res.data == "Don't use same password :]") {
-            alert("Don't use same password again : ]");
+            toast.warn("Don't use same password again :]", {
+              position: "top-center",
+              autoClose: 3000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              theme: "colored",
+            });
           }
         })
         .catch(() => {
-          alert("Internal Server Error");
+          toast.error("Internal Server Error", {
+            position: "top-center",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            theme: "colored",
+          });
         });
     } catch (error) {
-      alert("Internal Server Error");
+      toast.error("Internal Server Error", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        theme: "colored",
+      });
     }
     setDisable(0);
   };
