@@ -62,7 +62,7 @@ const Organizer = () => {
           data-aos="fade-up"
           className="mt-10 mb-10 !font-bold md:!font-bold text-lg md:text-2xl text-black dark:text-white"
         >
-          Revealing Soon...(❁´◡`❁)
+          Revealing Soon...
         </div>
       </div>
       <div className="flex justify-center pb-10 mt-11  max-[415px]:ml-5 ">
