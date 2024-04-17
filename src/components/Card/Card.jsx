@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Card = () => {
   const CardsData = [
     {
-      src: "https://res.cloudinary.com/dl49ki1ob/image/upload/v1712496173/EVENTCARD_SPRINTHACKS_vdyweb.jpg",
+      src: "https://res.cloudinary.com/dl49ki1ob/image/upload/v1713281206/EVENTCARD_SPRINTHACK_veptcx.jpg",
       Title: "SprintHacks 2.0",
       Description: "24 Hours Hackathon",
       Link: "https://www.sprinthacks.in/",
