@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback, memo } from "react";
 import axios from "axios";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
+import FAQ from "../../../components/FAQ/FAQ";
 
 const SpecificEvent = () => {
   const [disable, setDisable] = useState(false);
@@ -357,7 +358,7 @@ const SpecificEvent = () => {
                   <div className="mt-2">
                     <p>{desc.paragraphs.content}</p>
                   </div>
-                ) : (
+                ) : desc.paragraphs.type == "list" ? (
                   <div className="mt-2 ml-4 md:ml-5">
                     {desc.paragraphs.content
                       .split(".")
@@ -365,6 +366,12 @@ const SpecificEvent = () => {
                       ?.map((listItem, index) => (
                         <li key={index}>{listItem}.</li>
                       ))}
+                  </div>
+                ) : (
+                  <div className="w-full mt-2">
+                    {desc.paragraphs.content?.map((faq, index) => (
+                      <FAQ faq={faq} key={index + Math.random() * 100} />
+                    ))}
                   </div>
                 )}
               </div>
