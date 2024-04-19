@@ -24,7 +24,7 @@ function StudentPass() {
         });
     } catch (error) {
       // console.log(error);
-      alert("Internal server error");
+      alert("Bad network error,Please try again after sometime");
     }
   }
   useEffect(() => {

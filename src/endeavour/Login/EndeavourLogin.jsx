@@ -65,7 +65,7 @@ function EndeavourLogin() {
             });
           }
         } catch (error) {
-          toast.error("Internal Server Error", {
+          toast.error("Bad network error,Please try again after sometime", {
             position: "top-center",
             autoClose: 3000,
             hideProgressBar: false,
@@ -133,7 +133,7 @@ function EndeavourLogin() {
           }
         })
         .catch(() => {
-          toast.error("Internal Server Error", {
+          toast.error("Bad network error,Please try again after sometime", {
             position: "top-center",
             autoClose: 3000,
             hideProgressBar: false,
@@ -143,7 +143,7 @@ function EndeavourLogin() {
         });
     } catch (error) {
       // console.log(error);
-      toast.error("Internal Server Error", {
+      toast.error("Bad network error,Please try again after sometime", {
         position: "top-center",
         autoClose: 3000,
         hideProgressBar: false,

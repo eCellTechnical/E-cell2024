@@ -53,7 +53,7 @@ const SpecificEvent = () => {
         });
       }
     } catch (error) {
-      toast.error("Internal Server Error", {
+      toast.error("Bad network error,Please try again after sometime", {
         position: "top-center",
         autoClose: 3000,
         hideProgressBar: false,
@@ -108,7 +108,7 @@ const SpecificEvent = () => {
           setDisable(false);
         }
       } catch (error) {
-        toast.error("Internal Server Error", {
+        toast.error("Bad network error,Please try again after sometime", {
           position: "top-center",
           autoClose: 3000,
           hideProgressBar: false,

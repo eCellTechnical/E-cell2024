@@ -57,7 +57,7 @@ function ResetPassword() {
           }
         })
         .catch(() => {
-          toast.error("Internal Server Error", {
+          toast.error("Bad network error,Please try again after sometime", {
             position: "top-center",
             autoClose: 3000,
             hideProgressBar: false,
@@ -66,7 +66,7 @@ function ResetPassword() {
           });
         });
     } catch (error) {
-      toast.error("Internal Server Error", {
+      toast.error("Bad network error,Please try again after sometime", {
         position: "top-center",
         autoClose: 3000,
         hideProgressBar: false,
