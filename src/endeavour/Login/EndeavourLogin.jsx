@@ -110,6 +110,14 @@ function EndeavourLogin() {
               closeOnClick: true,
               theme: "colored",
             });
+          } else if (res.data.msg == "Login with google") {
+            toast.warn("Login with google", {
+              position: "top-center",
+              autoClose: 3000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              theme: "colored",
+            });
           } else if (res.data.exists == "exists") {
             toast.success("Successfully Logged In", {
               position: "top-center",
