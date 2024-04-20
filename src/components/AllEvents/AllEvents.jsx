@@ -20,7 +20,13 @@ function AllEvents() {
       const response = await axios.get(
         `https://e-cell2024backend-production.up.railway.app/allevents`
       );
-      setEvents(response.data);
+      const sortedEvents = response.data.sort((a, b) => {
+        const nameA = a.name ? a.name.toString().toLowerCase() : "";
+        const nameB = b.name ? b.name.toString().toLowerCase() : "";
+        return nameA.localeCompare(nameB);
+      });
+      setEvents(sortedEvents);
+      // setEvents(response.data);
     } catch (error) {
       console.error("Error fetching events :(");
     }
@@ -72,10 +78,10 @@ function AllEvents() {
       </h1>
       <div className="mx-auto px-4 w-full">
         <div className="flex flex-wrap w-full justify-center items-center gap-4 mx-3 mt-4">
+          {renderedCards}
           <Suspense fallback={<div>Loading...</div>}>
             <Card />
           </Suspense>
-          {renderedCards}
         </div>
       </div>
     </div>
