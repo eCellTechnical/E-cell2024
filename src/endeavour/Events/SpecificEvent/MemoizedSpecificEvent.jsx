@@ -3,6 +3,7 @@ import axios from "axios";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import FAQ from "../../../components/FAQ/FAQ";
+import { Link } from "react-router-dom";
 
 const SpecificEvent = () => {
   const [disable, setDisable] = useState(false);
@@ -568,6 +569,22 @@ const SpecificEvent = () => {
           >
             All Done ! See You At Event
           </button>
+          <Link
+            to={
+              "https://evepaper.com/unstops-article-writing-competition-keit/"
+            }
+            target="_blank"
+          >
+            <button
+              className={`border-2 flex justify-center items-center border-[#868eff] bg-[#4d55ba] text-white rounded-lg font-semibold text-lg  py-2 z-10 cursor-pointer  w-full mt-4 ${
+                isRegistered === 1
+                  ? `${payment == 1 ? "flex" : "hidden"}`
+                  : "hidden"
+              }`}
+            >
+              Continue
+            </button>
+          </Link>
         </div>
       </div>
     </div>
