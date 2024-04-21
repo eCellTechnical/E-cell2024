@@ -582,7 +582,7 @@ const SpecificEvent = () => {
                   : "hidden"
               }`}
             >
-              Continue
+              One More Step To Go!
             </button>
           </Link>
         </div>
