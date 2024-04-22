@@ -90,7 +90,7 @@
   filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#4DC9E6", endColorstr="#210CAE", GradientType=1 );
 }
 .container ul li {
-  width: 46%;
+  width: 46.7%;
   height: auto;
   padding: 15px 20px;
   backdrop-filter: blur(16px) saturate(180%);
