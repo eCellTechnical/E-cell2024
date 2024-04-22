@@ -11,6 +11,13 @@ const Card = () => {
       Link: "https://www.sprinthacks.in/",
       BtnData: "Register",
     },
+    {
+      src: "https://res.cloudinary.com/dt2eectnb/image/upload/v1713802489/rbltiizza4h4hyjk2hlv.jpg",
+      Title: "INNOVATEX",
+      Description: "Coming Soon",
+      Link: "",
+      BtnData: "On Devfolio",
+    },
   ];
   return (
     <>
