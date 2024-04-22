@@ -3,6 +3,8 @@ import axios from "axios";
 function Dashboard() {
   const [totalRegistrations, setTotalRegistrations] = useState(0);
   const [eventWiseCount, setEventWiseCount] = useState();
+  const [totalRegistrationsPaid, setTotalRegistrationsPaid] = useState();
+  const [totalRegistrationsUnPaid, setTotalRegistrationsUnPaid] = useState();
   useEffect(() => {
     async function fetchData() {
       try {
@@ -12,6 +14,8 @@ function Dashboard() {
         if (response.data) {
           setTotalRegistrations(response.data.totalRegistrations);
           setEventWiseCount(response.data.eventWiseCount);
+          setTotalRegistrationsPaid(response.data.totalRegistrationsPaid);
+          setTotalRegistrationsUnPaid(response.data.totalRegistrationsUnPaid);
         }
       } catch (error) {
         alert("Error fetching Event:");
@@ -24,6 +28,8 @@ function Dashboard() {
       <div className="flex bg-blue-300 justify-between items-center w-full py-5 px-5 rounded-xl">
         <h1 className="text-2xl font-bold">Total Registrations</h1>
         <p className="text-2xl font-medium">{totalRegistrations}</p>
+        <p className="text-2xl font-medium">{totalRegistrationsPaid}</p>
+        <p className="text-2xl font-medium">{totalRegistrationsUnPaid}</p>
       </div>
       <div>
         <h2 className="font-bold text-2xl mt-5">Event Wise Registration</h2>
