@@ -217,8 +217,7 @@ function EndeavourLogin() {
                 onChange={(e) => {
                   setPassword(e.target.value);
                 }}
-                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,15}"
-                title="Password must contain at least one number and one uppercase and lowercase letter, and at least 8 and at most 15 characters"
+               
                 required
               />
               <button
