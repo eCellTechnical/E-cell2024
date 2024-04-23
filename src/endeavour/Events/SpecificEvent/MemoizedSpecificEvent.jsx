@@ -27,7 +27,7 @@ const SpecificEvent = () => {
         setEvent(data.event);
         // console.log(data.event);
         if (data.event.minMembers) {
-          if (data.event.minMembers == 3) {
+          if (data.event.minMembers == 2) {
             setFormData((prevState) => [
               ...prevState,
               { userId: "", readonlyValue: "" }, // Add empty member data
@@ -171,9 +171,9 @@ const SpecificEvent = () => {
       const filteredData = filteredData1.filter(
         (item) => item.readonlyValue !== ""
       );
-      if (event.minMembers == 3 && filteredData.length < 2) {
+      if (event.minMembers == 2 && filteredData.length < 1) {
         setDisable(false);
-        return toast.warn("Can't have less than 3 members", {
+        return toast.warn("Can't have less than 2 members", {
           position: "top-center",
           autoClose: 3000,
           hideProgressBar: false,
