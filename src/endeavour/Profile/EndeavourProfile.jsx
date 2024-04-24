@@ -420,7 +420,7 @@ function EndeavourProfile() {
         </div>
 
         <div className="!fixed left-0 right-0 bottom-0 flex md:hidden bg-white dark:bg-black p-4 justify-around z-50">
-          <div>
+          <div className="flex flex-col justify-center items-center">
             <img
               onClick={profileClicked}
               src={
@@ -433,7 +433,7 @@ function EndeavourProfile() {
             />
             <p>Profile</p>
           </div>
-          <div>
+          <div className="flex flex-col justify-center items-center">
             <img
               onClick={registeredEventsClicked}
               src={localStorage.getItem("theme") == "light" ? eventb : eventw}
@@ -442,7 +442,7 @@ function EndeavourProfile() {
             />
             <p>Registered Events</p>
           </div>
-          <div>
+          <div className="flex flex-col justify-center items-center">
             <img
               onClick={paymentClicked}
               src={
@@ -872,7 +872,9 @@ function EndeavourProfile() {
             )}
           </div>
           <div className="w-full pt-[13vh] text-center flex justify-center flex-col items-center">
-            <h1 className="text-4xl font-bold underline mb-11">Eve Payments</h1>
+            <h1 className="text-4xl font-bold underline mb-11">
+              Entertainment Eve Payment
+            </h1>
             {eveInfo ? (
               <div className="p-5 px-11 shadow-2xl w-[80%] md:w-[30%] rounded-lg flex flex-col bg-[#9ea4ff] justify-center items-center border-white border-4 text-center text-[1.1em] text-black ">
                 <p>
