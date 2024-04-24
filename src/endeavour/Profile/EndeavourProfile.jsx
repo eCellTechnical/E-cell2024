@@ -417,28 +417,39 @@ function EndeavourProfile() {
         </div>
 
         <div className="!fixed left-0 right-0 bottom-0 flex md:hidden bg-white dark:bg-black p-4 justify-around z-50">
-          <img
-            onClick={profileClicked}
-            src={
-              localStorage.getItem("theme") == "light"
-                ? profileIconb
-                : profileIconw
-            }
-            className="w-11 h-11"
-            alt=""
-          />
-          <img
-            onClick={registeredEventsClicked}
-            src={localStorage.getItem("theme") == "light" ? eventb : eventw}
-            className="w-10 h-10"
-            alt=""
-          />
-          <img
-            onClick={paymentClicked}
-            src={localStorage.getItem("theme") == "light" ? paymentb : paymentw}
-            className="w-10 h-10"
-            alt=""
-          />
+          <div>
+            <img
+              onClick={profileClicked}
+              src={
+                localStorage.getItem("theme") == "light"
+                  ? profileIconb
+                  : profileIconw
+              }
+              className="w-11 h-11"
+              alt=""
+            />
+            <p>Profile</p>
+          </div>
+          <div>
+            <img
+              onClick={registeredEventsClicked}
+              src={localStorage.getItem("theme") == "light" ? eventb : eventw}
+              className="w-10 h-10"
+              alt=""
+            />
+            <p>Registered Events</p>
+          </div>
+          <div>
+            <img
+              onClick={paymentClicked}
+              src={
+                localStorage.getItem("theme") == "light" ? paymentb : paymentw
+              }
+              className="w-10 h-10"
+              alt=""
+            />
+            <p>Payments</p>
+          </div>
         </div>
 
         <div

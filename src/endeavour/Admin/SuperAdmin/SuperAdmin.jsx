@@ -109,7 +109,7 @@ function SuperAdmin() {
 
       {!isSuperAdmin && (
         <div className="absolute top-0 left-0 right-0 bottom-0 w-full h-full bg-white flex justify-center items-center">
-          <h1 className="font-bold text-6xl">Don&apos;t be over smart :) 🖕</h1>
+          <h1 className="font-bold text-6xl">Don&apos;t be over smart :) </h1>
         </div>
       )}
     </div>
