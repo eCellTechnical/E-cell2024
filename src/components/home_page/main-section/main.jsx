@@ -110,7 +110,7 @@ const Main = () => {
           </p>
         </div>
 
-        <div className="watch-us w-[350px] md:w-[400px] h-[120px] mr-[50px] mt-10 bg-white flex items-center justify-center rounded-md">
+        <div className="watch-us w-[350px] md:w-[400px] h-[120px] mr-[50px] mt-10 bg-white flex items-center justify-center rounded-md z-30">
           {!isPayment && (
             <div className="md:mr-8">
               <p className="text-md line-through text-gray-600">₹299</p>
