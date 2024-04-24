@@ -172,7 +172,7 @@ const Main = () => {
           </p>
         </div>
 
-        <div className="watch-us w-[350px] md:w-[400px] h-[170px] mr-[10px] mt-10 bg-white flex items-center  rounded-md !z-30">
+        <div className="watch-us w-[350px] md:w-[400px] h-[170px] mr-[5%] md:mr-[10px] mt-10 bg-white flex items-center  rounded-md !z-30">
           {!isPayment && (
             <div className="w-full">
               <p className="text-md  text-gray-600">Early Bird Offer</p>
