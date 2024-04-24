@@ -65,7 +65,7 @@ function EndeavourHomePage() {
             </div>
           </div>
 
-          <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-50">
+          <div className="absolute top-[50%] text-white left-[50%] translate-x-[-50%] translate-y-[-50%] z-50">
             <PopUp />
           </div>
 
