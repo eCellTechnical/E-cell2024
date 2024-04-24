@@ -10,6 +10,7 @@ import img2 from "../../../assets/271454876_665523707960012_7603993009814993163_
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 const Main = () => {
   const history = useNavigate();
   const [isPayment, setIsPayment] = useState(false);
@@ -44,7 +45,14 @@ const Main = () => {
 
   const handlePayClick = async (amount) => {
     if (!localStorage.getItem("userId")) {
-      return history("/endeavour/login");
+      history("/endeavour/login");
+      return toast.warn("First Login to register", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        theme: "colored",
+      });
     }
     try {
       const {
