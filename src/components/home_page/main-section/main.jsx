@@ -134,7 +134,13 @@ const Main = () => {
               </p>
             </button>
           ) : (
-            <button className="ml-10" onClick={() => handlePayClick(250)}>
+            <button
+              className="ml-10"
+              onClick={() => {
+                // handlePayClick(250);
+                alert("Maintanence is going  on Sorry for inconvenience");
+              }}
+            >
               <p className="text-lg w-[180px] md:text-xl font-semibold border-2 border-black p-5">
                 Register Now
               </p>
