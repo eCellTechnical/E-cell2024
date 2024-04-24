@@ -14,6 +14,8 @@ import { toast } from "react-toastify";
 const Main = () => {
   const history = useNavigate();
   const [isPayment, setIsPayment] = useState(false);
+  const [libId, setLibId] = useState("");
+  const [open, setOpen] = useState(false);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -54,6 +56,16 @@ const Main = () => {
         theme: "colored",
       });
     }
+
+    if (libId.length < 8) {
+      return toast.warn("Enter Correct Library Id of KIET", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        theme: "colored",
+      });
+    }
     try {
       const {
         data: { key },
@@ -81,7 +93,7 @@ const Main = () => {
         order_id: order.id,
         callback_url: `https://e-cell2024backend-production.up.railway.app/api/evepaymentverification/${localStorage.getItem(
           "userId"
-        )}/eve/${amount}`,
+        )}/eve/${amount}/${libId}`,
         prefill: {
           name: `${localStorage.getItem("userName")}`,
         },
@@ -100,6 +112,48 @@ const Main = () => {
   };
   return (
     <section className="main-section h-full z-40" id="home">
+      <div
+        className={`${
+          open ? "flex" : "hidden"
+        } absolute  top-0 left-0 !z-50 w-full h-full flex justify-center items-center text-white bg-[#ffffff38]`}
+      >
+        <div className="bg-black w-[80%] h-[70%] flex justify-center items-center flex-col  rounded-xl">
+          <div className="flex flex-row w-[60%] justify-between items-center mb-11">
+            <div></div>
+            <div className="text-center">
+              <h1 className="text-4xl font-bold">Howdy</h1>
+              <p className="text-gray-300 mt-2 text-lg ">
+                Ready to join us for a prodigious evening
+              </p>
+            </div>
+            <p
+              className="border-2 p-2 rounded-md border-white cursor-pointer"
+              onClick={() => setOpen(false)}
+            >
+              X
+            </p>
+          </div>
+          <div className="flex flex-col w-[30%]">
+            <label htmlFor="libraryID" className="font-semibold text-gray-300">
+              Library Id (Don&apos;t add fake Ids, otherwise payment isn&apos;t
+              refundable)
+            </label>
+            <input
+              type="text"
+              name="libraryID"
+              id="libraryID"
+              className="p-3 rounded-md bg-transparent border-4 border-gray-500 mb-8"
+              onChange={(e) => setLibId(e.target.value)}
+            />
+          </div>
+          <button
+            className="z-10 border-4 border-[#4d5abb] py-3 text-lg px-8 rounded-md"
+            onClick={() => handlePayClick(250)}
+          >
+            Submit
+          </button>
+        </div>
+      </div>
       <div className="main-container">
         <img
           src={img1}
@@ -138,7 +192,8 @@ const Main = () => {
               <button
                 className="ml-10"
                 onClick={() => {
-                  handlePayClick(250);
+                  // handlePayClick(250);
+                  setOpen(true);
                   // alert("Maintanence is going on Sorry for inconvenience");
                 }}
               >
