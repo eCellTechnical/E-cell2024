@@ -53,16 +53,19 @@ function PopUp() {
           src={img2}
           alt=""
           onClick={handleClick}
-          className="w-full h-[550px] hidden md:flex md:w-[850px] md:h-[350px]"
+          className="w-full cursor-pointer h-[550px] hidden md:flex md:w-[850px] md:h-[350px]"
         />
         <img
           src={img3}
           alt=""
           onClick={handleClick}
-          className="w-full h-[550px] flex md:hidden md:w-[850px] md:h-[350px]"
+          className="w-full h-[550px] cursor-pointer flex md:hidden md:w-[850px] md:h-[350px]"
         />
-        <center className="z-50 mt-5 !text-white cursor-pointer">
-          <button onClick={handleClick}>Register Now</button>
+        <center
+          onClick={handleClick}
+          className="z-50 mt-5 !text-white cursor-pointer"
+        >
+          <button>Register Now</button>
         </center>
       </div>
     </main>
