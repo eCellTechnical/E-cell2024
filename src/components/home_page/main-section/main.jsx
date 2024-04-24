@@ -110,11 +110,11 @@ const Main = () => {
           </p>
         </div>
 
-        <div className="watch-us w-[350px] md:w-[400px] h-[120px] mr-[50px] mt-10 bg-white flex items-center justify-center rounded-md">
+        <div className="watch-us w-[350px] md:w-[400px] h-[120px] mr-[50px] mt-10 bg-white flex items-center justify-center rounded-md z-50">
           {!isPayment && (
             <div className="md:mr-8">
               <p className="text-md line-through text-gray-600">₹299</p>
-              <p className="text-3xl font-semibold">₹249</p>
+              <p className="text-3xl font-semibold">₹250</p>
             </div>
           )}
 
@@ -125,7 +125,7 @@ const Main = () => {
               </p>
             </button>
           ) : (
-            <button className="ml-10" onClick={() => handlePayClick(249)}>
+            <button className="ml-10" onClick={() => handlePayClick(250)}>
               <p className="text-lg w-[180px] md:text-xl font-semibold border-2 border-black p-5">
                 Register Now
               </p>

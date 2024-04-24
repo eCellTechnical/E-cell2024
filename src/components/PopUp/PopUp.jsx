@@ -9,22 +9,25 @@ function PopUp() {
   const [closed, setClosed] = useState(false);
 
   useEffect(() => {
+    // setInterval(() => {
+    //   setClosed(false);
+    // }, 30000);
     setTimeout(() => {
-      setClosed(true);
-    }, 6000);
-  }, []);
+      setClosed(false);
+    }, 35000);
+  }, [closed]);
 
   const handleClick = () => {
-    if (!localStorage.getItem("userId")) {
-      history("/endeavour/login");
-      return toast.warn("First Login to register", {
-        position: "top-center",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        theme: "colored",
-      });
-    }
+    // if (!localStorage.getItem("userId")) {
+    //   history("/endeavour/login");
+    //   return toast.warn("First Login to register", {
+    //     position: "top-center",
+    //     autoClose: 3000,
+    //     hideProgressBar: false,
+    //     closeOnClick: true,
+    //     theme: "colored",
+    //   });
+    // }
     history("/endeavour/eve");
   };
   return (
@@ -49,11 +52,13 @@ function PopUp() {
         <img
           src={img2}
           alt=""
+          onClick={handleClick}
           className="w-full h-[550px] hidden md:flex md:w-[850px] md:h-[350px]"
         />
         <img
           src={img3}
           alt=""
+          onClick={handleClick}
           className="w-full h-[550px] flex md:hidden md:w-[850px] md:h-[350px]"
         />
         <center className="z-50 mt-5">
