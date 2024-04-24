@@ -10,6 +10,7 @@ import img2 from "../../../assets/271454876_665523707960012_7603993009814993163_
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 const Main = () => {
   const history = useNavigate();
   const [isPayment, setIsPayment] = useState(false);
@@ -44,7 +45,14 @@ const Main = () => {
 
   const handlePayClick = async (amount) => {
     if (!localStorage.getItem("userId")) {
-      return history("/endeavour/login");
+      history("/endeavour/login");
+      return toast.warn("First Login to register", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        theme: "colored",
+      });
     }
     try {
       const {
@@ -110,26 +118,35 @@ const Main = () => {
           </p>
         </div>
 
-        <div className="watch-us w-[350px] md:w-[400px] h-[120px] mr-[50px] mt-10 bg-white flex items-center justify-center rounded-md z-50">
+        <div className="watch-us w-[350px] md:w-[400px] h-[120px] mr-[10px] mt-10 bg-white flex items-center  rounded-md !z-30">
           {!isPayment && (
-            <div className="md:mr-8">
-              <p className="text-md line-through text-gray-600">₹299</p>
+            <div className="w-full">
+              <p className="text-md  text-gray-600">Early Bird Offer</p>
+              <p className="text-md line-through text-gray-600">₹300</p>
               <p className="text-3xl font-semibold">₹250</p>
             </div>
           )}
 
           {isPayment ? (
-            <button className="ml-10 w-full ">
+            <button className=" w-full ">
               <p className="text-lg  md:text-xl font-semibold border-2 border-black p-5 rounded-md">
                 Already Registered
               </p>
             </button>
           ) : (
-            <button className="ml-10" onClick={() => handlePayClick(250)}>
-              <p className="text-lg w-[180px] md:text-xl font-semibold border-2 border-black p-5">
-                Register Now
-              </p>
-            </button>
+            <>
+              <button
+                className="ml-10"
+                onClick={() => {
+                  handlePayClick(250);
+                  // alert("Maintanence is going on Sorry for inconvenience");
+                }}
+              >
+                <p className="text-lg w-[180px] md:text-xl font-semibold border-2 border-black p-5">
+                  Register Now
+                </p>
+              </button>
+            </>
           )}
         </div>
         {/* <div className="media">
@@ -153,7 +170,7 @@ const Main = () => {
         </div> */}
 
         <div className="ellipse-container bg-black mt-1">
-          <img src={img2} alt="squadra" className="squadra bg-black" />
+          <img src={img2} alt="squadra" className="squadra" />
 
           <div className="ellipse thin"></div>
           <div className="ellipse thick"></div>
