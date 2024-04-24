@@ -37,13 +37,13 @@ function PopUp() {
       } backdrop-blur-3xl h-screen w-screen flex justify-center items-center`}
     >
       <div className={`${closed && "hidden"} bg-none  py-5 px-16 z-50`}>
-        <div className="flex justify-between items-center mb-5">
+        <div className="flex z-20 justify-between items-center mb-5">
           <div></div>
-          <h1 className="font-bold text-lg md:text-2xl">
+          <h1 className="font-bold !text-white text-lg md:text-2xl">
             Entertainment Eve !!
           </h1>
           <p
-            className="border-2 border-white cursor-pointer p-2 px-3 rounded"
+            className="border-2 border-white text-white cursor-pointer p-2 px-3 rounded"
             onClick={() => setClosed(true)}
           >
             X
@@ -61,7 +61,7 @@ function PopUp() {
           onClick={handleClick}
           className="w-full h-[550px] flex md:hidden md:w-[850px] md:h-[350px]"
         />
-        <center className="z-50 mt-5">
+        <center className="z-50 mt-5 !text-white">
           <button onClick={handleClick}>Register Now</button>
         </center>
       </div>
