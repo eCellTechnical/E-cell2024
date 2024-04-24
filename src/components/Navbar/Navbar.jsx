@@ -231,7 +231,11 @@ function Navbar() {
                 <p className="font-medium text-black dark:text-white">Learn</p>
                 <div className="learnMenu Menu absolute w-[100vw]  top-[100%] left-[0]  flex flex-wrap p-8 px-20 justify-center bg-[#ffffffe6] dark:bg-[#000000e6]">
                   <div className="m-5 w-1/4 flex flex-row items-center justify-start childLinks">
-                    <img src={bloggerIcon} alt="Blog" className="w-10 h-10 m-3" />
+                    <img
+                      src={bloggerIcon}
+                      alt="Blog"
+                      className="w-10 h-10 m-3"
+                    />
                     <a
                       href="https://medium.com/@ECELLKIET"
                       target="_blank"
@@ -244,7 +248,11 @@ function Navbar() {
                     </a>
                   </div>
                   <div className="m-5 w-1/4 flex flex-row items-center justify-start childLinks">
-                    <img src={questionIcon} alt="FAQ" className="w-10 h-10 m-3" />
+                    <img
+                      src={questionIcon}
+                      alt="FAQ"
+                      className="w-10 h-10 m-3"
+                    />
                     <div onClick={() => history("/")}>
                       <h2 className="text-[#4d55ba] text-2xl">FAQ</h2>
                       <p className="text-md font-normal text-black dark:text-white">
@@ -809,6 +817,9 @@ function Navbar() {
               >
                 Contact Us
               </Link>
+              <Link onClick={() => setEndeavourMainMenu(0)} to="/endeavour/eve">
+                Eve
+              </Link>
               {!localStorage.getItem("userId") ? (
                 <>
                   <Link to="/endeavour/login">
@@ -1199,6 +1210,9 @@ function Navbar() {
               to="/endeavour/sponsors"
             >
               Sponsors
+            </Link>
+            <Link onClick={() => setEndeavourMainMenu(0)} to="/endeavour/eve">
+              Eve
             </Link>
             <a
               onClick={() => {

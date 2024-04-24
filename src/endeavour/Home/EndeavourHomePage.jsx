@@ -13,6 +13,8 @@ const Sponsors = lazy(() => import("../../components/Sponsers/Sponsers"));
 const Speakers = lazy(() => import("../../components/Speaker/Organiser"));
 const AllEvents = lazy(() => import("../../components/AllEvents/AllEvents"));
 
+import PopUp from "../../components/PopUp/PopUp";
+
 function EndeavourHomePage() {
   const { pathname } = useLocation();
   useEffect(() => {
@@ -61,6 +63,10 @@ function EndeavourHomePage() {
             >
               <GlobeComponent />
             </div>
+          </div>
+
+          <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-50">
+            <PopUp />
           </div>
 
           <div className="z-10">

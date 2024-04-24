@@ -29,6 +29,8 @@ const Footer = React.lazy(() => import("./components/footer/Footer"));
 //   import("./endeavour/CommingSoon/CommingSoon")
 // );
 
+const Eve = React.lazy(() => import("./components/home_page/home"));
+
 const EndeavourHomePage = React.lazy(() =>
   import("./endeavour/Home/EndeavourHomePage")
 );
@@ -119,6 +121,8 @@ function App() {
               <Route path="/ideasubmissions" element={<IdeaSubmissions />} />
 
               {/* <Route path="/endeavour" element={<ComingSoon />} /> */}
+
+              <Route path="/endeavour/eve" element={<Eve />} />
               <Route path="/endeavour" element={<EndeavourHomePage />} />
               <Route path="/endeavour/login" element={<EndeavourLogin />} />
               <Route
