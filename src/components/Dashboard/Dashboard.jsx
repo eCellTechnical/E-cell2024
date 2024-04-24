@@ -5,6 +5,7 @@ function Dashboard() {
   const [eventWiseCount, setEventWiseCount] = useState();
   const [totalRegistrationsPaid, setTotalRegistrationsPaid] = useState();
   const [totalRegistrationsUnPaid, setTotalRegistrationsUnPaid] = useState();
+  const [eveRegistrations, setEveRegistrations] = useState();
   useEffect(() => {
     async function fetchData() {
       try {
@@ -16,6 +17,7 @@ function Dashboard() {
           setEventWiseCount(response.data.eventWiseCount);
           setTotalRegistrationsPaid(response.data.totalRegistrationsPaid);
           setTotalRegistrationsUnPaid(response.data.totalRegistrationsUnPaid);
+          setEveRegistrations(response.data.eveRegistrations);
         }
       } catch (error) {
         alert("Error fetching Event:");
@@ -45,6 +47,19 @@ function Dashboard() {
               <p className="font-medium">{count}</p>
             </div>
           ))}
+      </div>
+      <div>
+        <h2 className="font-bold text-2xl mt-5">
+          Entertainment Eve Registration
+        </h2>
+      </div>
+      <div className="flex flex-wrap mt-5 gap-8">
+        {eveRegistrations && (
+          <div className="flex flex-col bg-blue-300 justify-between items-center  py-5 px-5 rounded-xl">
+            <h2 className="font-semibold mb-2">Entertainment Eve</h2>
+            <p className="font-medium">{eveRegistrations}</p>
+          </div>
+        )}
       </div>
     </div>
   );

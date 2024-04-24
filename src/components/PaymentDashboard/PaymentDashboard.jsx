@@ -3,6 +3,7 @@ import axios from "axios";
 function PaymentDashboard() {
   const [totalPayments, setTotalPayments] = useState(0);
   const [eventWisePayments, setEventWisePayments] = useState();
+  const [eveRegistrations, setEveRegistrations] = useState();
   useEffect(() => {
     async function fetchData() {
       try {
@@ -12,6 +13,7 @@ function PaymentDashboard() {
         if (response.data) {
           setTotalPayments(response.data.totalPayments);
           setEventWisePayments(response.data.eventWisePayments);
+          setEveRegistrations(response.data.eveRegistrations);
         }
       } catch (error) {
         alert("Error fetching Event:");
@@ -39,6 +41,17 @@ function PaymentDashboard() {
               <p className="font-medium">{totalPayment}</p>
             </div>
           ))}
+      </div>
+      <div>
+        <h2 className="font-bold text-2xl mt-5">Entertainment Eve Payments</h2>
+      </div>
+      <div className="flex flex-wrap mt-5 gap-8">
+        {eveRegistrations && (
+          <div className="flex flex-col bg-blue-300 justify-between items-center  py-5 px-5 rounded-xl">
+            <h2 className="font-semibold mb-2">Entertainment Eve</h2>
+            <p className="font-medium">{eveRegistrations * 250}</p>
+          </div>
+        )}
       </div>
     </div>
   );
