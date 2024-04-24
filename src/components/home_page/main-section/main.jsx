@@ -170,7 +170,7 @@ const Main = () => {
         </div> */}
 
         <div className="ellipse-container mt-1">
-          <img src={img2} alt="squadra" className="squadra" />
+          <img src={img2} alt="squadra" className="squadra z-20" />
 
           <div className="ellipse thin"></div>
           <div className="ellipse thick"></div>
