@@ -8,6 +8,7 @@ import "./Domains.css";
 function Domains() {
   return (
     <div className="flex flex-col justify-center items-center  text-[#fff] my-10">
+      
       <h2 className="head !text-4xl text-black dark:text-white !font-bold">
         Our <span className="text-[#4d55ba]">Domains</span>
       </h2>
