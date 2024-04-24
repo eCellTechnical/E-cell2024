@@ -118,7 +118,7 @@ const Main = () => {
           </p>
         </div>
 
-        <div className="watch-us w-[350px] md:w-[400px] h-[120px] mr-[50px] mt-10 bg-white flex items-center  rounded-md z-50">
+        <div className="watch-us w-[350px] md:w-[400px] h-[120px] mr-[50px] mt-10 bg-white flex items-center  rounded-md !z-50">
           {!isPayment && (
             <div className="md:mr-8">
               <p className="text-md line-through text-gray-600">₹299</p>
@@ -160,7 +160,7 @@ const Main = () => {
           </ul>
         </div> */}
 
-        <div className="ellipse-container mt-1">
+        <div className="ellipse-container mt-1 z-40">
           <img src={img2} alt="squadra" className="squadra" />
 
           <div className="ellipse thin"></div>
