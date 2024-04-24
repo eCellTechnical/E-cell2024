@@ -27,8 +27,10 @@ function Dashboard() {
   }, []);
   return (
     <div className="w-full">
-      <div className="flex bg-blue-300 justify-between items-center w-full py-5 px-5 rounded-xl">
-        <h1 className="text-2xl font-bold">Total Registrations(except eve)</h1>
+      <div className="flex flex-col md:flex-row bg-blue-300 justify-between items-center w-full py-5 px-5 rounded-xl">
+        <h1 className="text-2xl font-bold text-center md:text-left">
+          Total Registrations(except eve)
+        </h1>
         <div>
           <p>total</p>
           <p className="text-2xl font-medium">{totalRegistrations}</p>
