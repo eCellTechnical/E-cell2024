@@ -61,7 +61,7 @@ function PopUp() {
           onClick={handleClick}
           className="w-full h-[550px] flex md:hidden md:w-[850px] md:h-[350px]"
         />
-        <center className="z-50 mt-5 !text-white">
+        <center className="z-50 mt-5 !text-white cursor-pointer">
           <button onClick={handleClick}>Register Now</button>
         </center>
       </div>
