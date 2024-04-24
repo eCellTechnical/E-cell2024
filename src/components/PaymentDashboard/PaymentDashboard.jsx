@@ -24,7 +24,7 @@ function PaymentDashboard() {
   return (
     <div className="w-full">
       <div className="flex bg-blue-300 justify-between items-center w-full py-5 px-5 rounded-xl">
-        <h1 className="text-2xl font-bold">Total Collections</h1>
+        <h1 className="text-2xl font-bold">Total Collections(except eve)</h1>
         <p className="text-2xl font-medium">{totalPayments}</p>
       </div>
       <div>
