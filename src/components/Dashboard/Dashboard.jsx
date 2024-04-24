@@ -29,9 +29,18 @@ function Dashboard() {
     <div className="w-full">
       <div className="flex bg-blue-300 justify-between items-center w-full py-5 px-5 rounded-xl">
         <h1 className="text-2xl font-bold">Total Registrations</h1>
-        <p className="text-2xl font-medium">{totalRegistrations}</p>
-        <p className="text-2xl font-medium">{totalRegistrationsPaid}</p>
-        <p className="text-2xl font-medium">{totalRegistrationsUnPaid}</p>
+        <div>
+          <p>total</p>
+          <p className="text-2xl font-medium">{totalRegistrations}</p>
+        </div>
+        <div>
+          <p>Paid</p>
+          <p className="text-2xl font-medium">{totalRegistrationsPaid}</p>
+        </div>
+        <div>
+          <p>UnPaid</p>
+          <p className="text-2xl font-medium">{totalRegistrationsUnPaid}</p>
+        </div>
       </div>
       <div>
         <h2 className="font-bold text-2xl mt-5">Event Wise Registration</h2>
