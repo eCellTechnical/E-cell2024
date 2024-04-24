@@ -122,7 +122,7 @@ const Main = () => {
           {!isPayment && (
             <div className="w-full">
               <p className="text-md  text-gray-600">Early Bird Offer</p>
-              <p className="text-md line-through text-gray-600">₹299</p>
+              <p className="text-md line-through text-gray-600">₹300</p>
               <p className="text-3xl font-semibold">₹250</p>
             </div>
           )}
