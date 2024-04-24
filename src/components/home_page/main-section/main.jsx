@@ -145,6 +145,9 @@ const Main = () => {
                 <p className="text-lg w-[180px] md:text-xl font-semibold border-2 border-black p-5">
                   Register Now
                 </p>
+                <p className="font-semibold text-md text-red-600 w-full">
+                  **Only for KIET Students no outside students are allowed.
+                </p>
               </button>
             </>
           )}
