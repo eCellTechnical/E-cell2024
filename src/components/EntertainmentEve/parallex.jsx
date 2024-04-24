@@ -55,7 +55,7 @@ const HeroParallax = ({ products }) => {
         }}
         className=""
       >
-        <h1 className="text-white text-3xl flex text-center justify-center mb-10">
+        <h1 className="text-white  mt-10 text-3xl flex text-center justify-center mb-10">
           Previous Glimpses
         </h1>
 
