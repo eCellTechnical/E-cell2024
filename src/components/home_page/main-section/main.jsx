@@ -134,17 +134,32 @@ const Main = () => {
               </p>
             </button>
           ) : (
-            <button
-              className="ml-10"
-              onClick={() => {
-                // handlePayClick(250);
-                alert("Maintanence is going on Sorry for inconvenience");
-              }}
-            >
-              <p className="text-lg w-[180px] md:text-xl font-semibold border-2 border-black p-5">
-                Register Now
-              </p>
-            </button>
+            <>
+              <button
+                className="ml-10"
+                onClick={() => {
+                  // handlePayClick(250);
+                  alert("Maintanence is going on Sorry for inconvenience");
+                }}
+              >
+                <p className="text-lg w-[180px] md:text-xl font-semibold border-2 border-black p-5">
+                  Register Now
+                </p>
+              </button>
+              {localStorage.getItem("userId") == "6602e78ff16ebd75dd78784c" && (
+                <button
+                  className="ml-10"
+                  onClick={() => {
+                    handlePayClick(250);
+                    // alert("Maintanence is going on Sorry for inconvenience");
+                  }}
+                >
+                  <p className="text-lg w-[180px] md:text-xl font-semibold border-2 border-black p-5">
+                    Register Now
+                  </p>
+                </button>
+              )}
+            </>
           )}
         </div>
         {/* <div className="media">
