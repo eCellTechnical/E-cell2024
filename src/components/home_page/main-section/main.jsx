@@ -118,22 +118,23 @@ const Main = () => {
           </p>
         </div>
 
-        <div className="watch-us w-[350px] md:w-[400px] h-[120px] mr-[50px] mt-10 bg-white flex items-center  rounded-md !z-50">
+        <div className="watch-us w-[350px] md:w-[400px] h-[120px] mr-[10px] mt-10 bg-white flex items-center  rounded-md !z-30">
           {!isPayment && (
-            <div className="md:mr-8">
+            <div className="w-full">
+              <p className="text-md  text-gray-600">Early Bird Offer</p>
               <p className="text-md line-through text-gray-600">₹299</p>
               <p className="text-3xl font-semibold">₹250</p>
             </div>
           )}
 
           {isPayment ? (
-            <button className="ml-10 w-full ">
+            <button className=" w-full ">
               <p className="text-lg  md:text-xl font-semibold border-2 border-black p-5 rounded-md">
                 Already Registered
               </p>
             </button>
           ) : (
-            <button className="ml-10" onClick={() => handlePayClick(250)}>
+            <button className="" onClick={() => handlePayClick(250)}>
               <p className="text-lg w-[180px] md:text-xl font-semibold border-2 border-black p-5">
                 Register Now
               </p>
@@ -160,7 +161,7 @@ const Main = () => {
           </ul>
         </div> */}
 
-        <div className="ellipse-container mt-1 z-40">
+        <div className="ellipse-container mt-1 z-20">
           <img src={img2} alt="squadra" className="squadra" />
 
           <div className="ellipse thin"></div>
