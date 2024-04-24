@@ -55,6 +55,10 @@ const HeroParallax = ({ products }) => {
         }}
         className=""
       >
+        <h1 className="text-white text-3xl flex text-center justify-center mb-10">
+          Previous Glimpses
+        </h1>
+
         <motion.div className="flex flex-row-reverse space-x-reverse space-x-20 mb-20">
           {firstRow.map((product) => (
             <ProductCard
@@ -88,7 +92,6 @@ const HeroParallax = ({ products }) => {
 };
 
 const Header = () => {
-  
   return (
     <div className="max-w-7xl relative mx-auto py-20 md:py-30 px-4 w-full z-50  left-0 top-0">
       {/* {isPayment ? (

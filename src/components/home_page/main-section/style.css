@@ -122,6 +122,7 @@
   margin: 0 auto;
   overflow: hidden;
   z-index: 20;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .ellipse {
@@ -157,8 +158,9 @@
   top: 3.5%;
   left: 3.5%;
   animation: ellipseRotate 10s ease-in-out infinite;
+  background-color: #000;
 }
-.background{
+.background {
   z-index: 10;
 }
 
@@ -206,13 +208,13 @@
     height: 22em;
     width: 22em;
   }
-  .contant .paragragh{
+  .contant .paragragh {
     display: none;
     justify-content: center;
     align-items: center;
     width: 100%;
   }
-  .main-header{
+  .main-header {
     display: flex;
     justify-content: center;
     align-items: center;

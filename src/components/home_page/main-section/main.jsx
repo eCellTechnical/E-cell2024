@@ -107,7 +107,7 @@ const Main = () => {
           className="background brightness-100"
         />
         <div className="contant">
-          <h4 className="main-header justify-center flex items-center text-2xl md:text-6xl font-semibold">
+          <h4 className="main-header mt-10 justify-center flex items-center text-2xl md:text-6xl font-semibold">
             The Entertainment <br /> Eve
           </h4>
           <p className="paragragh mt-5 text-lg justify-center flex items-center">
@@ -169,8 +169,8 @@ const Main = () => {
           </ul>
         </div> */}
 
-        <div className="ellipse-container mt-1 z-20">
-          <img src={img2} alt="squadra" className="squadra" />
+        <div className="ellipse-container mt-1">
+          <img src={img2} alt="squadra" className="squadra z-20" />
 
           <div className="ellipse thin"></div>
           <div className="ellipse thick"></div>
