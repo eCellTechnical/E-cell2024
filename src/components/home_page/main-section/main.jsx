@@ -182,7 +182,7 @@ const Main = () => {
           )}
 
           {isPayment ? (
-            <button className=" w-full ">
+            <button className="ml-10 w-full ">
               <p className="text-lg  md:text-xl font-semibold border-2 border-black p-5 rounded-md">
                 Already Registered
               </p>
