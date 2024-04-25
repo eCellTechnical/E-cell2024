@@ -11,6 +11,7 @@ const SpecificEvent = () => {
   const { eventId } = useParams();
   const [event, setEvent] = useState({});
   const [teamName, setTeamName] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
   const [formData, setFormData] = useState([]);
   const [register, setRegister] = useState(0);
   const [payment, setPayment] = useState(0);
@@ -184,7 +185,7 @@ const SpecificEvent = () => {
       try {
         const response = await axios.post(
           `https://e-cell2024backend-production.up.railway.app/registerteam`,
-          { filteredData, teamName, leaderId, eventId },
+          { filteredData, teamName, leaderId, eventId, phoneNumber },
           {
             headers: { "Content-Type": "application/json" },
           }
@@ -224,7 +225,7 @@ const SpecificEvent = () => {
         });
       }
     },
-    [eventId, formData, teamName, event.minMembers]
+    [eventId, formData, teamName, event.minMembers, phoneNumber]
   );
 
   const handleRegister = useCallback(() => {
@@ -424,6 +425,29 @@ const SpecificEvent = () => {
                   setTeamName(e.target.value);
                 }}
                 value={teamName}
+                required="required"
+              />
+            </div>
+
+            <div className="flex flex-col w-[80%] md:w-[60%] mt-5">
+              <label
+                htmlFor="phoneNumber"
+                className="font-semibold text-gray-600 dark:text-[#acacac]"
+              >
+                Phone Number
+              </label>
+              <input
+                className="p-2 bg-transparent border-2 border-black dark:border-[#dcdcdc] rounded-lg focus:outline-none font-semibold"
+                type="tel"
+                pattern="[6-9]{1}[0-9]{9}"
+                name="phoneNumber"
+                id="phoneNumber"
+                onChange={(e) => {
+                  setPhoneNumber(e.target.value);
+                }}
+                title="Phone Number should have 10 digits"
+                maxLength={10}
+                value={phoneNumber}
                 required="required"
               />
             </div>
