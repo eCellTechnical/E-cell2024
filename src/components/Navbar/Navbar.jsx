@@ -1211,7 +1211,7 @@ function Navbar() {
             >
               Sponsors
             </Link>
-            <Link onClick={() => setEndeavourMainMenu(0)} to="/endeavour/eve">
+            <Link className="text-bold" onClick={() => setEndeavourMainMenu(0)} to="/endeavour/eve">
               Eve
             </Link>
             <a

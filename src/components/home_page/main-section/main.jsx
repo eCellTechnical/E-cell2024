@@ -208,8 +208,8 @@ const Main = () => {
             </>
           )}
         </div>
-        <div className="countdown text-white w-[350px] flex justify-center flex-col md:w-[400px] h-[170px] mr-[8%] md:mr-[10px] mt-[220px] rounded-md !z-20 ">
-          <h1 className="text-3xl ">{`Early Bird Offer End's In`}</h1>
+        <div className="countdown text-white w-[350px] flex justify-center mr-[-40px] items-center flex-col md:w-[400px] h-[170px] md:mr-[10px] mt-[400px] md:mt-[220px] rounded-md !z-20 ">
+          <h1 className="md:text-3xl text-xl">{`Early Bird Offer End's In`}</h1>
           <CountdownTimer />
         </div>
         {/* <div className="media">
