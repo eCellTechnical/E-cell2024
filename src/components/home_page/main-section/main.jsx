@@ -8,7 +8,7 @@ import "./style.css";
 import img1 from "../../../assets/curtains.jpg";
 import img2 from "../../../assets/271454876_665523707960012_7603993009814993163_n-removebg-preview.png";
 import axios from "axios";
-import CountdownTimer from "../../countdown/countdown"
+import CountdownTimer from "../../countdown/countdown";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -119,7 +119,7 @@ const Main = () => {
         } absolute  top-0 left-0 !z-50 w-full h-full flex justify-center items-center text-white bg-[#ffffff38]`}
       >
         <div className="bg-black w-[80%] h-[70%] flex justify-center items-center flex-col  rounded-xl">
-          <div className="flex flex-row w-[60%] justify-between items-center mb-11">
+          <div className="flex flex-row w-[80%] md:w-[60%] justify-between items-center mb-11">
             <div></div>
             <div className="text-center">
               <h1 className="text-4xl font-bold">Howdy</h1>
@@ -134,7 +134,7 @@ const Main = () => {
               X
             </p>
           </div>
-          <div className="flex flex-col w-[30%]">
+          <div className="flex flex-col w-[80%] md:w-[30%]">
             <label htmlFor="libraryID" className="font-semibold text-gray-300">
               Library Id (Don&apos;t add fake Ids, otherwise payment isn&apos;t
               refundable)
