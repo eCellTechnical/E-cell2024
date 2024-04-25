@@ -47,6 +47,8 @@ function EndeavourProfile() {
   const [teamDetails, setTeamDetails] = useState();
   const [memberName, setMemberName] = useState("");
 
+  const [eveInfo, setEveInfo] = useState();
+
   const isLeader = async (eventId) => {
     const response = await axios.get(
       `https://e-cell2024backend-production.up.railway.app/isLeader/${eventId}`,
@@ -364,6 +366,7 @@ function EndeavourProfile() {
       if (response.data.payment) {
         setPaymentInfo(response.data.payment);
         setEventNamePayment(response.data.eventname);
+        setEveInfo(response.data.eveInfo);
       }
     } catch (error) {
       toast.error("Bad network error,Please try again after sometime", {
@@ -417,28 +420,39 @@ function EndeavourProfile() {
         </div>
 
         <div className="!fixed left-0 right-0 bottom-0 flex md:hidden bg-white dark:bg-black p-4 justify-around z-50">
-          <img
-            onClick={profileClicked}
-            src={
-              localStorage.getItem("theme") == "light"
-                ? profileIconb
-                : profileIconw
-            }
-            className="w-11 h-11"
-            alt=""
-          />
-          <img
-            onClick={registeredEventsClicked}
-            src={localStorage.getItem("theme") == "light" ? eventb : eventw}
-            className="w-10 h-10"
-            alt=""
-          />
-          <img
-            onClick={paymentClicked}
-            src={localStorage.getItem("theme") == "light" ? paymentb : paymentw}
-            className="w-10 h-10"
-            alt=""
-          />
+          <div className="flex flex-col justify-center items-center">
+            <img
+              onClick={profileClicked}
+              src={
+                localStorage.getItem("theme") == "light"
+                  ? profileIconb
+                  : profileIconw
+              }
+              className="w-11 h-11"
+              alt=""
+            />
+            <p>Profile</p>
+          </div>
+          <div className="flex flex-col justify-center items-center">
+            <img
+              onClick={registeredEventsClicked}
+              src={localStorage.getItem("theme") == "light" ? eventb : eventw}
+              className="w-10 h-10"
+              alt=""
+            />
+            <p>Registered Events</p>
+          </div>
+          <div className="flex flex-col justify-center items-center">
+            <img
+              onClick={paymentClicked}
+              src={
+                localStorage.getItem("theme") == "light" ? paymentb : paymentw
+              }
+              className="w-10 h-10"
+              alt=""
+            />
+            <p>Payments</p>
+          </div>
         </div>
 
         <div
@@ -855,6 +869,25 @@ function EndeavourProfile() {
               </div>
             ) : (
               <p className="mt-11">No Payments</p>
+            )}
+          </div>
+          <div className="w-full pt-[13vh] text-center flex justify-center flex-col items-center">
+            <h1 className="text-4xl font-bold underline mb-11">
+              Entertainment Eve Payment
+            </h1>
+            {eveInfo ? (
+              <div className="p-5 px-11 shadow-2xl w-[80%] md:w-[30%] rounded-lg flex flex-col bg-[#9ea4ff] justify-center items-center border-white border-4 text-center text-[1.1em] text-black ">
+                <p>
+                  <span className="font-semibold">
+                    Successfully Registered For Entertainment Eve
+                  </span>
+                </p>
+                {/* <p>
+                  <span className="font-semibold">Event Name :</span>{" "}
+                </p> */}
+              </div>
+            ) : (
+              <p className="mt-5">Not Registered Yet</p>
             )}
           </div>
         </div>
