@@ -12,6 +12,15 @@
   opacity: 0.6;
   z-index: -1;
 }
+.countdown {
+  position: absolute;
+  top: 53%;
+  right: 60px;
+  transform: translateY(-70%);
+  background-color: transparent;
+  padding: 2em 2em 2em 2em;
+  z-index: 10;
+}
 
 .squadra {
   position: absolute;

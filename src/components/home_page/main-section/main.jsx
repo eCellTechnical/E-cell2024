@@ -8,6 +8,7 @@ import "./style.css";
 import img1 from "../../../assets/curtains.jpg";
 import img2 from "../../../assets/271454876_665523707960012_7603993009814993163_n-removebg-preview.png";
 import axios from "axios";
+import CountdownTimer from "../../countdown/countdown"
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -206,6 +207,10 @@ const Main = () => {
               </button>
             </>
           )}
+        </div>
+        <div className="countdown text-white w-[350px] flex justify-center flex-col md:w-[400px] h-[170px] mr-[8%] md:mr-[10px] mt-[220px] rounded-md !z-20 ">
+          <h1 className="text-3xl ">{`Early Bird Offer End's In`}</h1>
+          <CountdownTimer />
         </div>
         {/* <div className="media">
           <ul>
