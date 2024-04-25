@@ -136,7 +136,7 @@ const Main = () => {
           </div>
           <div className="flex flex-col w-[80%] md:w-[30%]">
             <label htmlFor="libraryID" className="font-semibold text-gray-300">
-              Library Id (Don&apos;t add fake Ids, otherwise payment isn&apos;t
+              Library Id (Don&apos;t add fake IDs, otherwise payment isn&apos;t
               refundable)
             </label>
             <input
