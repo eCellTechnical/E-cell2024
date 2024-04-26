@@ -6,7 +6,7 @@ import "./style.css";
 // import { MdOutlineAttachEmail } from "react-icons/md";
 // import { BsTwitterX } from "react-icons/bs";
 import img1 from "../../../assets/curtains.jpg";
-import img2 from "../../../assets/271454876_665523707960012_7603993009814993163_n-removebg-preview.png";
+import img2 from "../../../assets/eve_guest2.png";
 import axios from "axios";
 import CountdownTimer from "../../countdown/countdown";
 import { useEffect, useState } from "react";
