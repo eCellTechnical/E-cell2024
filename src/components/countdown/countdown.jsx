@@ -48,7 +48,7 @@ function CountdownTimer() {
   return (
     <div>
       <div>
-        <p className='text-xl text-center'>{timeLeft.hours} hours {timeLeft.minutes} minutes {timeLeft.seconds} seconds</p>
+        <p className='text-lg text-center'>{timeLeft.hours} hours {timeLeft.minutes} minutes {timeLeft.seconds} seconds</p>
       </div>
     </div>
   );

@@ -214,8 +214,8 @@
 
 @media (max-width: 480px) {
   .ellipse-container {
-    height: 22em;
-    width: 22em;
+    height: 18em;
+    width: 18em;
   }
   .contant .paragragh {
     display: none;
