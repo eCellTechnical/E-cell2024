@@ -161,7 +161,7 @@ const Main = () => {
           alt="backgroung"
           className="background brightness-100"
         />
-        <div className="contant !z-10">
+        <div className="contant ">
           <h4 className="main-header mt-10 justify-center flex items-center text-2xl md:text-6xl font-semibold">
             The Entertainment <br /> Eve
           </h4>
