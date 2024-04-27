@@ -1,6 +1,6 @@
 // import "PopUp.css";
 import { useEffect, useState } from "react";
-import img2 from "../../assets/popup/Pop Up Notify (850 x 350 px) (1).png";
+import img2 from "../../assets/popup/Pop Up Notify (850 x 350 px) (3).png";
 import img3 from "../../assets/popup/Pop Up Notify (850 x 350 px) (300 x 550 px).png";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
