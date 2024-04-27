@@ -817,7 +817,11 @@ function Navbar() {
               >
                 Contact Us
               </Link>
-              <Link onClick={() => setEndeavourMainMenu(0)} to="/endeavour/eve">
+              <Link
+                onClick={() => setEndeavourMainMenu(0)}
+                to="/endeavour/eve"
+                className="text-black dark:text-white font-semibold"
+              >
                 Eve
               </Link>
               {!localStorage.getItem("userId") ? (
