@@ -1213,7 +1213,7 @@ function Navbar() {
               Sponsors
             </Link>
             <Link
-              className="text-bold text-[#000] dark:text-white"
+              className="text-bold !text-[#000] dark:!text-white"
               onClick={() => setEndeavourMainMenu(0)}
               to="/endeavour/eve"
             >
