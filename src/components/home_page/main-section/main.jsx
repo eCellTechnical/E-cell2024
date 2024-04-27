@@ -119,16 +119,16 @@ const Main = () => {
         } absolute  top-0 left-0 !z-50 w-full h-full flex justify-center items-center text-white bg-[#ffffff38]`}
       >
         <div className="bg-black w-[80%] h-[70%] flex justify-center items-center flex-col  rounded-xl">
-          <div className="flex flex-row w-[80%] md:w-[60%] justify-between items-center mb-11">
+          <div className="flex flex-row w-[80%] md:w-[80%] justify-between items-center mb-11">
             <div></div>
             <div className="text-center">
-              <h1 className="text-4xl font-bold">Howdy</h1>
-              <p className="text-gray-300 mt-2 text-lg ">
+              <h1 className="text-4xl font-bold">
                 Ready to join us for a prodigious evening
-              </p>
+              </h1>
+              {/* <p className="text-gray-300 mt-2 text-lg "></p> */}
             </div>
             <p
-              className="border-2 p-2 rounded-md border-white cursor-pointer"
+              className="border-2 p-2 px-3 rounded-md border-white cursor-pointer"
               onClick={() => setOpen(false)}
             >
               X
