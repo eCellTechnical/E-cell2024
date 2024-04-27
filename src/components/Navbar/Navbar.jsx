@@ -1196,6 +1196,7 @@ function Navbar() {
             <Link
               onClick={() => setEndeavourMainMenu(0)}
               to="/endeavour/events"
+              className="text-[#000] dark:text-white"
             >
               Events
             </Link>
@@ -1211,7 +1212,11 @@ function Navbar() {
             >
               Sponsors
             </Link>
-            <Link className="text-bold" onClick={() => setEndeavourMainMenu(0)} to="/endeavour/eve">
+            <Link
+              className="text-bold text-[#000] dark:text-white"
+              onClick={() => setEndeavourMainMenu(0)}
+              to="/endeavour/eve"
+            >
               Eve
             </Link>
             <a
