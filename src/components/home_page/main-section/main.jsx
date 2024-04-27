@@ -122,8 +122,8 @@ const Main = () => {
           <div className="flex flex-row w-[80%] md:w-[80%] justify-between items-center mb-11">
             <div></div>
             <div className="text-center">
-              <h1 className="text-4xl font-bold">
-                Ready to join us for a prodigious evening
+              <h1 className="text-2xl font-bold">
+                Ready to join us for a prodigious evening !
               </h1>
               {/* <p className="text-gray-300 mt-2 text-lg "></p> */}
             </div>
