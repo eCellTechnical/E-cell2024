@@ -13,6 +13,7 @@ import SourabhGoyal from "../../assets/people/saurabh.jpeg";
 // import ShubhamGaur from "../../assets/people/Shubham-Gaur.webp";
 import SourabhJain from "../../assets/people/sourabh.jpeg";
 // import SunilDutt from "../../assets/people/sunil-dutt.jpg";
+import Card from "../Card/card2";
 
 import "./speaker.css";
 const Organizer = () => {
@@ -62,7 +63,7 @@ const Organizer = () => {
           data-aos="fade-up"
           className="mt-10 mb-10 !font-bold md:!font-bold text-lg md:text-2xl text-black dark:text-white"
         >
-          Revealing Soon...
+          <Card />
         </div>
       </div>
       <div className="flex justify-center pb-10 mt-11  max-[415px]:ml-5 ">
