@@ -563,7 +563,7 @@ const SpecificEvent = () => {
         <div className="p-2 mt-3 w-full">
           <button
             className={`border-4 dark:border-4 border-[#a2a8ff] dark:border-[#a2a8ff] bg-[#4d55ba] dark:bg-[#ffffff] text-white dark:text-black rounded-lg font-semibold text-lg py-2 cursor-pointer z-10  w-full ${
-              isRegistered === 1 && "hidden"
+              (isRegistered === 1 || !event.registrationActive) && "hidden"
             }`}
             onClick={() => {
               if (isRegistered == 1) {
@@ -576,7 +576,7 @@ const SpecificEvent = () => {
           </button>
           <button
             className={`border-2 flex justify-center items-center border-[#868eff] bg-[#4d55ba] text-white rounded-lg font-semibold text-lg  py-2 z-10 cursor-pointer  w-full ${
-              isRegistered === 0
+              isRegistered === 0 || !event.registrationActive
                 ? "hidden"
                 : `${payment === 0 ? `flex` : `hidden`}`
             }`}
@@ -592,6 +592,13 @@ const SpecificEvent = () => {
             }`}
           >
             All Done ! See You At Event
+          </button>
+          <button
+            className={`border-[#868eff] border-2  flex justify-center items-center  rounded-lg  text-black dark:text-white bg-transparent font-semibold text-lg py-2  z-10  w-full cursor-not-allowed ${
+              !event.registrationActive ? "flex" : "hidden"
+            }`}
+          >
+            Registrations Closed !!
           </button>
           <Link
             to={
