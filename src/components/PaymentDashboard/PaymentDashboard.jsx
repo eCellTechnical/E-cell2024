@@ -51,7 +51,7 @@ function PaymentDashboard() {
         {eveRegistrations && (
           <div className="flex flex-col bg-blue-300 justify-between items-center  py-5 px-5 rounded-xl">
             <h2 className="font-semibold mb-2">Entertainment Eve</h2>
-            <p className="font-medium">{eveRegistrations * 250}</p>
+            <p className="font-medium">{eveRegistrations * 250 - 325}</p>
           </div>
         )}
       </div>
