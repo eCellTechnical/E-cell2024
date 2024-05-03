@@ -97,6 +97,13 @@ function EndeavourProfile() {
   const handleAddTeamMember = async (data, e) => {
     // console.log(data);
     setDisable(true);
+    return toast.warn("Adding members to the team is closed now", {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      theme: "colored",
+    });
     try {
       const response = await axios.post(
         `https://e-cell2024backend-production.up.railway.app/addMember`,
