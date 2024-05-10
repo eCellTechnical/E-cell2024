@@ -4,138 +4,253 @@ import { Card, CardOverflow } from "@mui/joy";
 import { motion } from "framer-motion";
 import { fadeIn } from "../../styles/Variant";
 
-import sponsor1 from "../../assets/associations/BLUE LEAVES.png";
-import sponsor2 from "../../assets/associations/CAMPUS MEDIA.png";
-import sponsor3 from "../../assets/associations/DONALDS PASTRY SHOP.jpeg";
-import sponsor4 from "../../assets/associations/IMG-20240323-WA0024.jpg";
-import sponsor5 from "../../assets/associations/IMG-20240323-WA0025.jpg";
-import sponsor6 from "../../assets/associations/IMG-20240323-WA0026.png";
-import sponsor7 from "../../assets/associations/IMG-20240323-WA0027.jpg";
-import sponsor8 from "../../assets/associations/IMG-20240323-WA0028.jpg";
-import sponsor9 from "../../assets/associations/IMG-20240323-WA0029.jpg";
-import sponsor10 from "../../assets/associations/IMG-20240323-WA0030.jpg";
-import sponsor11 from "../../assets/associations/IMG-20240323-WA0031.jpg";
-import sponsor12 from "../../assets/associations/IMG-20240323-WA0032.jpg";
-import sponsor13 from "../../assets/associations/IMG-20240323-WA0033.jpg";
-import sponsor14 from "../../assets/associations/IMG-20240323-WA0034.jpg";
-import sponsor15 from "../../assets/associations/IMG-20240323-WA0035.jpg";
-import sponsor16 from "../../assets/associations/IMG-20240323-WA0036.jpg";
-import sponsor17 from "../../assets/associations/IMG-20240323-WA0037.jpg";
-import sponsor18 from "../../assets/associations/IMG-20240323-WA0052.jpg";
-import sponsor19 from "../../assets/associations/IMG-20240323-WA0057.jpg";
-import sponsor20 from "../../assets/associations/IMG-20240323-WA0056.jpg";
-import sponsor21 from "../../assets/associations/IMG-20240323-WA0053.jpg";
+import sponsor1 from "../../assets/sponsors/teliolabs.png";
+import sponsor2 from "../../assets/sponsors/metaapply_logo.jpeg";
+import sponsor3 from "../../assets/sponsors/innovacer.png";
+import sponsor4 from "../../assets/sponsors/flavours.jpg";
+import sponsor5 from "../../assets/sponsors/GitHub-logo.png";
+import sponsor6 from "../../assets/sponsors/webbuilder.png";
+import sponsor7 from "../../assets/sponsors/finlatics.png";
+import sponsor8 from "../../assets/sponsors/evepaper.png";
+import sponsor9 from "../../assets/sponsors/thecarzilla_in_logo.jpeg";
+import sponsor10 from "../../assets/sponsors/b2b-removebg-preview.png";
+import sponsor11 from "../../assets/sponsors/ease my tri.png";
+import sponsor12 from "../../assets/sponsors/Quillbot.png";
+import sponsor13 from "../../assets/sponsors/Amar_Ujala_Logo.png";
+import sponsor14 from "../../assets/sponsors/gathrr-removebg-preview.png";
+import sponsor15 from "../../assets/sponsors/slick-logo-blk.png";
+import sponsor16 from "../../assets/sponsors/intorbot.png";
+import sponsor17 from "../../assets/sponsors/Coding ninja.jpeg";
+import sponsor18 from "../../assets/sponsors/coding block.png";
+import sponsor19 from "../../assets/sponsors/fusionflow-removebg-preview.png";
+import sponsor20 from "../../assets/sponsors/wolfram.jpg";
+import sponsor21 from "../../assets/sponsors/devfolio.png";
+
+import sponsor22 from "../../assets/sponsors/polygon.png";
+import sponsor23 from "../../assets/sponsors/replit.png";
+import sponsor24 from "../../assets/sponsors/solana.jpg";
+import sponsor25 from "../../assets/sponsors/eth.png";
+import sponsor26 from "../../assets/sponsors/quill audit.png";
+import sponsor27 from "../../assets/sponsors/wapromote.jpg";
+import sponsor28 from "../../assets/sponsors/Starworks Logo (PNG-HD).png";
+import sponsor29 from "../../assets/sponsors/youth incorporated logo.png";
+import sponsor30 from "../../assets/sponsors/bee ceptor.png";
+import sponsor31 from "../../assets/sponsors/interview buddy.jpeg";
+import sponsor32 from "../../assets/sponsors/lwt.png";
+import sponsor33 from "../../assets/sponsors/ed times.jpg";
+import sponsor34 from "../../assets/sponsors/startup news.png";
+import sponsor35 from "../../assets/sponsors/eat my news.jpeg";
+import sponsor36 from "../../assets/sponsors/delhievents.jpg";
+import sponsor37 from "../../assets/sponsors/fresources.png";
+import sponsor38 from "../../assets/sponsors/lets upgrade digitaly.png";
+import sponsor39 from "../../assets/sponsors/foodwalas.jpeg";
 // import Im from "../../assets/White-paper-texture-for-Projects.jpg";
 // import "./Associations.css";
 
 function Partners() {
-  const Sponsors = [
-    {
-      name: "BLUE LEAVES",
-      image: sponsor1,
-      position: "Partner",
-    },
-    {
-      image: sponsor2,
-      name: "CAMPUS MEDIA",
-      position: "Partner",
-    },
-    {
-      image: sponsor3,
-      name: "DONALDS PASTRY SHOP",
-      position: "Partner",
-    },
-    {
-      image: sponsor4,
-      name: "Jio",
-      position: "Partner",
-    },
-    {
-      image: sponsor5,
-      name: "Innovacer",
-      position: "Partner",
-    },
-    {
-      image: sponsor6,
-      name: "GeeksForGeeks",
-      position: "Partner",
-    },
-    {
-      image: sponsor7,
-      name: "The TimeLiners",
-      position: "Partner",
-    },
-    {
-      image: sponsor8,
-      name: "Ideaprenur",
-      position: "Partner",
-    },
-    {
-      image: sponsor9,
-      name: "Replit",
-      position: "Partner",
-    },
-    {
-      image: sponsor10,
-      name: "Solana",
-      position: "Partner",
-    },
-    {
-      image: sponsor11,
-      name: "Matic",
-      position: "Partner",
-    },
-    {
-      image: sponsor12,
-      name: "DU Beat",
-      position: "Partner",
-    },
-    {
-      image: sponsor13,
-      name: "Devfolio",
-      position: "Partner",
-    },
-    {
-      image: sponsor14,
-      name: "Coding Ninjas",
-      position: "Partner",
-    },
-    {
-      image: sponsor15,
-      name: "Coding Blocks",
-      position: "Partner",
-    },
-    {
-      image: sponsor16,
-      name: "PrepInsta",
-      position: "Partner",
-    },
-    {
-      image: sponsor17,
-      name: "Abhi Bus",
-      position: "Partner",
-    },
-    {
-      image: sponsor18,
-      name: "Verbwire",
-      position: "Partner",
-    },
-    {
-      image: sponsor19,
-      name: "Youth Incorporated",
-      position: "Partner",
-    },
-    {
-      image: sponsor20,
-      name: "Interview Buddy",
-      position: "Partner",
-    },
-    {
-      image: sponsor21,
-      name: "Inflection",
-      position: "Partner",
-    },
-  ];
+ const Sponsors = [
+   {
+     name: "Teliolabs",
+     image: sponsor1,
+     position: "Title Partner",
+   },
+   {
+     image: sponsor2,
+     name: "MetaApply",
+     position: "Edu. Partner ",
+   },
+   {
+     image: sponsor3,
+     name: "Innovaccer",
+     position: "Partner",
+   },
+   {
+     image: sponsor4,
+     name: "Flavours Food",
+     position: "Food Partner",
+   },
+   {
+     alt: "GITHUB LOGO",
+     image: sponsor5,
+     name: "Github",
+     position: "Partner",
+   },
+   {
+     image: sponsor6,
+     name: "Webbuild",
+     position: "Team Partner",
+   },
+   {
+     image: sponsor7,
+     name: "Finalitcs",
+     position: "Event Partner",
+   },
+   {
+     image: sponsor8,
+     name: "Eve paper",
+     position: "Event Partner",
+   },
+   {
+     image: sponsor9,
+     name: "Carzilla",
+     position: "Partner",
+   },
+   {
+     image: sponsor10,
+     name: "B2B founder group",
+     position: "Network Partner",
+   },
+   {
+     image: sponsor11,
+     name: "Easemytrip",
+     position: "Partner",
+   },
+   {
+     image: sponsor12,
+     name: "Quillbots",
+     position: "Event Partner",
+   },
+   {
+     image: sponsor13,
+     name: "AmarUjala",
+     position: "Partner",
+   },
+   {
+     image: sponsor14,
+     name: "Gathrr",
+     position: "Partner",
+   },
+   {
+     image: sponsor15,
+     name: "Slick",
+     position: "Partner",
+   },
+   {
+     image: sponsor16,
+     name: "Introbot",
+     position: "Network Partner",
+   },
+   {
+     image: sponsor17,
+     name: "Coding Ninjas",
+     position: "Tech Partner",
+   },
+   {
+     image: sponsor18,
+     name: "Coding Blocks",
+     position: "Tech Partner",
+   },
+   {
+     image: sponsor19,
+     name: "Fusion Flow",
+     position: "Tech Partner",
+   },
+   {
+     image: sponsor20,
+     name: "Wolfram",
+     position: "Partner",
+   },
+   {
+     alt: "DEVFOLIO LOGO",
+     image: sponsor21,
+     name: "Devfolio",
+     position: "Partner",
+   },
+   {
+     alt: "POLYGON LOGO",
+     image: sponsor22,
+     name: "Polygon",
+     position: "Partner",
+   },
+   {
+     alt: "REPLIT LOGO",
+     image: sponsor23,
+     name: "Replit",
+     position: "Partner",
+   },
+   {
+     alt: "SOLANA LOGO",
+     image: sponsor24,
+     name: "Solana",
+     position: "Partner",
+   },
+   {
+     alt: "ETH INDIA LOGO",
+     image: sponsor25,
+     name: "ETH India",
+     position: "Partner",
+   },
+   {
+     image: sponsor26,
+     name: "Quillaudits",
+     position: "Community Partner",
+   },
+   {
+     image: sponsor27,
+     name: "Wapromote",
+     position: "Media Partner",
+   },
+   {
+     image: sponsor28,
+     name: "Starworks",
+     position: "Tech Partner",
+   },
+   {
+     image: sponsor29,
+     name: "Youth Incorporated",
+     position: "Media Partner",
+   },
+   {
+     image: sponsor30,
+     name: "Beeceptor",
+     position: "Tech Partner",
+   },
+   {
+     image: sponsor31,
+     name: "Interview Buddy",
+     position: "Event Partner",
+   },
+   {
+     image: sponsor32,
+     name: "LWT",
+     position: "Knowledge Partner",
+   },
+   {
+     image: sponsor33,
+     name: "ED Times",
+     position: "Media Partner",
+   },
+   {
+     image: sponsor34,
+     name: "StartupNews.fyi",
+     position: "Media Partner",
+   },
+   {
+     image: sponsor35,
+     name: "Eat My News",
+     position: "Media Partner",
+   },
+   {
+     image: sponsor36,
+     name: "Delhi events.com",
+     position: "Media Partner",
+   },
+   {
+     image: sponsor37,
+     name: "Fresources Tech",
+     position: "Media Partner",
+   },
+   {
+     image: sponsor38,
+     name: "Lets Upgrade Digitally",
+     position: "Media Partner",
+   },
+   {
+     image: sponsor39,
+     name: "Foodwalas",
+     position: "Partner",
+   },
+ ];
 
   return (
     <section
@@ -164,7 +279,7 @@ function Partners() {
                 variant="outlined"
                 sx={{ width: 260, height: 100, borderRadius: 10 }}
               >
-                <div className="w-[30%]  h-full">
+                <div className="w-[40%]  h-full">
                   <img
                     src={sponsor.image}
                     className=" object-contain w-full h-full"
