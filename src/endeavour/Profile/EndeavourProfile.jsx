@@ -1095,7 +1095,9 @@ function EndeavourProfile() {
               </div>
             ))
           ) : (
-            <p className="mt-5 z-20 text-white">No Certificates</p>
+            <p className="mt-5 z-20 text-black dark:text-white">
+              No Certificates
+            </p>
           )}
         </div>
       </div>
