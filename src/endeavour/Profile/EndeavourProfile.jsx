@@ -979,7 +979,7 @@ function EndeavourProfile() {
               getName && "hidden"
             } bg-[#ffffff] dark:bg-[#000000] backdrop-blur-3xl absolute top-0 left-0 w-full h-[110vh] z-10 flex justify-center items-center`}
           >
-            <div className="w-[70%] h-[50%] bg-white dark:bg-black rounded-lg flex flex-col items-center justify-center">
+            <div className="w-[70%] h-[65%] bg-white dark:bg-black rounded-lg flex flex-col items-center justify-center">
               <div className="flex flex-col items-center">
                 <h1 className="text-2xl font-bold underline mb-1">
                   Certificate
