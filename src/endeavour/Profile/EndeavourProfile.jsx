@@ -977,7 +977,7 @@ function EndeavourProfile() {
           <div
             className={`${
               getName && "hidden"
-            } bg-[#ffffffb7] dark:bg-[#000000b7] backdrop-blur-3xl absolute top-0 left-0 w-full h-[110vh] z-10 flex justify-center items-center`}
+            } bg-[#ffffff] dark:bg-[#000000] backdrop-blur-3xl absolute top-0 left-0 w-full h-[110vh] z-10 flex justify-center items-center`}
           >
             <div className="w-[70%] h-[50%] bg-white dark:bg-black rounded-lg flex flex-col items-center justify-center">
               <div className="flex flex-col items-center">
