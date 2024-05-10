@@ -259,7 +259,7 @@ function Partners() {
     >
       <div className="flex justify-center items-center flex-col mt-0 mb-0 pb-0 w-full">
         <h1 className="text-3xl md:text-5xl font-bold mb-4 animate__animated animate__fadeInUp pb-8 text-black dark:text-white w-[90%] text-center">
-          Previous{" "}
+          Our{" "}
           <span className="font-bold text-3xl md:text-5xl text-center text-[#4d55ba] font-serif">
             Sponsors
           </span>
