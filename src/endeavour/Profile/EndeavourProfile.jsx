@@ -1095,7 +1095,11 @@ function EndeavourProfile() {
               </div>
             ))
           ) : (
-            <p className="mt-5 z-20 text-black dark:text-white">
+            <p
+              className={`${
+                getName && "hidden"
+              } mt-5 z-20 text-black dark:text-white`}
+            >
               No Certificates
             </p>
           )}
