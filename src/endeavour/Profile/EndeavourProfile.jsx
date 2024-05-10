@@ -1097,7 +1097,7 @@ function EndeavourProfile() {
           ) : (
             <p
               className={`${
-                getName && "hidden"
+                !getName && "hidden"
               } mt-5 z-20 text-black dark:text-white`}
             >
               No Certificates
