@@ -454,7 +454,9 @@ function EndeavourProfile() {
         closeOnClick: true,
         theme: "colored",
       });
-      window.location.reload();
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
     } catch (error) {
       toast.error("Bad network error,Please try again after sometime", {
         position: "top-center",
