@@ -532,7 +532,7 @@ function EndeavourProfile() {
           </div>
           <div className="flex flex-col justify-center items-center">
             <img
-              onClick={paymentClicked}
+              onClick={certClicked}
               src={localStorage.getItem("theme") == "light" ? certb : certw}
               className="w-10 h-10"
               alt=""
