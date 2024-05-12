@@ -17,8 +17,6 @@ import eventw from "../../assets/Profile/icons8-calendar-list-64 (1).png";
 import paymentb from "../../assets/Profile/icons8-exchange-rupee-64 (1).png";
 import paymentw from "../../assets/Profile/icons8-exchange-rupee-64.png";
 
-
-
 import "./EndeavourProfile.css";
 // import { Link } from "react-router-dom";
 
@@ -226,14 +224,14 @@ function EndeavourProfile() {
         });
         history("/endeavour");
       } else if (response.data.msg == "invalid token") {
-        toast.error("Invalid token", {
+        toast.warn("Please Login Again", {
           position: "top-center",
           autoClose: 3000,
           hideProgressBar: false,
           closeOnClick: true,
           theme: "colored",
         });
-        history("/endeavour");
+        history("/endeavour/login");
       }
 
       setEventName(response.data.eventl);
@@ -299,14 +297,14 @@ function EndeavourProfile() {
         });
         history("/endeavour");
       } else if (response.data.msg == "invalid token") {
-        toast.error("Invalid token", {
+        toast.warn("Please Login Again", {
           position: "top-center",
           autoClose: 3000,
           hideProgressBar: false,
           closeOnClick: true,
           theme: "colored",
         });
-        history("/endeavour");
+        history("/endeavour/login");
       } else if (response.data == "Successfully Updated") {
         toast.success("Successfully Updated", {
           position: "top-center",
@@ -389,8 +387,6 @@ function EndeavourProfile() {
       });
     }
   };
-
-  
 
   return (
     <div className="w-full h-full text-black dark:text-white bg-white dark:bg-black">
@@ -892,7 +888,6 @@ function EndeavourProfile() {
                     Successfully Registered For Entertainment Eve
                   </span>
                 </p>
-            
               </div>
             ) : (
               <p className="mt-5">Not Registered Yet</p>
