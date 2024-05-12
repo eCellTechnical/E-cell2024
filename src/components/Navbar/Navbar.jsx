@@ -799,10 +799,10 @@ function Navbar() {
                 Events
               </Link>
               <Link
-                to="/endeavour/speakers"
+                to="/endeavour/certificate"
                 className="text-black dark:text-white font-semibold"
               >
-                Speakers
+                Certificate
               </Link>
               <Link
                 to="/endeavour/sponsors"
@@ -1206,9 +1206,9 @@ function Navbar() {
             </Link>
             <Link
               onClick={() => setEndeavourMainMenu(0)}
-              to="/endeavour/speakers"
+              to="/endeavour/certificate"
             >
-              Speakers
+              Certificate
             </Link>
             <Link
               onClick={() => setEndeavourMainMenu(0)}
