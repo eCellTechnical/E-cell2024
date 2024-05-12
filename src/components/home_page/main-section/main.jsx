@@ -174,15 +174,21 @@ const Main = () => {
         </div>
 
         <div className="watch-us w-[350px] md:w-[400px] h-[170px] mr-[8%] md:mr-[10px] mt-10 bg-white flex items-center  rounded-md !z-30">
-          {!isPayment && (
+          {/* {!isPayment && (
             <div className="w-full">
               <p className="text-md  text-gray-600">Early Bird Offer</p>
               <p className="text-md line-through text-gray-600">₹300</p>
               <p className="text-3xl font-semibold">₹250</p>
             </div>
-          )}
+          )} */}
 
-          {isPayment ? (
+          <button className="ml-10 w-full xt-xl font-semibold border-2 border-black p-5 rounded-md">
+            <p className="text-lg  md:text-xl font-semibold border-2 border-black p-5 rounded-md">
+              Registrations Closed
+            </p>
+          </button>
+
+          {/* {isPayment ? (
             <button className="ml-10 w-full xt-xl font-semibold border-2 border-black p-5 rounded-md">
               <p className="text-lg  md:text-xl font-semibold border-2 border-black p-5 rounded-md">
                 Already Registered
@@ -206,7 +212,7 @@ const Main = () => {
                 </p>
               </button>
             </>
-          )}
+          )} */}
         </div>
         <div className="countdown text-white w-[350px] flex justify-center items-center flex-col md:w-[400px] h-[170px] md:mr-[10px] mr-[-35px] mt-[410px] md:mt-[220px] rounded-md !z-20 ">
           <h1 className="md:text-3xl text-xl">{`Early Bird Offer End's In`}</h1>
