@@ -224,7 +224,9 @@ function Certificate() {
           </div>
         ))
       ) : (
-        <p className="mt-5 z-20 text-white">{isCert}</p>
+        <p className={` ${!getName && "hidden"} mt-5 z-20 text-white`}>
+          {isCert}
+        </p>
       )}
     </div>
   );
