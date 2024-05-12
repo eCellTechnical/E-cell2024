@@ -125,7 +125,7 @@ function Certificate() {
               Your Full Name (to be written on certificate) :
             </label>
             <input
-              className="p-2 bg-transparent border-2 border-black dark:border-[#dcdcdc] rounded-lg focus:outline-none font-semibold"
+              className="p-2 bg-transparent border-2 border-black dark:border-[#dcdcdc] rounded-lg focus:outline-none font-semibold text-black dark:text-white"
               type="text"
               name="fullName"
               id="fullName"
@@ -141,7 +141,7 @@ function Certificate() {
               Your College Name:
             </label>
             <input
-              className="p-2 bg-transparent border-2 border-black dark:border-[#dcdcdc] rounded-lg focus:outline-none font-semibold"
+              className="p-2 bg-transparent border-2 border-black dark:border-[#dcdcdc] rounded-lg focus:outline-none font-semibold text-black dark:text-white"
               type="text"
               name="collegeName"
               id="collegeName"
