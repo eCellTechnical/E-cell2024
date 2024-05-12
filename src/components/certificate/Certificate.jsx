@@ -19,6 +19,8 @@ function Certificate() {
   const [collegeName, setCollegeName] = useState("");
   const [participatedEventNames, setParticipatedEventNames] = useState([]);
 
+  const [isCert, setIsCert] = useState("Loading...");
+
   const history = useNavigate();
 
   const certClicked = async () => {
@@ -47,6 +49,7 @@ function Certificate() {
         setCollegeName(response.data.college);
         setParticipatedEventNames(response.data.participatedEventNames);
         setGetName(true);
+        setIsCert("No Certificates");
       }
     } catch (error) {
       toast.error("Bad network error,Please try again after sometime", {
@@ -221,7 +224,7 @@ function Certificate() {
           </div>
         ))
       ) : (
-        <p className="mt-5 z-20 text-white">No Certificates</p>
+        <p className="mt-5 z-20 text-white">{isCert}</p>
       )}
     </div>
   );
