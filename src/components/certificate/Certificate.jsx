@@ -113,11 +113,11 @@ function Certificate() {
             <h1 className="text-2xl font-bold underline mb-1 text-black dark:text-white">
               Certificate
             </h1>
-            <p className="text-red-500">
+            <p className="text-red-500 text-center">
               *Fill it carefully you will only get one chance
             </p>
           </div>
-          <div className="flex flex-col w-[80%] md:w-[60%] mt-4">
+          <div className="flex flex-col w-[80%] md:w-[60%] mt-4 md:mt-4">
             <label
               className="font-semibold text-gray-600 dark:text-[#acacac]"
               htmlFor="fullName"
@@ -133,7 +133,7 @@ function Certificate() {
               onChange={(e) => setFullName(e.target.value)}
             />
           </div>
-          <div className="flex flex-col w-[80%] md:w-[60%] mt-2">
+          <div className="flex flex-col w-[80%] md:w-[60%] mt-4 md:mt-2">
             <label
               className="font-semibold text-gray-600 dark:text-[#acacac]"
               htmlFor="collegeName"
@@ -150,7 +150,7 @@ function Certificate() {
             />
           </div>
           <button
-            className="z-10 mt-5 border-2 p-2 cursor-pointer border-[#7982ff] bg-[#4d55ba] text-white rounded-md py-2 w-[50%] md:w-[30%] font-bold text-md"
+            className="z-10 mt-7 md:mt-5 border-2 p-2 cursor-pointer border-[#7982ff] bg-[#4d55ba] text-white rounded-md py-2 w-[50%] md:w-[30%] font-bold text-md"
             onClick={certCreate}
           >
             Submit
