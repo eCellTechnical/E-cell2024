@@ -2,7 +2,7 @@ import React, { useEffect, useState, lazy, Suspense } from "react";
 import "./Home.css";
 import { useSpring, animated } from "react-spring";
 import { useInView } from "react-intersection-observer";
-import PopUp from "../../components/PopUp/PopUp";
+// import PopUp from "../../components/PopUp/PopUp";
 
 import prevAssociations from "../../assets/associations/prev-associations.webp";
 import prevAssociationsMob from "../../assets/associations/Instagram_post_-_1-ezgif.com-crop.webp";
@@ -162,9 +162,9 @@ pointer-events-none hero "
           </div>
         </div>
       </div>
-      <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-50">
+      {/* <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-50">
         <PopUp />
-      </div>
+      </div> */}
       <main className="content z-[10]">
         <section className="section  bg-white dark:bg-black z-[20]  h-[100vh]">
           <Suspense fallback={<div>Loading...</div>}>

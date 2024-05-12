@@ -13,7 +13,7 @@ const Sponsors = lazy(() => import("../../components/Sponsers/Sponsers"));
 const Speakers = lazy(() => import("../../components/Speaker/Organiser"));
 const AllEvents = lazy(() => import("../../components/AllEvents/AllEvents"));
 
-import PopUp from "../../components/PopUp/PopUp";
+// import PopUp from "../../components/PopUp/PopUp";
 
 function EndeavourHomePage() {
   const { pathname } = useLocation();
@@ -65,9 +65,9 @@ function EndeavourHomePage() {
             </div>
           </div>
 
-          <div className="absolute top-[50%] text-white left-[50%] translate-x-[-50%] translate-y-[-50%] z-50">
+          {/* <div className="absolute top-[50%] text-white left-[50%] translate-x-[-50%] translate-y-[-50%] z-50">
             <PopUp />
-          </div>
+          </div> */}
 
           <div className="z-10">
             <Suspense fallback={<div>Loading...</div>}>
