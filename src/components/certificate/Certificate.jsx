@@ -184,13 +184,13 @@ function Certificate() {
               }
             >
               <img src={certt} alt="" className="w-full h-full" />
-              <div className="absolute w-full top-[53%] left-[0%] text-center  text-black font-semibold text-[0.9em] md:text-4xl">
+              <div className="absolute w-full top-[51.7%] md:top-[54%] left-[0%] text-center  text-black font-semibold text-[0.9em] md:text-4xl">
                 <p className="text-center certFields">{fullName}</p>
               </div>
-              <div className="absolute w-full top-[62.6%] left-[-4%] text-center  text-black font-semibold text-[0.5em] md:text-xl">
+              <div className="absolute w-full top-[62.5%] md:top-[63.3%] left-[-4%] text-center  text-black font-semibold text-[0.5em] md:text-xl">
                 <p className="text-center certFields">{collegeName}</p>
               </div>
-              <div className="absolute w-full top-[67%] left-[-4%] text-center  text-black font-semibold text-[0.5em] md:text-xl">
+              <div className="absolute w-full top-[67.3%] md:top-[67.6%] left-[-4%] text-center  text-black font-semibold text-[0.5em] md:text-xl">
                 <p className="text-center certFields">{evnt}</p>
               </div>
             </div>
