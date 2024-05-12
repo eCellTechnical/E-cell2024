@@ -224,6 +224,7 @@ function EndeavourProfile() {
         });
         history("/endeavour");
       } else if (response.data.msg == "invalid token") {
+        localStorage.clear();
         toast.warn("Please Login Again", {
           position: "top-center",
           autoClose: 3000,
@@ -297,6 +298,7 @@ function EndeavourProfile() {
         });
         history("/endeavour");
       } else if (response.data.msg == "invalid token") {
+        localStorage.clear();
         toast.warn("Please Login Again", {
           position: "top-center",
           autoClose: 3000,
