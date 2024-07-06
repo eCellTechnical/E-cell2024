@@ -1,6 +1,7 @@
 import React, { Suspense, useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { ThemeProvider } from "./context/theme";
+import { Analytics } from "@vercel/analytics/react";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -109,6 +110,7 @@ function App() {
   return (
     <>
       <Router>
+        <Analytics />
         <ThemeProvider value={{ themeMode, lightTheme, darkTheme }}>
           <Navbar />
           <ToastContainer />
