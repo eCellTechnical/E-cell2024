@@ -7,29 +7,29 @@ import "./OurTeam.css";
 import abhishek from "../../assets/OurTeam/Abhishek sharma 2nd year.jpg";
 import abhimanyu from "../../assets/OurTeam/Abhimanyu .jpg";
 import riddhi from "../../assets/OurTeam/Riddhi.jpg";
-import divym from "../../assets/OurTeam/Divyam.jpeg";
+// import divym from "../../assets/OurTeam/Divyam.jpeg";
 import shruti from "../../assets/OurTeam/Shruti.jpeg";
-import Akshat from "../../assets/OurTeam/akshat.jpg";
+// import Akshat from "../../assets/OurTeam/akshat.jpg";
 import yashica from "../../assets/OurTeam/Yashica.jpeg";
-import pratham from "../../assets/OurTeam/Pratham.jpeg";
+// import pratham from "../../assets/OurTeam/Pratham.jpeg";
 import apporv from "../../assets/OurTeam/apporv.webp";
 import arpita from "../../assets/OurTeam/arpita.webp";
-import Aryan from "../../assets/OurTeam/aryan11.jpg";
+// import Aryan from "../../assets/OurTeam/aryan11.jpg";
 import aryan2 from "../../assets/OurTeam/Aryan22.jpg";
 import Ayush from "../../assets/OurTeam/ayush_prakash.jpg";
-import Garvit from "../../assets/OurTeam/garvit_singh11.jpg";
+// import Garvit from "../../assets/OurTeam/garvit_singh11.jpg";
 import GauravNamdev from "../../assets/OurTeam/gaurav_namdev.jpg";
 import GauravPayal from "../../assets/OurTeam/Gaurav.jpg";
-import govind from "../../assets/OurTeam/govind.jpeg";
+// import govind from "../../assets/OurTeam/govind.jpeg";
 import harsh2 from "../../assets/OurTeam/harsh2.jpg";
-import Jassi from "../../assets/OurTeam/jassi11.jpg";
-import Madhav from "../../assets/OurTeam/madhav.jpeg";
+// import Jassi from "../../assets/OurTeam/jassi11.jpg";
+// import Madhav from "../../assets/OurTeam/madhav.jpeg";
 import Mansi from "../../assets/OurTeam/Mansi.png";
 import naksh from "../../assets/OurTeam/Naksh.jpg";
-import Pulkit from "../../assets/OurTeam/pulkit.jpeg";
+// import Pulkit from "../../assets/OurTeam/pulkit.jpeg";
 import shashwat from "../../assets/OurTeam/Shashwat.jpg";
 import shud from "../../assets/OurTeam/shud.jpg";
-import Snigdha from "../../assets/OurTeam/Snigdha.jpg";
+// import Snigdha from "../../assets/OurTeam/Snigdha.jpg";
 import tanya from "../../assets/OurTeam/tanya.jpg";
 import Unnati from "../../assets/OurTeam/unnati.jpg";
 import Vaibhav from "../../assets/OurTeam/Vaibhav.jpg";
@@ -40,15 +40,15 @@ import AyushKumar from "../../assets/OurTeam/Ayush Kumar.jpg";
 import Dipanshi from "../../assets/OurTeam/Dipanshi.jpg";
 import Gurpreet from "../../assets/OurTeam/Gurpreet.jpeg";
 import harshraj from "../../assets/OurTeam/Harsh Raj.jpg";
-import Harshit from "../../assets/OurTeam/Harshit (GD) 1st year .jpg";
+// import Harshit from "../../assets/OurTeam/Harshit (GD) 1st year .jpg";
 import Karan from "../../assets/OurTeam/Karan.jpg";
 import kshitij from "../../assets/OurTeam/kshitij.jpg";
 import Lavanshi from "../../assets/OurTeam/Lavanshi Sharma(1).jpg";
-import nandita from "../../assets/OurTeam/nandita_sarkar.jpg";
-import navya from "../../assets/OurTeam/navya_srivastava.jpg";
+// import nandita from "../../assets/OurTeam/nandita_sarkar.jpg";
+// import navya from "../../assets/OurTeam/navya_srivastava.jpg";
 import Parul from "../../assets/OurTeam/Parul.jpg";
 import Prasasth from "../../assets/OurTeam/Prasasth.jpg";
-import Srishti from "../../assets/OurTeam/Srishti Verma.jpg";
+// import Srishti from "../../assets/OurTeam/Srishti Verma.jpg";
 import Vanshika from "../../assets/OurTeam/Vanshika Mehrotra.jpg";
 import Saksham from "../../assets/OurTeam/Saksham.jpg";
 import Shiv from "../../assets/OurTeam/Shiv.png";
@@ -70,8 +70,8 @@ function OurTeam() {
       name: "Vaibhav Choudhary",
       domain: "Administrator",
       imgUrl: Vaibhav,
-      linkedIn: "",
-      gmail: "",
+      linkedIn: "https://www.linkedin.com/in/vaibhavchoudhary16",
+      gmail: "choudharyvaibhav1609@gmail.com",
     },
     // {
     //   name: "Madhav Garg",
