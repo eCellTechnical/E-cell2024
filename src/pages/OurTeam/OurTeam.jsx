@@ -4,11 +4,11 @@ import { fadeIn } from "../../styles/Variant.js";
 import linkedInIcon from "../../assets/OurTeam/socialMedia/icons8-linkedin.svg";
 import gamilIcon from "../../assets/OurTeam/socialMedia/icons8-gmail.svg";
 import "./OurTeam.css";
-import abhishek from "../../assets/OurTeam/Abhishek sharma 2nd year.jpg"
-import abhimanyu from "../../assets/OurTeam/Abhimanyu .jpg"
-import riddhi from "../../assets/OurTeam/Riddhi.jpg"
-import divym from "../../assets/OurTeam/Divyam.jpeg"
-import shruti from "../../assets/OurTeam/Shruti.jpeg"
+import abhishek from "../../assets/OurTeam/Abhishek sharma 2nd year.jpg";
+import abhimanyu from "../../assets/OurTeam/Abhimanyu .jpg";
+import riddhi from "../../assets/OurTeam/Riddhi.jpg";
+import divym from "../../assets/OurTeam/Divyam.jpeg";
+import shruti from "../../assets/OurTeam/Shruti.jpeg";
 import Akshat from "../../assets/OurTeam/akshat.jpg";
 import yashica from "../../assets/OurTeam/Yashica.jpeg";
 import pratham from "../../assets/OurTeam/Pratham.jpeg";
@@ -54,74 +54,126 @@ import Saksham from "../../assets/OurTeam/Saksham.jpg";
 import Shiv from "../../assets/OurTeam/Shiv.png";
 import Saumya from "../../assets/OurTeam/Saumya.jpg";
 import yashpr from "../../assets/OurTeam/Yashpr.jpeg";
-import anish from "../../assets/OurTeam/Anish.jpg"
+import anish from "../../assets/OurTeam/Anish.jpg";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 function OurTeam() {
-  const OverallCoordinators = [
+  const Administrators = [
     {
-      name: "Madhav Garg",
-      domain: "Overall Coordinator",
-      imgUrl: Madhav,
+      name: "Apoorv Sharma",
+      domain: "Administrator",
+      imgUrl: apporv,
+      linkedIn: "https://www.linkedin.com/in/apoorv2804/",
+      gmail: "aaapoorvsharma@gmail.com",
+    },
+    {
+      name: "Vaibhav Choudhary",
+      domain: "Administrator",
+      imgUrl: Vaibhav,
       linkedIn: "",
       gmail: "",
     },
+    // {
+    //   name: "Madhav Garg",
+    //   domain: "Overall Coordinator",
+    //   imgUrl: Madhav,
+    //   linkedIn: "",
+    //   gmail: "",
+    // },
 
+    // {
+    //   name: "Aryan Sharma",
+    //   domain: "Overall Coordinator",
+    //   imgUrl: Aryan,
+    //   linkedIn: "",
+    //   gmail: "",
+    // },
+
+    // {
+    //   name: "Akshat Dwivedi",
+    //   domain: "Overall Coordinator",
+    //   imgUrl: Akshat,
+    //   linkedIn: "",
+    //   gmail: "",
+    // },
+  ];
+  const DeputyAdministrators = [
     {
-      name: "Aryan Sharma",
-      domain: "Overall Coordinator",
-      imgUrl: Aryan,
+      name: "Sudhanshu",
+      domain: "Deputy Administrator & Event Manager",
+      imgUrl: shud,
       linkedIn: "",
       gmail: "",
     },
-
     {
-      name: "Akshat Dwivedi",
-      domain: "Overall Coordinator",
-      imgUrl: Akshat,
+      name: "Gaurav Payal",
+      domain: "Deputy Administrator & Public Relations Mentor",
+      imgUrl: GauravPayal,
+      linkedIn: "https://www.linkedin.com/in/2oo3-gaurav",
+      gmail: "gaurav2p02@gmail.com",
+    },
+  ];
+  const Treasurer = [
+    {
+      name: "Ayush Prakash",
+      domain: "Treasurer",
+      imgUrl: Ayush,
       linkedIn: "",
       gmail: "",
     },
   ];
-  const DomainHeads = [
-    {
-      name: "Pulkit Saxena",
-      domain: "Public Relations Head",
-      imgUrl: Pulkit,
-      linkedIn: "",
-      gmail: "",
-    },
-    {
-      name: "Jassi Sandhu",
-      domain: "Public Relations Head",
-      imgUrl: Jassi,
-      linkedIn: "",
-      gmail: "",
-    },
-    {
-      name: "Garvit Singh",
-      domain: "Events Head",
-      imgUrl: Garvit,
-      linkedIn: "",
-      gmail: "",
-    },
-    {
-      name: "Snigdha Singh",
-      domain: "Corporate Head",
-      imgUrl: Snigdha,
-      linkedIn: "",
-      gmail: "",
-    },
-    
-  ];
-  const Members = [
+  const DomainManagers = [
     {
       name: "Unnati Mishra",
-      domain: "Technical Member",
+      domain: "General Secretary & Technical Manager",
       imgUrl: Unnati,
       linkedIn: "",
       gmail: "",
     },
+    {
+      name: "Gaurav Namdev",
+      domain: "Corporate Relations Manager",
+      imgUrl: GauravNamdev,
+      linkedIn: "",
+      gmail: "",
+    },
+    {
+      name: "Mansi Verma",
+      domain: "Graphics Manager",
+      imgUrl: Mansi,
+      linkedIn: "",
+      gmail: "",
+    },
+    // {
+    //   name: "Pulkit Saxena",
+    //   domain: "Public Relations Head",
+    //   imgUrl: Pulkit,
+    //   linkedIn: "",
+    //   gmail: "",
+    // },
+    // {
+    //   name: "Jassi Sandhu",
+    //   domain: "Public Relations Head",
+    //   imgUrl: Jassi,
+    //   linkedIn: "",
+    //   gmail: "",
+    // },
+    // {
+    //   name: "Garvit Singh",
+    //   domain: "Events Head",
+    //   imgUrl: Garvit,
+    //   linkedIn: "",
+    //   gmail: "",
+    // },
+    // {
+    //   name: "Snigdha Singh",
+    //   domain: "Corporate Head",
+    //   imgUrl: Snigdha,
+    //   linkedIn: "",
+    //   gmail: "",
+    // },
+  ];
+  const Members = [
     {
       name: "Yash Kumar Singh",
       domain: "Technical Member",
@@ -159,51 +211,14 @@ function OurTeam() {
       linkedIn: "",
       gmail: "",
     },
-    {
-      name: "Govind Chaubey",
-      domain: "Corporate Member",
-      imgUrl: govind,
-      linkedIn: "",
-      gmail: "Chaubeygovind123@gmail.com",
-    },
-    {
-      name: "Gaurav Namdev",
-      domain: "Corporate Member",
-      imgUrl: GauravNamdev,
-      linkedIn: "",
-      gmail: "",
-    },
-    {
-      name: "Apoorv Sharma",
-      domain: "Corporate Member",
-      imgUrl: apporv,
-      linkedIn: "https://www.linkedin.com/in/apoorv2804/",
-      gmail: "aaapoorvsharma@gmail.com",
-    },
+    // {
+    //   name: "Govind Chaubey",
+    //   domain: "Corporate Member",
+    //   imgUrl: govind,
+    //   linkedIn: "",
+    //   gmail: "Chaubeygovind123@gmail.com",
+    // },
 
- 
-
-    {
-      name: "Sudhanshu",
-      domain: "Events Member",
-      imgUrl: shud,
-      linkedIn: "",
-      gmail: "",
-    },
-    {
-      name: "Gaurav Payal",
-      domain: "Graphics Member",
-      imgUrl: GauravPayal,
-      linkedIn: "https://www.linkedin.com/in/2oo3-gaurav",
-      gmail: "gaurav2p02@gmail.com",
-    },
-    {
-      name: "Ayush Prakash",
-      domain: "Graphics Member",
-      imgUrl: Ayush,
-      linkedIn: "",
-      gmail: "",
-    },
     {
       name: "Harsh Pundir",
       domain: "Graphics Member",
@@ -220,14 +235,6 @@ function OurTeam() {
     },
 
     {
-      name: "Vaibhav Choudhary",
-      domain: "Events Member",
-      imgUrl: Vaibhav,
-      linkedIn: "",
-      gmail: "",
-    },
-
-    {
       name: "Harsh Raj",
       domain: "Events Member",
       imgUrl: harshraj,
@@ -235,13 +242,6 @@ function OurTeam() {
       gmail: "rajjais135@gmail.com",
     },
 
-    {
-      name: "Mansi Verma",
-      domain: "Graphics Member",
-      imgUrl: Mansi,
-      linkedIn: "",
-      gmail: "",
-    },
     {
       name: "Arpita Dwivedi",
       domain: "Graphics Member",
@@ -285,13 +285,13 @@ function OurTeam() {
       linkedIn: "https://www.linkedin.com/in/aditinim7/",
       imgUrl: Aditi,
     },
-    {
-      name: "Srishti Verma",
-      domain: "Events Member",
-      gmail: "srishtiverma358@gmail.com",
-      linkedIn: "https://www.linkedin.com/in/srishti-verma-458a8a271/",
-      imgUrl: Srishti,
-    },
+    // {
+    //   name: "Srishti Verma",
+    //   domain: "Events Member",
+    //   gmail: "srishtiverma358@gmail.com",
+    //   linkedIn: "https://www.linkedin.com/in/srishti-verma-458a8a271/",
+    //   imgUrl: Srishti,
+    // },
     {
       name: "Saksham Jain",
       domain: "Technical Member",
@@ -323,21 +323,21 @@ function OurTeam() {
         "https://www.linkedin.com/in/lavanshi-sharma?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
       imgUrl: Lavanshi,
     },
-    {
-      name: "Harshit Singh",
-      domain: "Graphics Member",
-      gmail: "harshitsingh1329@gmail.com",
-      linkedIn:
-        "https://www.linkedin.com/in/harshit-singh-a0519a286?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-      imgUrl: Harshit,
-    },
-    {
-      name: "Nandita Sarkar",
-      domain: "Technical Member",
-      gmail: "nanditasarkar1128@gmail.com",
-      linkedIn: "https://www.linkedin.com/in/nandita-sarkar-b420aa296",
-      imgUrl: nandita,
-    },
+    // {
+    //   name: "Harshit Singh",
+    //   domain: "Graphics Member",
+    //   gmail: "harshitsingh1329@gmail.com",
+    //   linkedIn:
+    //     "https://www.linkedin.com/in/harshit-singh-a0519a286?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+    //   imgUrl: Harshit,
+    // },
+    // {
+    //   name: "Nandita Sarkar",
+    //   domain: "Technical Member",
+    //   gmail: "nanditasarkar1128@gmail.com",
+    //   linkedIn: "https://www.linkedin.com/in/nandita-sarkar-b420aa296",
+    //   imgUrl: nandita,
+    // },
     {
       name: "Ayush Kumar",
       domain: "Technical Member",
@@ -354,13 +354,13 @@ function OurTeam() {
         "https://www.linkedin.com/in/karan-kapil-b06a3927a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
       imgUrl: Karan,
     },
-    {
-      name: "Navya Srivastava",
-      domain: "Corporate Member",
-      gmail: "navya.srivas03@gmail.com",
-      linkedIn: "linkedin.com/in/navya-srivastava-7365a1282",
-      imgUrl: navya,
-    },
+    // {
+    //   name: "Navya Srivastava",
+    //   domain: "Corporate Member",
+    //   gmail: "navya.srivas03@gmail.com",
+    //   linkedIn: "linkedin.com/in/navya-srivastava-7365a1282",
+    //   imgUrl: navya,
+    // },
 
     {
       name: "Kshitij Sharma",
@@ -419,28 +419,26 @@ function OurTeam() {
         "https://www.linkedin.com/in/yashica-agarwal-9b1493297?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
       imgUrl: yashica,
     },
-    {
-      name: "Pratham Mishra",
-      domain: "Events Member",
-      gmail: "mishrayogi04@gmail.com",
-      linkedIn:
-        "https://www.linkedin.com/in/pratham-mishra-850497270?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-      imgUrl: pratham,
-    },
-    {
-      name: "Divyam Asthana",
-      domain: "Public Relations Member",
-      gmail: "divyamasthanaprofessional.001@gmail.com",
-      linkedIn:
-        "https://www.linkedin.com/in/divyam-asthana",
-      imgUrl: divym,
-    },
+    // {
+    //   name: "Pratham Mishra",
+    //   domain: "Events Member",
+    //   gmail: "mishrayogi04@gmail.com",
+    //   linkedIn:
+    //     "https://www.linkedin.com/in/pratham-mishra-850497270?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+    //   imgUrl: pratham,
+    // },
+    // {
+    //   name: "Divyam Asthana",
+    //   domain: "Public Relations Member",
+    //   gmail: "divyamasthanaprofessional.001@gmail.com",
+    //   linkedIn: "https://www.linkedin.com/in/divyam-asthana",
+    //   imgUrl: divym,
+    // },
     {
       name: "Shruti Mishra",
       domain: "Public Relations Member",
       gmail: "",
-      linkedIn:
-        "",
+      linkedIn: "",
       imgUrl: shruti,
     },
     {
@@ -547,11 +545,11 @@ function OurTeam() {
       </div>
       <div className="mt-10">
         <h1 className="text-xl md:text-3xl font-bold text-black dark:text-white">
-          Overall Coordinators
+          Administrators
         </h1>
       </div>
       <div className="flex flex-wrap justify-center items-start mt-8">
-        {OverallCoordinators.map((member, index) => (
+        {Administrators.map((member, index) => (
           <motion.div
             variants={fadeIn("up")}
             initial="hidden"
@@ -602,11 +600,121 @@ function OurTeam() {
       </div>
       <div className="mt-10">
         <h1 className="text-xl md:text-3xl font-bold text-black dark:text-white">
-          Domain Heads
+          Deputy Administrators
         </h1>
       </div>
       <div className="flex flex-wrap justify-center items-start mt-8">
-        {DomainHeads.map((member, index) => (
+        {DeputyAdministrators.map((member, index) => (
+          <motion.div
+            variants={fadeIn("up")}
+            initial="hidden"
+            whileInView={"show"}
+            key={index}
+            className="team-member flex flex-col justify-center items-center m-5 rounded-tr-[25%] rounded-lg "
+          >
+            <div className="relative">
+              <img
+                src={member.imgUrl}
+                alt={member.name}
+                className="team-member-img w-48 h-60 rounded-tr-[10%] rounded-lg rounded-bl-[10%]"
+                loading="lazy"
+              />
+              <div className="teamHover absolute top-5 left-5 w-[70%] border-t-4 border-l-4 p-3 pt-8 pb-5 border-blue-500 rounded-md flex flex-row justify-evenly items-center">
+                <a href={member.linkedIn} target="_blank" rel="noreferrer">
+                  <img
+                    src={linkedInIcon}
+                    alt=""
+                    className="w-9 h-9"
+                    loading="lazy"
+                  />
+                </a>
+                <a
+                  href={`https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=${member.gmail}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img
+                    src={gamilIcon}
+                    alt=""
+                    className="w-8 h-8"
+                    loading="lazy"
+                  />
+                </a>
+              </div>
+            </div>
+            <div className="flex flex-col justify-center items-center w-40 mt-2 ">
+              <p className=" team-member-name font-bold text-lg text-black dark:text-white text-center">
+                {member.name}
+              </p>
+              <p className="team-member-domain text-center text-lg text-black dark:text-white">
+                {member.domain}
+              </p>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+      <div className="mt-10">
+        <h1 className="text-xl md:text-3xl font-bold text-black dark:text-white">
+          Treasurer
+        </h1>
+      </div>
+      <div className="flex flex-wrap justify-center items-start mt-8">
+        {Treasurer.map((member, index) => (
+          <motion.div
+            variants={fadeIn("up")}
+            initial="hidden"
+            whileInView={"show"}
+            key={index}
+            className="team-member flex flex-col justify-center items-center m-5 rounded-tr-[25%] rounded-lg "
+          >
+            <div className="relative">
+              <img
+                src={member.imgUrl}
+                alt={member.name}
+                className="team-member-img w-48 h-60 rounded-tr-[10%] rounded-lg rounded-bl-[10%]"
+                loading="lazy"
+              />
+              <div className="teamHover absolute top-5 left-5 w-[70%] border-t-4 border-l-4 p-3 pt-8 pb-5 border-blue-500 rounded-md flex flex-row justify-evenly items-center">
+                <a href={member.linkedIn} target="_blank" rel="noreferrer">
+                  <img
+                    src={linkedInIcon}
+                    alt=""
+                    className="w-9 h-9"
+                    loading="lazy"
+                  />
+                </a>
+                <a
+                  href={`https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=${member.gmail}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img
+                    src={gamilIcon}
+                    alt=""
+                    className="w-8 h-8"
+                    loading="lazy"
+                  />
+                </a>
+              </div>
+            </div>
+            <div className="flex flex-col justify-center items-center w-40 mt-2 ">
+              <p className=" team-member-name font-bold text-lg text-black dark:text-white text-center">
+                {member.name}
+              </p>
+              <p className="team-member-domain text-center text-lg text-black dark:text-white">
+                {member.domain}
+              </p>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+      <div className="mt-10">
+        <h1 className="text-xl md:text-3xl font-bold text-black dark:text-white">
+          Domain Managers
+        </h1>
+      </div>
+      <div className="flex flex-wrap justify-center items-start mt-8">
+        {DomainManagers.map((member, index) => (
           <motion.div
             variants={fadeIn("up")}
             initial="hidden"
