@@ -500,9 +500,9 @@ function RecruitmentResult() {
               height={100}
               className="transition-transform duration-300 ease-out transform hover:scale-110"
             />
-            <h1 className="text-5xl font-bold text-gray-800 dark:text-gray-200 ">
+            {/* <h1 className="text-5xl font-bold text-gray-800 dark:text-gray-200 ">
               E-Cell
-            </h1>
+            </h1> */}
           </div>
           <p
             className={`text-2xl text-gray-600 dark:text-gray-400 mt-4 text-center transition-opacity duration-1000 ${
