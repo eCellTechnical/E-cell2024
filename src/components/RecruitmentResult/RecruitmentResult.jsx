@@ -510,7 +510,7 @@ function RecruitmentResult() {
             }`}
             style={{ transitionDelay: "200ms" }}
           >
-            Congratulations to all our selected candidates! Welcome to the Ecell
+            Congratulations to all our selected candidates! Welcome to the E-Cell
             family!
           </p>
           <h2
