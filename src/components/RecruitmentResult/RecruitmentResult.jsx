@@ -106,7 +106,7 @@ function RecruitmentResult() {
       ],
     },
     {
-      name: "Graphics",
+      name: "Graphics Studio",
       competitors: [
         {
           name: "Aditya Chauhan",
@@ -171,31 +171,31 @@ function RecruitmentResult() {
           color: "bg-pink-100",
         },
 
-        {
-          name: "Dhruv Srivastava",
-          branch: "ECE",
-          year: "1st",
-          color: "bg-pink-50",
-        },
+        // {
+        //   name: "Dhruv Srivastava",
+        //   branch: "ECE",
+        //   year: "1st",
+        //   color: "bg-pink-50",
+        // },
 
         {
           name: "Ananya Baranwal",
           branch: "ECE",
           year: "1st",
-          color: "bg-pink-100",
+          color: "bg-pink-50",
         },
         {
           name: "Vivek Chauhan",
           branch: "CS",
           year: "1st",
-          color: "bg-pink-50",
+          color: "bg-pink-100",
         },
 
         {
           name: "Ishita Jindal",
           branch: "MCA",
           year: "1st",
-          color: "bg-pink-100",
+          color: "bg-pink-50",
         },
       ],
     },
