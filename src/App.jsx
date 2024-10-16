@@ -71,6 +71,7 @@ const Error404 = React.lazy(() => import("./pages/ErrorPage/Error404"));
 
 import Aos from "aos";
 import "aos/dist/aos.css";
+import RecruitmentResult from "./components/RecruitmentResult/RecruitmentResult";
 
 function App() {
   const [themeMode, setThemeMode] = useState("dark");
@@ -125,6 +126,11 @@ function App() {
               <Route path="/associations" element={<Associations />} />
               <Route path="/contactus" element={<ContactUs />} />
               <Route path="/ideasubmissions" element={<IdeaSubmissions />} />
+
+              <Route
+                path="/recruitment-result-2025"
+                element={<RecruitmentResult />}
+              />
 
               {/* <Route path="/endeavour" element={<ComingSoon />} /> */}
 
