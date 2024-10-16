@@ -501,7 +501,7 @@ function RecruitmentResult() {
               className="transition-transform duration-300 ease-out transform hover:scale-110"
             />
             <h1 className="text-5xl font-bold text-gray-800 dark:text-gray-200 ">
-              E-cell
+              E-Cell
             </h1>
           </div>
           <p
