@@ -77,8 +77,8 @@ function Navbar() {
             <img
               src={
                 themeMode == "dark"
-                  ? "https://res.cloudinary.com/dzkyhnxta/image/upload/v1727952908/i5e0rljt7c5ncyexqpyy.png"
-                  : "https://res.cloudinary.com/dzkyhnxta/image/upload/v1727952908/j0gvjlmvlgv0sfmwgeu8.png"
+                  ? "https://res.cloudinary.com/dzkyhnxta/image/upload/v1727952908/j0gvjlmvlgv0sfmwgeu8.png"
+                  : "https://res.cloudinary.com/dzkyhnxta/image/upload/v1727952908/i5e0rljt7c5ncyexqpyy.png"
               }
               onClick={() => history("/")}
               className="w-14 h-14 lg:w-14 lg:h-14 z-20 cursor-pointer"
