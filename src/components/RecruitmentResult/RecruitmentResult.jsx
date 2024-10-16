@@ -514,7 +514,7 @@ function RecruitmentResult() {
             family!
           </p>
           <h2
-            className={`text-4xl font-bold text-gray-800 dark:text-gray-200 relative inline-block mt-8 transition-opacity duration-1000 ${
+            className={`text-4xl font-bold text-gray-800 dark:text-gray-200 relative inline-block mt-8 transition-opacity text-center duration-1000 ${
               loaded ? "opacity-100" : "opacity-0"
             }`}
             style={{ transitionDelay: "400ms" }}
