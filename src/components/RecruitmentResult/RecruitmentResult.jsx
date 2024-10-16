@@ -510,8 +510,8 @@ function RecruitmentResult() {
             }`}
             style={{ transitionDelay: "200ms" }}
           >
-            Congratulations to all our selected candidates! Welcome to the E-Cell
-            family!
+            Congratulations to all our selected candidates! Welcome to the
+            E-Cell family!
           </p>
           <h2
             className={`text-4xl font-bold text-gray-800 dark:text-gray-200 relative inline-block mt-8 transition-opacity text-center duration-1000 ${
@@ -582,8 +582,8 @@ function RecruitmentResult() {
       >
         <p className="text-xl text-gray-700 dark:text-gray-300">
           To those who didn&apos;t make it this time: Keep pushing forward! Your
-          dedication and effort are commendable. There&apos;s always a next
-          opportunity waiting for you.
+          dedication and effort are commendable.<br></br>There&apos;s always a
+          next opportunity waiting for you.
         </p>
       </div>
     </div>
