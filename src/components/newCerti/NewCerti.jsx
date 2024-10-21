@@ -130,7 +130,7 @@ const NewCerti = () => {
           />
           <button
             type="submit"
-            className="bg-[#4d55bb] text-white px-4 py-2 rounded-lg w-full"
+            className="bg-[#4d55bb] text-white px-4 py-2 rounded-lg w-full z-10"
           >
             Generate Certificate
           </button>
