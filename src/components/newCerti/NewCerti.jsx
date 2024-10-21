@@ -148,7 +148,7 @@ const NewCerti = () => {
                 loading="lazy"
                 src={isWinner ? certTemplateWinners : certTemplate}
                 alt=""
-                className="w-full h-full"
+                className="w-full pr-0 md:pr-5 h-full"
               />
               <div className="absolute w-full top-[50%] md:top-[53%] left-1/2 -translate-x-1/2 text-center  text-black font-semibold text-xl md:text-3xl">
                 <p className="text-center certiFields ">{name}</p>
