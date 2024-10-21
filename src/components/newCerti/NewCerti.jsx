@@ -143,10 +143,7 @@ const NewCerti = () => {
           <div
             className={`flex flex-col  w-full lg:w-1/2 mt-10 lg:mt-0 items-center justify-center`}
           >
-            <div
-              className="relative  !w-full h-full"
-              ref={certificateRef}
-            >
+            <div className="relative" ref={certificateRef}>
               <img
                 loading="lazy"
                 src={isWinner ? certTemplateWinners : certTemplate}
