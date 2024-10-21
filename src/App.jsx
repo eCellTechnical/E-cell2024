@@ -72,6 +72,7 @@ const Error404 = React.lazy(() => import("./pages/ErrorPage/Error404"));
 import Aos from "aos";
 import "aos/dist/aos.css";
 import RecruitmentResult from "./components/RecruitmentResult/RecruitmentResult";
+import NewCerti from "./components/newCerti/NewCerti";
 
 function App() {
   const [themeMode, setThemeMode] = useState("dark");
@@ -132,9 +133,11 @@ function App() {
                 element={<RecruitmentResult />}
               />
 
+              <Route path="/certificates" element={<NewCerti />} />
+
               {/* <Route path="/endeavour" element={<ComingSoon />} /> */}
 
-              <Route path="/endeavour/eve" element={<Eve />} />
+              {/* <Route path="/endeavour/eve" element={<Eve />} />
               <Route path="/endeavour" element={<EndeavourHomePage />} />
               <Route path="/endeavour/login" element={<EndeavourLogin />} />
               <Route
@@ -163,7 +166,7 @@ function App() {
                 element={<SpecificEvent />}
               />
               <Route path="/endeavour/sponsors" element={<Sponsors />} />
-              <Route path="/endeavour/speakers" element={<Speakers />} />
+              <Route path="/endeavour/speakers" element={<Speakers />} /> */}
               <Route path="*" element={<Error404 />} />
             </Routes>
           </Suspense>
