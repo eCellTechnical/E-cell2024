@@ -263,10 +263,10 @@ function Navbar() {
                 </div>
               </div>
               <a
-                onClick={() => history("/recruitment-result-2025")}
+                onClick={() => history("/certificates")}
                 className="endeavour font-medium text-black dark:text-white px-5"
               >
-                Results'25
+                Certificate
               </a>
               <a
                 href="https://tbi-kiet.in/"
@@ -740,12 +740,12 @@ function Navbar() {
             </div>
             <a
               onClick={() => {
-                history("/recruitment-result-2025");
+                history("/certificates");
                 setMainMenu(0);
               }}
               className=""
             >
-              Results'25
+              Certificate
             </a>
             <a
               href="https://tbi-kiet.in/"
