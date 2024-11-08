@@ -65,6 +65,7 @@ const SpecificEvent = React.lazy(() =>
 const Profile = React.lazy(() =>
   import("./endeavour/Profile/EndeavourProfile")
 );
+const PrivacyPolicy = React.lazy(() => import("./pages/PrivacyPolicy/Policy"));
 const Admin = React.lazy(() => import("./endeavour/Admin/EndeavourAdmin"));
 import SuperAdmin from "./endeavour/Admin/SuperAdmin/SuperAdmin";
 const Error404 = React.lazy(() => import("./pages/ErrorPage/Error404"));
@@ -127,6 +128,7 @@ function App() {
               <Route path="/associations" element={<Associations />} />
               <Route path="/contactus" element={<ContactUs />} />
               <Route path="/ideasubmissions" element={<IdeaSubmissions />} />
+              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
 
               <Route
                 path="/recruitment-result-2025"

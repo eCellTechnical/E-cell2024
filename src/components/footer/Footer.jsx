@@ -160,10 +160,8 @@ export default function Foot() {
                     />
                     Past Speakers
                   </a>
-                  <a
-                    href="https://docs.google.com/viewer?url=https://docs.google.com/document/d/1vHnkn-1qGZH7-CLi2O4DA4yBqKZRehAJfbCMAP4yzlA/export?format=pdf&embedded=true"
-                    target="_blank"
-                    rel="noreferrer"
+                  <Link
+                    to="/privacy-policy"
                     className="!flex !flex-row items-center justify-normal mb-2 font-semibold dark:font-medium cursor-pointer"
                   >
                     {" "}
@@ -175,9 +173,9 @@ export default function Foot() {
                       className="w-2 h-2 mr-2"
                     />
                     Privacy Policy
-                  </a>
+                  </Link>
                   <a
-                    href="https://merchant.razorpay.com/policy/NqJMeEHhqG0ABL/terms"
+                    href="/privacy-policy"
                     target="_blank"
                     rel="noreferrer"
                     className="!flex !flex-row items-center justify-normal font-semibold dark:font-medium mb-2 cursor-pointer"
