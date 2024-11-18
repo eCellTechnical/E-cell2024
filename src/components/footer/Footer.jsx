@@ -15,7 +15,7 @@ export default function Foot() {
   const { themeMode } = useTheme();
   return (
     <>
-    {isEndeavour.pathname.slice(1, 10) !== "IdeateX" && isEndeavour.pathname.slice(1, 18) !== "IdeateX/register" ? 
+    {isEndeavour.pathname.slice(1, 10) !== "ideatex" && isEndeavour.pathname.slice(1, 18) !== "ideatex/register" ? 
       <div className="footer z-10   border-white/65 bg-white dark:bg-black text-black dark:text-white border-t-[1px] border-t-[#b1b1b17d]">
         <div className="upperfoot bg-white dark:bg-black z-10 p-8 border-b-[1px] border-b-[#8a8a8a92]">
           <div className="box flex flex-col lg:flex-col items-center lg:items-start">
