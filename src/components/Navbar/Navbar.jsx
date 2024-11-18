@@ -740,7 +740,7 @@ function Navbar() {
             </div>
             <a
               onClick={() => {
-                history("/IdeateX");
+                history("/ideatex");
                 setMainMenu(0);
               }}
               className=""
