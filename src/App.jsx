@@ -136,7 +136,7 @@ function App() {
                 element={<RecruitmentResult />}
               />
 
-              <Route path="/IdeateX" element={<IdeateX />} />
+              <Route path="/ideatex" element={<IdeateX />} />
               <Route path="/ideatex/register" element={<Register />} />
 
               {/* <Route path="/endeavour" element={<ComingSoon />} /> */}

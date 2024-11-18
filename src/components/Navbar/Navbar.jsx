@@ -15,7 +15,7 @@ import speakerIcon from "../../assets/navbar/Discover/speaker.png";
 import speakerIconWhite from "../../assets/navbar/Discover/speakerWhite.png";
 import teamIcon from "../../assets/navbar/Discover/team.png";
 import teamIconWhite from "../../assets/navbar/Discover/teamWhite.png";
-import Header from "../../IdeateX/components/Header"
+import Header from "../../IdeateX/components/Header";
 import EndeavourLogo from "../../assets/navbar/logo1edit.png";
 
 import discordIcon from "../../assets/navbar/Initiative/discord.png";
@@ -71,14 +71,15 @@ function Navbar() {
 
   return (
     <div className="w-[100vw]">
-      {isEndeavour.pathname.slice(1, 10) !== "ideatex" && isEndeavour.pathname.slice(1, 18) !== "ideatex/register" ? (
+      {isEndeavour.pathname.slice(1, 10) !== "ideatex" &&
+      isEndeavour.pathname.slice(1, 18) !== "ideatex/register" ? (
         <div className="fixed navbar z-[50] flex flex-row w-[100vw]">
           <div className="logoSide w-[20%] p-3 pl-[4%] flex items-center !cursor-pointer">
             <img
               src={
                 themeMode == "dark"
-                  ? "https://res.cloudinary.com/dzkyhnxta/image/upload/v1727952908/j0gvjlmvlgv0sfmwgeu8.png"
-                  : "https://res.cloudinary.com/dzkyhnxta/image/upload/v1727952908/i5e0rljt7c5ncyexqpyy.png"
+                  ? "https://firebasestorage.googleapis.com/v0/b/endevaour-2023.appspot.com/o/webassets%2Fwhite%20logo%20br.png?alt=media&token=50662b36-d955-4f24-985c-bd73a9101e01"
+                  : "https://firebasestorage.googleapis.com/v0/b/endevaour-2023.appspot.com/o/webassets%2Fblack%20logo%20br.png?alt=media&token=d45e4438-bc54-47dd-9d9c-14f4d41991d1"
               }
               onClick={() => history("/")}
               className="w-14 h-14 lg:w-14 lg:h-14 z-20 cursor-pointer"
@@ -767,7 +768,7 @@ function Navbar() {
           </div>
         </div>
       ) : (
-        <Header/>
+        <Header />
       )}
     </div>
   );
