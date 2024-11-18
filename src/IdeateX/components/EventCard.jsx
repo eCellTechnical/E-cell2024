@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const EventCard = ({ icon, title, description }) => {
   return (
-    <div className="flex flex-col p-8 cursor-grab justify-center h-[35vh] group border-[#26222D] border-2 bg-[#04000A] rounded-xl shadow-lg text-left">
+    <div className="flex flex-col p-8 cursor-grab justify-center h-[35vh] md:h-[40vh] group border-[#26222D] border-2 bg-[#04000A] rounded-xl shadow-lg text-left">
       {/* Icon */}
       <div className="text-[#AE0D61] mb-4">
         {icon}
