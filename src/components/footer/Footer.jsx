@@ -1,6 +1,6 @@
 import "./Footer.css";
 
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { FaInstagram } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
 import { FaTelegram } from "react-icons/fa";
@@ -9,12 +9,13 @@ import { FaYoutube } from "react-icons/fa";
 import greaterThanDark from "../../assets/footer/greaterthandark.svg";
 import greaterThanLight from "../../assets/footer/greaterthanlight.svg";
 import useTheme from "../../context/theme";
-
 export default function Foot() {
+  const isEndeavour = useLocation();
   const history = useNavigate();
   const { themeMode } = useTheme();
   return (
     <>
+    {isEndeavour.pathname.slice(1, 10) !== "IdeateX" && isEndeavour.pathname.slice(1, 18) !== "IdeateX/register" ? 
       <div className="footer z-10   border-white/65 bg-white dark:bg-black text-black dark:text-white border-t-[1px] border-t-[#b1b1b17d]">
         <div className="upperfoot bg-white dark:bg-black z-10 p-8 border-b-[1px] border-b-[#8a8a8a92]">
           <div className="box flex flex-col lg:flex-col items-center lg:items-start">
@@ -302,6 +303,9 @@ export default function Foot() {
           </h3>
         </div>
       </div>
+      : (
+        null
+      )}
     </>
   );
 }

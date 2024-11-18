@@ -5,10 +5,11 @@ import { Analytics } from "@vercel/analytics/react";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import Register from "./IdeateX/Register"
 // Lazy-loaded components
 const Loader = React.lazy(() => import("./components/Loader/Loader"));
 const Navbar = React.lazy(() => import("./components/Navbar/Navbar"));
+const IdeateX = React.lazy(() => import("./IdeateX/index"));  
 const Home = React.lazy(() => import("./pages/Home/Home"));
 const Discover = React.lazy(() => import("./pages/discover/Discover"));
 const OurTeam = React.lazy(() => import("./pages/OurTeam/OurTeam"));
@@ -30,50 +31,50 @@ const Footer = React.lazy(() => import("./components/footer/Footer"));
 //   import("./endeavour/CommingSoon/CommingSoon")
 // );
 
-const Certificate = React.lazy(() =>
-  import("./components/certificate/Certificate")
-);
+// const Certificate = React.lazy(() =>
+//   import("./components/certificate/Certificate")
+// );
 
-const Eve = React.lazy(() => import("./components/home_page/home"));
+// const Eve = React.lazy(() => import("./components/home_page/home"));
 
-const EndeavourHomePage = React.lazy(() =>
-  import("./endeavour/Home/EndeavourHomePage")
-);
-const EndeavourLogin = React.lazy(() =>
-  import("./endeavour/Login/EndeavourLogin")
-);
-const ForgetPassword = React.lazy(() =>
-  import("./endeavour/Login/ForgetPassword/ForgetPassword")
-);
-const ResetPassword = React.lazy(() =>
-  import("./endeavour/Login/ResetPassword/ResetPassword")
-);
-const EndeavourRegister = React.lazy(() =>
-  import("./endeavour/Register/EndeavourRegister")
-);
-const StudentPass = React.lazy(() =>
-  import("./endeavour/StudentPass/StudentPass")
-);
-const AllEvents = React.lazy(() =>
-  import("./endeavour/Events/AllEvents/AllEvents")
-);
-const Sponsors = React.lazy(() => import("./endeavour/Sponsors/Sponsors"));
-const Speakers = React.lazy(() => import("./endeavour/Speakers/Organiser"));
-const SpecificEvent = React.lazy(() =>
-  import("./endeavour/Events/SpecificEvent/MemoizedSpecificEvent")
-);
-const Profile = React.lazy(() =>
-  import("./endeavour/Profile/EndeavourProfile")
-);
+// const EndeavourHomePage = React.lazy(() =>
+//   import("./endeavour/Home/EndeavourHomePage")
+// );
+// const EndeavourLogin = React.lazy(() =>
+//   import("./endeavour/Login/EndeavourLogin")
+// );
+// const ForgetPassword = React.lazy(() =>
+//   import("./endeavour/Login/ForgetPassword/ForgetPassword")
+// );
+// const ResetPassword = React.lazy(() =>
+//   import("./endeavour/Login/ResetPassword/ResetPassword")
+// );
+// const EndeavourRegister = React.lazy(() =>
+//   import("./endeavour/Register/EndeavourRegister")
+// );
+// const StudentPass = React.lazy(() =>
+//   import("./endeavour/StudentPass/StudentPass")
+// );
+// const AllEvents = React.lazy(() =>
+//   import("./endeavour/Events/AllEvents/AllEvents")
+// );
+// const Sponsors = React.lazy(() => import("./endeavour/Sponsors/Sponsors"));
+// const Speakers = React.lazy(() => import("./endeavour/Speakers/Organiser"));
+// const SpecificEvent = React.lazy(() =>
+//   import("./endeavour/Events/SpecificEvent/MemoizedSpecificEvent")
+// );
+// const Profile = React.lazy(() =>
+//   import("./endeavour/Profile/EndeavourProfile")
+// );
 const PrivacyPolicy = React.lazy(() => import("./pages/PrivacyPolicy/Policy"));
-const Admin = React.lazy(() => import("./endeavour/Admin/EndeavourAdmin"));
-import SuperAdmin from "./endeavour/Admin/SuperAdmin/SuperAdmin";
+// const Admin = React.lazy(() => import("./endeavour/Admin/EndeavourAdmin"));
+// import SuperAdmin from "./endeavour/Admin/SuperAdmin/SuperAdmin";
 const Error404 = React.lazy(() => import("./pages/ErrorPage/Error404"));
 
 import Aos from "aos";
 import "aos/dist/aos.css";
 import RecruitmentResult from "./components/RecruitmentResult/RecruitmentResult";
-import NewCerti from "./components/newCerti/NewCerti";
+// import NewCerti from "./components/newCerti/NewCerti";
 
 function App() {
   const [themeMode, setThemeMode] = useState("dark");
@@ -135,7 +136,8 @@ function App() {
                 element={<RecruitmentResult />}
               />
 
-              <Route path="/certificates" element={<NewCerti />} />
+              <Route path="/IdeateX" element={<IdeateX />} />
+              <Route path="/IdeateX/register" element={<Register />} />
 
               {/* <Route path="/endeavour" element={<ComingSoon />} /> */}
 
