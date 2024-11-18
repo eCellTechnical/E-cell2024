@@ -320,7 +320,7 @@ console.log(teamLeaderEmail);
               <CardHeader>
                 <CardTitle className="text-2xl font-bold">Team Registration Form <br />(Registration Fees -- 200rs Only / Team)</CardTitle>
               </CardHeader>
-              <Link to="/IdeateX">
+              <Link to="/ideatex">
                 <p className="text-white text-2xl p-4 md:p-10">X</p>
               </Link>
               </div>
