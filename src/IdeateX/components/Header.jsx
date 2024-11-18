@@ -12,28 +12,28 @@ function Header() {
     <div className="fixed top-0 z-40 w-full flex justify-center items-center mt-2">
       <div className="glass flex items-center px-4 md:px-6 py-2 w-[90%] border-solid border-[#26222D] border-2 h-[8vh] md:h-[10vh] rounded-lg">
         <div className="flex items-center justify-between w-full">
-        <Link to="/IdeateX" className="font-[600] text-[#AE0D61] text-[18px]">
+        <Link to="/ideatex" className="font-[600] text-[#AE0D61] text-[18px]">
       IDEATEX 2.O
     </Link>
 
           {/* Desktop Links */}
           <div className="hidden md:flex justify-end items-center gap-4 w-[60%]">
-            <a href="/IdeateX" className="font-[600] text-[16px] text-white">
+            <a href="/ideatex" className="font-[600] text-[16px] text-white">
               HOME
             </a>
-            <a href="/IdeateX#about" className="font-[600] text-[16px] text-white">
+            <a href="/ideatex#about" className="font-[600] text-[16px] text-white">
               ABOUT US
             </a>
-            <a href="/IdeateX#gallery" className="font-[600] text-[16px] text-white">
+            <a href="/ideatex#gallery" className="font-[600] text-[16px] text-white">
               GALLERY
             </a>
-            <a href="/IdeateX#faq" className="font-[600] text-[16px] text-white">
+            <a href="/ideatex#faq" className="font-[600] text-[16px] text-white">
               FAQS
             </a>
-            <a href="/IdeateX#sponsor" className="font-[600] text-[16px] text-white">
+            <a href="/ideatex#sponsor" className="font-[600] text-[16px] text-white">
               SPONSORS
             </a>
-            <Link to="/IdeateX/register" className="bg-[#AE0D61] font-[600] py-2 px-4 rounded-lg border-2 border-[#AE0D61] text-white hover:bg-[#AE0D61]">
+            <Link to="/ideatex/register" className="bg-[#AE0D61] font-[600] py-2 px-4 rounded-lg border-2 border-[#AE0D61] text-white hover:bg-[#AE0D61]">
               Register Now
             </Link>
           </div>
@@ -54,23 +54,23 @@ function Header() {
             <X size={28} />
           </button>
           <nav className="flex flex-col items-center space-y-4 mt-8">
-            <a href="/IdeateX" onClick={toggleMenu} className="text-white font-[600] text-[18px]">
+            <a href="/ideatex" onClick={toggleMenu} className="text-white font-[600] text-[18px]">
               HOME
             </a>
-            <a href="/IdeateX#about" onClick={toggleMenu} className="text-white font-[600] text-[18px]">
+            <a href="/ideatex#about" onClick={toggleMenu} className="text-white font-[600] text-[18px]">
               ABOUT US
             </a>
-            <a href="/IdeateX#gallery" onClick={toggleMenu} className="text-white font-[600] text-[18px]">
+            <a href="/ideatex#gallery" onClick={toggleMenu} className="text-white font-[600] text-[18px]">
               GALLERY
             </a>
-            <a href="/IdeateX#faq" onClick={toggleMenu} className="text-white font-[600] text-[18px]">
+            <a href="/ideatex#faq" onClick={toggleMenu} className="text-white font-[600] text-[18px]">
               FAQS
             </a>
-            <a href="/IdeateX#sponsor" onClick={toggleMenu} className="text-white font-[600] text-[18px]">
+            <a href="/ideatex#sponsor" onClick={toggleMenu} className="text-white font-[600] text-[18px]">
               SPONSORS
             </a>
           </nav>
-          <Link to="/IdeateX/register">
+          <Link to="/ideatex/register">
           <button
             onClick={toggleMenu}
             className="mt-8 bg-[#AE0D61] text-white font-[600] py-2 px-6 rounded-lg border-2 border-[#AE0D61] hover:bg-transparent hover:text-[#AE0D61]"

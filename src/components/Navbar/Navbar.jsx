@@ -71,7 +71,7 @@ function Navbar() {
 
   return (
     <div className="w-[100vw]">
-      {isEndeavour.pathname.slice(1, 10) !== "IdeateX" && isEndeavour.pathname.slice(1, 18) !== "IdeateX/register" ? (
+      {isEndeavour.pathname.slice(1, 10) !== "ideatex" && isEndeavour.pathname.slice(1, 18) !== "ideatex/register" ? (
         <div className="fixed navbar z-[50] flex flex-row w-[100vw]">
           <div className="logoSide w-[20%] p-3 pl-[4%] flex items-center !cursor-pointer">
             <img
@@ -263,7 +263,7 @@ function Navbar() {
                 </div>
               </div>
               <a
-                onClick={() => history("/IdeateX")}
+                onClick={() => history("/ideatex")}
                 className="endeavour font-medium text-black dark:text-white px-5"
               >
                 IdeateX

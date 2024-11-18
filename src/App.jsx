@@ -137,7 +137,7 @@ function App() {
               />
 
               <Route path="/IdeateX" element={<IdeateX />} />
-              <Route path="/IdeateX/register" element={<Register />} />
+              <Route path="/ideatex/register" element={<Register />} />
 
               {/* <Route path="/endeavour" element={<ComingSoon />} /> */}
 
