@@ -482,7 +482,7 @@ console.log(teamLeaderEmail);
                     <Button
                       onClick={() => addTeamMember(team.id)}
                       variant="outline"
-                      className={`w-full ${teams[0].members.length === 4 && 'hidden'} border-dashed border-2 border-gray-700 hover:border-primary hover:bg-gray-900`}
+                      className={`w-full ${teams[0].members.length === 4 && 'hidden'} border-dashed border-2 z-10 border-gray-700 hover:border-primary hover:bg-gray-900`}
                     >
                       <Plus className="mr-2 h-4 w-4" />
                       Add Team Member
@@ -493,7 +493,7 @@ console.log(teamLeaderEmail);
                 <Dialog open={isOpen} onOpenChange={setIsOpen}>
                   <DialogTrigger asChild>
                     <Button
-                      className="w-full py-6 bg-white hover:scale-105 transition-all ease-linear text-base hover:bg-white text-black"
+                      className="w-full z-10 py-6 bg-white hover:scale-105 transition-all ease-linear text-base hover:bg-white text-black"
                       disabled={!allFieldsFilled}
                       onClick={handleNextClick}
                     >
