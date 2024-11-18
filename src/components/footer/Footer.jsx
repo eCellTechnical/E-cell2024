@@ -399,7 +399,7 @@ export default function Foot() {
                   >
                     <img
                       src={
-                        themeMode ==  "dark" ? greaterThanDark : greaterThanLight 
+                        greaterThanDark 
                       }
                       alt=""
                       className="w-2 h-2 mr-2"
@@ -415,7 +415,7 @@ export default function Foot() {
                     {" "}
                     <img
                       src={
-                        themeMode ==  "dark" ? greaterThanDark : greaterThanLight 
+                        greaterThanDark 
                       }
                       alt=""
                       className="w-2 h-2 mr-2"
@@ -428,7 +428,7 @@ export default function Foot() {
                   >
                     <img
                       src={
-                        themeMode ==  "dark" ? greaterThanDark : greaterThanLight 
+                         greaterThanDark  
                       }
                       alt=""
                       className="w-2 h-2 mr-2"
@@ -442,7 +442,7 @@ export default function Foot() {
                     {" "}
                     <img
                       src={
-                        themeMode ==  "dark" ? greaterThanDark : greaterThanLight 
+                        greaterThanDark
                       }
                       alt=""
                       className="w-2 h-2 mr-2"
@@ -456,7 +456,7 @@ export default function Foot() {
                     {" "}
                     <img
                       src={
-                        themeMode ==  "dark" ? greaterThanDark : greaterThanLight 
+                        greaterThanDark
                       }
                       alt=""
                       className="w-2 h-2 mr-2"
@@ -471,7 +471,7 @@ export default function Foot() {
                   >
                     <img
                       src={
-                        themeMode ==  "dark" ? greaterThanDark : greaterThanLight 
+                        greaterThanDark
                       }
                       alt=""
                       className="w-2 h-2 mr-2"
@@ -487,7 +487,7 @@ export default function Foot() {
                     {" "}
                     <img
                       src={
-                        themeMode ==  "dark" ? greaterThanDark : greaterThanLight 
+                        greaterThanDark
                       }
                       alt=""
                       className="w-2 h-2 mr-2"
@@ -502,7 +502,7 @@ export default function Foot() {
                   >
                     <img
                       src={
-                        themeMode ==  "dark" ? greaterThanDark : greaterThanLight 
+                        greaterThanDark
                       }
                       alt=""
                       className="w-2 h-2 mr-2"
@@ -515,7 +515,7 @@ export default function Foot() {
                   >
                     <img
                       src={
-                        themeMode ==  "dark" ? greaterThanDark : greaterThanLight 
+                        greaterThanDark
                       }
                       alt=""
                       className="w-2 h-2 mr-2"
@@ -528,7 +528,7 @@ export default function Foot() {
                   >
                     <img
                       src={
-                        themeMode ==  "dark" ? greaterThanDark : greaterThanLight 
+                        greaterThanDark
                       }
                       alt=""
                       className="w-2 h-2 mr-2"
@@ -541,7 +541,7 @@ export default function Foot() {
                   >
                     <img
                       src={
-                        themeMode == "dark" ? greaterThanDark : greaterThanLight
+                        greaterThanDark
                       }
                       alt=""
                       className="w-2 h-2 mr-2"
@@ -556,7 +556,7 @@ export default function Foot() {
                   >
                     <img
                       src={
-                        themeMode ==  "dark" ? greaterThanDark : greaterThanLight 
+                        greaterThanDark
                       }
                       alt=""
                       className="w-2 h-2 mr-2"
@@ -571,7 +571,7 @@ export default function Foot() {
                   >
                     <img
                       src={
-                        themeMode ==  "dark" ? greaterThanDark : greaterThanLight 
+                        greaterThanDark
                       }
                       alt=""
                       className="w-2 h-2 mr-2"
