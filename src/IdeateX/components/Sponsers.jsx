@@ -11,7 +11,7 @@ import { ArrowRight } from 'lucide-react';
   
 const Sponsers = () => {
   return (
-    <div className='h-[85vh] md:h-[80vh] md:gap-10 flex-col p-4 md:p-14 flex bg-[#0B0713] rounded-lg border-2 border-[#26222D] justify-center'>
+    <div className='h-[70vh] md:h-[80vh] md:gap-10 flex-col p-4 md:p-14 flex bg-[#0B0713] rounded-lg border-2 border-[#26222D] justify-center'>
 <div className="w-[100%] flex flex-col md:flex-row md:items-end ">
     <div className="w-full md:w-[60%]">
       <Heading top="The Power Behind Us" med="IdeateX 2.O" last="SPONSERS" />

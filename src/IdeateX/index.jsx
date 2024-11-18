@@ -150,9 +150,9 @@ export default function Home() {
           <MovingText />
         </div>
 
-        <div className="bg-[#0B0713] text-[#838490] h-[10vh] flex justify-center items-center font-bold ">
-          Made with ❤️ by Team E-CELL 
-        </div>
+          {/* <div className="bg-[#0B0713] text-[#838490] h-[10vh] flex justify-center items-center font-bold ">
+            Made with ❤️ by Team E-CELL 
+          </div> */}
       </div>
     </div>
   );
