@@ -1,18 +1,29 @@
-'use client'
-import React from 'react';
-import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage"
+"use client";
+import React from "react";
+import {
+  getStorage,
+  ref,
+  uploadBytesResumable,
+  getDownloadURL,
+} from "firebase/storage";
 import { collection, addDoc } from "firebase/firestore";
-import { db } from "./firebase"; 
-import { Plus, X, Copy, Upload } from "lucide-react"
-import { useState, useEffect } from "react"
-import { Button } from "./components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "./components/ui/card"
-import Header from "./components/Header"
-import Pay from "./public/Payment.jpg"
+import { db } from "./firebase";
+import { Plus, X, Copy, Upload } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Button } from "./components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "./components/ui/card";
+import Header from "./components/Header";
+import Pay from "./public/Payment.jpg";
 import { send } from "emailjs-com";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "./components/ui/dialog"
-import {Link } from 'react-router-dom';
-import Logo from "./public/IdeateX_Logo.png"
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "./components/ui/dialog";
+import { Link } from "react-router-dom";
+import Logo from "./public/IdeateX_Logo.png";
 // interface TeamMember {
 //   id: number
 //   name: string
@@ -37,154 +48,163 @@ export default function Register() {
   const [teams, setTeams] = useState([
     {
       id: 1,
-      name: '',
+      name: "",
       members: [
         {
           id: 1,
-          name: '',
-          year: '',
-          libId: '',
-          email: '',
-          number: '',
-          gender: ''
-        }
-      ]
-    }
-  ])
+          name: "",
+          year: "",
+          libId: "",
+          email: "",
+          number: "",
+          gender: "",
+        },
+      ],
+    },
+  ]);
 
   const [validationErrors, setValidationErrors] = useState({
     email: {},
-    phone: {}
+    phone: {},
   });
 
   const addTeamMember = (teamId) => {
-    if(Array.isArray(teams[0].members) && teams[0].members.length < 4) {
-      setTeams(teams.map(team => 
+    if (Array.isArray(teams[0].members) && teams[0].members.length < 4) {
+      setTeams(
+        teams.map((team) =>
+          team.id === teamId
+            ? {
+                ...team,
+                members: [
+                  ...team.members,
+                  {
+                    id: team.members.length + 1,
+                    name: "",
+                    year: "",
+                    libId: "",
+                    email: "",
+                    number: "",
+                    gender: "",
+                  },
+                ],
+              }
+            : team
+        )
+      );
+    }
+  };
+
+  const removeTeamMember = (teamId, memberId) => {
+    setTeams(
+      teams.map((team) =>
         team.id === teamId
           ? {
               ...team,
-              members: [
-                ...team.members,
-                {
-                  id: team.members.length + 1,
-                  name: '',
-                  year: '',
-                  libId: '',
-                  email: '',
-                  number: '',
-                  gender: ''
-                }
-              ]
+              members:
+                team.members.length > 1
+                  ? team.members.filter((member) => member.id !== memberId)
+                  : team.members,
             }
           : team
-      ))
-    }
-  }
-
-  const removeTeamMember = (teamId, memberId) => {
-    setTeams(teams.map(team => 
-      team.id === teamId
-        ? {
-            ...team,
-            members: team.members.length > 1
-              ? team.members.filter(member => member.id !== memberId)
-              : team.members
-          }
-        : team
-    ))
-  }
+      )
+    );
+  };
 
   const handleTeamNameChange = (teamId, value) => {
-    setTeams(teams.map(team => 
-      team.id === teamId ? { ...team, name: value } : team
-    ))
-  }
+    setTeams(
+      teams.map((team) =>
+        team.id === teamId ? { ...team, name: value } : team
+      )
+    );
+  };
 
   const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
-  }
-  
+  };
+
   const validatePhoneNumber = (number) => {
     const phoneRegex = /^[0-9]{10}$/;
     return phoneRegex.test(number);
-  }
+  };
 
   const handleMemberChange = (teamId, memberId, field, value) => {
-    if (field === 'email') {
-      setValidationErrors(prev => ({
+    if (field === "email") {
+      setValidationErrors((prev) => ({
         ...prev,
         email: {
           ...prev.email,
-          [memberId]: !validateEmail(value)
-        }
+          [memberId]: !validateEmail(value),
+        },
       }));
     }
-    
-    if (field === 'number') {
-      setValidationErrors(prev => ({
+
+    if (field === "number") {
+      setValidationErrors((prev) => ({
         ...prev,
         phone: {
           ...prev.phone,
-          [memberId]: !validatePhoneNumber(value)
-        }
+          [memberId]: !validatePhoneNumber(value),
+        },
       }));
     }
 
-    setTeams(teams.map(team => 
-      team.id === teamId
-        ? {
-            ...team,
-            members: team.members.map(member => 
-              member.id === memberId ? { ...member, [field]: value } : member
-            )
-          }
-        : team
-    ))
-  }
+    setTeams(
+      teams.map((team) =>
+        team.id === teamId
+          ? {
+              ...team,
+              members: team.members.map((member) =>
+                member.id === memberId ? { ...member, [field]: value } : member
+              ),
+            }
+          : team
+      )
+    );
+  };
 
   const [isLoading, setIsLoading] = useState(false);
-  const [isOpen, setIsOpen] = useState(false)
-  const [transactionId, setTransactionId] = useState('')
+  const [isOpen, setIsOpen] = useState(false);
+  const [transactionId, setTransactionId] = useState("");
   const [screenshot, setScreenshot] = useState(null);
 
-
-  const upiId = '8318536200@jupiteraxis'
+  const upiId = "8318536200@jupiteraxis";
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(upiId)
-      .then(() => alert('UPI ID copied to clipboard!'))
-      .catch(err => console.error('Failed to copy: ', err))
-  }
+    navigator.clipboard
+      .writeText(upiId)
+      .then(() => alert("UPI ID copied to clipboard!"))
+      .catch((err) => console.error("Failed to copy: ", err));
+  };
 
   const handleFileChange = (event) => {
     if (event.target.files && event.target.files[0]) {
-      setScreenshot(event.target.files[0])
+      setScreenshot(event.target.files[0]);
     }
-  }
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     setIsLoading(true);
-    
+
     // Check if screenshot is uploaded
     if (!screenshot) {
       alert("Please upload the payment screenshot.");
       setIsLoading(false);
       return; // Stop further execution
     }
-    
+
     try {
       const paymentStatus = screenshot ? true : false;
-  
+
       // If screenshot is not uploaded, show alert (this is redundant as it's already checked above)
-      if (!paymentStatus) { 
+      if (!paymentStatus) {
         alert("Please upload payment screenshot.");
         setIsLoading(false);
         return;
       }
-      
-      let screenshotUrl = '';
+
+      let screenshotUrl = "";
       if (screenshot) {
         const storage = getStorage();
         const screenshotRef = ref(storage, `payments/${screenshot.name}`);
@@ -192,7 +212,7 @@ export default function Register() {
         await uploadTask;
         screenshotUrl = await getDownloadURL(screenshotRef);
       }
-    
+
       const teamData = {
         teamName: teams[0].name,
         email: teams[0].members[0].email,
@@ -208,8 +228,9 @@ export default function Register() {
         transactionId: transactionId,
         isPaymentVerified: false,
       };
-  
+
       await addDoc(collection(db, "registrations"), teamData);
+      handleSendEmail();
       alert("REGISTRATION SUCCESSFULL!");
       setIsOpen(false);
       setTransactionId("");
@@ -238,40 +259,49 @@ export default function Register() {
       setIsLoading(false);
     }
   };
-  
 
   const validateAllFields = () => {
     let hasErrors = false;
-    const errorMessages= [];
+    const errorMessages = [];
 
     teams[0].members.forEach((member, index) => {
       if (!validateEmail(member.email)) {
-        errorMessages.push(`Invalid email for ${index === 0 ? 'Team Leader' : 'Team Member ' + (index + 1)}`);
+        errorMessages.push(
+          `Invalid email for ${
+            index === 0 ? "Team Leader" : "Team Member " + (index + 1)
+          }`
+        );
         hasErrors = true;
       }
       if (!validatePhoneNumber(member.number)) {
-        errorMessages.push(`Invalid phone number for ${index === 0 ? 'Team Leader' : 'Team Member ' + (index + 1)}`);
+        errorMessages.push(
+          `Invalid phone number for ${
+            index === 0 ? "Team Leader" : "Team Member " + (index + 1)
+          }`
+        );
         hasErrors = true;
       }
     });
 
     if (hasErrors) {
-      alert(errorMessages.join('\n'));
+      alert(errorMessages.join("\n"));
       return false;
     }
     return true;
   };
 
-  const allFieldsFilled = teams.every((team) =>
-    team.name.trim() !== '' &&
-    team.members.every((member) => 
-      member.name.trim() !== '' &&
-      member.year.trim() !== '' &&
-      member.libId.trim() !== '' &&
-      member.email.trim() !== '' &&
-      member.number.trim() !== '' &&
-      member.gender.trim() !== ''
-    )
+  const allFieldsFilled = teams.every(
+    (team) =>
+      team.name.trim() !== "" &&
+      team.members.every(
+        (member) =>
+          member.name.trim() !== "" &&
+          member.year.trim() !== "" &&
+          member.libId.trim() !== "" &&
+          member.email.trim() !== "" &&
+          member.number.trim() !== "" &&
+          member.gender.trim() !== ""
+      )
   );
 
   const handleNextClick = () => {
@@ -282,7 +312,7 @@ export default function Register() {
   const handleSendEmail = () => {
     // Replace 'teamLeaderEmail@example.com' with the actual email
     const teamLeaderEmail = teams[0].members[0].email;
-console.log(teamLeaderEmail);
+    console.log(teamLeaderEmail);
 
     const emailParams = {
       email: teamLeaderEmail, // Replace {{email}} in your template
@@ -309,20 +339,30 @@ console.log(teamLeaderEmail);
       <div className="absolute inset-0 bg-[url('/grid.png')] opacity-10 pointer-events-none z-0"></div>
       <div className="relative z-10">
         <Header />
-        <div className={`flex ${teams[0].members.length > 1 && 'md:pt-[8rem]'} pt-[4rem] hode items-center`}>
+        <div
+          className={`flex ${
+            teams[0].members.length > 1 && "md:pt-[8rem]"
+          } pt-[4rem] hode items-center`}
+        >
           <div className="w-[40%] p-8 md:flex hidden items-center justify-center h-screen">
-            <img className="w-[70%] sticky flex items-center justify-center" src={Logo} alt="" />
+            <img
+              className="w-[70%] sticky flex items-center justify-center"
+              src={Logo}
+              alt=""
+            />
           </div>
           <div className="md:w-[60%] w-full md:p-8 p-6 pt-10 md:pt-8 flex items-center justify-center">
             <Card className="w-full mx-auto bg-gray-950 text-white">
               <div className="flex justify-between  align-middle">
-
-              <CardHeader>
-                <CardTitle className="text-2xl font-bold">Team Registration Form <br />(Registration Fees -- 200rs Only / Team)</CardTitle>
-              </CardHeader>
-              <Link to="/ideatex">
-                <p className="text-white text-2xl p-4 md:p-10">X</p>
-              </Link>
+                <CardHeader>
+                  <CardTitle className="text-2xl font-bold">
+                    Team Registration Form <br />
+                    (Registration Fees -- 200rs Only / Team)
+                  </CardTitle>
+                </CardHeader>
+                <Link to="/ideatex">
+                  <p className="text-white text-2xl p-4 md:p-10">X</p>
+                </Link>
               </div>
               <CardContent className="space-y-8">
                 {teams.map((team) => (
@@ -333,7 +373,9 @@ console.log(teamLeaderEmail);
                         required
                         id={`teamName-${team.id}`}
                         value={team.name}
-                        onChange={(e) => handleTeamNameChange(team.id, e.target.value)}
+                        onChange={(e) =>
+                          handleTeamNameChange(team.id, e.target.value)
+                        }
                         className="block z-8 px-4 py-3 w-full text-white-100 bg-gray-900 border-2 border-gray-800 rounded-lg focus:border-primary peer placeholder-transparent"
                         placeholder="Team Name"
                       />
@@ -344,7 +386,7 @@ console.log(teamLeaderEmail);
                         Team Name
                       </label>
                     </div>
-                    
+
                     {team.members.map((member, index) => (
                       <div key={member.id} className="space-y-4 relative">
                         <div className="absolute right-0 top-0">
@@ -352,15 +394,21 @@ console.log(teamLeaderEmail);
                             <Button
                               variant="ghost"
                               size="icon"
-                              onClick={() => removeTeamMember(team.id, member.id)}
+                              onClick={() =>
+                                removeTeamMember(team.id, member.id)
+                              }
                               className="text-gray-400 hover:text-white"
                             >
                               <X className="h-4 w-4" />
                             </Button>
                           )}
                         </div>
-                        <h3 className="font-bold">{index === 0 ? "Team Leader" : "Team Member " + (index + 1)}</h3>
-                        
+                        <h3 className="font-bold">
+                          {index === 0
+                            ? "Team Leader"
+                            : "Team Member " + (index + 1)}
+                        </h3>
+
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           <div className="relative">
                             <input
@@ -368,7 +416,14 @@ console.log(teamLeaderEmail);
                               required
                               id={`name-${team.id}-${member.id}`}
                               value={member.name}
-                              onChange={(e) => handleMemberChange(team.id, member.id, 'name', e.target.value)}
+                              onChange={(e) =>
+                                handleMemberChange(
+                                  team.id,
+                                  member.id,
+                                  "name",
+                                  e.target.value
+                                )
+                              }
                               className="block px-4 py-3 w-full text-white bg-gray-900 border-2 border-gray-800 rounded-lg focus:border-primary peer placeholder-transparent"
                               placeholder="Name"
                             />
@@ -384,11 +439,20 @@ console.log(teamLeaderEmail);
                             <select
                               id={`year-${team.id}-${member.id}`}
                               value={member.year}
-                              onChange={(e) => handleMemberChange(team.id, member.id, 'year', e.target.value)}
+                              onChange={(e) =>
+                                handleMemberChange(
+                                  team.id,
+                                  member.id,
+                                  "year",
+                                  e.target.value
+                                )
+                              }
                               className="block px-4 py-3 w-full text-white bg-gray-900 border-2 border-gray-800 rounded-lg focus:border-primary"
                               required
                             >
-                              <option value="" disabled>Select Year</option>
+                              <option value="" disabled>
+                                Select Year
+                              </option>
                               <option value="1">1</option>
                               <option value="2">2</option>
                               <option value="3">3</option>
@@ -402,7 +466,14 @@ console.log(teamLeaderEmail);
                               id={`libId-${team.id}-${member.id}`}
                               required
                               value={member.libId}
-                              onChange={(e) => handleMemberChange(team.id, member.id, 'libId', e.target.value)}
+                              onChange={(e) =>
+                                handleMemberChange(
+                                  team.id,
+                                  member.id,
+                                  "libId",
+                                  e.target.value
+                                )
+                              }
                               className="block px-4 py-3 w-full text-white bg-gray-900 border-2 border-gray-800 rounded-lg focus:border-primary peer placeholder-transparent"
                               placeholder="Library ID"
                             />
@@ -420,9 +491,18 @@ console.log(teamLeaderEmail);
                               required
                               id={`email-${team.id}-${member.id}`}
                               value={member.email}
-                              onChange={(e) => handleMemberChange(team.id, member.id, 'email', e.target.value)}
+                              onChange={(e) =>
+                                handleMemberChange(
+                                  team.id,
+                                  member.id,
+                                  "email",
+                                  e.target.value
+                                )
+                              }
                               className={`block px-4 py-3 w-full text-white bg-gray-900 border-2 ${
-                                validationErrors.email[member.id] ? 'border-red-500' : 'border-gray-800'
+                                validationErrors.email[member.id]
+                                  ? "border-red-500"
+                                  : "border-gray-800"
                               } rounded-lg focus:border-primary peer placeholder-transparent`}
                               placeholder="Email"
                             />
@@ -434,7 +514,9 @@ console.log(teamLeaderEmail);
                               Email
                             </label>
                             {validationErrors.email[member.id] && (
-                              <span className="text-red-500 text-xs mt-1">Please enter a valid email address</span>
+                              <span className="text-red-500 text-xs mt-1">
+                                Please enter a valid email address
+                              </span>
                             )}
                           </div>
 
@@ -443,7 +525,14 @@ console.log(teamLeaderEmail);
                               id={`gender-${team.id}-${member.id}`}
                               value={member.gender}
                               required
-                              onChange={(e) => handleMemberChange(team.id, member.id, 'gender', e.target.value)}
+                              onChange={(e) =>
+                                handleMemberChange(
+                                  team.id,
+                                  member.id,
+                                  "gender",
+                                  e.target.value
+                                )
+                              }
                               className="block px-4 py-3 w-full text-white bg-gray-900 border-2 border-gray-800 rounded-lg focus:border-primary"
                             >
                               <option value="" disabled hidden>
@@ -459,9 +548,18 @@ console.log(teamLeaderEmail);
                               type="tel"
                               id={`number-${team.id}-${member.id}`}
                               value={member.number}
-                              onChange={(e) => handleMemberChange(team.id, member.id, 'number', e.target.value)}
+                              onChange={(e) =>
+                                handleMemberChange(
+                                  team.id,
+                                  member.id,
+                                  "number",
+                                  e.target.value
+                                )
+                              }
                               className={`block px-4 py-3 w-full text-white bg-gray-900 border-2 ${
-                                validationErrors.phone[member.id] ? 'border-red-500' : 'border-gray-800'
+                                validationErrors.phone[member.id]
+                                  ? "border-red-500"
+                                  : "border-gray-800"
                               } rounded-lg focus:border-primary peer placeholder-transparent`}
                               placeholder="Contact Number"
                             />
@@ -472,7 +570,9 @@ console.log(teamLeaderEmail);
                               Contact Number
                             </label>
                             {validationErrors.phone[member.id] && (
-                              <span className="text-red-500 text-xs mt-1">Please enter a valid 10-digit phone number</span>
+                              <span className="text-red-500 text-xs mt-1">
+                                Please enter a valid 10-digit phone number
+                              </span>
                             )}
                           </div>
                         </div>
@@ -482,7 +582,9 @@ console.log(teamLeaderEmail);
                     <Button
                       onClick={() => addTeamMember(team.id)}
                       variant="outline"
-                      className={`w-full ${teams[0].members.length === 4 && 'hidden'} border-dashed border-2 z-10 border-gray-700 hover:border-primary hover:bg-gray-900`}
+                      className={`w-full ${
+                        teams[0].members.length === 4 && "hidden"
+                      } border-dashed border-2 z-10 border-gray-700 hover:border-primary hover:bg-gray-900`}
                     >
                       <Plus className="mr-2 h-4 w-4" />
                       Add Team Member
@@ -517,16 +619,26 @@ console.log(teamLeaderEmail);
                           <img src={Pay} alt="" />
                         </div>
                         <div className="flex items-center space-x-2">
-                          <span className="font-medium text-white">{upiId}</span>
-                          <Button size="icon" variant="ghost" onClick={handleCopy}>
+                          <span className="font-medium text-white">
+                            {upiId}
+                          </span>
+                          <Button
+                            size="icon"
+                            variant="ghost"
+                            onClick={handleCopy}
+                          >
                             <Copy className="h-4 w-4 text-white" />
-                            <span className="sr-only text-white">Copy UPI ID</span>
+                            <span className="sr-only text-white">
+                              Copy UPI ID
+                            </span>
                           </Button>
                         </div>
                       </div>
                       <form onSubmit={handleSubmit} className="space-y-4">
                         <div className="space-y-2">
-                          <label htmlFor="transactionId" className="text-white">Transaction ID</label>
+                          <label htmlFor="transactionId" className="text-white">
+                            Transaction ID
+                          </label>
                           <input
                             id="transactionId"
                             value={transactionId}
@@ -537,7 +649,9 @@ console.log(teamLeaderEmail);
                           />
                         </div>
                         <div className="space-y-2">
-                          <label htmlFor="screenshot" className="text-white">Upload Payment Screenshot</label>
+                          <label htmlFor="screenshot" className="text-white">
+                            Upload Payment Screenshot
+                          </label>
                           <div className="flex items-center space-x-2">
                             <input
                               id="screenshot"
@@ -550,17 +664,24 @@ console.log(teamLeaderEmail);
                             <Button
                               type="button"
                               variant="outline"
-                              onClick={() => document.getElementById('screenshot')?.click()}
+                              onClick={() =>
+                                document.getElementById("screenshot")?.click()
+                              }
                               className="text-white border-white hover:bg-gray-700"
                             >
                               <Upload className="mr-2 h-4 w-4 text-white" />
-                              {screenshot ? 'Change File' : 'Choose File'}
+                              {screenshot ? "Change File" : "Choose File"}
                             </Button>
-                            {screenshot && <span className="text-sm text-white">{screenshot.name}</span>}
+                            {screenshot && (
+                              <span className="text-sm text-white">
+                                {screenshot.name}
+                              </span>
+                            )}
                           </div>
                         </div>
-                        <Button type="submit" className="h-12 w-full text-white bg-blue-600 hover:bg-blue-700"
-                        onClick={handleSendEmail}
+                        <Button
+                          type="submit"
+                          className="h-12 w-full text-white bg-blue-600 hover:bg-blue-700"
                         >
                           {/* {!screenshot && <span className="text-red-500">Payment Screenshot not Uploaded!</span>} */}
                           SUBMIT
