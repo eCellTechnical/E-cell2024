@@ -330,7 +330,7 @@ export default function Register() {
       // Add data to the new Firebase collection
       await addDoc(collection(db, "PartialRegister"), teamData);
   
-      alert("Team details successfully saved to PartialRegister!");
+      // alert("Team details successfully saved to PartialRegister!");
       
     } catch (error) {
       console.error("Error saving team details to PartialRegister: ", error);
