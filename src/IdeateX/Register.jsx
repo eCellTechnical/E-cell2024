@@ -275,10 +275,39 @@ export default function Register() {
   );
 
   const handleNextClick = () => {
+
     if (validateAllFields()) {
       setIsOpen(true);
+      addCollect();
     }
   };
+
+  const addCollect = async () => {
+    try {
+      // Extract the team data
+      const teamData = {
+        teamName: teams[0].name,
+        teamLeader: {
+          ...teams[0].members[0],
+          teamName: teams[0].name,
+        },
+        teamMembers: teams[0].members.slice(1).map((member) => ({
+          ...member,
+        })),
+        email: teams[0].members[0].email,
+      };
+  
+      // Add data to the new Firebase collection
+      await addDoc(collection(db, "PartialRegister"), teamData);
+  
+      alert("Team details successfully saved to PartialRegister!");
+      
+    } catch (error) {
+      console.error("Error saving team details to PartialRegister: ", error);
+      alert("Failed to save team details.");
+    }
+  };
+  
   const handleSendEmail = () => {
     // Replace 'teamLeaderEmail@example.com' with the actual email
     const teamLeaderEmail = teams[0].members[0].email;
