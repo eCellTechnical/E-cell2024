@@ -52,6 +52,7 @@ function Home() {
 
   useEffect(() => {
     setStopScroll(screen.width);
+    location.reload();
   }, []);
 
   const { pathname } = useLocation();
