@@ -76,7 +76,7 @@ export default function Home() {
           <MovingText />
         </div>
 
-        <div className="w-full flex pt-8 pb-8 md:pt-0 md:pb-0 justify-center items-center">
+        <div className="w-full flex pt-8 pb-8 md:pt-0 md:pb-64 justify-center items-center">
           <div className="flex flex-col justify-center w-[95%] md:w-[85%] px-4">
             <div className="h-auto md:h-[100vh] flex flex-col justify-center">
               <div className="w-full flex flex-col md:flex-row items-start md:items-end">
@@ -124,7 +124,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div id="gallery" className="w-full pt-8 pb-8 md:pt-0 md:pb-0 flex justify-center items-center">
+        <div id="gallery" className="w-full pt-8 pb-8 md:pt-72 md:pb-0 flex justify-center items-center">
           <div className="flex flex-col h-auto md:h-[80vh] justify-center w-[100%] md:w-[85%] px-4">
             <ScrollingGallery />
           </div>
