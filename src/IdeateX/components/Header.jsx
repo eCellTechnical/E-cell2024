@@ -14,14 +14,15 @@ function Header() {
       <div className="glass flex items-center px-4 md:px-6 py-2 w-[90%] border-solid border-[#26222D] border-2 h-[8vh] md:h-[10vh] rounded-lg">
         <div className="flex items-center justify-between w-full">
           <div className="flex gap-4 items-center">
-            <img
-              src={
-                "https://firebasestorage.googleapis.com/v0/b/endevaour-2023.appspot.com/o/webassets%2Fwhite%20logo%20br.png?alt=media&token=50662b36-d955-4f24-985c-bd73a9101e01"
-              }
-              onClick={() => history("/")}
-              className="w-14 h-14 lg:w-14 lg:h-14 z-20 cursor-pointer"
-              alt="E-Cell logo"
-            />
+            <Link to="/">
+              <img
+                src={
+                  "https://firebasestorage.googleapis.com/v0/b/endevaour-2023.appspot.com/o/webassets%2Fwhite%20logo%20br.png?alt=media&token=50662b36-d955-4f24-985c-bd73a9101e01"
+                }
+                className="w-14 h-14 lg:w-14 lg:h-14 z-20 cursor-pointer"
+                alt="E-Cell logo"
+              />
+            </Link>
             <p className="text-white font-semibold">X</p>
             <Link
               to="/ideatex"
