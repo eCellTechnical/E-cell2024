@@ -20,7 +20,7 @@ function Hero() {
           <div className="flex  md:flex-row flex-col justify-between mt-10 md:items-center items-start border-solid border-2 border-[#26222D] bg-[#04000A] rounded-lg p-8 text-white">
             <div className="flex flex-col items-start space-y-1 border-b-2 border-[#26222D] pb-6 md:border-b-0 md:pb-0">
               <span className="text-[18px]">Registration Start :- 18th Nov 2024</span>
-              <span className="text-[18px]">Registration End :- 21st Nov 2024</span>
+              <span className="text-[18px]">Registration End :- 22nd Nov 2024</span>
               <span className="text-[18px]">Event Timing :- 9:30 - 17:00</span>
             </div>
             <div className="w-px h-0 md:m-0 m-2 md:h-16 bg-[#26222D] mx-4"></div>
