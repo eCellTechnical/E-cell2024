@@ -67,10 +67,10 @@ function Header() {
               SPONSORS
             </a>
             <Link
-              to="/ideatex/register"
+              to="/ideatex"
               className="bg-[#AE0D61] font-[600] py-2 px-4 rounded-lg border-2 border-[#AE0D61] text-white hover:bg-[#AE0D61]"
             >
-              Register Now
+              Register Closed !!
             </Link>
           </div>
 
@@ -129,12 +129,12 @@ function Header() {
               SPONSORS
             </a>
           </nav>
-          <Link to="/ideatex/register">
+          <Link to="/ideatex">
             <button
               onClick={toggleMenu}
               className="mt-8 bg-[#AE0D61] text-white font-[600] py-2 px-6 rounded-lg border-2 border-[#AE0D61] hover:bg-transparent hover:text-[#AE0D61]"
             >
-              Register Now
+              Register Closed !!
             </button>
           </Link>
         </div>

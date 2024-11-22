@@ -5,11 +5,11 @@ import { Analytics } from "@vercel/analytics/react";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Register from "./IdeateX/Register"
+// import Register from "./IdeateX/Register";
 // Lazy-loaded components
 const Loader = React.lazy(() => import("./components/Loader/Loader"));
 const Navbar = React.lazy(() => import("./components/Navbar/Navbar"));
-const IdeateX = React.lazy(() => import("./IdeateX/index"));  
+const IdeateX = React.lazy(() => import("./IdeateX/index"));
 const Home = React.lazy(() => import("./pages/Home/Home"));
 const Discover = React.lazy(() => import("./pages/discover/Discover"));
 const OurTeam = React.lazy(() => import("./pages/OurTeam/OurTeam"));
@@ -137,7 +137,7 @@ function App() {
               />
 
               <Route path="/ideatex" element={<IdeateX />} />
-              <Route path="/ideatex/register" element={<Register />} />
+              {/* <Route path="/ideatex/register" element={<Register />} /> */}
 
               {/* <Route path="/endeavour" element={<ComingSoon />} /> */}
 
