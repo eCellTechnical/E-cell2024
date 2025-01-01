@@ -1,9 +1,9 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { TiLightbulb } from "react-icons/ti";
 
-import profilew from "../../assets/navbar/Endeavour/icons8-male-user-100 (1).png";
-import profileb from "../../assets/navbar/Endeavour/icons8-male-user-100 (2).png";
+// import profilew from "../../assets/navbar/Endeavour/icons8-male-user-100 (1).png";
+// import profileb from "../../assets/navbar/Endeavour/icons8-male-user-100 (2).png";
 
 import colabIcon from "../../assets/navbar/Discover/colab.png";
 import colabIconWhite from "../../assets/navbar/Discover/colabWhite.png";
@@ -16,7 +16,7 @@ import speakerIconWhite from "../../assets/navbar/Discover/speakerWhite.png";
 import teamIcon from "../../assets/navbar/Discover/team.png";
 import teamIconWhite from "../../assets/navbar/Discover/teamWhite.png";
 import Header from "../../IdeateX/components/Header";
-import EndeavourLogo from "../../assets/navbar/logo1edit.png";
+// import EndeavourLogo from "../../assets/navbar/logo1edit.png";
 
 import discordIcon from "../../assets/navbar/Initiative/discord.png";
 import discordIconWhite from "../../assets/navbar/Initiative/discordWhite.png";
@@ -37,9 +37,9 @@ function Navbar() {
   const isEndeavour = useLocation();
   const { themeMode, lightTheme, darkTheme } = useTheme();
   const [mainMenu, setMainMenu] = useState(0);
-  const [endeavourMainMenu, setEndeavourMainMenu] = useState(0);
+  // const [endeavourMainMenu, setEndeavourMainMenu] = useState(0);
   const [discoverMobChilds, setDiscoverMobChilds] = useState(0);
-  const userId = localStorage.getItem("userId");
+  // const userId = localStorage.getItem("userId");
   const [initiativesMobChilds, setInitiativesMobChilds] = useState(0);
   const [learnMobChilds, setLearnMobChilds] = useState(0);
 
@@ -50,9 +50,9 @@ function Navbar() {
     setLearnMobChilds(0);
   };
 
-  const handleOpenEndeavourMainMenu = () => {
-    setEndeavourMainMenu(!endeavourMainMenu);
-  };
+  // const handleOpenEndeavourMainMenu = () => {
+  //   setEndeavourMainMenu(!endeavourMainMenu);
+  // };
 
   const handleThemeChange = (e) => {
     const modeStatus = e.currentTarget.checked;
@@ -63,11 +63,11 @@ function Navbar() {
     }
   };
 
-  const handleLogout = () => {
-    localStorage.clear();
-    setEndeavourMainMenu(0);
-    history("/endeavour");
-  };
+  // const handleLogout = () => {
+  //   localStorage.clear();
+  //   setEndeavourMainMenu(0);
+  //   history("/endeavour");
+  // };
 
   return (
     <div className="w-[100vw]">
@@ -267,7 +267,7 @@ function Navbar() {
                 onClick={() => history("/ideatex")}
                 className="endeavour font-medium text-black dark:text-white px-5"
               >
-                IdeateX
+                ideateX
               </a>
               <a
                 href="https://tbi-kiet.in/"
