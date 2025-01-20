@@ -44,8 +44,6 @@ function OurTeam() {
       linkedIn: "https://www.linkedin.com/in/vaibhavchoudhary16",
       gmail: "choudharyvaibhav1609@gmail.com",
     },
-   
-    
   ];
   const DeputyAdministrators = [
     {
@@ -87,8 +85,6 @@ function OurTeam() {
       linkedIn: "",
       gmail: "",
     },
- 
-   
   ];
   const Members = [
     {
@@ -128,7 +124,7 @@ function OurTeam() {
       linkedIn: "",
       gmail: "",
     },
-  
+
     {
       name: "Harsh Pundir",
       domain: "Graphics Member",
@@ -138,13 +134,20 @@ function OurTeam() {
     },
 
     {
+      name: "Kshitij Sharma",
+      domain: "Corporate Member",
+      gmail: "kshitijsharma1901@gmail.com",
+      linkedIn: "https://linkedin.com/in/kshitij-sharma-67b745289",
+      imgUrl: kshitij,
+    },
+    {
       name: "Arpita Dwivedi",
       domain: "Graphics Member",
       imgUrl: arpita,
       linkedIn: "",
       gmail: "",
     },
-   
+
     {
       name: " Anish Kumar",
       domain: "Events Member",
@@ -160,7 +163,7 @@ function OurTeam() {
         "https://www.linkedin.com/in/gurpreet-singh-kochar?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
       imgUrl: Gurpreet,
     },
-  
+
     {
       name: "Saksham Jain",
       domain: "Technical Member",
@@ -183,20 +186,7 @@ function OurTeam() {
       linkedIn: "https://www.linkedin.com/in/shiv-kumar-gupta-b74125280/",
       imgUrl: Shiv,
     },
-    
-   
-   
-    {
-      name: "Kshitij Sharma",
-      domain: "Corporate Member",
-      gmail: "kshitijsharma1901@gmail.com",
-      linkedIn: "https://linkedin.com/in/kshitij-sharma-67b745289",
-      imgUrl: kshitij,
-    },
-   
 
-  
-   
     {
       name: "Yashica Agarwal",
       domain: "Graphics Member",
@@ -205,8 +195,7 @@ function OurTeam() {
         "https://www.linkedin.com/in/yashica-agarwal-9b1493297?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
       imgUrl: yashica,
     },
-  
-    
+
     {
       name: "Riddhi Yadav",
       domain: "Graphics Member",
@@ -215,15 +204,6 @@ function OurTeam() {
         "https://www.linkedin.com/in/riddhi-yadav-901b28293?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
       imgUrl: riddhi,
     },
-
-
-  
-
- 
-
-
-
-  
   ];
 
   const { pathname } = useLocation();
