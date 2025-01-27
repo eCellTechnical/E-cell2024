@@ -9,10 +9,14 @@ import abhimanyu from "../../assets/OurTeam/Abhimanyu .jpg";
 import riddhi from "../../assets/OurTeam/Riddhi.jpg";
 // import divym from "../../assets/OurTeam/Divyam.jpeg";
 import shruti from "../../assets/OurTeam/Shruti.jpeg";
+import Ameera from "../../assets/OurTeam/Ameera.jpg";
 // import Akshat from "../../assets/OurTeam/akshat.jpg";
 import yashica from "../../assets/OurTeam/Yashica.jpeg";
 // import pratham from "../../assets/OurTeam/Pratham.jpeg";
 import apporv from "../../assets/OurTeam/apporv.webp";
+import Dipti from "../../assets/OurTeam/Dipti.jpg";
+import Anshika from "../../assets/OurTeam/Anshika.jpg";
+import Vansh from "../../assets/OurTeam/Vansh.jpg";
 import arpita from "../../assets/OurTeam/arpita.webp";
 // import Aryan from "../../assets/OurTeam/aryan11.jpg";
 import aryan2 from "../../assets/OurTeam/Aryan22.jpg";
@@ -442,12 +446,43 @@ function OurTeam() {
       imgUrl: shruti,
     },
     {
+      name: "Vansh Gautam",
+      domain: "Public Relations Member",
+      gmail: "vanshgautam9011@gmail.com",
+      linkedIn: "https://www.linkedin.com/in/vansh-gautam-92293b30a/",
+      imgUrl: Vansh,
+    },
+    {
       name: "Riddhi Yadav",
       domain: "Graphics Member",
       gmail: "yriddhi51@gmail.com",
       linkedIn:
         "https://www.linkedin.com/in/riddhi-yadav-901b28293?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
       imgUrl: riddhi,
+    },
+    {
+      name: "Anshika Chaurasia ",
+      domain: "Public Relations ",
+      gmail: "manya.khushi.mk@gmail.com",
+      linkedIn:
+        "https://www.linkedin.com/in/anshika-chaurasia-3a2218222",
+      imgUrl: Anshika,
+    },
+    {
+      name: "Dipti Gupta  ",
+      domain: "Public Relations ",
+      gmail: "diptisdk@gmail.com",
+      linkedIn:
+        "https://www.linkedin.com/in/dipti-gupta-a96a20317",
+      imgUrl: Dipti,
+    },
+    {
+      name: "Ameera Arfeen ",
+      domain: "Public Relations ",
+      gmail: "ameeraarfeen7@gmail.com",
+      linkedIn:
+        "https://www.linkedin.com/in/ameera-arfeen-88b483325",
+      imgUrl: Ameera,
     },
 
     // {
