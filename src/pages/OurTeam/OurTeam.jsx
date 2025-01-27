@@ -6,13 +6,14 @@ import gamilIcon from "../../assets/OurTeam/socialMedia/icons8-gmail.svg";
 import "./OurTeam.css";
 import riddhi from "../../assets/OurTeam/Riddhi.jpg";
 // import divym from "../../assets/OurTeam/Divyam.jpeg";
-import shruti from "../../assets/OurTeam/Shruti.jpeg";
+// import shruti from "../../assets/OurTeam/Shruti.jpeg";
 import Ameera from "../../assets/OurTeam/Ameera.jpg";
 import Vanshika from "../../assets/OurTeam/Vanshika.jpg";
 import Preeti from "../../assets/OurTeam/Preeti.jpg";
 import Nishant2 from "../../assets/OurTeam/Nishant2.jpg";
 import Ananya from "../../assets/OurTeam/Ananya.jpg";
 import Ishita from "../../assets/OurTeam/Ishita.jpg";
+import Pratham from "../../assets/OurTeam/Pratham.jpeg";
 import Avani2 from "../../assets/OurTeam/Avani2.jpg";
 import Karn from "../../assets/OurTeam/Karn.jpg";
 import Yuvika from "../../assets/OurTeam/Yuvika.jpg";
@@ -177,7 +178,7 @@ function OurTeam() {
     },
 
     {
-      name: "Harsh Pundir",
+      name: "Harsh Pundhir",
       domain: "Graphics Member",
       imgUrl: harsh2,
       linkedIn: "",
@@ -236,6 +237,13 @@ function OurTeam() {
       gmail: "anissh946@gmail.com",
       linkedIn: "http://www.linkedin.com/in/anish-kumar-126140295",
       imgUrl: anish,
+    },
+    {
+      name: " Pratham Mishra",
+      domain: "Events Member",
+      gmail: "mishrayogi04@gmail.com",
+      linkedIn: "https://www.linkedin.com/in/pratham-mishra-850497270?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      imgUrl: Pratham,
     },
     {
       name: "Gurpreet Singh",
@@ -343,13 +351,13 @@ function OurTeam() {
     //   linkedIn: "https://www.linkedin.com/in/divyam-asthana",
     //   imgUrl: divym,
     // },
-    {
-      name: "Shruti Mishra",
-      domain: "Public Relations Member",
-      gmail: "",
-      linkedIn: "",
-      imgUrl: shruti,
-    },
+    // {
+    //   name: "Shruti Mishra",
+    //   domain: "Public Relations Member",
+    //   gmail: "",
+    //   linkedIn: "",
+    //   imgUrl: shruti,
+    // },
     {
       name: "Vansh Gautam",
       domain: "Public Relations Member",
