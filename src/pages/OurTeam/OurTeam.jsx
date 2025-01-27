@@ -8,21 +8,41 @@ import riddhi from "../../assets/OurTeam/Riddhi.jpg";
 // import divym from "../../assets/OurTeam/Divyam.jpeg";
 import shruti from "../../assets/OurTeam/Shruti.jpeg";
 import Ameera from "../../assets/OurTeam/Ameera.jpg";
+import Atharv from "../../assets/OurTeam/Atharv.jpg";
+import Jatin from "../../assets/OurTeam/Jatin.jpg";
+import Vaibhav2 from "../../assets/OurTeam/Vaibhav2.jpg";
+import Anurag from "../../assets/OurTeam/Anurag.jpg";
+import Rishi from "../../assets/OurTeam/Rishi.jpg";
+import Kush from "../../assets/OurTeam/Kush.jpg";
+import Pari from "../../assets/OurTeam/Pari.jpg";
+import Tanya2 from "../../assets/OurTeam/Tanya2.jpg";
+import Rishika from "../../assets/OurTeam/Rishika.jpg";
 // import Akshat from "../../assets/OurTeam/akshat.jpg";
 import yashica from "../../assets/OurTeam/Yashica.jpeg";
+import Luv from "../../assets/OurTeam/Luv.jpg";
+import Anant from "../../assets/OurTeam/Anant.jpg";
 import apporv from "../../assets/OurTeam/apporv.webp";
 import Dipti from "../../assets/OurTeam/Dipti.jpg";
 import Anshika from "../../assets/OurTeam/Anshika.jpg";
 import Vansh from "../../assets/OurTeam/Vansh.jpg";
 import arpita from "../../assets/OurTeam/arpita.webp";
 import aryan2 from "../../assets/OurTeam/Aryan22.jpg";
+import Arpit from "../../assets/OurTeam/Arpit.jpg";
+import Priyanz from "../../assets/OurTeam/Priyanz.jpg";
+import Dipali from "../../assets/OurTeam/Dipali.jpg";
 import Ayush from "../../assets/OurTeam/ayush_prakash.jpg";
 import GauravNamdev from "../../assets/OurTeam/gaurav_namdev.jpg";
 import GauravPayal from "../../assets/OurTeam/Gaurav.jpg";
 import harsh2 from "../../assets/OurTeam/harsh2.jpg";
 import Mansi from "../../assets/OurTeam/Mansi.png";
 import naksh from "../../assets/OurTeam/Naksh.jpg";
+import Tulika from "../../assets/OurTeam/Tulika.jpg";
+import Pranjali from "../../assets/OurTeam/Pranjali.jpg";
+import Janak from "../../assets/OurTeam/Janak.jpg";
+import Antas from "../../assets/OurTeam/Antas.jpg";
+import Utkarsh from "../../assets/OurTeam/Utkarsh.jpg";
 import shashwat from "../../assets/OurTeam/Shashwat.jpg";
+import Sonali from "../../assets/OurTeam/Sonali.jpg";
 import shud from "../../assets/OurTeam/shud.jpg";
 import tanya from "../../assets/OurTeam/tanya.jpg";
 import Vaibhav from "../../assets/OurTeam/Vaibhav.jpg";
@@ -32,7 +52,11 @@ import kshitij from "../../assets/OurTeam/kshitij.jpg";
 import Saksham from "../../assets/OurTeam/Saksham.jpg";
 import Shiv from "../../assets/OurTeam/Shiv.png";
 import Saumya from "../../assets/OurTeam/Saumya.jpg";
+import Aditi from "../../assets/OurTeam/Aditi.jpg";
+import Dhruv from "../../assets/OurTeam/Dhruv.jpg";
 import anish from "../../assets/OurTeam/Anish.jpg";
+import Arjun from "../../assets/OurTeam/Arjun.jpg";
+import Krishna from "../../assets/OurTeam/Krishna.jpg";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 function OurTeam() {
@@ -257,12 +281,204 @@ function OurTeam() {
       imgUrl: Dipti,
     },
     {
+      name: "Utkarsh Singh ",
+      domain: "Technical",
+      gmail: "utkarsh2020051@gmail.com",
+      linkedIn:
+        "https://www.linkedin.com/in/realutkarshh?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      imgUrl: Utkarsh,
+    },
+    {
+      name: "Sonali Tyagi",
+      domain: "Technical",
+      gmail: "sonalityagi887@gmail.com ",
+      linkedIn:
+        "https://www.linkedin.com/in/sonali-tyagi-0895302a4",
+      imgUrl: Sonali,
+    },
+    {
+      name: "Janak Singh",
+      domain: "Event Management ",
+      gmail: "sjanak984@gmail.com",
+      linkedIn:
+        "https://www.linkedin.com/in/janak-singh-5496b5328/",
+      imgUrl: Janak,
+    },
+    {
+      name: "Dipali singh ",
+      domain: "Event Management ",
+      gmail: "dipalisingh5950@gmail.com ",
+      linkedIn:
+        "https://www.linkedin.com/in/dipali-singh-3988b6326?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      imgUrl: Dipali,
+    },
+    {
+      name: "Kushagra Srivastava ",
+      domain: "Event Management ",
+      gmail: "workspace.kushagra@gmail.com",
+      linkedIn:
+        "https://www.linkedin.com/in/kushagra-srivastava-b000642a4?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      imgUrl: Kush,
+    },
+    {
+      name: "Priyanz Varshney  ",
+      domain: "Event Management ",
+      gmail: "priyanzvarshney2005@gmail.com",
+      linkedIn:
+        "https://www.linkedin.com/in/priyanz-varshney-8a0309215?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      imgUrl: Priyanz,
+    },
+    {
+      name: "Rishika Batra",
+      domain: "Event Management ",
+      gmail: "batrarishika06@gmail.com",
+      linkedIn:
+        "https://www.linkedin.com/in/rishika-batra-92a4aa326?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      imgUrl: Rishika,
+    },
+    {
+      name: "Aditi Narang ",
+      domain: "Event Management ",
+      gmail: "aditi.2428cseaiml128@kiet.edu",
+      linkedIn:
+        "https://www.linkedin.com/in/aditi-narang-766544217?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      imgUrl: Aditi,
+    },
+    {
+      name: "Antas Kumar Dubey ",
+      domain: "Event Management ",
+      gmail: "antasdubey.in@gmail.com",
+      linkedIn:
+        "https://www.linkedin.com/in/antas01",
+      imgUrl: Antas,
+    },
+    {
+      name: "Dhruv Chaudhary ",
+      domain: "Event Management ",
+      gmail: "dhruv.2428ece1189@kiet.edu",
+      linkedIn:
+        "https://www.linkedin.com/in/dhruv-chaudhary-370544328?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      imgUrl: Dhruv,
+    },
+    {
+      name: "Rishi Raj ",
+      domain: "Event Management ",
+      gmail: "rishi.2428ece1184@kiet.edu",
+      linkedIn:
+        "https://www.linkedin.com/in/rishi-raj-65624b330?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      imgUrl: Rishi,
+    },
+    {
+      name: "Tanya Mishra",
+      domain: "Event Management ",
+      gmail: "mishra.tanya101@gmail.com",
+      linkedIn:
+        "https://www.linkedin.com/in/tanya-mishra-279560328/",
+      imgUrl: Tanya2,
+    },
+    {
+      name: "Pari Gupta ",
+      domain: "Event Management ",
+      gmail: "parigupta4532@gmail.com",
+      linkedIn:
+        "https://www.linkedin.com/in/pari-gupta-07958130a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      imgUrl: Pari,
+    },
+    {
+      name: "Pranjali Sehrawat",
+      domain: "Technical",
+      gmail: "pranjalisehrawat@gmail.com",
+      linkedIn:
+        "https://www.linkedin.com/in/pranjali-sehrawat-b90557328/",
+      imgUrl: Pranjali,
+    },
+    {
+      name: "Arpit Srivastava ",
+      domain: "Technical",
+      gmail: "arpit.srivastava7079@gmail.com",
+      linkedIn:
+        "https://www.linkedin.com/in/arpit-srivastava-954b78328?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      imgUrl: Arpit,
+    },
+    {
+      name: "Jatin Gupta",
+      domain: "Technical",
+      gmail: "jatingupta918306@gmail.com",
+      linkedIn:
+        "https://www.linkedin.com/in/jatin-gupta-4b1b83327/",
+      imgUrl: Jatin,
+    },
+    {
+      name: "Krishna Sharma",
+      domain: "Technical",
+      gmail: "krishnasharma7915@gmail.com",
+      linkedIn:
+        "https://www.linkedin.com/in/krishna-sharma-a3647b279/",
+      imgUrl: Krishna,
+    },
+    {
+      name: "Anurag Shrivastav ",
+      domain: "Technical",
+      gmail: "anurag13360@gmail.com",
+      linkedIn:
+        "https://www.linkedin.com/in/anurag-shrivastav-b7a616327?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      imgUrl: Anurag,
+    },
+    {
+      name: "Vaibhav Gupta",
+      domain: "Technical",
+      gmail: "vaibhavgupta.v890@gmail.com",
+      linkedIn:
+        "https://www.linkedin.com/in/vaibhav9705/",
+      imgUrl: Vaibhav2,
+    },
+    {
+      name: "Tulika Anand",
+      domain: "Technical",
+      gmail: "tulikaanand05@gmail.com",
+      linkedIn:
+        "https://www.linkedin.com/in/tulika-anand-643332311/",
+      imgUrl: Tulika,
+    },
+    {
+      name: "Luv Agarwal",
+      domain: "Public Relations ",
+      gmail: "luvagarwal2501@gmail.com",
+      linkedIn:
+        "https://www.linkedin.com/in/luv-agarwal-27912530b",
+      imgUrl: Luv,
+    },
+    {
       name: "Ameera Arfeen ",
       domain: "Public Relations ",
       gmail: "ameeraarfeen7@gmail.com",
       linkedIn:
         "https://www.linkedin.com/in/ameera-arfeen-88b483325",
       imgUrl: Ameera,
+    },
+    {
+      name: "Arjun Pundir ",
+      domain: "Public Relations ",
+      gmail: "arjun.pundir7626@gmail.com",
+      linkedIn:
+        "https://www.linkedin.com/in/arjun-pundir-384934254?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      imgUrl: Arjun,
+    },
+    {
+      name: "Atharv Gupta ",
+      domain: "Public Relations ",
+      gmail: "roboatharv@gmail.com",
+      linkedIn:
+        "https://www.linkedin.com/in/atharv-gupta-18b2a7314",
+      imgUrl: Atharv,
+    },
+    {
+      name: "Anant Mittal",
+      domain: "Technical",
+      gmail: "anantmittal943@gmail.com",
+      linkedIn:
+        "https://www.linkedin.com/in/anant-mittal-63940b313/",
+      imgUrl: Anant,
     },
 
     // {
