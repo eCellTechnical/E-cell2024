@@ -8,7 +8,21 @@ import riddhi from "../../assets/OurTeam/Riddhi.jpg";
 // import divym from "../../assets/OurTeam/Divyam.jpeg";
 import shruti from "../../assets/OurTeam/Shruti.jpeg";
 import Ameera from "../../assets/OurTeam/Ameera.jpg";
+import Vanshika from "../../assets/OurTeam/Vanshika.jpg";
+import Preeti from "../../assets/OurTeam/Preeti.jpg";
+import Nishant2 from "../../assets/OurTeam/Nishant2.jpg";
+import Ananya from "../../assets/OurTeam/Ananya.jpg";
+import Ishita from "../../assets/OurTeam/Ishita.jpg";
+import Avani2 from "../../assets/OurTeam/Avani2.jpg";
+import Karn from "../../assets/OurTeam/Karn.jpg";
+import Yuvika from "../../assets/OurTeam/Yuvika.jpg";
+// import Abhijeet from "../../assets/OurTeam/Abhijeet.jpg";
+import Shreyasi from "../../assets/OurTeam/Shreyasi.jpg";
+// import Naman from "../../assets/OurTeam/Naman.jpg";
 import Atharv from "../../assets/OurTeam/Atharv.jpg";
+import Rupesh from "../../assets/OurTeam/Rupesh.jpg";
+import Yash2 from "../../assets/OurTeam/Yash2.jpg";
+import Shaswat2 from "../../assets/OurTeam/Shaswat2.jpg";
 import Aashi from "../../assets/OurTeam/Aashi.jpg";
 import Shreya from "../../assets/OurTeam/Shreya.jpg";
 import Tejas from "../../assets/OurTeam/Tejas.jpg";
@@ -184,23 +198,6 @@ function OurTeam() {
       linkedIn: "",
       gmail: "",
     },
-
-    {
-      name: " Anish Kumar",
-      domain: "Events Member",
-      gmail: "anissh946@gmail.com",
-      linkedIn: "http://www.linkedin.com/in/anish-kumar-126140295",
-      imgUrl: anish,
-    },
-    {
-      name: "Gurpreet Singh",
-      domain: "Corporate Member",
-      mail: "gskochar24@gmail.com",
-      linkedIn:
-        "https://www.linkedin.com/in/gurpreet-singh-kochar?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-      imgUrl: Gurpreet,
-    },
-
     {
       name: "Saksham Jain",
       domain: "Technical Member",
@@ -233,6 +230,104 @@ function OurTeam() {
       imgUrl: yashica,
     },
 
+    {
+      name: " Anish Kumar",
+      domain: "Events Member",
+      gmail: "anissh946@gmail.com",
+      linkedIn: "http://www.linkedin.com/in/anish-kumar-126140295",
+      imgUrl: anish,
+    },
+    {
+      name: "Gurpreet Singh",
+      domain: "Corporate Member",
+      mail: "gskochar24@gmail.com",
+      linkedIn:
+        "https://www.linkedin.com/in/gurpreet-singh-kochar?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      imgUrl: Gurpreet,
+    },
+    {
+      name: "Yuvika Jindal",
+      domain: "Graphics",
+      mail: "yuvikajindal241106@gmail.com",
+      linkedIn:
+        "https://www.linkedin.com/in/yuvika-jindal-6b3181328/",
+      imgUrl: Yuvika,
+    },
+    {
+      name: "Ishita Jindal",
+      domain: "Graphics",
+      mail: "ishijindal1310@gmail.com",
+      linkedIn:
+        "https://www.linkedin.com/in/ishijindal/",
+      imgUrl: Ishita,
+    },
+    {
+      name: "Ananya Baranwal",
+      domain: "Graphics",
+      mail: "baranwalananya2006@gmail.com",
+      linkedIn:
+        "",
+      imgUrl: Ananya,
+    },
+    {
+      name: "Nishant Vishwakarma",
+      domain: "Graphics",
+      mail: "nishantvishwakarma6789@gmail.com",
+      linkedIn:
+        "https://www.linkedin.com/in/nishant-vishwakarma-875a34328",
+      imgUrl: Nishant2,
+    },
+    {
+      name: "Karnveer Dixit",
+      domain: "Graphics",
+      mail: "dtanishq46@gmail.com",
+      linkedIn:
+        "http://www.linkedin.com/in/karnveer-dixit-9b5bb3333",
+      imgUrl: Karn,
+    },
+    {
+      name: "Preeti Singh",
+      domain: "Graphics",
+      mail: "preetisinghthakur07@gmail.com",
+      linkedIn:
+        "http://www.linkedin.com/in/preeti-singh-9b8554328",
+      imgUrl: Preeti,
+    },
+    {
+      name: "Yash Jain ",
+      domain: "Corporate Member",
+      mail: "jainyash1404@gmail.com",
+      linkedIn:
+        "https://www.linkedin.com/in/yash-jain-09a901285?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      imgUrl: Yash2,
+    },
+    {
+      name: "Shaswat Mishra",
+      domain: "Corporate Member",
+      mail: "mishrashaswat29@gmail.com",
+      linkedIn:
+        "https://www.linkedin.com/in/shaswat-mishra-320863252/",
+      imgUrl: Shaswat2,
+    },
+    {
+      name: "Vanshika Arora",
+      domain: "Corporate Member",
+      mail: "arora.vanshika1110@gmail.com",
+      linkedIn:
+        "https://www.linkedin.com/in/vanshika-arora-325323308?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      imgUrl: Vanshika,
+    },
+    // {
+    //   name: "Naman Verma",
+    //   domain: "Corporate Member",
+    //   mail: "verma023naman@gmail.com",
+    //   linkedIn:
+    //     "https://www.linkedin.com/in/naman-verma-8ab2b3328",
+    //   imgUrl: Naman,
+    // },
+
+   
+    
     // {
     //   name: "Pratham Mishra",
     //   domain: "Events Member",
@@ -319,6 +414,14 @@ function OurTeam() {
       imgUrl: Aashi,
     },
     {
+      name: "Rupesh Chaurasia",
+      domain: "Corporate Relations",
+      gmail: "rupeshchaurasia012511@gmail.com",
+      linkedIn:
+        "https://www.linkedin.com/in/rupesh-chaurasia144/",
+      imgUrl: Rupesh,
+    },
+    {
       name: "Dhruv Srivastava ",
       domain: "Corporate Relations",
       gmail: "connectdhruv0606@gmail.com",
@@ -326,6 +429,30 @@ function OurTeam() {
         "https://www.linkedin.com/in/dhruv-srivastava-666622257",
       imgUrl: Dhruv2,
     },
+    {
+      name: "Shreyasi Rawat ",
+      domain: "Graphics",
+      gmail: "shreyasirawat30.14@gmail.com",
+      linkedIn:
+        "https://www.linkedin.com/in/shreyasi-rawat-b85280327",
+      imgUrl: Shreyasi,
+    },
+    {
+      name: "Avani Singhal",
+      domain: "Graphics",
+      gmail: "avani0277@gmail.com",
+      linkedIn:
+        "https://www.linkedin.com/in/avani-singhal-9a348826a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      imgUrl: Avani2,
+    },
+    // {
+    //   name: "Abhijeet Kumar Gautam  ",
+    //   domain: "Graphics",
+    //   gmail: "abhijeetgautam000055@gmail.com",
+    //   linkedIn:
+    //     "https://www.linkedin.com/in/abhijeet-kumar-gautam-885710233",
+    //   imgUrl: Abhijeet,
+    // },
     {
       name: "Utkarsh Singh ",
       domain: "Technical",
