@@ -9,8 +9,14 @@ import riddhi from "../../assets/OurTeam/Riddhi.jpg";
 import shruti from "../../assets/OurTeam/Shruti.jpeg";
 import Ameera from "../../assets/OurTeam/Ameera.jpg";
 import Atharv from "../../assets/OurTeam/Atharv.jpg";
+import Aashi from "../../assets/OurTeam/Aashi.jpg";
+import Shreya from "../../assets/OurTeam/Shreya.jpg";
+import Tejas from "../../assets/OurTeam/Tejas.jpg";
+import Dhruv2 from "../../assets/OurTeam/Dhruv2.jpg";
 import Jatin from "../../assets/OurTeam/Jatin.jpg";
 import Vaibhav2 from "../../assets/OurTeam/Vaibhav2.jpg";
+import Avani from "../../assets/OurTeam/Avani.jpg";
+import Saransh from "../../assets/OurTeam/Saransh.jpg";
 import Anurag from "../../assets/OurTeam/Anurag.jpg";
 import Rishi from "../../assets/OurTeam/Rishi.jpg";
 import Kush from "../../assets/OurTeam/Kush.jpg";
@@ -281,6 +287,46 @@ function OurTeam() {
       imgUrl: Dipti,
     },
     {
+      name: "Saransh Sahu",
+      domain: "Corporate Relations",
+      gmail: "saransh1315@gmail.com",
+      linkedIn:
+        "https://www.linkedin.com/in/saransh-sahu-4967a0303/",
+      imgUrl: Saransh,
+    },
+    {
+      name: "Shreya Baranwal ",
+      domain: "Corporate Relations",
+      gmail: "shreyabaranwal229@gmail.com",
+      linkedIn:
+        "https://www.linkedin.com/in/shreya-baranwal-1103802a5",
+      imgUrl: Shreya,
+    },
+    {
+      name: "Tejas Rastogi ",
+      domain: "Corporate Relations",
+      gmail: "tejasrastogi456@gmail.com",
+      linkedIn:
+        "https://www.linkedin.com/in/tejas-rastogi-292b81231?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      imgUrl: Tejas,
+    },
+    {
+      name: "Aashi Chaudhary",
+      domain: "Corporate Relations",
+      gmail: "aashi.chaudharryy@gmail.com",
+      linkedIn:
+        "https://www.linkedin.com/in/aashi-chaudhary-282405218/",
+      imgUrl: Aashi,
+    },
+    {
+      name: "Dhruv Srivastava ",
+      domain: "Corporate Relations",
+      gmail: "connectdhruv0606@gmail.com",
+      linkedIn:
+        "https://www.linkedin.com/in/dhruv-srivastava-666622257",
+      imgUrl: Dhruv2,
+    },
+    {
       name: "Utkarsh Singh ",
       domain: "Technical",
       gmail: "utkarsh2020051@gmail.com",
@@ -311,6 +357,14 @@ function OurTeam() {
       linkedIn:
         "https://www.linkedin.com/in/dipali-singh-3988b6326?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
       imgUrl: Dipali,
+    },
+    {
+      name: "Avani Sharma ",
+      domain: "Corporate Relations",
+      gmail: "sharmaavani2325@gmail.com",
+      linkedIn:
+        "https://www.linkedin.com/in/avani-sharma-042516321/",
+      imgUrl: Avani,
     },
     {
       name: "Kushagra Srivastava ",
