@@ -25,6 +25,7 @@ import Rupesh from "../../assets/OurTeam/Rupesh.jpg";
 import Yash2 from "../../assets/OurTeam/Yash2.jpg";
 import Shaswat2 from "../../assets/OurTeam/Shaswat2.jpg";
 import Aashi from "../../assets/OurTeam/Aashi.jpg";
+import Naman from "../../assets/OurTeam/Naman.jpg";
 import Shreya from "../../assets/OurTeam/Shreya.jpg";
 import Tejas from "../../assets/OurTeam/Tejas.jpg";
 import Dhruv2 from "../../assets/OurTeam/Dhruv2.jpg";
@@ -122,6 +123,102 @@ function OurTeam() {
       gmail: "",
     },
   ];
+  const corporateMembers = [
+    {
+      name: "Kshitij Sharma",
+      domain: "Corporate Member",
+      gmail: "kshitijsharma1901@gmail.com",
+      linkedIn: "https://linkedin.com/in/kshitij-sharma-67b745289",
+      imgUrl: kshitij,
+    },
+    {
+          name: "Gurpreet Singh",
+          domain: "Corporate Member",
+          mail: "gskochar24@gmail.com",
+          linkedIn:
+            "https://www.linkedin.com/in/gurpreet-singh-kochar?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+          imgUrl: Gurpreet,
+        },
+    {
+      name: "Yash Jain",
+      domain: "Corporate Member",
+      mail: "jainyash1404@gmail.com",
+      linkedIn: "https://www.linkedin.com/in/yash-jain-09a901285",
+      imgUrl: Yash2,
+    },
+    {
+      name: "Shaswat Mishra",
+      domain: "Corporate Member",
+      mail: "mishrashaswat29@gmail.com",
+      linkedIn: "https://www.linkedin.com/in/shaswat-mishra-320863252/",
+      imgUrl: Shaswat2,
+    },
+       {
+      name: "Naman Verma",
+      domain: "Corporate Member",
+      mail: "verma023naman@gmail.com",
+      linkedIn:
+        "https://www.linkedin.com/in/naman-verma-8ab2b3328",
+      imgUrl: Naman,
+    },
+    {
+      name: "Vanshika Arora",
+      domain: "Corporate Member",
+      mail: "arora.vanshika1110@gmail.com",
+      linkedIn: "https://www.linkedin.com/in/vanshika-arora-325323308",
+      imgUrl: Vanshika,
+    },
+    {
+      name: "Saransh Sahu",
+      domain: "Corporate Relations",
+      gmail: "saransh1315@gmail.com",
+      linkedIn: "https://www.linkedin.com/in/saransh-sahu-4967a0303/",
+      imgUrl: Saransh,
+    },
+    {
+      name: "Shreya Baranwal",
+      domain: "Corporate Relations",
+      gmail: "shreyabaranwal229@gmail.com",
+      linkedIn: "https://www.linkedin.com/in/shreya-baranwal-1103802a5",
+      imgUrl: Shreya,
+    },
+    {
+      name: "Tejas Rastogi",
+      domain: "Corporate Relations",
+      gmail: "tejasrastogi456@gmail.com",
+      linkedIn: "https://www.linkedin.com/in/tejas-rastogi-292b81231",
+      imgUrl: Tejas,
+    },
+    {
+      name: "Aashi Chaudhary",
+      domain: "Corporate Relations",
+      gmail: "aashi.chaudharryy@gmail.com",
+      linkedIn: "https://www.linkedin.com/in/aashi-chaudhary-282405218/",
+      imgUrl: Aashi,
+    },
+    {
+      name: "Rupesh Chaurasia",
+      domain: "Corporate Relations",
+      gmail: "rupeshchaurasia012511@gmail.com",
+      linkedIn: "https://www.linkedin.com/in/rupesh-chaurasia144/",
+      imgUrl: Rupesh,
+    },
+    {
+      name: "Dhruv Srivastava",
+      domain: "Corporate Relations",
+      gmail: "connectdhruv0606@gmail.com",
+      linkedIn: "https://www.linkedin.com/in/dhruv-srivastava-666622257",
+      imgUrl: Dhruv2,
+    },
+    {
+      name: "Avani Sharma",
+      domain: "Corporate Relations",
+      gmail: "sharmaavani2325@gmail.com",
+      linkedIn: "https://www.linkedin.com/in/avani-sharma-042516321/",
+      imgUrl: Avani,
+    }
+  ];
+  
   const DomainManagers = [
     {
       name: "Gaurav Namdev",
@@ -138,30 +235,7 @@ function OurTeam() {
       gmail: "",
     },
   ];
-  const Members = [
-    {
-      name: "Yash Kumar Singh",
-      domain: "Technical Member",
-      imgUrl: yash,
-      linkedIn: "https://www.linkedin.com/in/yashksingh-connect/",
-      gmail: "yk66478@gmail.com",
-    },
-
-    {
-      name: "Nakshatra Manglik",
-      domain: "Technical Member",
-      imgUrl: naksh,
-      linkedIn: "https://www.linkedin.com/in/nakshatra-manglik",
-      gmail: "Nakshatramanglik14@gmail.com",
-    },
-
-    {
-      name: "Shashwat Rai",
-      domain: "Technical Member",
-      imgUrl: shashwat,
-      linkedIn: "https://www.linkedin.com/in/shashwatrai05/",
-      gmail: "shashwatrai575@gmail.com",
-    },
+  const prMembers = [
     {
       name: "Aryan Srivastava",
       domain: "Public Relations Member",
@@ -176,7 +250,64 @@ function OurTeam() {
       linkedIn: "",
       gmail: "",
     },
-
+       // {
+    //   name: "Divyam Asthana",
+    //   domain: "Public Relations Member",
+    //   gmail: "divyamasthanaprofessional.001@gmail.com",
+    //   linkedIn: "https://www.linkedin.com/in/divyam-asthana",
+    //   imgUrl: divym,
+    // },
+    {
+      name: "Vansh Gautam",
+      domain: "Public Relations Member",
+      gmail: "vanshgautam9011@gmail.com",
+      linkedIn: "https://www.linkedin.com/in/vansh-gautam-92293b30a/",
+      imgUrl: Vansh,
+    },
+    {
+      name: "Anshika Chaurasia",
+      domain: "Public Relations",
+      gmail: "manya.khushi.mk@gmail.com",
+      linkedIn: "https://www.linkedin.com/in/anshika-chaurasia-3a2218222",
+      imgUrl: Anshika,
+    },
+    {
+      name: "Dipti Gupta",
+      domain: "Public Relations",
+      gmail: "diptisdk@gmail.com",
+      linkedIn: "https://www.linkedin.com/in/dipti-gupta-a96a20317",
+      imgUrl: Dipti,
+    },
+    {
+      name: "Luv Agarwal",
+      domain: "Public Relations",
+      gmail: "luvagarwal2501@gmail.com",
+      linkedIn: "https://www.linkedin.com/in/luv-agarwal-27912530b",
+      imgUrl: Luv,
+    },
+    {
+      name: "Ameera Arfeen",
+      domain: "Public Relations",
+      gmail: "ameeraarfeen7@gmail.com",
+      linkedIn: "https://www.linkedin.com/in/ameera-arfeen-88b483325",
+      imgUrl: Ameera,
+    },
+    {
+      name: "Arjun Pundir",
+      domain: "Public Relations",
+      gmail: "arjun.pundir7626@gmail.com",
+      linkedIn: "https://www.linkedin.com/in/arjun-pundir-384934254",
+      imgUrl: Arjun,
+    },
+    {
+      name: "Atharv Gupta",
+      domain: "Public Relations",
+      gmail: "roboatharv@gmail.com",
+      linkedIn: "https://www.linkedin.com/in/atharv-gupta-18b2a7314",
+      imgUrl: Atharv,
+    }
+  ];
+  const graphicsMembers = [
     {
       name: "Harsh Pundhir",
       domain: "Graphics Member",
@@ -184,20 +315,821 @@ function OurTeam() {
       linkedIn: "",
       gmail: "",
     },
-
-    {
-      name: "Kshitij Sharma",
-      domain: "Corporate Member",
-      gmail: "kshitijsharma1901@gmail.com",
-      linkedIn: "https://linkedin.com/in/kshitij-sharma-67b745289",
-      imgUrl: kshitij,
-    },
     {
       name: "Arpita Dwivedi",
       domain: "Graphics Member",
       imgUrl: arpita,
       linkedIn: "",
       gmail: "",
+    },
+    {
+      name: "Yashica Agarwal",
+      domain: "Graphics Member",
+      gmail: "yashica.agarwal3@gmail.com",
+      linkedIn: "https://www.linkedin.com/in/yashica-agarwal-9b1493297",
+      imgUrl: yashica,
+    },
+    {
+      name: "Riddhi Yadav",
+      domain: "Graphics Member",
+      gmail: "yriddhi51@gmail.com",
+      linkedIn: "https://www.linkedin.com/in/riddhi-yadav-901b28293",
+      imgUrl: riddhi,
+    },
+     //   // {
+  //   //   name: "Abhijeet Kumar Gautam  ",
+  //   //   domain: "Graphics",
+  //   //   gmail: "abhijeetgautam000055@gmail.com",
+  //   //   linkedIn:
+  //   //     "https://www.linkedin.com/in/abhijeet-kumar-gautam-885710233",
+  //   //   imgUrl: Abhijeet,
+  //   // },
+    {
+      name: "Yuvika Jindal",
+      domain: "Graphics",
+      mail: "yuvikajindal241106@gmail.com",
+      linkedIn: "https://www.linkedin.com/in/yuvika-jindal-6b3181328/",
+      imgUrl: Yuvika,
+    },
+    {
+      name: "Ishita Jindal",
+      domain: "Graphics",
+      mail: "ishijindal1310@gmail.com",
+      linkedIn: "https://www.linkedin.com/in/ishijindal/",
+      imgUrl: Ishita,
+    },
+    {
+      name: "Ananya Baranwal",
+      domain: "Graphics",
+      mail: "baranwalananya2006@gmail.com",
+      linkedIn: "",
+      imgUrl: Ananya,
+    },
+    {
+      name: "Nishant Vishwakarma",
+      domain: "Graphics",
+      mail: "nishantvishwakarma6789@gmail.com",
+      linkedIn: "https://www.linkedin.com/in/nishant-vishwakarma-875a34328",
+      imgUrl: Nishant2,
+    },
+    {
+      name: "Karnveer Dixit",
+      domain: "Graphics",
+      mail: "dtanishq46@gmail.com",
+      linkedIn: "http://www.linkedin.com/in/karnveer-dixit-9b5bb3333",
+      imgUrl: Karn,
+    },
+    {
+      name: "Preeti Singh",
+      domain: "Graphics",
+      mail: "preetisinghthakur07@gmail.com",
+      linkedIn: "http://www.linkedin.com/in/preeti-singh-9b8554328",
+      imgUrl: Preeti,
+    },
+   
+    {
+      name: "Shreyasi Rawat",
+      domain: "Graphics",
+      gmail: "shreyasirawat30.14@gmail.com",
+      linkedIn: "https://www.linkedin.com/in/shreyasi-rawat-b85280327",
+      imgUrl: Shreyasi,
+    },
+    {
+      name: "Avani Singhal",
+      domain: "Graphics",
+      gmail: "avani0277@gmail.com",
+      linkedIn: "https://www.linkedin.com/in/avani-singhal-9a348826a",
+      imgUrl: Avani2,
+    }
+  ];
+  const eventsMembers = [
+    {
+      name: "Anish Kumar",
+      domain: "Events Member",
+      gmail: "anissh946@gmail.com",
+      linkedIn: "http://www.linkedin.com/in/anish-kumar-126140295",
+      imgUrl: anish,
+    },
+    {
+      name: "Pratham Mishra",
+      domain: "Events Member",
+      gmail: "mishrayogi04@gmail.com",
+      linkedIn: "https://www.linkedin.com/in/pratham-mishra-850497270",
+      imgUrl: Pratham,
+    },
+    {
+      name: "Kushagra Srivastava",
+      domain: "Event Management",
+      gmail: "workspace.kushagra@gmail.com",
+      linkedIn: "https://www.linkedin.com/in/kushagra-srivastava-b000642a4",
+      imgUrl: Kush,
+    },
+    {
+      name: "Priyanz Varshney",
+      domain: "Event Management",
+      gmail: "priyanzvarshney2005@gmail.com",
+      linkedIn: "https://www.linkedin.com/in/priyanz-varshney-8a0309215",
+      imgUrl: Priyanz,
+    },
+    {
+      name: "Janak Singh",
+      domain: "Event Management",
+      gmail: "sjanak984@gmail.com",
+      linkedIn: "https://www.linkedin.com/in/janak-singh-5496b5328/",
+      imgUrl: Janak,
+    },
+    {
+      name: "Dipali singh",
+      domain: "Event Management",
+      gmail: "dipalisingh5950@gmail.com",
+      linkedIn: "https://www.linkedin.com/in/dipali-singh-3988b6326",
+      imgUrl: Dipali,
+    },
+   
+    {
+      name: "Rishika Batra",
+      domain: "Event Management",
+      gmail: "batrarishika06@gmail.com",
+      linkedIn: "https://www.linkedin.com/in/rishika-batra-92a4aa326",
+      imgUrl: Rishika,
+    },
+    {
+      name: "Aditi Narang",
+      domain: "Event Management",
+      gmail: "aditi.2428cseaiml128@kiet.edu",
+      linkedIn: "https://www.linkedin.com/in/aditi-narang-766544217",
+      imgUrl: Aditi,
+    },
+    {
+      name: "Antas Kumar Dubey",
+      domain: "Event Management",
+      gmail: "antasdubey.in@gmail.com",
+      linkedIn: "https://www.linkedin.com/in/antas01",
+      imgUrl: Antas,
+    },
+    {
+      name: "Dhruv Chaudhary",
+      domain: "Event Management",
+      gmail: "dhruv.2428ece1189@kiet.edu",
+      linkedIn: "https://www.linkedin.com/in/dhruv-chaudhary-370544328",
+      imgUrl: Dhruv,
+    },
+    {
+      name: "Rishi Raj",
+      domain: "Event Management",
+      gmail: "rishi.2428ece1184@kiet.edu",
+      linkedIn: "https://www.linkedin.com/in/rishi-raj-65624b330",
+      imgUrl: Rishi,
+    },
+    {
+      name: "Tanya Mishra",
+      domain: "Event Management",
+      gmail: "mishra.tanya101@gmail.com",
+      linkedIn: "https://www.linkedin.com/in/tanya-mishra-279560328/",
+      imgUrl: Tanya2,
+    },
+    {
+      name: "Pari Gupta",
+      domain: "Event Management",
+      gmail: "parigupta4532@gmail.com",
+      linkedIn: "https://www.linkedin.com/in/pari-gupta-07958130a",
+      imgUrl: Pari,
+    }
+  ];
+  // const Members = [
+  //   {
+  //     name: "Yash Kumar Singh",
+  //     domain: "Technical Member",
+  //     imgUrl: yash,
+  //     linkedIn: "https://www.linkedin.com/in/yashksingh-connect/",
+  //     gmail: "yk66478@gmail.com",
+  //   },
+
+  //   {
+  //     name: "Nakshatra Manglik",
+  //     domain: "Technical Member",
+  //     imgUrl: naksh,
+  //     linkedIn: "https://www.linkedin.com/in/nakshatra-manglik",
+  //     gmail: "Nakshatramanglik14@gmail.com",
+  //   },
+
+  //   {
+  //     name: "Shashwat Rai",
+  //     domain: "Technical Member",
+  //     imgUrl: shashwat,
+  //     linkedIn: "https://www.linkedin.com/in/shashwatrai05/",
+  //     gmail: "shashwatrai575@gmail.com",
+  //   },
+  //   {
+  //     name: "Aryan Srivastava",
+  //     domain: "Public Relations Member",
+  //     imgUrl: aryan2,
+  //     linkedIn: "https://www.linkedin.com/in/aryan-srivastava-4919b5259",
+  //     gmail: "aryankiofficial@gmail.com",
+  //   },
+  //   {
+  //     name: "Tanya Varshney",
+  //     domain: "Public Relations Member",
+  //     imgUrl: tanya,
+  //     linkedIn: "",
+  //     gmail: "",
+  //   },
+
+  //   {
+  //     name: "Harsh Pundhir",
+  //     domain: "Graphics Member",
+  //     imgUrl: harsh2,
+  //     linkedIn: "",
+  //     gmail: "",
+  //   },
+
+  //   {
+  //     name: "Kshitij Sharma",
+  //     domain: "Corporate Member",
+  //     gmail: "kshitijsharma1901@gmail.com",
+  //     linkedIn: "https://linkedin.com/in/kshitij-sharma-67b745289",
+  //     imgUrl: kshitij,
+  //   },
+  //   {
+  //     name: "Arpita Dwivedi",
+  //     domain: "Graphics Member",
+  //     imgUrl: arpita,
+  //     linkedIn: "",
+  //     gmail: "",
+  //   },
+  //   {
+  //     name: "Saksham Jain",
+  //     domain: "Technical Member",
+  //     gmail: "sakshambro730@gmail.com",
+  //     linkedIn: "https://www.linkedin.com/in/sakshamjain007",
+  //     imgUrl: Saksham,
+  //   },
+  //   {
+  //     name: "Saumya Ojha",
+  //     domain: "Technical Member",
+  //     gmail: "ojhasaumya.lps@gmail.com",
+  //     linkedIn:
+  //       "https://www.linkedin.com/in/saumya-ojha-7a7699297?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+  //     imgUrl: Saumya,
+  //   },
+  //   {
+  //     name: "Shiv Kumar Gupta",
+  //     domain: "Technical Member",
+  //     gmail: "contactshivgupta@gmail.com",
+  //     linkedIn: "https://www.linkedin.com/in/shiv-kumar-gupta-b74125280/",
+  //     imgUrl: Shiv,
+  //   },
+
+  //   {
+  //     name: "Yashica Agarwal",
+  //     domain: "Graphics Member",
+  //     gmail: "yashica.agarwal3@gmail.com",
+  //     linkedIn:
+  //       "https://www.linkedin.com/in/yashica-agarwal-9b1493297?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+  //     imgUrl: yashica,
+  //   },
+
+  //   {
+  //     name: " Anish Kumar",
+  //     domain: "Events Member",
+  //     gmail: "anissh946@gmail.com",
+  //     linkedIn: "http://www.linkedin.com/in/anish-kumar-126140295",
+  //     imgUrl: anish,
+  //   },
+  //   {
+  //     name: " Pratham Mishra",
+  //     domain: "Events Member",
+  //     gmail: "mishrayogi04@gmail.com",
+  //     linkedIn: "https://www.linkedin.com/in/pratham-mishra-850497270?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+  //     imgUrl: Pratham,
+  //   },
+  //   {
+  //     name: "Gurpreet Singh",
+  //     domain: "Corporate Member",
+  //     mail: "gskochar24@gmail.com",
+  //     linkedIn:
+  //       "https://www.linkedin.com/in/gurpreet-singh-kochar?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+  //     imgUrl: Gurpreet,
+  //   },
+  //   {
+  //     name: "Yuvika Jindal",
+  //     domain: "Graphics",
+  //     mail: "yuvikajindal241106@gmail.com",
+  //     linkedIn:
+  //       "https://www.linkedin.com/in/yuvika-jindal-6b3181328/",
+  //     imgUrl: Yuvika,
+  //   },
+  //   {
+  //     name: "Ishita Jindal",
+  //     domain: "Graphics",
+  //     mail: "ishijindal1310@gmail.com",
+  //     linkedIn:
+  //       "https://www.linkedin.com/in/ishijindal/",
+  //     imgUrl: Ishita,
+  //   },
+  //   {
+  //     name: "Ananya Baranwal",
+  //     domain: "Graphics",
+  //     mail: "baranwalananya2006@gmail.com",
+  //     linkedIn:
+  //       "",
+  //     imgUrl: Ananya,
+  //   },
+  //   {
+  //     name: "Nishant Vishwakarma",
+  //     domain: "Graphics",
+  //     mail: "nishantvishwakarma6789@gmail.com",
+  //     linkedIn:
+  //       "https://www.linkedin.com/in/nishant-vishwakarma-875a34328",
+  //     imgUrl: Nishant2,
+  //   },
+  //   {
+  //     name: "Karnveer Dixit",
+  //     domain: "Graphics",
+  //     mail: "dtanishq46@gmail.com",
+  //     linkedIn:
+  //       "http://www.linkedin.com/in/karnveer-dixit-9b5bb3333",
+  //     imgUrl: Karn,
+  //   },
+  //   {
+  //     name: "Preeti Singh",
+  //     domain: "Graphics",
+  //     mail: "preetisinghthakur07@gmail.com",
+  //     linkedIn:
+  //       "http://www.linkedin.com/in/preeti-singh-9b8554328",
+  //     imgUrl: Preeti,
+  //   },
+  //   {
+  //     name: "Yash Jain ",
+  //     domain: "Corporate Member",
+  //     mail: "jainyash1404@gmail.com",
+  //     linkedIn:
+  //       "https://www.linkedin.com/in/yash-jain-09a901285?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+  //     imgUrl: Yash2,
+  //   },
+  //   {
+  //     name: "Shaswat Mishra",
+  //     domain: "Corporate Member",
+  //     mail: "mishrashaswat29@gmail.com",
+  //     linkedIn:
+  //       "https://www.linkedin.com/in/shaswat-mishra-320863252/",
+  //     imgUrl: Shaswat2,
+  //   },
+  //   {
+  //     name: "Vanshika Arora",
+  //     domain: "Corporate Member",
+  //     mail: "arora.vanshika1110@gmail.com",
+  //     linkedIn:
+  //       "https://www.linkedin.com/in/vanshika-arora-325323308?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+  //     imgUrl: Vanshika,
+  //   },
+  //   // {
+  //   //   name: "Naman Verma",
+  //   //   domain: "Corporate Member",
+  //   //   mail: "verma023naman@gmail.com",
+  //   //   linkedIn:
+  //   //     "https://www.linkedin.com/in/naman-verma-8ab2b3328",
+  //   //   imgUrl: Naman,
+  //   // },
+
+   
+    
+  //   // {
+  //   //   name: "Pratham Mishra",
+  //   //   domain: "Events Member",
+  //   //   gmail: "mishrayogi04@gmail.com",
+  //   //   linkedIn:
+  //   //     "https://www.linkedin.com/in/pratham-mishra-850497270?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+  //   //   imgUrl: pratham,
+  //   // },
+  //   // {
+  //   //   name: "Divyam Asthana",
+  //   //   domain: "Public Relations Member",
+  //   //   gmail: "divyamasthanaprofessional.001@gmail.com",
+  //   //   linkedIn: "https://www.linkedin.com/in/divyam-asthana",
+  //   //   imgUrl: divym,
+  //   // },
+  //   // {
+  //   //   name: "Shruti Mishra",
+  //   //   domain: "Public Relations Member",
+  //   //   gmail: "",
+  //   //   linkedIn: "",
+  //   //   imgUrl: shruti,
+  //   // },
+  //   {
+  //     name: "Vansh Gautam",
+  //     domain: "Public Relations Member",
+  //     gmail: "vanshgautam9011@gmail.com",
+  //     linkedIn: "https://www.linkedin.com/in/vansh-gautam-92293b30a/",
+  //     imgUrl: Vansh,
+  //   },
+  //   {
+  //     name: "Riddhi Yadav",
+  //     domain: "Graphics Member",
+  //     gmail: "yriddhi51@gmail.com",
+  //     linkedIn:
+  //       "https://www.linkedin.com/in/riddhi-yadav-901b28293?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+  //     imgUrl: riddhi,
+  //   },
+  //   {
+  //     name: "Anshika Chaurasia ",
+  //     domain: "Public Relations ",
+  //     gmail: "manya.khushi.mk@gmail.com",
+  //     linkedIn:
+  //       "https://www.linkedin.com/in/anshika-chaurasia-3a2218222",
+  //     imgUrl: Anshika,
+  //   },
+  //   {
+  //     name: "Dipti Gupta  ",
+  //     domain: "Public Relations ",
+  //     gmail: "diptisdk@gmail.com",
+  //     linkedIn:
+  //       "https://www.linkedin.com/in/dipti-gupta-a96a20317",
+  //     imgUrl: Dipti,
+  //   },
+  //   {
+  //     name: "Saransh Sahu",
+  //     domain: "Corporate Relations",
+  //     gmail: "saransh1315@gmail.com",
+  //     linkedIn:
+  //       "https://www.linkedin.com/in/saransh-sahu-4967a0303/",
+  //     imgUrl: Saransh,
+  //   },
+  //   {
+  //     name: "Shreya Baranwal ",
+  //     domain: "Corporate Relations",
+  //     gmail: "shreyabaranwal229@gmail.com",
+  //     linkedIn:
+  //       "https://www.linkedin.com/in/shreya-baranwal-1103802a5",
+  //     imgUrl: Shreya,
+  //   },
+  //   {
+  //     name: "Tejas Rastogi ",
+  //     domain: "Corporate Relations",
+  //     gmail: "tejasrastogi456@gmail.com",
+  //     linkedIn:
+  //       "https://www.linkedin.com/in/tejas-rastogi-292b81231?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+  //     imgUrl: Tejas,
+  //   },
+  //   {
+  //     name: "Aashi Chaudhary",
+  //     domain: "Corporate Relations",
+  //     gmail: "aashi.chaudharryy@gmail.com",
+  //     linkedIn:
+  //       "https://www.linkedin.com/in/aashi-chaudhary-282405218/",
+  //     imgUrl: Aashi,
+  //   },
+  //   {
+  //     name: "Rupesh Chaurasia",
+  //     domain: "Corporate Relations",
+  //     gmail: "rupeshchaurasia012511@gmail.com",
+  //     linkedIn:
+  //       "https://www.linkedin.com/in/rupesh-chaurasia144/",
+  //     imgUrl: Rupesh,
+  //   },
+  //   {
+  //     name: "Dhruv Srivastava ",
+  //     domain: "Corporate Relations",
+  //     gmail: "connectdhruv0606@gmail.com",
+  //     linkedIn:
+  //       "https://www.linkedin.com/in/dhruv-srivastava-666622257",
+  //     imgUrl: Dhruv2,
+  //   },
+  //   {
+  //     name: "Shreyasi Rawat ",
+  //     domain: "Graphics",
+  //     gmail: "shreyasirawat30.14@gmail.com",
+  //     linkedIn:
+  //       "https://www.linkedin.com/in/shreyasi-rawat-b85280327",
+  //     imgUrl: Shreyasi,
+  //   },
+  //   {
+  //     name: "Avani Singhal",
+  //     domain: "Graphics",
+  //     gmail: "avani0277@gmail.com",
+  //     linkedIn:
+  //       "https://www.linkedin.com/in/avani-singhal-9a348826a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+  //     imgUrl: Avani2,
+  //   },
+  //   // {
+  //   //   name: "Abhijeet Kumar Gautam  ",
+  //   //   domain: "Graphics",
+  //   //   gmail: "abhijeetgautam000055@gmail.com",
+  //   //   linkedIn:
+  //   //     "https://www.linkedin.com/in/abhijeet-kumar-gautam-885710233",
+  //   //   imgUrl: Abhijeet,
+  //   // },
+  //   {
+  //     name: "Utkarsh Singh ",
+  //     domain: "Technical",
+  //     gmail: "utkarsh2020051@gmail.com",
+  //     linkedIn:
+  //       "https://www.linkedin.com/in/realutkarshh?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+  //     imgUrl: Utkarsh,
+  //   },
+  //   {
+  //     name: "Sonali Tyagi",
+  //     domain: "Technical",
+  //     gmail: "sonalityagi887@gmail.com ",
+  //     linkedIn:
+  //       "https://www.linkedin.com/in/sonali-tyagi-0895302a4",
+  //     imgUrl: Sonali,
+  //   },
+  //   {
+  //     name: "Janak Singh",
+  //     domain: "Event Management ",
+  //     gmail: "sjanak984@gmail.com",
+  //     linkedIn:
+  //       "https://www.linkedin.com/in/janak-singh-5496b5328/",
+  //     imgUrl: Janak,
+  //   },
+  //   {
+  //     name: "Dipali singh ",
+  //     domain: "Event Management ",
+  //     gmail: "dipalisingh5950@gmail.com ",
+  //     linkedIn:
+  //       "https://www.linkedin.com/in/dipali-singh-3988b6326?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+  //     imgUrl: Dipali,
+  //   },
+  //   {
+  //     name: "Avani Sharma ",
+  //     domain: "Corporate Relations",
+  //     gmail: "sharmaavani2325@gmail.com",
+  //     linkedIn:
+  //       "https://www.linkedin.com/in/avani-sharma-042516321/",
+  //     imgUrl: Avani,
+  //   },
+  //   {
+  //     name: "Kushagra Srivastava ",
+  //     domain: "Event Management ",
+  //     gmail: "workspace.kushagra@gmail.com",
+  //     linkedIn:
+  //       "https://www.linkedin.com/in/kushagra-srivastava-b000642a4?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+  //     imgUrl: Kush,
+  //   },
+  //   {
+  //     name: "Priyanz Varshney  ",
+  //     domain: "Event Management ",
+  //     gmail: "priyanzvarshney2005@gmail.com",
+  //     linkedIn:
+  //       "https://www.linkedin.com/in/priyanz-varshney-8a0309215?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+  //     imgUrl: Priyanz,
+  //   },
+  //   {
+  //     name: "Rishika Batra",
+  //     domain: "Event Management ",
+  //     gmail: "batrarishika06@gmail.com",
+  //     linkedIn:
+  //       "https://www.linkedin.com/in/rishika-batra-92a4aa326?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+  //     imgUrl: Rishika,
+  //   },
+  //   {
+  //     name: "Aditi Narang ",
+  //     domain: "Event Management ",
+  //     gmail: "aditi.2428cseaiml128@kiet.edu",
+  //     linkedIn:
+  //       "https://www.linkedin.com/in/aditi-narang-766544217?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+  //     imgUrl: Aditi,
+  //   },
+  //   {
+  //     name: "Antas Kumar Dubey ",
+  //     domain: "Event Management ",
+  //     gmail: "antasdubey.in@gmail.com",
+  //     linkedIn:
+  //       "https://www.linkedin.com/in/antas01",
+  //     imgUrl: Antas,
+  //   },
+  //   {
+  //     name: "Dhruv Chaudhary ",
+  //     domain: "Event Management ",
+  //     gmail: "dhruv.2428ece1189@kiet.edu",
+  //     linkedIn:
+  //       "https://www.linkedin.com/in/dhruv-chaudhary-370544328?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+  //     imgUrl: Dhruv,
+  //   },
+  //   {
+  //     name: "Rishi Raj ",
+  //     domain: "Event Management ",
+  //     gmail: "rishi.2428ece1184@kiet.edu",
+  //     linkedIn:
+  //       "https://www.linkedin.com/in/rishi-raj-65624b330?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+  //     imgUrl: Rishi,
+  //   },
+  //   {
+  //     name: "Tanya Mishra",
+  //     domain: "Event Management ",
+  //     gmail: "mishra.tanya101@gmail.com",
+  //     linkedIn:
+  //       "https://www.linkedin.com/in/tanya-mishra-279560328/",
+  //     imgUrl: Tanya2,
+  //   },
+  //   {
+  //     name: "Pari Gupta ",
+  //     domain: "Event Management ",
+  //     gmail: "parigupta4532@gmail.com",
+  //     linkedIn:
+  //       "https://www.linkedin.com/in/pari-gupta-07958130a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+  //     imgUrl: Pari,
+  //   },
+  //   {
+  //     name: "Pranjali Sehrawat",
+  //     domain: "Technical",
+  //     gmail: "pranjalisehrawat@gmail.com",
+  //     linkedIn:
+  //       "https://www.linkedin.com/in/pranjali-sehrawat-b90557328/",
+  //     imgUrl: Pranjali,
+  //   },
+  //   {
+  //     name: "Arpit Srivastava ",
+  //     domain: "Technical",
+  //     gmail: "arpit.srivastava7079@gmail.com",
+  //     linkedIn:
+  //       "https://www.linkedin.com/in/arpit-srivastava-954b78328?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+  //     imgUrl: Arpit,
+  //   },
+  //   {
+  //     name: "Jatin Gupta",
+  //     domain: "Technical",
+  //     gmail: "jatingupta918306@gmail.com",
+  //     linkedIn:
+  //       "https://www.linkedin.com/in/jatin-gupta-4b1b83327/",
+  //     imgUrl: Jatin,
+  //   },
+  //   {
+  //     name: "Krishna Sharma",
+  //     domain: "Technical",
+  //     gmail: "krishnasharma7915@gmail.com",
+  //     linkedIn:
+  //       "https://www.linkedin.com/in/krishna-sharma-a3647b279/",
+  //     imgUrl: Krishna,
+  //   },
+  //   {
+  //     name: "Anurag Shrivastav ",
+  //     domain: "Technical",
+  //     gmail: "anurag13360@gmail.com",
+  //     linkedIn:
+  //       "https://www.linkedin.com/in/anurag-shrivastav-b7a616327?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+  //     imgUrl: Anurag,
+  //   },
+  //   {
+  //     name: "Vaibhav Gupta",
+  //     domain: "Technical",
+  //     gmail: "vaibhavgupta.v890@gmail.com",
+  //     linkedIn:
+  //       "https://www.linkedin.com/in/vaibhav9705/",
+  //     imgUrl: Vaibhav2,
+  //   },
+  //   {
+  //     name: "Tulika Anand",
+  //     domain: "Technical",
+  //     gmail: "tulikaanand05@gmail.com",
+  //     linkedIn:
+  //       "https://www.linkedin.com/in/tulika-anand-643332311/",
+  //     imgUrl: Tulika,
+  //   },
+  //   {
+  //     name: "Luv Agarwal",
+  //     domain: "Public Relations ",
+  //     gmail: "luvagarwal2501@gmail.com",
+  //     linkedIn:
+  //       "https://www.linkedin.com/in/luv-agarwal-27912530b",
+  //     imgUrl: Luv,
+  //   },
+  //   {
+  //     name: "Ameera Arfeen ",
+  //     domain: "Public Relations ",
+  //     gmail: "ameeraarfeen7@gmail.com",
+  //     linkedIn:
+  //       "https://www.linkedin.com/in/ameera-arfeen-88b483325",
+  //     imgUrl: Ameera,
+  //   },
+  //   {
+  //     name: "Arjun Pundir ",
+  //     domain: "Public Relations ",
+  //     gmail: "arjun.pundir7626@gmail.com",
+  //     linkedIn:
+  //       "https://www.linkedin.com/in/arjun-pundir-384934254?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+  //     imgUrl: Arjun,
+  //   },
+  //   {
+  //     name: "Atharv Gupta ",
+  //     domain: "Public Relations ",
+  //     gmail: "roboatharv@gmail.com",
+  //     linkedIn:
+  //       "https://www.linkedin.com/in/atharv-gupta-18b2a7314",
+  //     imgUrl: Atharv,
+  //   },
+  //   {
+  //     name: "Anant Mittal",
+  //     domain: "Technical",
+  //     gmail: "anantmittal943@gmail.com",
+  //     linkedIn:
+  //       "https://www.linkedin.com/in/anant-mittal-63940b313/",
+  //     imgUrl: Anant,
+  //   },
+
+  //   // {
+  //   //   name: "Arush Dixit",
+  //   //   domain: "Public Relations Member",
+  //   //   gmail: "arushd2005@gmail.com",
+  //   //   linkedIn:
+  //   //     "https://www.linkedin.com/in/arushdixit98?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+  //   // },
+  //   // {
+  //   //   name: "Yashica Agarwal",
+  //   //   domain: "Graphics Member",
+  //   //   gmail: "yashica.agarwal3@gmail.com",
+  //   //   linkedIn: "https://www.linkedin.com/feed/",
+  //   // },
+
+  //   // {
+  //   //   name: "Riddhi Yadav",
+  //   //   domain: "Graphics Member",
+  //   //   gmail: "yriddhi51@gmail.com",
+  //   //   linkedIn:
+  //   //     "https://www.linkedin.com/in/riddhi-yadav-901b28293?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+  //   // },
+  //   // {
+  //   //   name: "Anjali Sharma",
+  //   //   domain: "Public Relation Member",
+  //   //   gmail: "anjali34490@gmail.com",
+  //   //   linkedIn:
+  //   //     "https://www.linkedin.com/in/anjali-sharma-448a9b292?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+  //   // },
+
+  //   // {
+  //   //   name: "Abhishek sharma",
+  //   //   domain: "Corporate Relation Member",
+  //   //   gmail: "abhishek.2226it1057@kiet.edu",
+  //   //   linkedIn:
+  //   //     "https://www.linkedin.com/in/abhishek-sharma-a14878225?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+  //   // },
+  //   // {
+  //   //   name: "Pratham Mishra",
+  //   //   domain: "Event Management Member",
+  //   //   gmail: "mishrayogi04@gmail.com",
+  //   //   linkedIn:
+  //   //     "https://www.linkedin.com/in/pratham-mishra-850497270?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+  //   // },
+  //   // {
+  //   //   name: "Shruti Mishra",
+  //   //   domain: "Public Relation Member",
+  //   //   gmail: "shrutimishra.creative@gmail.com",
+  //   //   linkedIn:
+  //   //     "https://www.linkedin.com/in/shruti-mishra-8572a729b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+  //   // },
+
+  //   // {
+  //   //   name: "Paras Tiwari",
+  //   //   domain: "Technical Member",
+  //   //   gmail: "parastiwari970@gmail.com",
+  //   //   linkedIn:
+  //   //     "https://www.linkedin.com/in/paras-tiwari-69b0162a1?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+  //   // },
+
+  //   // {
+  //   //   name: "Ansh Yadav",
+  //   //   domain: "Corporate Relation Member",
+  //   //   gmail: "ansh.2327cse1176@kiet.edu",
+  //   //   linkedIn:
+  //   //     "https://www.linkedin.com/in/ansh-yadav-6ab1182a1?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+  //   // },
+
+  //   // {
+  //   //   name: "Utkarsh Goyal",
+  //   //   domain: "Technical Member",
+  //   //   gmail: "utkarshgoyal07@gmail.com",
+  //   //   linkedIn: "https://www.linkedin.com/in/utkarsh-goyal-74a81524b/",
+  //   // },
+  //   // {
+  //   //   name: "Anish kumar",
+  //   //   domain: "Event Management Member",
+  //   //   gmail: "anissh946@gmail.com",
+  //   //   linkedIn:
+  //   //     "https://www.linkedin.com/in/anish-kumar-126140295?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+  //   // },
+  // ];
+  const technicalMembers = [
+    {
+      name: "Yash Kumar Singh",
+      domain: "Technical Member",
+      imgUrl: yash,
+      linkedIn: "https://www.linkedin.com/in/yashksingh-connect/",
+      gmail: "yk66478@gmail.com",
+    },
+    {
+      name: "Nakshatra Manglik",
+      domain: "Technical Member",
+      imgUrl: naksh,
+      linkedIn: "https://www.linkedin.com/in/nakshatra-manglik",
+      gmail: "Nakshatramanglik14@gmail.com",
+    },
+    {
+      name: "Shashwat Rai",
+      domain: "Technical Member",
+      imgUrl: shashwat,
+      linkedIn: "https://www.linkedin.com/in/shashwatrai05/",
+      gmail: "shashwatrai575@gmail.com",
     },
     {
       name: "Saksham Jain",
@@ -210,8 +1142,7 @@ function OurTeam() {
       name: "Saumya Ojha",
       domain: "Technical Member",
       gmail: "ojhasaumya.lps@gmail.com",
-      linkedIn:
-        "https://www.linkedin.com/in/saumya-ojha-7a7699297?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      linkedIn: "https://www.linkedin.com/in/saumya-ojha-7a7699297",
       imgUrl: Saumya,
     },
     {
@@ -221,543 +1152,86 @@ function OurTeam() {
       linkedIn: "https://www.linkedin.com/in/shiv-kumar-gupta-b74125280/",
       imgUrl: Shiv,
     },
-
     {
-      name: "Yashica Agarwal",
-      domain: "Graphics Member",
-      gmail: "yashica.agarwal3@gmail.com",
-      linkedIn:
-        "https://www.linkedin.com/in/yashica-agarwal-9b1493297?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-      imgUrl: yashica,
-    },
-
-    {
-      name: " Anish Kumar",
-      domain: "Events Member",
-      gmail: "anissh946@gmail.com",
-      linkedIn: "http://www.linkedin.com/in/anish-kumar-126140295",
-      imgUrl: anish,
-    },
-    {
-      name: " Pratham Mishra",
-      domain: "Events Member",
-      gmail: "mishrayogi04@gmail.com",
-      linkedIn: "https://www.linkedin.com/in/pratham-mishra-850497270?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-      imgUrl: Pratham,
-    },
-    {
-      name: "Gurpreet Singh",
-      domain: "Corporate Member",
-      mail: "gskochar24@gmail.com",
-      linkedIn:
-        "https://www.linkedin.com/in/gurpreet-singh-kochar?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-      imgUrl: Gurpreet,
-    },
-    {
-      name: "Yuvika Jindal",
-      domain: "Graphics",
-      mail: "yuvikajindal241106@gmail.com",
-      linkedIn:
-        "https://www.linkedin.com/in/yuvika-jindal-6b3181328/",
-      imgUrl: Yuvika,
-    },
-    {
-      name: "Ishita Jindal",
-      domain: "Graphics",
-      mail: "ishijindal1310@gmail.com",
-      linkedIn:
-        "https://www.linkedin.com/in/ishijindal/",
-      imgUrl: Ishita,
-    },
-    {
-      name: "Ananya Baranwal",
-      domain: "Graphics",
-      mail: "baranwalananya2006@gmail.com",
-      linkedIn:
-        "",
-      imgUrl: Ananya,
-    },
-    {
-      name: "Nishant Vishwakarma",
-      domain: "Graphics",
-      mail: "nishantvishwakarma6789@gmail.com",
-      linkedIn:
-        "https://www.linkedin.com/in/nishant-vishwakarma-875a34328",
-      imgUrl: Nishant2,
-    },
-    {
-      name: "Karnveer Dixit",
-      domain: "Graphics",
-      mail: "dtanishq46@gmail.com",
-      linkedIn:
-        "http://www.linkedin.com/in/karnveer-dixit-9b5bb3333",
-      imgUrl: Karn,
-    },
-    {
-      name: "Preeti Singh",
-      domain: "Graphics",
-      mail: "preetisinghthakur07@gmail.com",
-      linkedIn:
-        "http://www.linkedin.com/in/preeti-singh-9b8554328",
-      imgUrl: Preeti,
-    },
-    {
-      name: "Yash Jain ",
-      domain: "Corporate Member",
-      mail: "jainyash1404@gmail.com",
-      linkedIn:
-        "https://www.linkedin.com/in/yash-jain-09a901285?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-      imgUrl: Yash2,
-    },
-    {
-      name: "Shaswat Mishra",
-      domain: "Corporate Member",
-      mail: "mishrashaswat29@gmail.com",
-      linkedIn:
-        "https://www.linkedin.com/in/shaswat-mishra-320863252/",
-      imgUrl: Shaswat2,
-    },
-    {
-      name: "Vanshika Arora",
-      domain: "Corporate Member",
-      mail: "arora.vanshika1110@gmail.com",
-      linkedIn:
-        "https://www.linkedin.com/in/vanshika-arora-325323308?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-      imgUrl: Vanshika,
-    },
-    // {
-    //   name: "Naman Verma",
-    //   domain: "Corporate Member",
-    //   mail: "verma023naman@gmail.com",
-    //   linkedIn:
-    //     "https://www.linkedin.com/in/naman-verma-8ab2b3328",
-    //   imgUrl: Naman,
-    // },
-
-   
-    
-    // {
-    //   name: "Pratham Mishra",
-    //   domain: "Events Member",
-    //   gmail: "mishrayogi04@gmail.com",
-    //   linkedIn:
-    //     "https://www.linkedin.com/in/pratham-mishra-850497270?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-    //   imgUrl: pratham,
-    // },
-    // {
-    //   name: "Divyam Asthana",
-    //   domain: "Public Relations Member",
-    //   gmail: "divyamasthanaprofessional.001@gmail.com",
-    //   linkedIn: "https://www.linkedin.com/in/divyam-asthana",
-    //   imgUrl: divym,
-    // },
-    // {
-    //   name: "Shruti Mishra",
-    //   domain: "Public Relations Member",
-    //   gmail: "",
-    //   linkedIn: "",
-    //   imgUrl: shruti,
-    // },
-    {
-      name: "Vansh Gautam",
-      domain: "Public Relations Member",
-      gmail: "vanshgautam9011@gmail.com",
-      linkedIn: "https://www.linkedin.com/in/vansh-gautam-92293b30a/",
-      imgUrl: Vansh,
-    },
-    {
-      name: "Riddhi Yadav",
-      domain: "Graphics Member",
-      gmail: "yriddhi51@gmail.com",
-      linkedIn:
-        "https://www.linkedin.com/in/riddhi-yadav-901b28293?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-      imgUrl: riddhi,
-    },
-    {
-      name: "Anshika Chaurasia ",
-      domain: "Public Relations ",
-      gmail: "manya.khushi.mk@gmail.com",
-      linkedIn:
-        "https://www.linkedin.com/in/anshika-chaurasia-3a2218222",
-      imgUrl: Anshika,
-    },
-    {
-      name: "Dipti Gupta  ",
-      domain: "Public Relations ",
-      gmail: "diptisdk@gmail.com",
-      linkedIn:
-        "https://www.linkedin.com/in/dipti-gupta-a96a20317",
-      imgUrl: Dipti,
-    },
-    {
-      name: "Saransh Sahu",
-      domain: "Corporate Relations",
-      gmail: "saransh1315@gmail.com",
-      linkedIn:
-        "https://www.linkedin.com/in/saransh-sahu-4967a0303/",
-      imgUrl: Saransh,
-    },
-    {
-      name: "Shreya Baranwal ",
-      domain: "Corporate Relations",
-      gmail: "shreyabaranwal229@gmail.com",
-      linkedIn:
-        "https://www.linkedin.com/in/shreya-baranwal-1103802a5",
-      imgUrl: Shreya,
-    },
-    {
-      name: "Tejas Rastogi ",
-      domain: "Corporate Relations",
-      gmail: "tejasrastogi456@gmail.com",
-      linkedIn:
-        "https://www.linkedin.com/in/tejas-rastogi-292b81231?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-      imgUrl: Tejas,
-    },
-    {
-      name: "Aashi Chaudhary",
-      domain: "Corporate Relations",
-      gmail: "aashi.chaudharryy@gmail.com",
-      linkedIn:
-        "https://www.linkedin.com/in/aashi-chaudhary-282405218/",
-      imgUrl: Aashi,
-    },
-    {
-      name: "Rupesh Chaurasia",
-      domain: "Corporate Relations",
-      gmail: "rupeshchaurasia012511@gmail.com",
-      linkedIn:
-        "https://www.linkedin.com/in/rupesh-chaurasia144/",
-      imgUrl: Rupesh,
-    },
-    {
-      name: "Dhruv Srivastava ",
-      domain: "Corporate Relations",
-      gmail: "connectdhruv0606@gmail.com",
-      linkedIn:
-        "https://www.linkedin.com/in/dhruv-srivastava-666622257",
-      imgUrl: Dhruv2,
-    },
-    {
-      name: "Shreyasi Rawat ",
-      domain: "Graphics",
-      gmail: "shreyasirawat30.14@gmail.com",
-      linkedIn:
-        "https://www.linkedin.com/in/shreyasi-rawat-b85280327",
-      imgUrl: Shreyasi,
-    },
-    {
-      name: "Avani Singhal",
-      domain: "Graphics",
-      gmail: "avani0277@gmail.com",
-      linkedIn:
-        "https://www.linkedin.com/in/avani-singhal-9a348826a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-      imgUrl: Avani2,
-    },
-    // {
-    //   name: "Abhijeet Kumar Gautam  ",
-    //   domain: "Graphics",
-    //   gmail: "abhijeetgautam000055@gmail.com",
-    //   linkedIn:
-    //     "https://www.linkedin.com/in/abhijeet-kumar-gautam-885710233",
-    //   imgUrl: Abhijeet,
-    // },
-    {
-      name: "Utkarsh Singh ",
+      name: "Utkarsh Singh",
       domain: "Technical",
       gmail: "utkarsh2020051@gmail.com",
-      linkedIn:
-        "https://www.linkedin.com/in/realutkarshh?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      linkedIn: "https://www.linkedin.com/in/realutkarshh",
       imgUrl: Utkarsh,
     },
     {
       name: "Sonali Tyagi",
       domain: "Technical",
-      gmail: "sonalityagi887@gmail.com ",
-      linkedIn:
-        "https://www.linkedin.com/in/sonali-tyagi-0895302a4",
+      gmail: "sonalityagi887@gmail.com",
+      linkedIn: "https://www.linkedin.com/in/sonali-tyagi-0895302a4",
       imgUrl: Sonali,
-    },
-    {
-      name: "Janak Singh",
-      domain: "Event Management ",
-      gmail: "sjanak984@gmail.com",
-      linkedIn:
-        "https://www.linkedin.com/in/janak-singh-5496b5328/",
-      imgUrl: Janak,
-    },
-    {
-      name: "Dipali singh ",
-      domain: "Event Management ",
-      gmail: "dipalisingh5950@gmail.com ",
-      linkedIn:
-        "https://www.linkedin.com/in/dipali-singh-3988b6326?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-      imgUrl: Dipali,
-    },
-    {
-      name: "Avani Sharma ",
-      domain: "Corporate Relations",
-      gmail: "sharmaavani2325@gmail.com",
-      linkedIn:
-        "https://www.linkedin.com/in/avani-sharma-042516321/",
-      imgUrl: Avani,
-    },
-    {
-      name: "Kushagra Srivastava ",
-      domain: "Event Management ",
-      gmail: "workspace.kushagra@gmail.com",
-      linkedIn:
-        "https://www.linkedin.com/in/kushagra-srivastava-b000642a4?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-      imgUrl: Kush,
-    },
-    {
-      name: "Priyanz Varshney  ",
-      domain: "Event Management ",
-      gmail: "priyanzvarshney2005@gmail.com",
-      linkedIn:
-        "https://www.linkedin.com/in/priyanz-varshney-8a0309215?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-      imgUrl: Priyanz,
-    },
-    {
-      name: "Rishika Batra",
-      domain: "Event Management ",
-      gmail: "batrarishika06@gmail.com",
-      linkedIn:
-        "https://www.linkedin.com/in/rishika-batra-92a4aa326?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-      imgUrl: Rishika,
-    },
-    {
-      name: "Aditi Narang ",
-      domain: "Event Management ",
-      gmail: "aditi.2428cseaiml128@kiet.edu",
-      linkedIn:
-        "https://www.linkedin.com/in/aditi-narang-766544217?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-      imgUrl: Aditi,
-    },
-    {
-      name: "Antas Kumar Dubey ",
-      domain: "Event Management ",
-      gmail: "antasdubey.in@gmail.com",
-      linkedIn:
-        "https://www.linkedin.com/in/antas01",
-      imgUrl: Antas,
-    },
-    {
-      name: "Dhruv Chaudhary ",
-      domain: "Event Management ",
-      gmail: "dhruv.2428ece1189@kiet.edu",
-      linkedIn:
-        "https://www.linkedin.com/in/dhruv-chaudhary-370544328?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-      imgUrl: Dhruv,
-    },
-    {
-      name: "Rishi Raj ",
-      domain: "Event Management ",
-      gmail: "rishi.2428ece1184@kiet.edu",
-      linkedIn:
-        "https://www.linkedin.com/in/rishi-raj-65624b330?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-      imgUrl: Rishi,
-    },
-    {
-      name: "Tanya Mishra",
-      domain: "Event Management ",
-      gmail: "mishra.tanya101@gmail.com",
-      linkedIn:
-        "https://www.linkedin.com/in/tanya-mishra-279560328/",
-      imgUrl: Tanya2,
-    },
-    {
-      name: "Pari Gupta ",
-      domain: "Event Management ",
-      gmail: "parigupta4532@gmail.com",
-      linkedIn:
-        "https://www.linkedin.com/in/pari-gupta-07958130a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-      imgUrl: Pari,
     },
     {
       name: "Pranjali Sehrawat",
       domain: "Technical",
       gmail: "pranjalisehrawat@gmail.com",
-      linkedIn:
-        "https://www.linkedin.com/in/pranjali-sehrawat-b90557328/",
+      linkedIn: "https://www.linkedin.com/in/pranjali-sehrawat-b90557328/",
       imgUrl: Pranjali,
     },
     {
-      name: "Arpit Srivastava ",
+      name: "Arpit Srivastava",
       domain: "Technical",
       gmail: "arpit.srivastava7079@gmail.com",
-      linkedIn:
-        "https://www.linkedin.com/in/arpit-srivastava-954b78328?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      linkedIn: "https://www.linkedin.com/in/arpit-srivastava-954b78328",
       imgUrl: Arpit,
     },
     {
       name: "Jatin Gupta",
       domain: "Technical",
       gmail: "jatingupta918306@gmail.com",
-      linkedIn:
-        "https://www.linkedin.com/in/jatin-gupta-4b1b83327/",
+      linkedIn: "https://www.linkedin.com/in/jatin-gupta-4b1b83327/",
       imgUrl: Jatin,
     },
     {
       name: "Krishna Sharma",
       domain: "Technical",
       gmail: "krishnasharma7915@gmail.com",
-      linkedIn:
-        "https://www.linkedin.com/in/krishna-sharma-a3647b279/",
+      linkedIn: "https://www.linkedin.com/in/krishna-sharma-a3647b279/",
       imgUrl: Krishna,
     },
     {
-      name: "Anurag Shrivastav ",
+      name: "Anurag Shrivastav",
       domain: "Technical",
       gmail: "anurag13360@gmail.com",
-      linkedIn:
-        "https://www.linkedin.com/in/anurag-shrivastav-b7a616327?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      linkedIn: "https://www.linkedin.com/in/anurag-shrivastav-b7a616327",
       imgUrl: Anurag,
     },
     {
       name: "Vaibhav Gupta",
       domain: "Technical",
       gmail: "vaibhavgupta.v890@gmail.com",
-      linkedIn:
-        "https://www.linkedin.com/in/vaibhav9705/",
+      linkedIn: "https://www.linkedin.com/in/vaibhav9705/",
       imgUrl: Vaibhav2,
     },
     {
       name: "Tulika Anand",
       domain: "Technical",
       gmail: "tulikaanand05@gmail.com",
-      linkedIn:
-        "https://www.linkedin.com/in/tulika-anand-643332311/",
+      linkedIn: "https://www.linkedin.com/in/tulika-anand-643332311/",
       imgUrl: Tulika,
-    },
-    {
-      name: "Luv Agarwal",
-      domain: "Public Relations ",
-      gmail: "luvagarwal2501@gmail.com",
-      linkedIn:
-        "https://www.linkedin.com/in/luv-agarwal-27912530b",
-      imgUrl: Luv,
-    },
-    {
-      name: "Ameera Arfeen ",
-      domain: "Public Relations ",
-      gmail: "ameeraarfeen7@gmail.com",
-      linkedIn:
-        "https://www.linkedin.com/in/ameera-arfeen-88b483325",
-      imgUrl: Ameera,
-    },
-    {
-      name: "Arjun Pundir ",
-      domain: "Public Relations ",
-      gmail: "arjun.pundir7626@gmail.com",
-      linkedIn:
-        "https://www.linkedin.com/in/arjun-pundir-384934254?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-      imgUrl: Arjun,
-    },
-    {
-      name: "Atharv Gupta ",
-      domain: "Public Relations ",
-      gmail: "roboatharv@gmail.com",
-      linkedIn:
-        "https://www.linkedin.com/in/atharv-gupta-18b2a7314",
-      imgUrl: Atharv,
     },
     {
       name: "Anant Mittal",
       domain: "Technical",
       gmail: "anantmittal943@gmail.com",
-      linkedIn:
-        "https://www.linkedin.com/in/anant-mittal-63940b313/",
+      linkedIn: "https://www.linkedin.com/in/anant-mittal-63940b313/",
       imgUrl: Anant,
-    },
-
-    // {
-    //   name: "Arush Dixit",
-    //   domain: "Public Relations Member",
-    //   gmail: "arushd2005@gmail.com",
-    //   linkedIn:
-    //     "https://www.linkedin.com/in/arushdixit98?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-    // },
-    // {
-    //   name: "Yashica Agarwal",
-    //   domain: "Graphics Member",
-    //   gmail: "yashica.agarwal3@gmail.com",
-    //   linkedIn: "https://www.linkedin.com/feed/",
-    // },
-
-    // {
-    //   name: "Riddhi Yadav",
-    //   domain: "Graphics Member",
-    //   gmail: "yriddhi51@gmail.com",
-    //   linkedIn:
-    //     "https://www.linkedin.com/in/riddhi-yadav-901b28293?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-    // },
-    // {
-    //   name: "Anjali Sharma",
-    //   domain: "Public Relation Member",
-    //   gmail: "anjali34490@gmail.com",
-    //   linkedIn:
-    //     "https://www.linkedin.com/in/anjali-sharma-448a9b292?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-    // },
-
-    // {
-    //   name: "Abhishek sharma",
-    //   domain: "Corporate Relation Member",
-    //   gmail: "abhishek.2226it1057@kiet.edu",
-    //   linkedIn:
-    //     "https://www.linkedin.com/in/abhishek-sharma-a14878225?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-    // },
-    // {
-    //   name: "Pratham Mishra",
-    //   domain: "Event Management Member",
-    //   gmail: "mishrayogi04@gmail.com",
-    //   linkedIn:
-    //     "https://www.linkedin.com/in/pratham-mishra-850497270?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-    // },
-    // {
-    //   name: "Shruti Mishra",
-    //   domain: "Public Relation Member",
-    //   gmail: "shrutimishra.creative@gmail.com",
-    //   linkedIn:
-    //     "https://www.linkedin.com/in/shruti-mishra-8572a729b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-    // },
-
-    // {
-    //   name: "Paras Tiwari",
-    //   domain: "Technical Member",
-    //   gmail: "parastiwari970@gmail.com",
-    //   linkedIn:
-    //     "https://www.linkedin.com/in/paras-tiwari-69b0162a1?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-    // },
-
-    // {
-    //   name: "Ansh Yadav",
-    //   domain: "Corporate Relation Member",
-    //   gmail: "ansh.2327cse1176@kiet.edu",
-    //   linkedIn:
-    //     "https://www.linkedin.com/in/ansh-yadav-6ab1182a1?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-    // },
-
-    // {
-    //   name: "Utkarsh Goyal",
-    //   domain: "Technical Member",
-    //   gmail: "utkarshgoyal07@gmail.com",
-    //   linkedIn: "https://www.linkedin.com/in/utkarsh-goyal-74a81524b/",
-    // },
-    // {
-    //   name: "Anish kumar",
-    //   domain: "Event Management Member",
-    //   gmail: "anissh946@gmail.com",
-    //   linkedIn:
-    //     "https://www.linkedin.com/in/anish-kumar-126140295?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-    // },
+    }
   ];
-
   const { pathname } = useLocation();
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [pathname]);
   return (
     <div className="flex flex-col justify-center items-center text-white pt-28 bg-white dark:bg-black">
+
+    
+      {/* Administrator */}
       <div>
         <h1 className="text-3xl md:text-5xl font-bold text-black dark:text-white">
           Our <span className="text-[#4d55ba]">Team</span>
@@ -818,6 +1292,7 @@ function OurTeam() {
           </motion.div>
         ))}
       </div>
+      {/* Dupty Administrator */}
       <div className="mt-10">
         <h1 className="text-xl md:text-3xl font-bold text-black dark:text-white">
           Deputy Administrators
@@ -873,6 +1348,7 @@ function OurTeam() {
           </motion.div>
         ))}
       </div>
+      {/* Treasurer */}
       <div className="mt-10">
         <h1 className="text-xl md:text-3xl font-bold text-black dark:text-white">
           Treasurer
@@ -928,6 +1404,7 @@ function OurTeam() {
           </motion.div>
         ))}
       </div>
+      {/* Domain Manager */}
       <div className="mt-10">
         <h1 className="text-xl md:text-3xl font-bold text-black dark:text-white">
           Domain Managers
@@ -983,7 +1460,290 @@ function OurTeam() {
           </motion.div>
         ))}
       </div>
+      {/* Technical Member */}
       <div className="mt-10">
+        <h1 className="text-xl md:text-3xl font-bold text-black dark:text-white">
+          Technical Member
+        </h1>
+      </div>
+      <div className="flex flex-wrap justify-center items-start mt-8">
+        {technicalMembers.map((member, index) => (
+          <motion.div
+            variants={fadeIn("up")}
+            initial="hidden"
+            whileInView={"show"}
+            key={index}
+            className="team-member flex flex-col justify-center items-center m-5"
+          >
+            <div className="relative">
+              <img
+                src={member.imgUrl}
+                alt={member.name}
+                className="team-member-img w-48 h-60 rounded-tr-[10%] rounded-lg rounded-bl-[10%]"
+                loading="lazy"
+              />
+              <div className="teamHover absolute top-5 left-5 w-[70%] border-t-4 border-l-4 p-3 pt-8 pb-5 border-blue-500 rounded-md flex flex-row justify-evenly items-center">
+                <a href={member.linkedIn} target="_blank" rel="noreferrer">
+                  <img
+                    src={linkedInIcon}
+                    alt=""
+                    className="w-9 h-9"
+                    loading="lazy"
+                  />
+                </a>
+                <a
+                  href={`https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=${member.gmail}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img
+                    src={gamilIcon}
+                    alt=""
+                    className="w-8 h-8"
+                    loading="lazy"
+                  />
+                </a>
+              </div>
+            </div>
+            <div className="flex flex-col justify-center items-center w-40 mt-2 ">
+              <p className="team-member-name font-bold text-lg text-black dark:text-white text-center">
+                {member.name}
+              </p>
+              <p className="team-member-domain text-center text-lg text-black dark:text-white">
+                {member.domain}
+              </p>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+{/* PR Member */}
+<div className="mt-10">
+        <h1 className="text-xl md:text-3xl font-bold text-black dark:text-white">
+          Public Relations Member
+        </h1>
+      </div>
+      <div className="flex flex-wrap justify-center items-start mt-8">
+        {prMembers.map((member, index) => (
+          <motion.div
+            variants={fadeIn("up")}
+            initial="hidden"
+            whileInView={"show"}
+            key={index}
+            className="team-member flex flex-col justify-center items-center m-5"
+          >
+            <div className="relative">
+              <img
+                src={member.imgUrl}
+                alt={member.name}
+                className="team-member-img w-48 h-60 rounded-tr-[10%] rounded-lg rounded-bl-[10%]"
+                loading="lazy"
+              />
+              <div className="teamHover absolute top-5 left-5 w-[70%] border-t-4 border-l-4 p-3 pt-8 pb-5 border-blue-500 rounded-md flex flex-row justify-evenly items-center">
+                <a href={member.linkedIn} target="_blank" rel="noreferrer">
+                  <img
+                    src={linkedInIcon}
+                    alt=""
+                    className="w-9 h-9"
+                    loading="lazy"
+                  />
+                </a>
+                <a
+                  href={`https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=${member.gmail}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img
+                    src={gamilIcon}
+                    alt=""
+                    className="w-8 h-8"
+                    loading="lazy"
+                  />
+                </a>
+              </div>
+            </div>
+            <div className="flex flex-col justify-center items-center w-40 mt-2 ">
+              <p className="team-member-name font-bold text-lg text-black dark:text-white text-center">
+                {member.name}
+              </p>
+              <p className="team-member-domain text-center text-lg text-black dark:text-white">
+                {member.domain}
+              </p>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+
+      {/* Graphics Member */}
+      <div className="mt-10">
+        <h1 className="text-xl md:text-3xl font-bold text-black dark:text-white">
+          Graphics Member
+        </h1>
+      </div>
+      <div className="flex flex-wrap justify-center items-start mt-8">
+        {graphicsMembers.map((member, index) => (
+          <motion.div
+            variants={fadeIn("up")}
+            initial="hidden"
+            whileInView={"show"}
+            key={index}
+            className="team-member flex flex-col justify-center items-center m-5"
+          >
+            <div className="relative">
+              <img
+                src={member.imgUrl}
+                alt={member.name}
+                className="team-member-img w-48 h-60 rounded-tr-[10%] rounded-lg rounded-bl-[10%]"
+                loading="lazy"
+              />
+              <div className="teamHover absolute top-5 left-5 w-[70%] border-t-4 border-l-4 p-3 pt-8 pb-5 border-blue-500 rounded-md flex flex-row justify-evenly items-center">
+                <a href={member.linkedIn} target="_blank" rel="noreferrer">
+                  <img
+                    src={linkedInIcon}
+                    alt=""
+                    className="w-9 h-9"
+                    loading="lazy"
+                  />
+                </a>
+                <a
+                  href={`https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=${member.gmail}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img
+                    src={gamilIcon}
+                    alt=""
+                    className="w-8 h-8"
+                    loading="lazy"
+                  />
+                </a>
+              </div>
+            </div>
+            <div className="flex flex-col justify-center items-center w-40 mt-2 ">
+              <p className="team-member-name font-bold text-lg text-black dark:text-white text-center">
+                {member.name}
+              </p>
+              <p className="team-member-domain text-center text-lg text-black dark:text-white">
+                {member.domain}
+              </p>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+
+{/* CR Members */}
+<div className="mt-10">
+        <h1 className="text-xl md:text-3xl font-bold text-black dark:text-white">
+          Corporate Relations Member
+        </h1>
+      </div>
+      <div className="flex flex-wrap justify-center items-start mt-8">
+        {corporateMembers.map((member, index) => (
+          <motion.div
+            variants={fadeIn("up")}
+            initial="hidden"
+            whileInView={"show"}
+            key={index}
+            className="team-member flex flex-col justify-center items-center m-5"
+          >
+            <div className="relative">
+              <img
+                src={member.imgUrl}
+                alt={member.name}
+                className="team-member-img w-48 h-60 rounded-tr-[10%] rounded-lg rounded-bl-[10%]"
+                loading="lazy"
+              />
+              <div className="teamHover absolute top-5 left-5 w-[70%] border-t-4 border-l-4 p-3 pt-8 pb-5 border-blue-500 rounded-md flex flex-row justify-evenly items-center">
+                <a href={member.linkedIn} target="_blank" rel="noreferrer">
+                  <img
+                    src={linkedInIcon}
+                    alt=""
+                    className="w-9 h-9"
+                    loading="lazy"
+                  />
+                </a>
+                <a
+                  href={`https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=${member.gmail}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img
+                    src={gamilIcon}
+                    alt=""
+                    className="w-8 h-8"
+                    loading="lazy"
+                  />
+                </a>
+              </div>
+            </div>
+            <div className="flex flex-col justify-center items-center w-40 mt-2 ">
+              <p className="team-member-name font-bold text-lg text-black dark:text-white text-center">
+                {member.name}
+              </p>
+              <p className="team-member-domain text-center text-lg text-black dark:text-white">
+                {member.domain}
+              </p>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+
+{/* Events Member */}
+<div className="mt-10">
+        <h1 className="text-xl md:text-3xl font-bold text-black dark:text-white">
+          Event Member
+        </h1>
+      </div>
+      <div className="flex flex-wrap justify-center items-start mt-8">
+        {eventsMembers .map((member, index) => (
+          <motion.div
+            variants={fadeIn("up")}
+            initial="hidden"
+            whileInView={"show"}
+            key={index}
+            className="team-member flex flex-col justify-center items-center m-5"
+          >
+            <div className="relative">
+              <img
+                src={member.imgUrl}
+                alt={member.name}
+                className="team-member-img w-48 h-60 rounded-tr-[10%] rounded-lg rounded-bl-[10%]"
+                loading="lazy"
+              />
+              <div className="teamHover absolute top-5 left-5 w-[70%] border-t-4 border-l-4 p-3 pt-8 pb-5 border-blue-500 rounded-md flex flex-row justify-evenly items-center">
+                <a href={member.linkedIn} target="_blank" rel="noreferrer">
+                  <img
+                    src={linkedInIcon}
+                    alt=""
+                    className="w-9 h-9"
+                    loading="lazy"
+                  />
+                </a>
+                <a
+                  href={`https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=${member.gmail}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img
+                    src={gamilIcon}
+                    alt=""
+                    className="w-8 h-8"
+                    loading="lazy"
+                  />
+                </a>
+              </div>
+            </div>
+            <div className="flex flex-col justify-center items-center w-40 mt-2 ">
+              <p className="team-member-name font-bold text-lg text-black dark:text-white text-center">
+                {member.name}
+              </p>
+              <p className="team-member-domain text-center text-lg text-black dark:text-white">
+                {member.domain}
+              </p>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+      {/* <div className="mt-10">
         <h1 className="text-xl md:text-3xl font-bold text-black dark:text-white">
           Members
         </h1>
@@ -1037,7 +1797,7 @@ function OurTeam() {
             </div>
           </motion.div>
         ))}
-      </div>
+      </div> */}
     </div>
   );
 }
