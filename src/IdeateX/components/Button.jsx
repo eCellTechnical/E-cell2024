@@ -7,7 +7,7 @@ function Button() {
   return (
     <Link to="/ideatex/register">
     <button className="z-10 bg-gradient-to-r from-[#AE0D61] to-[#530AAC] text-white font-semibold py-4 text-[16px] mt-8 px-12 rounded-lg">
-      Register Now
+      Register !!
     </button>
   </Link>
 )
