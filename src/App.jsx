@@ -74,6 +74,7 @@ const Error404 = React.lazy(() => import("./pages/ErrorPage/Error404"));
 import Aos from "aos";
 import "aos/dist/aos.css";
 import RecruitmentResult from "./components/RecruitmentResult/RecruitmentResult";
+import PrivacyPolicy2 from "./pages/PrivacyPolicy/Policy2";
 // import NewCerti from "./components/newCerti/NewCerti";
 
 function App() {
@@ -130,6 +131,7 @@ function App() {
               <Route path="/contactus" element={<ContactUs />} />
               <Route path="/ideasubmissions" element={<IdeaSubmissions />} />
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+              <Route path="/privacypolicy" element={<PrivacyPolicy2 />} />
               <Route
                 path="/recruitment-result-2025"
                 element={<RecruitmentResult />}
