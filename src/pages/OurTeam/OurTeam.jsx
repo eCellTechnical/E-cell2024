@@ -82,7 +82,6 @@ import Dhruv from "../../assets/OurTeam/Dhruv.jpg";
 import anish from "../../assets/OurTeam/Anish.jpg";
 import Arjun from "../../assets/OurTeam/Arjun.jpg";
 import Krishna from "../../assets/OurTeam/Krishna.jpg";
-import unnati from "../../assets/OurTeam/unnati.jpg";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 function OurTeam() {
@@ -231,13 +230,6 @@ function OurTeam() {
   ];
 
   const DomainManagers = [
-    {
-      name: "Unnati Mishra",
-      domain: "General Secretary & Tech Member Manager",
-      imgUrl: unnati,
-      linkedIn: "",
-      gmail: "",
-    },
     {
       name: "Gaurav Namdev",
       domain: "Corporate Member Manager",
