@@ -27,6 +27,9 @@ const IdeaSubmissions = React.lazy(() =>
 );
 const Footer = React.lazy(() => import("./components/footer/Footer"));
 
+const EndeavourEvent = React.lazy(() =>
+  import("./endeavour/End25/singleEvent")
+);
 // const ComingSoon = React.lazy(() =>
 //   import("./endeavour/CommingSoon/CommingSoon")
 // );
@@ -136,10 +139,13 @@ function App() {
                 path="/recruitment-result-2025"
                 element={<RecruitmentResult />}
               />
+
               {/* <Route path="/ideatex-certificate" element={<NewCerti />} /> */}
               <Route path="/ideatex" element={<IdeateX />} />
               <Route path="/ideatex/register" element={<Register />} />
               {/* <Route path="/endeavour" element={<ComingSoon />} /> */}
+              
+              {/* <Route path="/endeavour/event/" element={<EndeavourEvent />} /> */}
 
               {/* <Route path="/endeavour/eve" element={<Eve />} />
               <Route path="/endeavour" element={<EndeavourHomePage />} />
