@@ -254,13 +254,13 @@ function Partners() {
 
   return (
     <section
-      className="section mb-0 px-20 py-14 pt-16 bg-white dark:bg-black"
+      className="section mb-0 px-20 py-14 pt-16  "
       id="sponser"
     >
       <div className="flex justify-center items-center flex-col mt-0 mb-0 pb-0 w-full">
         <h1 className="text-3xl md:text-5xl font-bold mb-4 animate__animated animate__fadeInUp pb-8 text-black dark:text-white w-[90%] text-center">
           Our{" "}
-          <span className="font-bold text-3xl md:text-5xl text-center text-[#4d55ba] font-serif">
+          <span className="font-bold text-3xl md:text-5xl text-center text-[#00FCB8] font-serif">
             Sponsors
           </span>
         </h1>
@@ -271,7 +271,7 @@ function Partners() {
               initial="hidden"
               whileInView={"show"}
               key={index}
-              className=" hello m-4 shadow-lg shadow-blue-300  transition-shadow hover:translate-x-1 duration-300 hover:shadow-blue-400 animate__animated animate__fadeInUp rounded-xl"
+              className=" hello m-4 shadow-lg shadow-[#00fcb96e]  transition-shadow hover:translate-x-1 duration-300 hover:shadow-[#00FCB8] animate__animated animate__fadeInUp rounded-xl"
             >
               <Card
                 orientation="horizontal"
@@ -294,7 +294,7 @@ function Partners() {
                 </div>
                 <CardOverflow
                   variant="soft"
-                  color="primary"
+                  color="#00FCB8"
                   sx={{
                     px: 0.2,
                     writingMode: "vertical-rl",
@@ -304,7 +304,7 @@ function Partners() {
                     letterSpacing: "1px",
                     textTransform: "uppercase",
                     borderLeft: "1px solid",
-                    borderColor: "divider",
+                    borderColor: "#00FCB8",
                   }}
                 >
                   {sponsor.position}

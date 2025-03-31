@@ -40,9 +40,9 @@ const EndeavourEvent = React.lazy(() =>
 
 // const Eve = React.lazy(() => import("./components/home_page/home"));
 
-// const EndeavourHomePage = React.lazy(() =>
-//   import("./endeavour/Home/EndeavourHomePage")
-// );
+const EndeavourHomePage = React.lazy(() =>
+  import("./endeavour/Home/EndeavourHomePage")
+);
 // const EndeavourLogin = React.lazy(() =>
 //   import("./endeavour/Login/EndeavourLogin")
 // );
@@ -147,9 +147,9 @@ function App() {
               
               {/* <Route path="/endeavour/event/" element={<EndeavourEvent />} /> */}
 
-              {/* <Route path="/endeavour/eve" element={<Eve />} />
-              <Route path="/endeavour" element={<EndeavourHomePage />} />
-              <Route path="/endeavour/login" element={<EndeavourLogin />} />
+              {/* <Route path="/endeavour/eve" element={<Eve />} /> */}
+              {/* <Route path="/endeavour" element={<EndeavourHomePage />} /> */}
+              {/* <Route path="/endeavour/login" element={<EndeavourLogin />} />
               <Route
                 path="/endeavour/forget-password"
                 element={<ForgetPassword />}
