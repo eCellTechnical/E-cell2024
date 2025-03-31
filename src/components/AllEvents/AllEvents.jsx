@@ -69,12 +69,12 @@ function AllEvents() {
   }, [events]);
 
   return (
-    <div className=" text-black dark:text-white bg-white dark:bg-black pb-10">
+    <div className=" text-black dark:text-white pb-10">
       <h1
         data-aos="fade-up"
         className="md:text-5xl hover:text-shadow-glow transition-shadow duration-300 ease-in-out text-5xl mb-10 lg:mb-6 md:mt-8 text-black dark:text-white text-center font-bold "
       >
-        All <span className="text-[#4d55ba] ">Events</span>
+        All <span className="text-[#00FCB8] ">Events</span>
       </h1>
       <div className="mx-auto px-4 w-full">
         <div className="flex flex-wrap w-full justify-center items-center gap-4 mx-3 mt-4">

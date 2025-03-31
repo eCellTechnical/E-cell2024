@@ -6,6 +6,9 @@ export default {
       animation: {
         "meteor-effect": "meteor 5s linear infinite",
       },
+      fontFamily: {
+        modern: ['ModernAge', 'sans-serif'],
+      },
       keyframes: {
         meteor: {
           "0%": { transform: "rotate(215deg) translateX(0)", opacity: "1" },
