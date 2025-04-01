@@ -27,9 +27,9 @@ const IdeaSubmissions = React.lazy(() =>
 );
 const Footer = React.lazy(() => import("./components/footer/Footer"));
 
-const EndeavourEvent = React.lazy(() =>
-  import("./endeavour/End25/singleEvent")
-);
+// const EndeavourEvent = React.lazy(() =>
+//   import("./endeavour/End25/singleEvent")
+// );
 // const ComingSoon = React.lazy(() =>
 //   import("./endeavour/CommingSoon/CommingSoon")
 // );
@@ -43,18 +43,21 @@ const EndeavourEvent = React.lazy(() =>
 const EndeavourHomePage = React.lazy(() =>
   import("./endeavour/Home/EndeavourHomePage")
 );
-// const EndeavourLogin = React.lazy(() =>
-//   import("./endeavour/Login/EndeavourLogin")
-// );
-// const ForgetPassword = React.lazy(() =>
-//   import("./endeavour/Login/ForgetPassword/ForgetPassword")
-// );
-// const ResetPassword = React.lazy(() =>
-//   import("./endeavour/Login/ResetPassword/ResetPassword")
-// );
-// const EndeavourRegister = React.lazy(() =>
-//   import("./endeavour/Register/EndeavourRegister")
-// );
+const EndeavourLogin = React.lazy(() =>
+  import("./endeavour/Login/EndeavourLogin")
+);
+const VerifyOtp  = React.lazy(() =>
+  import("./endeavour/Register/OtpVerify")
+);
+const ForgetPassword = React.lazy(() =>
+  import("./endeavour/Login/ForgetPassword/ForgetPassword")
+);
+const ResetPassword = React.lazy(() =>
+  import("./endeavour/Login/ResetPassword/ResetPassword")
+);
+const EndeavourRegister = React.lazy(() =>
+  import("./endeavour/Register/EndeavourRegister")
+);
 // const StudentPass = React.lazy(() =>
 //   import("./endeavour/StudentPass/StudentPass")
 // );
@@ -148,35 +151,45 @@ function App() {
               {/* <Route path="/endeavour/event/" element={<EndeavourEvent />} /> */}
 
               {/* <Route path="/endeavour/eve" element={<Eve />} /> */}
-              {/* <Route path="/endeavour" element={<EndeavourHomePage />} /> */}
-              {/* <Route path="/endeavour/login" element={<EndeavourLogin />} />
+
+
+
+
+
+              {/* Important  */}
+            {/* <Route path="/endeavour" element={<EndeavourHomePage />} />
+             <Route path="/endeavour/login" element={<EndeavourLogin />} />
               <Route
                 path="/endeavour/forget-password"
                 element={<ForgetPassword />}
               />
               <Route
-                path="/endeavour/reset-password/:id/:token"
+                path="/endeavour/reset-password/"
                 element={<ResetPassword />}
               />
               <Route
-                path="/endeavour/register"
-                element={<EndeavourRegister />}
+                path="verify-otp"
+                element={<VerifyOtp />}
               />
-              <Route path="/endeavour/admin/:admin" element={<Admin />} />
               <Route
+                path="endeavour/register"
+                element={<EndeavourRegister />}
+              /> */}
+              {/* <Route path="/endeavour/admin/:admin" element={<Admin />} /> */}
+              {/* <Route
                 path="/endeavour/super-admin/:superAdmin"
                 element={<SuperAdmin />}
               />
               <Route path="/endeavour/:userId" element={<Profile />} />
               <Route path="/endeavour/studentpass" element={<StudentPass />} />
-              <Route path="/endeavour/events" element={<AllEvents />} />
+              <Route path="/endeavour/events" element={<AllEvents />} /> */}
               
-              <Route
+              {/* <Route
                 path="/endeavour/events/:eventId"
                 element={<SpecificEvent />}
               />
               <Route path="/endeavour/sponsors" element={<Sponsors />} />
-              <Route path="/endeavour/speakers" element={<Speakers />} /> */}
+              <Route path="/endeavour/speakers" element={<Speakers />} />  */}
               <Route path="*" element={<Error404 />} />
             </Routes>
           </Suspense>

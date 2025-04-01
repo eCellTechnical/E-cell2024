@@ -1,97 +1,40 @@
-import { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
+// import img1 from "../../assets/Login/signup.jpeg";
 
-import img1 from "../../../assets/Login/forget pass.jpeg";
-function ForgetPassword() {
-  const history = useNavigate();
-  const [email, setEmail] = useState();
-  const [sendOTP, setSendOTP] = useState(0);
-  const [typedOTP, setTypedOTP] = useState(0);
-  const [formStep, setFormStep] = useState(1);
-  const [disable, setDisable] = useState(0);
+function ForgotPassword() {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [email, setEmail] = useState("");
+  const [disable, setDisable] = useState(false);
 
-  async function next(e) {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [location.pathname]);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setDisable(1);
-    const OTP = Math.floor(Math.random() * 9000 + 1000);
-    setSendOTP(OTP);
+    setDisable(true);
+
     try {
-      await axios
-        .post(`https://e-cell2024backend-production.up.railway.app/send-otp`, {
-          email,
-          OTP,
-        })
-        .then((res) => {
-          if (res.data == "Success") {
-            toast.success("Successfully send the OTP", {
-              position: "top-center",
-              autoClose: 3000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              theme: "colored",
-            });
-            setTypedOTP("");
-            setFormStep(2);
-          }
-        })
-        .catch(() => {
-          toast.error("Bad network error,Please try again after sometime", {
-            position: "top-center",
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            theme: "colored",
-          });
-        });
-    } catch (error) {
-      toast.error("Bad network error,Please try again after sometime", {
-        position: "top-center",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        theme: "colored",
-      });
-    }
-    setDisable(0);
-  }
+      const response = await axios.post(
+        "http://localhost:5000/api/v1/forgot-password",
+        { email }
+      );
 
-  async function submit(e) {
-    e.preventDefault();
-    setDisable(1);
-    if (sendOTP === parseInt(typedOTP)) {
-      try {
-        await axios
-          .post(
-            `https://e-cell2024backend-production.up.railway.app/forget-password`,
-            {
-              email,
-            }
-          )
-          .then((res) => {
-            if (res.data == "Success") {
-              toast.success("Successfully send the password reset link", {
-                position: "top-center",
-                autoClose: 3000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                theme: "colored",
-              });
-              history("/endeavour/login");
-            }
-          })
-          .catch(() => {
-            toast.error("Bad network error,Please try again after sometime", {
-              position: "top-center",
-              autoClose: 3000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              theme: "colored",
-            });
-          });
-      } catch (error) {
-        toast.error("Bad network error,Please try again after sometime", {
+      if (response.data.success) {
+        toast.success("Password reset link sent to your email", {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          theme: "colored",
+        });
+        navigate("/endeavour/reset-password", { state: { email } });
+      } else {
+        toast.error(response.data.message || "Failed to send reset link", {
           position: "top-center",
           autoClose: 3000,
           hideProgressBar: false,
@@ -99,8 +42,9 @@ function ForgetPassword() {
           theme: "colored",
         });
       }
-    } else {
-      toast.warn("Wrong OTP", {
+    } catch (error) {
+      const errorMsg = error.response?.data?.message || "Network error. Please try again later";
+      toast.error(errorMsg, {
         position: "top-center",
         autoClose: 3000,
         hideProgressBar: false,
@@ -108,111 +52,67 @@ function ForgetPassword() {
         theme: "colored",
       });
     }
-    setDisable(0);
-  }
-  async function prv(e) {
-    e.preventDefault();
-    setFormStep(1);
-  }
+    setDisable(false);
+  };
 
-  const { pathname } = useLocation();
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }, [pathname]);
   return (
     <div className="flex flex-row w-full h-[100vh]">
-      <div className="hidden md:flex w-1/2">
+      {/* <div className="hidden md:flex w-1/2">
         <img
           src={img1}
           className="h-full w-full"
           alt=""
-          style={{ objectFit: "cover", objectPosition: "top" }}
+          style={{ objectFit: "cover" }}
         />
-      </div>
-      <div className="pt-[13vh] pb-8 bg-white text-black w-full md:w-1/2 flex flex-col justify-center items-center ">
-        <h1 className="text-4xl text-black font-semibold tracking-wider">
-          Forget Password?
+      </div> */}
+      <div className="pt-[15vh] md:pt-[20vh] pb-8 bg-black text-white w-full flex flex-col justify-center items-center">
+        <h1 className="text-4xl text-[#007827] font-semibold tracking-wider">
+          Forgot Password?
         </h1>
-        <p className="text-[#6a6a6a] font-medium mt-3 w-[70%] text-center">
-          No worries. Enter your account email address and we will share a reset
-          link.
+        <p className="text-[#6a6a6a] font-medium text-center px-8 mt-2">
+          Enter your email address and we`ll send you a link to reset your password.
         </p>
+        
         <form
-          className="flex flex-col w-full justify-center items-center mt-4"
-          onSubmit={formStep == 1 ? next : submit}
+          className="flex flex-col w-full justify-center items-center mt-8"
+          onSubmit={handleSubmit}
         >
-          {formStep == 1 ? (
-            <div className="flex flex-col w-[75%] md:-[60%]">
-              <label className="font-medium text-gray-600 ml-2" htmlFor="email">
-                E-mail
-              </label>
-              <input
-                className="border-2 border-[#a5a5a57e] bg-white rounded-lg p-2 w-full focus:outline-none font-medium"
-                type="text"
-                name="email"
-                id="email"
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                }}
-                value={email}
-                pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
-                title="Email should be in form characters@characters.characters"
-                required
-              />
-            </div>
-          ) : (
-            <div className="flex flex-col w-[75%] md:-[60%]">
-              <label className="font-medium text-gray-600 ml-2" htmlFor="OTP">
-                Enter OTP
-              </label>
-              <input
-                className="border-2 border-[#a5a5a57e] bg-white rounded-lg p-2 w-full focus:outline-none font-medium"
-                type="tel"
-                name="OTP"
-                id="OTP"
-                onChange={(e) => setTypedOTP(e.target.value)}
-                maxLength={4}
-                minLength={4}
-                title="Must contain 4 digits"
-                value={typedOTP}
-              />
-            </div>
-          )}
-
-          <div className="flex justify-evenly w-[75%] md:w-[60%] mt-5">
-            <button
-              className={`w-[55%] md:w-[45%] bg-white ${
-                formStep == 1 && "hidden"
-              } flex justify-center z-10 text-black font-semibold py-2 rounded-full border-2 border-[#7d7d7d]`}
-              onClick={prv}
+          <div className="flex flex-col w-[75%] md:w-[60%]">
+            <label className="font-medium text-gray-600 ml-2" htmlFor="email">
+              Email
+            </label>
+            <input
+              className="border-2 border-[#a5a5a57e] bg-white text-black rounded-lg p-2 w-full focus:outline-none focus:border-[#00f8bd] font-medium"
+              type="email"
+              name="email"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+          
+          <button
+            type="submit"
+            disabled={disable}
+            className="w-[75%] md:w-[60%] bg-[#00f699] hover:bg-[#00f8bd] text-[#007827] font-bold rounded-full py-2 mt-6 z-10 transition-colors disabled:opacity-70"
+          >
+            Send Reset Link
+          </button>
+          
+          <div className="flex justify-center w-full items-center z-10 text-sm mt-4 font-semibold text-[#595959]">
+            Remember your password?
+            <Link
+              to="/login"
+              className="text-[#00f8bd] hover:text-[#007827] ml-1 font-medium"
             >
-              Back
-            </button>
-            <button
-              type="submit"
-              className="w-[55%] md:w-[45%] bg-black text-white rounded-full py-2 z-10 disabled:bg-slate-600 disabled:cursor-wait"
-              disabled={disable}
-            >
-              {formStep == 1 ? "Get Otp" : "Verify"}
-            </button>
+              Sign In
+            </Link>
           </div>
         </form>
-
-        {/* <div className="flex flex-col justify-center w-full items-center">
-          <Link to="/endeavour/register">
-            <button className="bg-white text-black px-3 py-2 h-auto w-[12rem] hover:bg-black hover:text-white rounded-full">
-              Register
-            </button>
-          </Link>
-          <Link to="/endeavour/login">
-            <button className="bg-white text-black px-3 py-2 h-auto w-[12rem] hover:bg-black hover:text-white rounded-full">
-              Login
-            </button>
-          </Link>
-        </div> */}
       </div>
     </div>
   );
 }
 
-export default ForgetPassword;
+export default ForgotPassword;

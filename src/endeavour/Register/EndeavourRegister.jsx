@@ -2,18 +2,15 @@ import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { FcGoogle } from "react-icons/fc";
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth"; // Corrected import
-import { firebaseAuth } from "../../../config/firebaseConfig";
 import { toast } from "react-toastify";
-// import img from "../../assets/Register/astronaut_portal_neon_frame_glow_dark_4k_hd_creative-3840x2160.jpg";
-import img1 from "../../assets/Login/signup.jpeg";
-function EndeavourRegister() {
-  const history = useNavigate();
+// import img1 from "../../assets/Login/signup.jpeg";
+
+function Register() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [username, setUsername] = useState("");
+  const [phone, setPhone] = useState("");
+  const [name, setName] = useState("");
   const [validUserName, setValidUserName] = useState(0);
   const [passwordVisibility, setPasswordVisibility] = useState(0);
   const [delayedSearchTerm, setDelayedSearchTerm] = useState(2);
@@ -24,72 +21,33 @@ function EndeavourRegister() {
     setValidUserName(0);
     const delayDebounceFn = setTimeout(async () => {
       // Send Axios request here
-      const res = await axios.post(
-        `https://e-cell2024backend-production.up.railway.app/search-user-name`,
-        { username }
-      );
-      if (res.data.msg == "Not Taken") {
-        setDelayedSearchTerm(1);
-        setValidUserName(1);
-      } else if (res.data.msg == "Taken") {
-        setDelayedSearchTerm(0);
-        setValidUserName(0);
+      try {
+        const res = await axios.post(
+          `http://localhost:5000/api/v1/search-username`,
+          { name }
+        );
+        if (res.data.msg === "Not Taken") {
+          setDelayedSearchTerm(1);
+          setValidUserName(1);
+        } else if (res.data.msg === "Taken") {
+          setDelayedSearchTerm(0);
+          setValidUserName(0);
+        }
+      } catch (error) {
+        console.error("Error checking username:", error);
       }
     }, 1000);
 
     return () => clearTimeout(delayDebounceFn);
-  }, [username]);
+  }, [name]);
 
-  const handleGoogleRegister = async () => {
-    const provider = new GoogleAuthProvider();
-    const result = await signInWithPopup(firebaseAuth, provider);
-    const user = result.user;
-    if (user && user.email && user.displayName) {
-      try {
-        const res = await axios.post(
-          `https://e-cell2024backend-production.up.railway.app/GoogleRegister`,
-          {
-            userName: user.displayName,
-            email: user.email,
-          }
-        );
-
-        if (res.data.created) {
-          toast.success("Account Registered Successfully", {
-            position: "top-center",
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            theme: "colored",
-          });
-          history("/endeavour/login");
-        } else if (res.data == "User Already Exists") {
-          toast.warn("User Already Exists", {
-            position: "top-center",
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            theme: "colored",
-          });
-        }
-      } catch (error) {
-        toast.error("Bad network error,Please try again after sometime", {
-          position: "top-center",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          theme: "colored",
-        });
-      }
-    }
-  };
-
-  async function submit(e) {
+  async function handleSubmit(e) {
     setDisable(true);
     e.preventDefault();
-    if (delayedSearchTerm == 0 || validUserName == 0) {
+    
+    if (delayedSearchTerm === 0 || validUserName === 0) {
       setDisable(false);
-      return toast.warn("Choose valid user name", {
+      return toast.warn("Choose a valid username", {
         position: "top-center",
         autoClose: 3000,
         hideProgressBar: false,
@@ -97,63 +55,44 @@ function EndeavourRegister() {
         theme: "colored",
       });
     }
+    
     try {
-      await axios
-        .post(`https://e-cell2024backend-production.up.railway.app/register`, {
+      const response = await axios.post(
+        `http://localhost:5000/api/v1/register`, 
+        {
           email,
           password,
-          phoneNumber,
-          username,
-        })
-        .then((res) => {
-          if (res.data.msg == "User saved :)") {
-            toast.success("Account Registered Successfully", {
-              position: "top-center",
-              autoClose: 3000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              theme: "colored",
-            });
-            history("/endeavour/login");
-          } else if (res.data == "User Already Exists") {
-            toast.warn("User Already Exists", {
-              position: "top-center",
-              autoClose: 3000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              theme: "colored",
-            });
-          } else if (res.data == "Error saving user:") {
-            toast.error("Error saving user :(", {
-              position: "top-center",
-              autoClose: 3000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              theme: "colored",
-            });
-          } else if (res.data == "Error saving user :(") {
-            toast.error("Error saving user :(", {
-              position: "top-center",
-              autoClose: 3000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              theme: "colored",
-            });
-          }
-        })
-        .catch((e) => {
-          toast.error("Bad network error,Please try again after sometime", {
-            position: "top-center",
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            theme: "colored",
-          });
-          // console.log(e);
+          phone,
+          name,
+          isAdmin: false,
+          isSuperAdmin: false,
+          kitTaken: false,
+          profilePicture: "",
+        }
+      );
+
+      if (response.data.success) {
+        toast.success("OTP sent to your email. Please verify.", {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          theme: "colored",
         });
+        // Fix navigation path and properly pass email state
+        navigate("/verify-otp", { state: { email } });
+      } else {
+        toast.error(response.data.message || "Registration failed", {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          theme: "colored",
+        });
+      }
     } catch (error) {
-      // console.log(error);
-      toast.error("Bad network error,Please try again after sometime", {
+      const errorMsg = error.response?.data?.message || "Network error. Please try again later";
+      toast.error(errorMsg, {
         position: "top-center",
         autoClose: 3000,
         hideProgressBar: false,
@@ -171,69 +110,55 @@ function EndeavourRegister() {
 
   return (
     <div className="flex flex-row w-full h-[100vh]">
-      <div className="hidden md:flex w-1/2">
+      {/* <div className="hidden md:flex w-1/2">
         <img
           src={img1}
-          className="h-full w-full"
+          className="h-full w-full grayscale"
           alt=""
           style={{ objectFit: "cover" }}
         />
-      </div>
-      <div className="pt-[11vh] md:pt-[18vh] pb-8 bg-white text-black w-full md:w-1/2 flex flex-col justify-center items-center ">
-        <h1 className="text-6xl text-black font-semibold tracking-wider">
+      </div> */}
+      <div className="pt-[11vh] md:pt-[18vh] pb-8 bg-black text-white w-full  flex flex-col justify-center items-center">
+        <h1 className="text-6xl text-[#007827] font-semibold tracking-wider">
           Hi there!
         </h1>
-        <p className="text-[#6a6a6a] font-medium">Welcome to Endeavour</p>
-        <button
-          onClick={handleGoogleRegister}
-          className="flex px-20 py-2 mt-5 mb-6 rounded-2xl cursor-pointer border-[#a5a5a57e] z-10 justify-center items-center"
-          style={{ border: "2px solid #a5a5a57e" }}
-        >
-          <FcGoogle className="h-6 w-6 mr-2" />
-          <span className="text-md font-medium" style={{ color: "black" }}>
-            Register With Google
-          </span>
-        </button>
-        <div className="flex justify-center items-center">
-          <div className="w-16 h-[2px] bg-[#a5a5a57e] mr-5"></div>
-          <div>or</div>
-          <div className="w-16 h-[2px] bg-[#a5a5a57e] ml-5"></div>
-        </div>
+        <p className="text-[#6a6a6a] font-medium">Welcome to our platform</p>
+        
         <form
-          className="flex flex-col w-full justify-center items-center mt-3"
-          onSubmit={submit}
+          className="flex flex-col w-full justify-center items-center mt-6"
+          onSubmit={handleSubmit}
         >
           <div className="flex flex-col w-[75%] md:w-[60%]">
             <label
               className="font-medium text-gray-600 ml-2"
-              htmlFor="username"
+              htmlFor="name"
             >
-              Username
+              Full Name
             </label>
             <input
               className={`${
-                delayedSearchTerm == 0 ? "border-red-600" : "border-[#a5a5a57e]"
-              } border-2 border-[#a5a5a57e] bg-white rounded-lg p-2 w-full focus:outline-none font-medium`}
+                delayedSearchTerm === 0 ? "border-red-600" : "border-[#a5a5a57e]"
+              } border-2 text-black bg-white rounded-lg p-2 w-full focus:outline-none focus:border-[#00f8bd] font-medium`}
               type="text"
-              name="username"
-              id="username"
+              name="name"
+              id="name"
               onChange={(e) => {
-                setUsername(e.target.value);
+                setName(e.target.value);
               }}
-              pattern=".{5,20}"
-              title="Username should be at least 5 and at most 20 characters long"
+              pattern=".{3,50}"
+              title="Name should be at least 3 and at most 50 characters long"
               required
-            />{" "}
-            {delayedSearchTerm == 0 && (
-              <p className=" text-xs text-red-600">*username already taken</p>
+            />
+            {delayedSearchTerm === 0 && (
+              <p className="text-xs text-red-600">*username already taken</p>
             )}
           </div>
           <div className="flex flex-col w-[75%] md:w-[60%] mt-2">
-            <label className="font-medium text-gray-600 ml-2 " htmlFor="email">
+            <label className="font-medium text-gray-600 ml-2" htmlFor="email">
               Email
             </label>
             <input
-              className="border-2 border-[#a5a5a57e] bg-white rounded-lg p-2 w-full focus:outline-none font-medium"
+              className="border-2 border-[#a5a5a57e] text-black bg-white rounded-lg p-2 w-full focus:outline-none focus:border-[#00f8bd] font-medium"
               type="text"
               name="email"
               id="email"
@@ -247,14 +172,14 @@ function EndeavourRegister() {
           </div>
           <div className="flex flex-col w-[75%] md:w-[60%] mt-2">
             <label
-              className="font-medium text-gray-600 ml-2 "
+              className="font-medium text-gray-600 ml-2"
               htmlFor="password"
             >
               Password
             </label>
-            <div className="flex border-2 border-[#a5a5a57e]  rounded-lg">
+            <div className="flex border-2 border-[#a5a5a57e] rounded-lg focus-within:border-[#00f8bd]">
               <input
-                className=" bg-transparent  p-2 w-full border-r-0 focus:outline-none font-medium"
+                className="bg-transparent p-2 w-full border-r-0 focus:outline-none font-medium"
                 type={passwordVisibility ? "text" : "password"}
                 name="password"
                 id="password"
@@ -265,13 +190,12 @@ function EndeavourRegister() {
                 title="Password must contain at least one number and one uppercase and lowercase letter, and at least 8 and at most 15 characters"
                 required
               />
-
               <button
                 onClick={(e) => {
                   e.preventDefault();
                   setPasswordVisibility(!passwordVisibility);
                 }}
-                className="bg-transparent focus:border-0  h-auto w-[4rem] font-semibold text-[#6a6a6a] z-10"
+                className="bg-transparent focus:border-0 h-auto w-[4rem] font-semibold text-[#6a6a6a] z-10"
               >
                 {passwordVisibility ? "Hide" : "Show"}
               </button>
@@ -280,20 +204,20 @@ function EndeavourRegister() {
           <div className="flex mt-2 flex-col w-[75%] md:w-[60%]">
             <label
               className="font-medium text-gray-600 ml-2"
-              htmlFor="phoneNumber"
+              htmlFor="phone"
             >
               Phone Number
             </label>
             <input
-              className="border-2 border-[#a5a5a57e] bg-white rounded-lg p-2 w-full focus:outline-none font-medium"
+              className="border-2 border-[#a5a5a57e] text-black bg-white rounded-lg p-2 w-full focus:outline-none focus:border-[#00f8bd] font-medium"
               type="tel"
               pattern="[6-9]{1}[0-9]{9}"
-              name="phoneNumber"
-              id="phoneNumber"
+              name="phone"
+              id="phone"
               onChange={(e) => {
-                setPhoneNumber(e.target.value);
+                setPhone(e.target.value);
               }}
-              title="Phone Number should start with 6-9,and have 10 digits"
+              title="Phone Number should start with 6-9, and have 10 digits"
               required
               maxLength={10}
               placeholder="1234567890"
@@ -302,16 +226,16 @@ function EndeavourRegister() {
           <button
             type="submit"
             disabled={disable}
-            className="w-[75%] md:w-[60%] bg-black text-white rounded-full py-2 mt-5 z-10"
+            className="w-[75%] md:w-[60%] bg-[#00f699] hover:bg-[#00f8bd] text-[#007827] font-bold rounded-full py-2 mt-5 z-10 transition-colors"
           >
             Register
           </button>
         </form>
         <div className="flex justify-center w-full items-center z-10 text-sm mt-3 font-semibold text-[#595959]">
-          Already have an aacount?
+          Already have an account?
           <Link
-            to="/endeavour/login"
-            className="text-[#218df9] ml-1 font-medium"
+            to="/login"
+            className="text-[#00f8bd] hover:text-[#007827] ml-1 font-medium"
           >
             Sign In
           </Link>
@@ -321,4 +245,4 @@ function EndeavourRegister() {
   );
 }
 
-export default EndeavourRegister;
+export default Register;
