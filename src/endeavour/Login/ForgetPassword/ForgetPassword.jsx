@@ -103,7 +103,7 @@ function ForgotPassword() {
           <div className="flex justify-center w-full items-center z-10 text-sm mt-4 font-semibold text-[#595959]">
             Remember your password?
             <Link
-              to="/login"
+              to="/endeavour/login"
               className="text-[#00f8bd] hover:text-[#007827] ml-1 font-medium"
             >
               Sign In

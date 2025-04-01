@@ -109,7 +109,7 @@ function Register() {
   }, [pathname]);
 
   return (
-    <div className="flex flex-row w-full h-[100vh]">
+    <div className="flex flex-row w-full h-auto">
       {/* <div className="hidden md:flex w-1/2">
         <img
           src={img1}
@@ -234,7 +234,7 @@ function Register() {
         <div className="flex justify-center w-full items-center z-10 text-sm mt-3 font-semibold text-[#595959]">
           Already have an account?
           <Link
-            to="/login"
+            to="/endeavour/login"
             className="text-[#00f8bd] hover:text-[#007827] ml-1 font-medium"
           >
             Sign In

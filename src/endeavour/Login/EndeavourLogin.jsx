@@ -38,12 +38,24 @@ function Login() {
           closeOnClick: true,
           theme: "colored",
         });
+
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000); // Reload after the toast disappears
         
-        // Store token in localStorage
-        localStorage.setItem("token", response.data.data.token);
+
+        console.log("Login response:", response.data.data.token);
+// Then store the actual token string, not the object
+if (response.data.data.token) {
+  localStorage.setItem("token", response.data.data.token.token);
+  localStorage.setItem("userId", response.data.data.token.userPayload.id);
+} else {
+  console.error("Token not found in response:", response.data.data);
+}
         
         // Redirect to dashboard or home
-        navigate("/dashboard");
+        const userId = localStorage.getItem("userId");
+        navigate(`/endeavour/${userId}`);
       } else {
         toast.error(response.data.message || "Login failed", {
           position: "top-center",
@@ -91,7 +103,7 @@ function Login() {
               Email
             </label>
             <input
-              className="border-2 border-[#a5a5a57e] bg-white rounded-lg p-2 w-full focus:outline-none focus:border-[#00f8bd] font-medium"
+              className="border-2 border-[#a5a5a57e] bg-white text-black rounded-lg p-2 w-full focus:outline-none focus:border-[#00f8bd] font-medium"
               type="email"
               name="email"
               id="email"
@@ -148,7 +160,7 @@ function Login() {
         <div className="flex justify-center w-full items-center z-10 text-sm mt-4 font-semibold text-[#595959]">
           Don`t have an account?
           <Link
-            to="/register"
+            to="/endeavour/register"
             className="text-[#00f8bd] hover:text-[#007827] ml-1 font-medium"
           >
             Sign Up

@@ -7,6 +7,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Register from "./IdeateX/Register";
 // Lazy-loaded components
+import RegisterEvent from "./endeavour/Profile/RegisteredEvent"
 const Loader = React.lazy(() => import("./components/Loader/Loader"));
 const Navbar = React.lazy(() => import("./components/Navbar/Navbar"));
 const IdeateX = React.lazy(() => import("./IdeateX/index"));
@@ -69,9 +70,9 @@ const EndeavourRegister = React.lazy(() =>
 // const SpecificEvent = React.lazy(() =>
 //   import("./endeavour/Events/SpecificEvent/MemoizedSpecificEvent")
 // );
-// const Profile = React.lazy(() =>
-//   import("./endeavour/Profile/EndeavourProfile")
-// );
+const Profile = React.lazy(() =>
+  import("./endeavour/Profile/NewEndProfile")
+);
 const PrivacyPolicy = React.lazy(() => import("./pages/PrivacyPolicy/Policy"));
 // const Admin = React.lazy(() => import("./endeavour/Admin/EndeavourAdmin"));
 // import SuperAdmin from "./endeavour/Admin/SuperAdmin/SuperAdmin";
@@ -168,19 +169,24 @@ function App() {
                 element={<ResetPassword />}
               />
               <Route
+                path="/endeavour/register-event/"
+                element={<RegisterEvent />}
+              />
+              <Route
                 path="verify-otp"
                 element={<VerifyOtp />}
               />
               <Route
                 path="endeavour/register"
                 element={<EndeavourRegister />}
-              /> */}
+              />
+              <Route path="/endeavour/:userId" element={<Profile />} /> */}
               {/* <Route path="/endeavour/admin/:admin" element={<Admin />} /> */}
               {/* <Route
                 path="/endeavour/super-admin/:superAdmin"
                 element={<SuperAdmin />}
               />
-              <Route path="/endeavour/:userId" element={<Profile />} />
+              
               <Route path="/endeavour/studentpass" element={<StudentPass />} />
               <Route path="/endeavour/events" element={<AllEvents />} /> */}
               

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
-import img1 from "../../assets/Login/signup.jpeg";
+// import img1 from "../../assets/Login/signup.jpeg";
 
 function VerifyOTP() {
   const navigate = useNavigate();
@@ -165,15 +165,15 @@ function VerifyOTP() {
 
   return (
     <div className="flex flex-row w-full h-[100vh]">
-      <div className="hidden md:flex w-1/2">
+      {/* <div className="hidden md:flex w-1/2">
         <img
           src={img1}
           className="h-full w-full"
           alt=""
           style={{ objectFit: "cover" }}
         />
-      </div>
-      <div className="pt-[15vh] md:pt-[20vh] pb-8 bg-white text-black w-full md:w-1/2 flex flex-col justify-center items-center">
+      </div> */}
+      <div className="pt-[15vh] md:pt-[20vh] pb-8 bg-black text-white w-full  flex flex-col justify-center items-center">
         <h1 className="text-4xl text-[#007827] font-semibold tracking-wider">
           Verify Your Email
         </h1>
