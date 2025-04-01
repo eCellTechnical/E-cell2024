@@ -83,7 +83,7 @@ function Header() {
               ABOUT
             </a>
             <a
-              href="/#events"
+              href="/endeavour/events"
               className="font-semibold text-white hover:text-[#00f699] transition-colors"
             >
               EVENTS
@@ -170,7 +170,7 @@ function Header() {
               ABOUT
             </a>
             <a
-              href="/#events"
+              href="/endeavour/events"
               onClick={toggleMenu}
               className="text-white font-semibold text-xl hover:text-[#00f699]"
             >

@@ -1,100 +1,80 @@
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const AllEvents = () => {
-  // Sample events data
-  const events = [
-    {
-      id: 1,
-      name: "INNOVATE-X",
-      tagline: "DECADE OF PROLIFICTY",
-      platform: "DEVFOLIO",
-      date: "FRIDAY",
-      dateDetail: "3rd MAY",
-      fee: "FREE",
-      icon: "💡",
-      category: "Hackathon",
-    },
-    {
-      id: 2,
-      name: "TECH SUMMIT",
-      tagline: "FUTURE OF TECHNOLOGY",
-      platform: "HOPIN",
-      date: "SATURDAY",
-      dateDetail: "4th MAY",
-      fee: "₹299",
-      icon: "🔮",
-      category: "Conference",
-    },
-    {
-      id: 3,
-      name: "CODE BATTLES",
-      tagline: "ALGORITHMIC WARFARE",
-      platform: "CODECHEF",
-      date: "SUNDAY",
-      dateDetail: "5th MAY",
-      fee: "FREE",
-      icon: "⚔️",
-      category: "Competition",
-    },
-    {
-      id: 4,
-      name: "DESIGN JAM",
-      tagline: "CRAFT THE EXPERIENCE",
-      platform: "FIGMA",
-      date: "MONDAY",
-      dateDetail: "6th MAY",
-      fee: "₹199",
-      icon: "🎨",
-      category: "Workshop",
-    },
-    {
-        id: 5,
-        name: "AI EXPO",
-        tagline: "REVOLUTIONIZING THE FUTURE",
-        platform: "ZOOM",
-        date: "TUESDAY",
-        dateDetail: "7th MAY",
-        fee: "FREE",
-        icon: "🤖",
-        category: "Exhibition",
-        },
-        {
-        id: 6,
-        name: "BLOCKCHAIN BOOTCAMP",
-        tagline: "BUILDING THE FUTURE",
-        platform: "DISCORD",
-        date: "WEDNESDAY",
-        dateDetail: "8th MAY",
-        fee: "₹499",
-        icon: "🔗",
-        category: "Workshop",
-    },
-    {
-        id: 7,
-        name: "GAMING MARATHON",
-        tagline: "PLAY TO WIN",
-        platform: "STEAM",
-        date: "THURSDAY",
-        dateDetail: "9th MAY",
-        fee: "₹199",
-        icon: "🎮",
-        category: "Tournament",
-        },
-        {
-        id: 8,
-        name: "STARTUP PITCH",
-        tagline: "PITCH YOUR IDEA",
-        platform: "ZOOM",
-        date: "FRIDAY",
-        dateDetail: "10th MAY",
-        fee: "FREE",
-        icon: "🚀",
-        category: "Competition",
-    }
-  ];
+  const [events, setEvents] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const response = await axios.get("http://localhost:5000/api/v1/events", {
+          headers: {
+            'Cache-Control': 'no-cache', // Prevent caching
+            'Pragma': 'no-cache'
+          }
+        });
+        
+        // If response.data is an array, use it directly
+        if (Array.isArray(response.data.data.events)) {
+          setEvents(response.data.data.events);
+        } 
+        // If response.data has an events property that's an array
+        else if (Array.isArray(response.data?.events)) {
+          setEvents(response.data.events);
+        }
+        // If the structure is different than expected
+        else {
+          setError("Unexpected data format received from server");
+          setEvents([]); // Set to empty array to prevent errors
+        }
+      } catch (err) {
+        setError("Failed to fetch events. Please try again later.");
+        console.error("Error fetching events:", err);
+        setEvents([]); // Ensure events is always an array
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchEvents();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="w-full mt-20 relative overflow-hidden">
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="text-center">
+            <h2 className="text-5xl font-bold text-white mb-3">OUR EVENTS</h2>
+            <p className="text-gray-400">Loading events...</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="w-full mt-20 relative overflow-hidden">
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="text-center">
+            <h2 className="text-5xl font-bold text-white mb-3">OUR EVENTS</h2>
+            <p className="text-red-500">{error}</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Helper function to format date
+  const formatDate = (dateString) => {
+    const options = { year: 'numeric', month: 'short', day: 'numeric' };
+    return new Date(dateString).toLocaleDateString(undefined, options);
+  };
 
   return (
-    <div className="w-full  relative overflow-hidden">
+    <div className="w-full mt-20 relative overflow-hidden">
       {/* Background decorative elements */}
       <div className="absolute top-0 left-0 w-full h-full">
         <div className="absolute top-20 left-10 w-96 h-96 rounded-full bg-[#00FCB8] opacity-5 blur-3xl"></div>
@@ -109,9 +89,6 @@ const AllEvents = () => {
           transition={{ duration: 0.7 }}
           viewport={{ once: true }}
         >
-                  <div className="inline-block px-4 py-2 bg-opacity-20 bg-[#00FCB8] rounded-md mb-3">
-              <p className="text-[#00FCB8] font-medium">About The Event</p>
-            </div>
           <h2 className="text-5xl font-bold text-white mb-3">OUR EVENTS</h2>
           <div className="flex items-center justify-center mb-6">
             <div className="h-1 w-10 bg-gray-700"></div>
@@ -120,104 +97,117 @@ const AllEvents = () => {
           </div>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
-          {events.map((event, index) => (
-            <motion.div
-              key={event.id}
-              className="group relative"
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true, margin: "-100px" }}
-            >
-              {/* Glassy Card */}
-              <div className="relative h-full bg-gray-900 bg-opacity-40 backdrop-blur-lg rounded-2xl p-6 border border-gray-800 overflow-hidden group-hover:border-[#00FCB8] transition-all duration-300">
-                <div className="absolute -inset-1 opacity-0 group-hover:opacity-20 bg-[#00FCB8] blur-xl rounded-full transition-all duration-700 group-hover:duration-500"></div>
+        {events.length === 0 ? (
+          <div className="text-center py-20">
+            <p className="text-gray-400 text-xl">No events available at the moment.</p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+            {events.map((event, index) => (
+              <motion.div
+                key={event._id}
+                className="group relative"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true, margin: "-100px" }}
+              >
+                {/* Glassy Card */}
+                <div className="relative h-full bg-gray-900 bg-opacity-40 backdrop-blur-lg rounded-2xl p-6 border border-gray-800 overflow-hidden group-hover:border-[#00FCB8] transition-all duration-300">
+                  <div className="absolute -inset-1 opacity-0 group-hover:opacity-20 bg-[#00FCB8] blur-xl rounded-full transition-all duration-700 group-hover:duration-500"></div>
 
-                {/* Card content with hover animations */}
-                <div className="relative group-hover:opacity-0 transition-all ease-in-out duration-700 cursor-pointer z-10">
-                  {/* Category tag */}
-                  <div className="inline-block text-xs font-medium px-3 py-1 rounded-full bg-[#00FCB8] bg-opacity-20 text-[#00FCB8] mb-4">
-                    {event.category}
-                  </div>
-                  {/* Event Header */}
-                  <div className="flex items-start justify-between mb-6">
-                    <div>
-                      <h3 className="text-2xl font-bold text-white mb-1 group-hover:text-[#00FCB8] transition-colors duration-300">
-                        {event.name}
-                      </h3>
+                  {/* Card content with hover animations */}
+                  <div className="relative group-hover:opacity-0 transition-all ease-in-out duration-700 cursor-pointer z-10">
+                    {/* Category tag - using discount as category in this case */}
+                    <div className="inline-block text-xs font-medium px-3 py-1 rounded-full bg-[#00FCB8] bg-opacity-20 text-[#00FCB8] mb-4">
+                      {event.discount || "Hackathon"}
                     </div>
-                    <div className="text-4xl">{event.icon}</div>
-                  </div>
-                 
-                  <div className="mb-6">
-  <p className="text-xs text-gray-400 mb-1">REGISTRATION</p>
-  <p className="text-2xl font-bold text-[#00FCB8]">
-    {/* {new Date() < new Date(registrationEndDate) ? "OPEN" : "CLOSED" || "OPEN"} */}
-    OPEN
-  </p>
-</div>
-
-                  {/* Divider line with animation */}
-                  <div className="relative h-px w-full bg-gray-800 mb-6 overflow-hidden">
-                    <motion.div
-                      className="absolute inset-0 bg-[#00FCB8]"
-                      initial={{ x: "-100%" }}
-                      whileHover={{ x: 0 }}
-                      transition={{ duration: 0.3 }}
-                    ></motion.div>
-                  </div>
-                  {/* Event details */}
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <p className="text-xs text-gray-400 mb-1">DATE</p>
-                      <p className="text-sm font-bold text-white">
-                        {event.date}{" "}
-                        <span className="text-gray-400 font-normal">
-                          {event.dateDetail}
-                        </span>
+                    {/* Event Header */}
+                    <div className="flex items-start justify-between mb-6">
+                      <div>
+                        <h3 className="text-2xl font-bold text-white mb-1 group-hover:text-[#00FCB8] transition-colors duration-300">
+                          {event.name}
+                        </h3>
+                        <p className="text-sm text-gray-400">{event.minTeamSize}-{event.maxTeamSize} members</p>
+                      </div>
+                      <div className="text-4xl">💻</div> {/* Default icon */}
+                    </div>
+                    
+                    <div className="mb-6">
+                      <p className="text-xs text-gray-400 mb-1">REGISTRATION</p>
+                      <p className="text-2xl font-bold text-[#00FCB8]">
+                        {event.registrationEndDate && new Date() < new Date(event.registrationEndDate) ? "OPEN" : "CLOSED"}
                       </p>
                     </div>
 
-                    <div>
-                      <p className="text-xs text-gray-400 mb-1 text-right">
-                        FEE
-                      </p>
-                      <p className="text-xl font-bold text-white">
-                        {event.fee}
-                      </p>
+                    {/* Divider line with animation */}
+                    <div className="relative h-px w-full bg-gray-800 mb-6 overflow-hidden">
+                      <motion.div
+                        className="absolute inset-0 bg-[#00FCB8]"
+                        initial={{ x: "-100%" }}
+                        whileHover={{ x: 0 }}
+                        transition={{ duration: 0.3 }}
+                      ></motion.div>
                     </div>
-                  </div>
-                </div>
+                    {/* Event details */}
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <p className="text-xs text-gray-400 mb-1">DATE</p>
+                        <p className="text-sm font-bold text-white">
+                          {formatDate(event.eventDate)}
+                        </p>
+                      </div>
 
-                {/* Hidden details that appear on hover */}
-                <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-70 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="text-center p-6">
-                    <div className="inline-block p-3 rounded-full bg-[#00FCB8] bg-opacity-20 mb-4">
-                      <div className="w-12 h-12 flex items-center justify-center text-3xl">
-                        {event.icon}
+                      <div>
+                        <p className="text-xs text-gray-400 mb-1 text-right">
+                          FEE
+                        </p>
+                        <p className="text-xl font-bold text-white">
+                          ${event.fees}
+                        </p>
                       </div>
                     </div>
-                    <h3 className="text-2xl font-bold text-white mb-2">
-                      {event.name}
-                    </h3>
-                    <p className="text-gray-300 mb-6">
-                      Join us for an exciting event focused on innovation and
-                      creativity
-                    </p>
-                    <motion.button
-                      className="px-6 py-2 bg-[#00FCB8] text-black font-bold rounded-full"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      REGISTER NOW
-                    </motion.button>
+                  </div>
+
+                  {/* Hidden details that appear on hover */}
+                  <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-70 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="text-center p-6">
+                      <div className="inline-block p-3 rounded-full bg-[#00FCB8] bg-opacity-20 mb-4">
+                        <div className="w-12 h-12 flex items-center justify-center text-3xl">
+                          💻
+                        </div>
+                      </div>
+                      <h3 className="text-2xl font-bold text-white mb-2">
+                        {event.name}
+                      </h3>
+                      <p className="text-gray-300 mb-6">
+                        {event.description || "Join us for an exciting hackathon!"}
+                      </p>
+                      <div className="mb-4">
+                        <p className="text-sm text-gray-400">Prize Pool:</p>
+                        {event.prize?.map((prizeItem) => (
+                          <p key={prizeItem._id} className="text-white">
+                            {prizeItem.position}st: ${prizeItem.amount}
+                          </p>
+                        ))}
+                      </div>
+                      <motion.button
+                        className="px-6 py-2 bg-[#00FCB8] text-black font-bold rounded-full"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        onClick={() => {
+                          window.location.href = `/events/${event.slug}`;
+                        }}
+                      >
+                        {event.registrationEndDate && new Date() < new Date(event.registrationEndDate) ? "REGISTER NOW" : "VIEW DETAILS"}
+                      </motion.button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+              </motion.div>
+            ))}
+          </div>
+        )}
 
         <motion.div
           className="text-center mt-16"

@@ -50,6 +50,7 @@ const EndeavourLogin = React.lazy(() =>
 const VerifyOtp  = React.lazy(() =>
   import("./endeavour/Register/OtpVerify")
 );
+import AllEvent from "./components/End25/AllEvents/AllEvents"
 const ForgetPassword = React.lazy(() =>
   import("./endeavour/Login/ForgetPassword/ForgetPassword")
 );
@@ -158,11 +159,15 @@ function App() {
 
 
               {/* Important  */}
-            {/* <Route path="/endeavour" element={<EndeavourHomePage />} />
+            <Route path="/endeavour" element={<EndeavourHomePage />} />
              <Route path="/endeavour/login" element={<EndeavourLogin />} />
               <Route
                 path="/endeavour/forget-password"
                 element={<ForgetPassword />}
+              />
+              <Route
+                path="/endeavour/events"
+                element={<AllEvent />}
               />
               <Route
                 path="/endeavour/reset-password/"
@@ -180,7 +185,7 @@ function App() {
                 path="endeavour/register"
                 element={<EndeavourRegister />}
               />
-              <Route path="/endeavour/:userId" element={<Profile />} /> */}
+              <Route path="/endeavour/:userId" element={<Profile />} />
               {/* <Route path="/endeavour/admin/:admin" element={<Admin />} /> */}
               {/* <Route
                 path="/endeavour/super-admin/:superAdmin"
