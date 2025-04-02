@@ -42,7 +42,7 @@ const Footer = React.lazy(() => import("./components/footer/Footer"));
 // const Eve = React.lazy(() => import("./components/home_page/home"));
 
 const EndeavourHomePage = React.lazy(() =>
-  import("./endeavour/Home/EndeavourHomePage")
+  import("./endeavour/CommingSoon/CommingSoon")
 );
 const EndeavourLogin = React.lazy(() =>
   import("./endeavour/Login/EndeavourLogin")
