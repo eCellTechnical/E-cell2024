@@ -190,7 +190,7 @@ function VerifyOTP() {
               <input
                 key={index}
                 id={`otp-${index}`}
-                className="w-12 h-12 text-center border-2 border-[#a5a5a57e] bg-white rounded-lg p-2 focus:outline-none focus:border-[#00f8bd] font-bold text-xl"
+                className="w-12 h-12 text-center border-2 text-black border-[#a5a5a57e] bg-white rounded-lg p-2 focus:outline-none focus:border-[#00f8bd] font-bold text-xl"
                 type="text"
                 maxLength="1"
                 value={digit}

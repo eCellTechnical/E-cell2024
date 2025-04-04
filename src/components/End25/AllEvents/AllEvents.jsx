@@ -111,6 +111,10 @@ const AllEvents = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true, margin: "-100px" }}
+                onClick={() => {
+                  console.log("first")
+                  window.location.href = `/endeavour/events/${event.slug}`;
+                }}
               >
                 {/* Glassy Card */}
                 <div className="relative h-full bg-gray-900 bg-opacity-40 backdrop-blur-lg rounded-2xl p-6 border border-gray-800 overflow-hidden group-hover:border-[#00FCB8] transition-all duration-300">

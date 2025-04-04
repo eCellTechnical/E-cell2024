@@ -48,9 +48,13 @@ function AllEvents() {
   const renderedCards = useMemo(() => {
     return events.map((event, index) => (
       <article
+        onClick={() => {
+          console.log("first")
+          window.location.href = `/endeavour/events/${event._id}`;
+        }}
         data-aos="fade-up"
         key={index}
-        className="card__article relative w-[80%] md:w-[28%]"
+        className="card__article relative z-50 w-[80%] md:w-[28%]"
       >
         <img src={event.poster} alt="image" className="card__img" />
         <div className="card__data flex flex-col justify-center items-center">

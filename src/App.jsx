@@ -42,7 +42,7 @@ const Footer = React.lazy(() => import("./components/footer/Footer"));
 // const Eve = React.lazy(() => import("./components/home_page/home"));
 
 const EndeavourHomePage = React.lazy(() =>
-  import("./endeavour/CommingSoon/CommingSoon")
+  import("./endeavour/Home/EndeavourHomePage")
 );
 const EndeavourLogin = React.lazy(() =>
   import("./endeavour/Login/EndeavourLogin")
@@ -50,7 +50,6 @@ const EndeavourLogin = React.lazy(() =>
 const VerifyOtp  = React.lazy(() =>
   import("./endeavour/Register/OtpVerify")
 );
-import AllEvent from "./components/End25/AllEvents/AllEvents"
 const ForgetPassword = React.lazy(() =>
   import("./endeavour/Login/ForgetPassword/ForgetPassword")
 );
@@ -60,6 +59,15 @@ const ResetPassword = React.lazy(() =>
 const EndeavourRegister = React.lazy(() =>
   import("./endeavour/Register/EndeavourRegister")
 );
+
+const RegisterEventForm = React.lazy(() =>
+  import("./endeavour/End25/RegisterEventForm")
+);
+
+const EndEventPage = React.lazy(() =>
+  import("./endeavour/End25/EventPage")
+);
+
 // const StudentPass = React.lazy(() =>
 //   import("./endeavour/StudentPass/StudentPass")
 // );
@@ -74,6 +82,11 @@ const EndeavourRegister = React.lazy(() =>
 const Profile = React.lazy(() =>
   import("./endeavour/Profile/NewEndProfile")
 );
+
+const SingleEvent = React.lazy(() =>
+  import("./endeavour/End25/singleEvent")
+);
+
 const PrivacyPolicy = React.lazy(() => import("./pages/PrivacyPolicy/Policy"));
 // const Admin = React.lazy(() => import("./endeavour/Admin/EndeavourAdmin"));
 // import SuperAdmin from "./endeavour/Admin/SuperAdmin/SuperAdmin";
@@ -83,6 +96,7 @@ import Aos from "aos";
 import "aos/dist/aos.css";
 import RecruitmentResult from "./components/RecruitmentResult/RecruitmentResult";
 import PrivacyPolicy2 from "./pages/PrivacyPolicy/Policy2";
+import CommingSoon from "./endeavour/CommingSoon/CommingSoon";
 // import NewCerti from "./components/newCerti/NewCerti";
 
 function App() {
@@ -159,15 +173,15 @@ function App() {
 
 
               {/* Important  */}
-            <Route path="/endeavour" element={<EndeavourHomePage />} />
-             <Route path="/endeavour/login" element={<EndeavourLogin />} />
+            <Route path="/endeavour" element={<CommingSoon />} />
+             {/* <Route path="/endeavour/login" element={<EndeavourLogin />} />
               <Route
                 path="/endeavour/forget-password"
                 element={<ForgetPassword />}
               />
               <Route
                 path="/endeavour/events"
-                element={<AllEvent />}
+                element={<EndEventPage />}
               />
               <Route
                 path="/endeavour/reset-password/"
@@ -186,6 +200,10 @@ function App() {
                 element={<EndeavourRegister />}
               />
               <Route path="/endeavour/:userId" element={<Profile />} />
+              <Route path="/endeavour/events/:eventSlug" element={<SingleEvent />} />
+              <Route path="/endeavour/events/register/:eventSlug" element={<RegisterEventForm />} />
+               */}
+
               {/* <Route path="/endeavour/admin/:admin" element={<Admin />} /> */}
               {/* <Route
                 path="/endeavour/super-admin/:superAdmin"

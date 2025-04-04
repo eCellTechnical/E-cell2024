@@ -6,52 +6,52 @@ const PastSpeakers = () => {
   const artistsData = [
     {
       id: 1,
-      name: "The Local Train",
-      designation: "Indie Rock Band",
-      company: "Independent Artists",
-      image: "http://localhost:5174/src/assets/people/abhishek_singh.jpeg"
+      name: "Abhishek Singh",
+      designation: "IAS Officer & Actor",
+      company: "",
+      image: "/src/assets/people/abhishek_singh.jpeg"
     },
     {
       id: 2,
-      name: "Abhishek Upmanyu",
+      name: "Aditi Singh",
       designation: "Stand-up Comedian",
       company: "Comedy Circuit",
-      image: "http://localhost:5174/src/assets/people/abhishek_singh.jpeg"
+      image: "/src/assets/people/aditi.jpg"
     },
     {
       id: 3,
-      name: "Samay Raina",
-      designation: "Comedian & Chess Enthusiast",
-      company: "YouTube Creator",
-      image: "http://localhost:5174/src/assets/people/sourabh.jpeg"
+      name: "Sandeep Jain",
+      designation: "Founder",
+      company: "GeeksforGeeks",
+      image: "/src/assets/people/sandeep.jpg"
     },
     {
       id: 4,
-      name: "Aakash Gupta",
-      designation: "Stand-up Comedian",
-      company: "Comicstaan",
-      image: "http://localhost:5174/src/assets/people/sachin.jpeg"
+      name: "Sachin Saxena",
+      designation: "Marketing Head",
+      company: "Innovaccer",
+      image: "/src/assets/people/sachin.jpeg"
     },
     {
       id: 5,
-      name: "Campus Voice",
-      designation: "Student Performance Group",
-      company: "College Collective",
-      image: "http://localhost:5174/src/assets/people/ramveer_tanver.jpeg"
+      name: "Ramveer Tanwar",
+      designation: "Founder",
+      company: "Say Earth",
+      image: "/src/assets/people/ramveer_tanver.jpeg"
     },
     {
       id: 6,
-      name: "Anubhav Singh Bassi",
-      designation: "Stand-up Comedian",
-      company: "Independent Artist",
-      image: "http://localhost:5174/src/assets/people/saurabh.jpeg"
+      name: "Sourabh Goyal",
+      designation: "Founder",
+      company: "Goalchy Club",
+      image: "/src/assets/people/saurabh.jpeg"
     },
     {
       id: 7,
       name: "Aditi Mittal",
       designation: "Stand-up Comedian",
       company: "Netflix Special Artist",
-      image: "http://localhost:5174/src/assets/people/abhishek_singh.jpeg"
+      image: "/src/assets/people/sourabh.jpeg"
     }
   ];
 

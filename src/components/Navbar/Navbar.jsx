@@ -741,12 +741,12 @@ function Navbar() {
             </div>
             <a
               onClick={() => {
-                history("/ideatex");
+                history("/endeavour");
                 setMainMenu(0);
               }}
               className=""
             >
-              IdeateX
+              Endeavour
             </a>
             <a
               href="https://tbi-kiet.in/"

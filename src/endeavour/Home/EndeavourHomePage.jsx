@@ -305,10 +305,11 @@ function EndeavourHomePage() {
           </AnimatedSection>
 
           <AnimatedSection
-            className="pt-6 z-10 w-full"
+            className="pt-6 z-10 about  w-full"
             delay={0.2}
             sectionName="ABOUT"
           >
+            <div id="about"></div>
             <motion.div
               style={{
                 y: infoParallax,
@@ -319,8 +320,8 @@ function EndeavourHomePage() {
                 ),
               }}
             >
-              <Suspense fallback={<div>Loading...</div>}>
-                <EventInfoSection />
+              <Suspense  fallback={<div>Loading...</div>}>
+                <EventInfoSection  />
               </Suspense>
             </motion.div>
           </AnimatedSection>
@@ -333,6 +334,7 @@ function EndeavourHomePage() {
             <motion.div style={{ y: sponsorsParallax }}>
               <Suspense fallback={<div>Loading...</div>}>
                 <StaggerContainer>
+                  <div id="sponsors"></div>
                   <StaggerItem>
                     <SponsorsCarousel />
                   </StaggerItem>
@@ -357,6 +359,7 @@ function EndeavourHomePage() {
               }}
             >
               <Suspense fallback={<div>Loading...</div>}>
+              <div id="speakers"></div>
                 <PastSpeakers />
               </Suspense>
             </motion.div>
