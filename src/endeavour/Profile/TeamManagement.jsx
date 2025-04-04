@@ -272,14 +272,14 @@ export default function TeamManagementPopup({ teamId, isOpen, onClose, onTeamJoi
                   ))}
                 </div>
                 
-                <div className="flex justify-center mt-6">
+                {/* <div className="flex justify-center mt-6">
                   <button
                     onClick={() => setShowJoinModal(true)}
                     className="bg-transparent border border-[#00f8bd] text-[#00f8bd] px-6 py-2 rounded-full hover:bg-[#00f8bd] hover:text-[#007827] transition-colors"
                   >
                     Join Another Team
                   </button>
-                </div>
+                </div> */}
               </div>
             </>
           )}

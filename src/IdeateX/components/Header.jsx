@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X, User, LogOut } from "lucide-react"; // Added User and LogOut icons
 import { Link, useNavigate } from "react-router-dom"; // Added useNavigate
-import endeavourLogo from "../../assets/End-Logo.jpg";
+import endeavourLogo from "../../assets/end2.png";
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -64,8 +64,8 @@ function Header() {
           <div className="flex gap-4 items-center">
             <Link to="/endeavour">
               <img
-                src={endeavourLogo || "https://firebasestorage.googleapis.com/v0/b/endevaour-2023.appspot.com/o/webassets%2Fwhite%20logo%20br.png?alt=media&token=50662b36-d955-4f24-985c-bd73a9101e01"}
-                className="w-14 h-8 lg:w-44 lg:h-10 z-20 cursor-pointer"
+                src={endeavourLogo || "end2.png"}
+                className="w-14 h-8 lg:w-44 bg-black lg:h-10 z-20 cursor-pointer"
                 alt="Endeavour logo"
               />
             </Link>
@@ -89,13 +89,13 @@ function Header() {
               EVENTS
             </a>
             <a
-              href="/#speakers"
+              href="/endeavour#speakers"
               className="font-semibold text-white hover:text-[#00f699] transition-colors"
             >
               SPEAKERS
             </a>
             <a
-              href="/#sponsors"
+              href="/endeavour#sponsors"
               className="font-semibold text-white hover:text-[#00f699] transition-colors"
             >
               SPONSORS
@@ -156,14 +156,14 @@ function Header() {
           </button>
           <nav className="flex flex-col items-center space-y-6 mt-8">
             <a
-              href="/"
+              href="/endeavour"
               onClick={toggleMenu}
               className="text-white font-semibold text-xl hover:text-[#00f699]"
             >
               HOME
             </a>
             <a
-              href="/#about"
+              href="/endeavour#about"
               onClick={toggleMenu}
               className="text-white font-semibold text-xl hover:text-[#00f699]"
             >
@@ -177,14 +177,14 @@ function Header() {
               EVENTS
             </a>
             <a
-              href="/#speakers"
+              href="/endeavour#speakers"
               onClick={toggleMenu}
               className="text-white font-semibold text-xl hover:text-[#00f699]"
             >
               SPEAKERS
             </a>
             <a
-              href="/#sponsors"
+              href="/endeavour#sponsors"
               onClick={toggleMenu}
               className="text-white font-semibold text-xl hover:text-[#00f699]"
             >

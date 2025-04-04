@@ -24,7 +24,10 @@ const Card = () => {
       {CardsData.map((item, index) => (
         <article
           key={index}
-          className="card__article relative w-[80%] md:w-[28%]"
+          onClick={() => {
+            window.location.href = '/endeavour/events/${item._id}';
+          }}
+          className="card__article relative w-[80%] z-50 md:w-[28%]"
           data-aos="fade-up"
         >
           <img src={item.src} alt="image" className="card__img" />
