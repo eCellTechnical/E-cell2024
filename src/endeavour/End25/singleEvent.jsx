@@ -13,6 +13,7 @@ import  { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import PropTypes from "prop-types";
 
+
 const EventRegistrationPopup = ({ isOpen, onClose, eventSlug, eventName }) => {
   const [activeTab, setActiveTab] = useState("create"); // 'create' or 'join'
   const [formData, setFormData] = useState({
@@ -354,6 +355,7 @@ function App() {
 
     const checkIsRegisterd = async () => {
       const userId = localStorage.getItem("userId");
+      // const token = localStorage.getItem("token");
       if (userId) {
         const response = await axios.post(
           `http://localhost:5000/api/v1/events/check-registration`,
@@ -364,6 +366,10 @@ function App() {
         );
 
         console.log(response.data.data.isRegistered);
+
+        const token = localStorage.getItem("userId");
+
+        console.log(token)
 
         if (response.data.data.isRegistered) {
           setIsRegistered(true);
@@ -473,29 +479,13 @@ function App() {
           <div className="grid grid-cols-1 lg:grid-cols-10 gap-3">
             <div className="lg:col-span-7 pb-8">
               <div className="flex flex-col md:flex-row gap-2 md:gap-3">
-                <div className="w-full md:w-[50%] h-40 sm:h-48 md:h-auto mb-2 md:mb-0">
-                  <img
-                    src="https://wowtheme7.com/tf/dyat/assets/img/tournament/11.png"
-                    alt="Treasure Map"
-                    className="w-full h-full object-cover rounded-lg"
-                  />
-                </div>
-                <div className="flex flex-row md:flex-col w-full md:w-[50%] gap-2 md:gap-3 h-40 sm:h-48 md:h-auto">
-                  <div className="w-1/2 md:w-full h-full md:h-1/2">
-                    <img
-                      src="https://wowtheme7.com/tf/dyat/assets/img/tournament/12.png"
-                      alt="Treasure Chest"
-                      className="w-full h-full object-cover rounded-lg"
-                    />
-                  </div>
-                  <div className="w-1/2 md:w-full h-full md:h-1/2">
-                    <img
-                      src="https://wowtheme7.com/tf/dyat/assets/img/tournament/13.png"
-                      alt="Treasure Hunt"
-                      className="w-full h-full object-cover rounded-lg"
-                    />
-                  </div>
-                </div>
+              <div className="w-full h-40 sm:h-48 md:h-64 lg:h-80 xl:h-96 mb-4 md:mb-6">
+  <img
+    src="/assets/ipl.png"
+    className="w-full h-full rounded-lg"
+    alt="IPL Event"
+  />
+</div>
               </div>
               <div className="flex flex-col gap-4 pt-4">
                 <div className="flex flex-col sm:flex-row w-full justify-between gap-3">
@@ -505,8 +495,11 @@ function App() {
                   <button
                     className="p-2 sm:p-3 text-base sm:text-[18px] font-bold rounded-md w-full sm:w-[20%] text-black bg-[#00fcb8]"
                     onClick={() => {
-                      if(isRegistered) {
+                      if(isRegistered && localStorage.getItem("userId") !== null && localStorage.getItem("token") !== undefined) {
                         window.location.href = `/endeavour/profile?events`;
+                      }
+                      else if (localStorage.getItem("userId") === null || localStorage.getItem("token") === undefined) {
+                        window.location.href = `/endeavour/login`;
                       }
                       else{
                         setIsRegistrationOpen(true)
@@ -698,8 +691,11 @@ function App() {
                   <button
                     className="bg-[#00fcb8] cursor-pointer hover:bg-green-500 text-black font-bold rounded-lg py-2 md:py-3 w-full text-sm md:text-base"
                     onClick={() => {
-                      if(isRegistered) {
+                      if(isRegistered && localStorage.getItem("userId") !== null && localStorage.getItem("token") !== undefined) {
                         window.location.href = `/endeavour/profile?events`;
+                      }
+                      else if (localStorage.getItem("userId") === null || localStorage.getItem("token") === undefined) {
+                        window.location.href = `/endeavour/login`;
                       }
                       else{
                         setIsRegistrationOpen(true)
@@ -712,7 +708,7 @@ function App() {
                     className="flex justify-center cursor-pointer items-center bg-[#111920] hover:bg-[#0e161f] text-white font-semibold rounded-lg py-2 md:py-3 w-full text-sm md:text-base"
                     onClick={() => {
                       const currentUrl = window.location.href;
-                      const message = `Check out this event: ${currentUrl}`;
+                      const message = `Check out this event: ₹{currentUrl}`;
                       const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(
                         message
                       )}`;

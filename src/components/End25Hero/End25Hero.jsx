@@ -1,4 +1,6 @@
+
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 const textVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -12,12 +14,45 @@ const textVariants = {
   },
 };
 
+
+
 const End25Hero = () => {
+
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0
+  });
+
+  useEffect(() => {
+    const calculateTimeLeft = () => {
+      const now = new Date();
+      const targetDate = new Date("May 2, 2025 00:00:00");
+      const difference = targetDate - now;
+      
+      if (difference > 0) {
+        setTimeLeft({
+          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+          hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+          minutes: Math.floor((difference / 1000 / 60) % 60),
+          seconds : Math.floor((difference / 1000) % 60)
+        });
+      }
+    };
+
+    // Calculate immediately
+    calculateTimeLeft();
+    
+    // Then update every second
+    const timer = setInterval(calculateTimeLeft, 1000);
+    
+    return () => clearInterval(timer);
+  }, []);
+
   return (
-    <div className="relative flex flex-col md:flex-row items-center justify-between w-full min-h-screen bg-black overflow-hidden px-6 md:px-12 lg:px-20 py-16">
-      {/* Glowing Light Effects */}
+    <div className="relative flex flex-col md:flex-row pt-22 md:pt-20 items-center justify-between w-full min-h-screen bg-black overflow-hidden px-6 md:px-12 lg:px-20 py-16">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Top right purple/pink glow */}
         <motion.div
           className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] rounded-full bg-[#00FCB8] opacity-30 blur-[120px]"
           animate={{
@@ -27,7 +62,6 @@ const End25Hero = () => {
           transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
         />
 
-        {/* Bottom left teal glow */}
         <motion.div
           className="absolute bottom-[-10%] left-[-5%] w-[400px] h-[400px] rounded-full bg-[#00FCB8] opacity-20 blur-[100px]"
           animate={{
@@ -37,7 +71,6 @@ const End25Hero = () => {
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
         />
 
-        {/* Center-left pinkish glow */}
         <motion.div
           className="absolute top-[30%] left-[20%] w-[300px] h-[300px] rounded-full bg-[#009c44] opacity-10 blur-[80px]"
           animate={{
@@ -48,7 +81,6 @@ const End25Hero = () => {
         />
       </div>
 
-      {/* Left Section */}
       <div className="w-full md:w-1/2 z-10">
         <motion.div
           variants={textVariants}
@@ -70,21 +102,29 @@ const End25Hero = () => {
             </motion.div>
           </div>
         </motion.div>
-        <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4">
-          ASPIRE
-          <br />
-          TO <span className="text-[#00FCB8]">AQUIRE</span>
+        <h1 className="text-5xl md:text-6xl lg:text-6xl font-bold text-white mb-4">
+        This Summer, 
+        <br></br>
+        Stream the 
+        <br></br>
+
+        Hustle 
+          <span className="text-[#00FCB8]"> LIVE!</span>
         </h1>
         <p className="text-gray-400 mb-8 max-w-xl">
-          The Premier Tech Conference bringing together innovators, thought
-          leaders, and tech enthusiasts for an immersive experience powered by
-          cutting-edge technology
+        No episodes, just real action.
+Ready to witness the rise of game-changers?
+
         </p>
         <div className="flex space-x-4 mb-16">
           <motion.button
             className="px-6 py-3 bg-[#00FCB8] text-black font-bold rounded-md"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            onClick={() => {
+              window.location.href = '/endeavour/register'
+            }
+          }
           >
             REGISTER
           </motion.button>
@@ -93,31 +133,36 @@ const End25Hero = () => {
             className="px-6 py-3 bg-transparent border-2 border-[#00FCB8] text-white font-bold rounded-md"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            onClick={() => {
+                // console.log("first")
+                window.location.href = '/endeavour/events'
+            }}
           >
-            VIEW SCHEDULE
+            ALL EVENTS
           </motion.button>
         </div>
         {/* Stats */}
-        <div className="flex space-x-12 md:space-x-20">
-          <div>
-            <h2 className="text-4xl md:text-5xl font-bold text-white">
-              15,000+
-            </h2>
-            <p className="text-gray-400">Footfall</p>
+        <div className="flex justify-around md:justify-start md:space-x-8 lg:space-x-20">
+            <div className="text-center md:text-left">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white">
+                15,000+
+              </h2>
+              <p className="text-gray-400 text-sm md:text-base">Footfall</p>
+            </div>
+
+            <div className="text-center md:text-left">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white">10+</h2>
+              <p className="text-gray-400 text-sm md:text-base">Competitions</p>
+            </div>
+
+            <div className="text-center md:text-left">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white">
+                1.5Lac+
+              </h2>
+              <p className="text-gray-400 text-sm md:text-base">Prize Pool</p>
+            </div>
           </div>
 
-          <div>
-            <h2 className="text-4xl md:text-5xl font-bold text-white">10+</h2>
-            <p className="text-gray-400">Competitions</p>
-          </div>
-
-          <div>
-            <h2 className="text-4xl md:text-5xl font-bold text-white">
-              11Lac+
-            </h2>
-            <p className="text-gray-400">Cash Prize</p>
-          </div>
-        </div>
       </div>
 
       {/* Right Section - Event Image and Info */}
@@ -161,57 +206,59 @@ const End25Hero = () => {
 
           {/* Event Info Box */}
           <motion.div
-            className="absolute bottom-[-1rem] right-[-2rem] bg-black/80 backdrop-blur-md p-4 rounded-lg border border-gray-800 w-[350px]"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.5 }}
-          >
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <p className="text-gray-400 text-sm">Early Bird Price</p>
-                <h3 className="text-3xl font-bold text-white">$599</h3>
-                <p className="text-gray-400 text-sm">Until April 15th</p>
-              </div>
-
-              <div>
-                <p className="text-gray-400 text-sm">Event starts in</p>
-                <div className="flex space-x-4">
-                  <div className="text-center">
-                    <p className="text-2xl font-bold text-white">15</p>
-                    <p className="text-gray-400 text-xs">Days</p>
-                  </div>
-
-                  <div className="text-center">
-                    <p className="text-2xl font-bold text-white">34</p>
-                    <p className="text-gray-400 text-xs">Hours</p>
-                  </div>
-
-                  <div className="text-center">
-                    <p className="text-2xl font-bold text-white">40</p>
-                    <p className="text-gray-400 text-xs">Mins</p>
-                  </div>
-                </div>
-              </div>
+      className="absolute bottom-[-1rem] md:right-[-2rem] bg-black/80 backdrop-blur-md p-4 rounded-lg border border-gray-800 w-[350px]"
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.3, duration: 0.5 }}
+    >
+      {/* Countdown Timer */}
+      <div className="flex justify-between items-center mb-4">
+        <div>
+          <p className="text-gray-400 text-sm">Starts in</p>
+          <div className="flex space-x-3 mt-1">
+            <div>
+              <p className="text-2xl font-bold text-white">{timeLeft.days}</p>
+              <p className="text-gray-400 text-xs">Days</p>
             </div>
-
-            <div className="mt-4 grid grid-cols-2 gap-2">
-              <motion.button
-                className="w-full py-2 bg-[#00FCB8] text-black font-bold rounded"
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
-              >
-                BOOK NOW
-              </motion.button>
-
-              <motion.button
-                className="w-full py-2 bg-transparent border border-white text-white font-bold rounded"
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
-              >
-                SEE DETAILS
-              </motion.button>
+            <div>
+              <p className="text-2xl font-bold text-white">{timeLeft.hours}</p>
+              <p className="text-gray-400 text-xs">Hrs</p>
             </div>
-          </motion.div>
+            <div>
+              <p className="text-2xl font-bold text-white">{timeLeft.minutes}</p>
+              <p className="text-gray-400 text-xs">Mins</p>
+            </div>
+            <div>
+              <p className="text-2xl font-bold text-white">{timeLeft.seconds}</p>
+              <p className="text-gray-400 text-xs">Secs</p>
+            </div>
+          </div>
+        </div>
+        
+        <div className="text-right">
+          <p className="text-gray-400 text-sm">Early Bird</p>
+          <p className="text-3xl font-bold text-[#00FCB8]">₹999</p>
+        </div>
+      </div>
+
+      {/* CTA Button */}
+      <motion.button
+        className="w-full py-3 bg-[#00FCB8] text-black font-bold rounded-md"
+        whileHover={{ scale: 1.03 }}
+        whileTap={{ scale: 0.97 }}
+        onClick={() => {
+          window.location.href = '/endeavour/register'
+        }
+      }
+      >
+        REGISTER NOW
+      </motion.button>
+
+      {/* Event Info */}
+      <p className="text-gray-500 text-xs mt-3 text-center">
+        11th Edition • May 2-3, 2025
+      </p>
+    </motion.div>
         </div>
       </div>
     </div>
