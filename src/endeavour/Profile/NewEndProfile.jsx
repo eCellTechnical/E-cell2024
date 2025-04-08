@@ -664,7 +664,7 @@ function Profile() {
                 ) : (
                   <div className="text-center py-12">
                     <p className="text-gray-400 text-lg mb-4">
-                      You haven't registered for any events yet.
+                      You haven&#39;t registered for any events yet.
                     </p>
                     <button
                       onClick={() => navigate("/events")}

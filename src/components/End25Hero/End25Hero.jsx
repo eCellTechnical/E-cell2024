@@ -1,6 +1,7 @@
 
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import image from "./herohead.png";
 
 const textVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -190,7 +191,7 @@ Ready to witness the rise of game-changers?
             {/* <ThreeDEventVisual /> */}
 
             <motion.img 
-              src="assets/herohead.png" 
+              src={image} 
               alt="Digital NFT Art" 
               className="w-auto h-auto max-h-[500px]"
               animate={{ 
