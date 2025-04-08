@@ -478,6 +478,7 @@ function App() {
 
     const checkIsRegisterd = async () => {
       const userId = localStorage.getItem("userId");
+      // const token = localStorage.getItem("token");
       if (userId) {
         const response = await axios.post(
           `http://localhost:5000/api/v1/events/check-registration`,
@@ -833,7 +834,7 @@ function App() {
                     className="flex justify-center cursor-pointer items-center bg-[#111920] hover:bg-[#0e161f] text-white font-semibold rounded-lg py-2 md:py-3 w-full text-sm md:text-base"
                     onClick={() => {
                       const currentUrl = window.location.href;
-                      const message = `Check out this event: ${currentUrl}`;
+                      const message = `Check out this event: ₹{currentUrl}`;
                       const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(
                         message
                       )}`;
