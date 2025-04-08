@@ -174,7 +174,7 @@ function App() {
 
               {/* Important  */}
             <Route path="/endeavour" element={<CommingSoon />} />
-             {/* <Route path="/endeavour/login" element={<EndeavourLogin />} />
+             <Route path="/endeavour/login" element={<EndeavourLogin />} />
               <Route
                 path="/endeavour/forget-password"
                 element={<ForgetPassword />}
@@ -202,7 +202,7 @@ function App() {
               <Route path="/endeavour/:userId" element={<Profile />} />
               <Route path="/endeavour/events/:eventSlug" element={<SingleEvent />} />
               <Route path="/endeavour/events/register/:eventSlug" element={<RegisterEventForm />} />
-               */}
+              
 
               {/* <Route path="/endeavour/admin/:admin" element={<Admin />} /> */}
               {/* <Route

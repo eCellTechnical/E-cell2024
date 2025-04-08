@@ -8,23 +8,26 @@ import {
   Share2,
   Users,
   X,
+  Upload,
 } from "lucide-react";
-import  { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import PropTypes from "prop-types";
 
-const EventRegistrationPopup = ({ isOpen, onClose, eventSlug, eventName }) => {
+const EventRegistrationPopup = ({ isOpen, onClose, eventSlug, eventName, eventFees, qrCode }) => {
   const [activeTab, setActiveTab] = useState("create"); // 'create' or 'join'
   const [formData, setFormData] = useState({
     eventSlug: eventSlug || "",
     leaderId: "",
     teamName: "",
     teamCode: "",
+    paymentTransactionId: "",
+    paymentScreenshot: null,
   });
-
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
+  const [discountedPrice, setDiscountedPrice] = useState(eventFees);
 
   useEffect(() => {
     // Set eventSlug from props or URL path
@@ -36,12 +39,11 @@ const EventRegistrationPopup = ({ isOpen, onClose, eventSlug, eventName }) => {
       }
       return "";
     };
-
+    console.log(qrCode);
     const slug = eventSlug || getEventSlugFromUrl();
     if (slug) {
       setFormData((prev) => ({ ...prev, eventSlug: slug }));
     }
-
     // Set leaderId from localStorage
     const userId = localStorage.getItem("userId");
     if (userId) {
@@ -54,22 +56,52 @@ const EventRegistrationPopup = ({ isOpen, onClose, eventSlug, eventName }) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  const handleFileChange = (e) => {
+    setFormData((prev) => ({ ...prev, paymentScreenshot: e.target.files[0] }));
+  };
+
+  const uploadImage = async (file) => {
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("upload_preset", "Endver"); // Replace with your Cloudinary upload preset
+    try {
+      const response = await axios.post(
+        "https://api.cloudinary.com/v1_1/dghyx2pvc/image/upload", // Replace with your Cloudinary cloud name
+        formData
+      );
+      return response.data.secure_url;
+    } catch (err) {
+      console.error("Error uploading image:", err);
+      throw new Error("Failed to upload payment screenshot");
+    }
+  };
+
   const handleCreateTeam = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     setError("");
-
     try {
       if (!formData.teamName.trim()) {
         throw new Error("Team name is required");
       }
-
-      const response = await axios.post("/api/event-registration", {
-        eventSlug: formData.eventSlug,
-        leaderId: formData.leaderId,
-        teamName: formData.teamName,
-      });
-
+      if (!formData.paymentTransactionId.trim()) {
+        throw new Error("Transaction ID is required");
+      }
+      if (!formData.paymentScreenshot) {
+        throw new Error("Payment screenshot is required");
+      }
+      // Upload payment screenshot to Cloudinary
+      const screenshotUrl = await uploadImage(formData.paymentScreenshot);
+      const response = await axios.post(
+        "http://localhost:5000/api/v1/addTeam",
+        {
+          eventSlug: formData.eventSlug,
+          leaderId: formData.leaderId,
+          teamName: formData.teamName,
+          paymentTransactionId: formData.paymentTransactionId,
+          paymentScreenshot: screenshotUrl,
+        }
+      );
       if (response.data.success) {
         setSuccess(true);
         setTimeout(() => {
@@ -91,12 +123,10 @@ const EventRegistrationPopup = ({ isOpen, onClose, eventSlug, eventName }) => {
     e.preventDefault();
     setIsSubmitting(true);
     setError("");
-
     try {
       if (!formData.teamCode.trim()) {
         throw new Error("Team code is required");
       }
-
       const response = await axios.post(
         "http://localhost:5000/api/v1/joinTeam",
         {
@@ -104,7 +134,6 @@ const EventRegistrationPopup = ({ isOpen, onClose, eventSlug, eventName }) => {
           userId: formData.leaderId,
         }
       );
-
       if (response.data.success) {
         setSuccess(true);
         setTimeout(() => {
@@ -123,38 +152,38 @@ const EventRegistrationPopup = ({ isOpen, onClose, eventSlug, eventName }) => {
   };
 
   if (!isOpen) return null;
-
+  
   const displayEventName =
     eventName ||
     (formData.eventSlug ? formData.eventSlug.replace(/-/g, " ") : "the event");
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4">
-      <div className="bg-[#18222D] rounded-lg w-full max-w-md overflow-hidden shadow-xl">
-        <div className="flex justify-between items-center p-4 border-b border-gray-700">
+    <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-4 backdrop-blur-sm">
+      <div className="bg-gradient-to-b from-[#1e2a38] to-[#18222D] rounded-xl w-full max-w-3xl overflow-hidden shadow-2xl max-h-[90vh] overflow-y-auto border border-gray-700">
+        <div className="flex justify-between items-center p-5 border-b border-gray-700 bg-[#1c2634]">
           <h2 className="text-2xl font-bold text-white">Event Registration</h2>
           <button
             onClick={onClose}
-            className="text-gray-400 hover:text-white transition-colors"
+            className="text-gray-400 hover:text-white transition-colors hover:bg-gray-700 rounded-full p-1"
           >
             <X size={24} />
           </button>
         </div>
-
-        <div className="p-6">
-          <p className="mb-6 text-sm text-gray-300">
+        
+        <div className="p-6 md:p-8">
+          <p className="mb-6 text-md text-gray-300">
             Register for{" "}
             <span className="text-[#00fcb8] font-medium capitalize">
               {displayEventName}
             </span>
           </p>
-
+          
           {/* Toggle between Create and Join Team */}
-          <div className="flex mb-6 bg-[#111920] rounded-lg p-1">
+          <div className="flex mb-8 bg-[#111920] rounded-lg p-1.5 max-w-sm mx-auto">
             <button
-              className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors ${
+              className={`flex-1 py-2.5 px-4 rounded-md text-sm font-medium transition-colors ${
                 activeTab === "create"
-                  ? "bg-[#00fcb8] text-black"
+                  ? "bg-[#00fcb8] text-black shadow-lg"
                   : "text-gray-300 hover:text-white"
               }`}
               onClick={() => setActiveTab("create")}
@@ -162,9 +191,9 @@ const EventRegistrationPopup = ({ isOpen, onClose, eventSlug, eventName }) => {
               Create Team
             </button>
             <button
-              className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors ${
+              className={`flex-1 py-2.5 px-4 rounded-md text-sm font-medium transition-colors ${
                 activeTab === "join"
-                  ? "bg-[#00fcb8] text-black"
+                  ? "bg-[#00fcb8] text-black shadow-lg"
                   : "text-gray-300 hover:text-white"
               }`}
               onClick={() => setActiveTab("join")}
@@ -172,80 +201,81 @@ const EventRegistrationPopup = ({ isOpen, onClose, eventSlug, eventName }) => {
               Join Team
             </button>
           </div>
-
+          
           {success ? (
-            <div className="rounded-md bg-[#0d3331] p-4 border border-[#00fcb8]">
-              <div className="flex">
-                <div className="ml-3">
-                  <h3 className="text-sm font-medium text-[#00fcb8]">
-                    {activeTab === "create" ? "Registration" : "Join"}{" "}
-                    successful!
-                  </h3>
-                  <div className="mt-2 text-sm text-green-300">
-                    <p>
-                      {activeTab === "create"
-                        ? "Your team has been registered."
-                        : "You have successfully joined the team."}
-                      Redirecting to confirmation page...
-                    </p>
-                  </div>
+            <div className="rounded-md bg-[#0d3331] p-6 border border-[#00fcb8] flex items-center max-w-lg mx-auto">
+              <div className="mr-4 text-[#00fcb8]">
+                <svg className="h-8 w-8" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                </svg>
+              </div>
+              <div>
+                <h3 className="text-lg font-medium text-[#00fcb8]">
+                  {activeTab === "create" ? "Registration" : "Join"}{" "}
+                  successful!
+                </h3>
+                <div className="mt-2 text-md text-green-300">
+                  <p>
+                    {activeTab === "create"
+                      ? "Your team has been registered."
+                      : "You have successfully joined the team."}
+                    {" "}Redirecting to confirmation page...
+                  </p>
                 </div>
               </div>
             </div>
           ) : (
             <form
-              className="space-y-6"
+              className="space-y-6 md:space-y-8"
               onSubmit={
                 activeTab === "create" ? handleCreateTeam : handleJoinTeam
               }
             >
-              <div>
-                <label
-                  htmlFor="eventSlug"
-                  className="block text-sm font-medium text-gray-300"
-                >
-                  Event
-                </label>
-                <div className="mt-1">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label
+                    htmlFor="eventSlug"
+                    className="block text-sm font-medium text-gray-300 mb-2"
+                  >
+                    Event
+                  </label>
                   <input
                     id="eventSlug"
                     name="eventSlug"
                     type="text"
                     value={displayEventName}
                     disabled
-                    className="bg-[#111920] appearance-none block w-full px-3 py-2 border border-gray-700 rounded-md shadow-sm placeholder-gray-500 text-gray-300 focus:outline-none focus:ring-[#00fcb8] focus:border-[#00fcb8] sm:text-sm"
+                    className="bg-[#111920] appearance-none block w-full px-4 py-3 border border-gray-700 rounded-md shadow-sm placeholder-gray-500 text-gray-300 focus:outline-none focus:ring-[#00fcb8] focus:border-[#00fcb8] sm:text-sm"
                   />
                 </div>
-              </div>
-
-              <div>
-                <label
-                  htmlFor="leaderId"
-                  className="block text-sm font-medium text-gray-300"
-                >
-                  {activeTab === "create" ? "Team Leader ID" : "Your ID"}
-                </label>
-                <div className="mt-1">
+                
+                <div>
+                  <label
+                    htmlFor="leaderId"
+                    className="block text-sm font-medium text-gray-300 mb-2"
+                  >
+                    {activeTab === "create" ? "Team Leader ID" : "Your ID"}
+                  </label>
                   <input
                     id="leaderId"
                     name="leaderId"
                     type="text"
                     value={formData.leaderId}
                     disabled
-                    className="bg-[#111920] appearance-none block w-full px-3 py-2 border border-gray-700 rounded-md shadow-sm placeholder-gray-500 text-gray-300 focus:outline-none focus:ring-[#00fcb8] focus:border-[#00fcb8] sm:text-sm"
+                    className="bg-[#111920] appearance-none block w-full px-4 py-3 border border-gray-700 rounded-md shadow-sm placeholder-gray-500 text-gray-300 focus:outline-none focus:ring-[#00fcb8] focus:border-[#00fcb8] sm:text-sm"
                   />
                 </div>
               </div>
-
+              
               {activeTab === "create" ? (
-                <div>
-                  <label
-                    htmlFor="teamName"
-                    className="block text-sm font-medium text-gray-300"
-                  >
-                    Team Name
-                  </label>
-                  <div className="mt-1">
+                <>
+                  <div>
+                    <label
+                      htmlFor="teamName"
+                      className="block text-sm font-medium text-gray-300 mb-2"
+                    >
+                      Team Name
+                    </label>
                     <input
                       id="teamName"
                       name="teamName"
@@ -253,63 +283,156 @@ const EventRegistrationPopup = ({ isOpen, onClose, eventSlug, eventName }) => {
                       required
                       value={formData.teamName}
                       onChange={handleChange}
-                      className="bg-[#111920] appearance-none block w-full px-3 py-2 border border-gray-700 rounded-md shadow-sm placeholder-gray-500 text-gray-300 focus:outline-none focus:ring-[#00fcb8] focus:border-[#00fcb8] sm:text-sm"
+                      className="bg-[#111920] appearance-none block w-full px-4 py-3 border border-gray-700 rounded-md shadow-sm placeholder-gray-500 text-gray-300 focus:outline-none focus:ring-[#00fcb8] focus:border-[#00fcb8] sm:text-sm"
                       placeholder="Enter your team name"
                     />
                   </div>
-                </div>
+                  
+                  {/* Payment Section */}
+                  <div className="bg-[#111920] p-6 rounded-xl border border-gray-700 mt-8">
+                    <h3 className="text-white font-bold text-lg mb-4 flex items-center">
+                      <span className="mr-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-[#00fcb8]" viewBox="0 0 20 20" fill="currentColor">
+                          <path fillRule="evenodd" d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+                        </svg>
+                      </span>
+                      Payment Details
+                    </h3>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="flex flex-col">
+                        <div className="mb-6">
+                          <p className="text-gray-300 text-sm mb-2">Amount to Pay:</p>
+                          <p className="text-[#00fcb8] font-bold text-2xl">
+                            ₹{discountedPrice}
+                          </p>
+                        </div>
+                        
+                        <div className="mb-4">
+                          <label
+                            htmlFor="paymentTransactionId"
+                            className="block text-sm font-medium text-gray-300 mb-2"
+                          >
+                            Transaction ID
+                          </label>
+                          <input
+                            id="paymentTransactionId"
+                            name="paymentTransactionId"
+                            type="text"
+                            required
+                            value={formData.paymentTransactionId}
+                            onChange={handleChange}
+                            className="bg-[#18222D] appearance-none block w-full px-4 py-3 border border-gray-700 rounded-md shadow-sm placeholder-gray-500 text-gray-300 focus:outline-none focus:ring-[#00fcb8] focus:border-[#00fcb8] sm:text-sm"
+                            placeholder="Enter your payment transaction ID"
+                          />
+                        </div>
+                        
+                        <div>
+                          <label
+                            htmlFor="paymentScreenshot"
+                            className="block text-sm font-medium text-gray-300 mb-2"
+                          >
+                            Payment Screenshot
+                          </label>
+                          <div className="flex items-center justify-center w-full">
+                            <label className="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-700 border-dashed rounded-lg cursor-pointer bg-[#18222D] hover:bg-[#111920] transition-colors duration-200">
+                              <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                                <Upload className="w-8 h-8 mb-3 text-gray-400" />
+                                <p className="mb-2 text-sm text-gray-400">
+                                  <span className="font-semibold">Click to upload</span> or drag and drop
+                                </p>
+                                <p className="text-xs text-gray-500">
+                                  {formData.paymentScreenshot 
+                                    ? formData.paymentScreenshot.name 
+                                    : "PNG, JPG (MAX. 5MB)"}
+                                </p>
+                              </div>
+                              <input 
+                                id="paymentScreenshot" 
+                                name="paymentScreenshot" 
+                                type="file" 
+                                className="hidden" 
+                                accept="image/*"
+                                onChange={handleFileChange}
+                                required
+                              />
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div className="flex flex-col items-center justify-center bg-gray-50 p-4 rounded-lg">
+                        <p className="text-gray-700 text-sm font-medium mb-3">Scan QR Code to Pay:</p>
+                        <div className="flex justify-center bg-white p-3 rounded-lg shadow-md">
+                          <img 
+                            src={qrCode} 
+                            alt="Payment QR Code" 
+                            className="w-full max-w-xs object-contain"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </>
               ) : (
                 <div>
                   <label
                     htmlFor="teamCode"
-                    className="block text-sm font-medium text-gray-300"
+                    className="block text-sm font-medium text-gray-300 mb-2"
                   >
                     Team Code
                   </label>
-                  <div className="mt-1">
-                    <input
-                      id="teamCode"
-                      name="teamCode"
-                      type="text"
-                      required
-                      value={formData.teamCode}
-                      onChange={handleChange}
-                      className="bg-[#111920] appearance-none block w-full px-3 py-2 border border-gray-700 rounded-md shadow-sm placeholder-gray-500 text-gray-300 focus:outline-none focus:ring-[#00fcb8] focus:border-[#00fcb8] sm:text-sm"
-                      placeholder="Enter team code provided by team leader"
-                    />
-                  </div>
+                  <input
+                    id="teamCode"
+                    name="teamCode"
+                    type="text"
+                    required
+                    value={formData.teamCode}
+                    onChange={handleChange}
+                    className="bg-[#111920] appearance-none block w-full px-4 py-3 border border-gray-700 rounded-md shadow-sm placeholder-gray-500 text-gray-300 focus:outline-none focus:ring-[#00fcb8] focus:border-[#00fcb8] sm:text-sm"
+                    placeholder="Enter team code provided by team leader"
+                  />
                 </div>
               )}
-
+              
               {error && (
-                <div className="rounded-md bg-[#331111] p-4 border border-red-500">
-                  <div className="flex">
-                    <div className="ml-3">
-                      <h3 className="text-sm font-medium text-red-400">
+                <div className="rounded-md bg-[#331111] p-5 border border-red-500 mb-6 animate-pulse">
+                  <div className="flex items-center">
+                    <div className="mr-4 text-red-500">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 className="text-md font-medium text-red-400">
                         {activeTab === "create" ? "Registration" : "Join"}{" "}
                         failed
                       </h3>
-                      <div className="mt-2 text-sm text-red-300">
+                      <div className="mt-1 text-sm text-red-300">
                         <p>{error}</p>
                       </div>
                     </div>
                   </div>
                 </div>
               )}
-
-              <div>
+              
+              <div className="pt-4">
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-black bg-[#00fcb8] hover:bg-[#00d06d] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#00fcb8] disabled:opacity-50 transition-colors"
+                  className="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-md font-medium text-black bg-[#00fcb8] hover:bg-[#00d06d] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#00fcb8] disabled:opacity-50 transition-colors transform hover:scale-[1.02] transition-transform duration-200"
                 >
-                  {isSubmitting
-                    ? activeTab === "create"
-                      ? "Creating Team..."
-                      : "Joining Team..."
-                    : activeTab === "create"
-                    ? "Create Team"
-                    : "Join Team"}
+                  {isSubmitting ? (
+                    <div className="flex items-center">
+                      <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-black" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                      {activeTab === "create" ? "Creating Team..." : "Joining Team..."}
+                    </div>
+                  ) : (
+                    activeTab === "create" ? "Create Team" : "Join Team"
+                  )}
                 </button>
               </div>
             </form>
@@ -343,6 +466,7 @@ function App() {
         );
         console.log(response.data.data.event);
         setEventData(response.data.data.event);
+        
         setError(null);
       } catch (err) {
         console.error("Error fetching event data:", err);
@@ -364,6 +488,10 @@ function App() {
         );
 
         console.log(response.data.data.isRegistered);
+
+        const token = localStorage.getItem("userId");
+
+        console.log(token);
 
         if (response.data.data.isRegistered) {
           setIsRegistered(true);
@@ -473,28 +601,12 @@ function App() {
           <div className="grid grid-cols-1 lg:grid-cols-10 gap-3">
             <div className="lg:col-span-7 pb-8">
               <div className="flex flex-col md:flex-row gap-2 md:gap-3">
-                <div className="w-full md:w-[50%] h-40 sm:h-48 md:h-auto mb-2 md:mb-0">
+                <div className="w-full h-40 sm:h-48 md:h-64 lg:h-80 xl:h-96 mb-4 md:mb-6">
                   <img
-                    src="https://wowtheme7.com/tf/dyat/assets/img/tournament/11.png"
-                    alt="Treasure Map"
-                    className="w-full h-full object-cover rounded-lg"
+                    src={eventData.poster}
+                    className="w-full h-full rounded-lg"
+                    alt="IPL Event"
                   />
-                </div>
-                <div className="flex flex-row md:flex-col w-full md:w-[50%] gap-2 md:gap-3 h-40 sm:h-48 md:h-auto">
-                  <div className="w-1/2 md:w-full h-full md:h-1/2">
-                    <img
-                      src="https://wowtheme7.com/tf/dyat/assets/img/tournament/12.png"
-                      alt="Treasure Chest"
-                      className="w-full h-full object-cover rounded-lg"
-                    />
-                  </div>
-                  <div className="w-1/2 md:w-full h-full md:h-1/2">
-                    <img
-                      src="https://wowtheme7.com/tf/dyat/assets/img/tournament/13.png"
-                      alt="Treasure Hunt"
-                      className="w-full h-full object-cover rounded-lg"
-                    />
-                  </div>
                 </div>
               </div>
               <div className="flex flex-col gap-4 pt-4">
@@ -505,11 +617,19 @@ function App() {
                   <button
                     className="p-2 sm:p-3 text-base sm:text-[18px] font-bold rounded-md w-full sm:w-[20%] text-black bg-[#00fcb8]"
                     onClick={() => {
-                      if(isRegistered) {
+                      if (
+                        isRegistered &&
+                        localStorage.getItem("userId") !== null &&
+                        localStorage.getItem("token") !== undefined
+                      ) {
                         window.location.href = `/endeavour/profile?events`;
-                      }
-                      else{
-                        setIsRegistrationOpen(true)
+                      } else if (
+                        localStorage.getItem("userId") === null ||
+                        localStorage.getItem("token") === undefined
+                      ) {
+                        window.location.href = `/endeavour/login`;
+                      } else {
+                        setIsRegistrationOpen(true);
                       }
                     }}
                   >
@@ -543,17 +663,10 @@ function App() {
                   </div>
                 </div>
                 <div className="relative">
-                  <p className="text-normal text-[16px] opacity-80 line-clamp-4 md:line-clamp-none">
-                    {eventData.description}
-                    <br />
-                    <br />A treasure hunt is an exciting game where participants
-                    follow a series of clues to discover hidden items or reach a
-                    specific goal. This event promises an exhilarating
-                    experience as teams navigate through challenges, solve
-                    puzzles, and race against time to claim the ultimate prize.
-                    Bring your problem-solving skills and team coordination to
-                    compete in this thrilling adventure!
-                  </p>
+                  <p
+                    className=" text-[16px] text-white "
+                    dangerouslySetInnerHTML={{ __html: eventData.description }}
+                  ></p>
                   <button className="text-[#00fcb8] font-medium mt-1 block md:hidden">
                     Read more
                   </button>
@@ -698,11 +811,19 @@ function App() {
                   <button
                     className="bg-[#00fcb8] cursor-pointer hover:bg-green-500 text-black font-bold rounded-lg py-2 md:py-3 w-full text-sm md:text-base"
                     onClick={() => {
-                      if(isRegistered) {
+                      if (
+                        isRegistered &&
+                        localStorage.getItem("userId") !== null &&
+                        localStorage.getItem("token") !== undefined
+                      ) {
                         window.location.href = `/endeavour/profile?events`;
-                      }
-                      else{
-                        setIsRegistrationOpen(true)
+                      } else if (
+                        localStorage.getItem("userId") === null ||
+                        localStorage.getItem("token") === undefined
+                      ) {
+                        window.location.href = `/endeavour/login`;
+                      } else {
+                        setIsRegistrationOpen(true);
                       }
                     }}
                   >
@@ -739,6 +860,8 @@ function App() {
         onClose={() => setIsRegistrationOpen(false)}
         eventSlug={eventSlug}
         eventName={eventData.name}
+        eventFees={eventData.fees}
+        qrCode={eventData.qrcode}
       />
     </div>
   );
@@ -748,6 +871,8 @@ EventRegistrationPopup.propTypes = {
   onClose: PropTypes.func.isRequired,
   eventSlug: PropTypes.string,
   eventName: PropTypes.string,
+  eventFees: PropTypes.number,
+  qrCode: PropTypes.string, // Added qrCode to props validation
 };
 
 export default App;
