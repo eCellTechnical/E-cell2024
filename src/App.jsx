@@ -96,7 +96,7 @@ import Aos from "aos";
 import "aos/dist/aos.css";
 import RecruitmentResult from "./components/RecruitmentResult/RecruitmentResult";
 import PrivacyPolicy2 from "./pages/PrivacyPolicy/Policy2";
-import CommingSoon from "./endeavour/CommingSoon/CommingSoon";
+// import CommingSoon from "./endeavour/CommingSoon/CommingSoon";
 // import NewCerti from "./components/newCerti/NewCerti";
 
 function App() {
@@ -173,7 +173,7 @@ function App() {
 
 
               {/* Important  */}
-            <Route path="/endeavour" element={<CommingSoon />} />
+            <Route path="/endeavour" element={<EndeavourHomePage />} />
              <Route path="/endeavour/login" element={<EndeavourLogin />} />
               <Route
                 path="/endeavour/forget-password"

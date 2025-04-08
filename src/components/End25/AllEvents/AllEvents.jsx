@@ -73,6 +73,16 @@ const AllEvents = () => {
     return new Date(dateString).toLocaleDateString(undefined, options);
   };
 
+  // Helper function to calculate total prize pool
+  const calculatePrizePool = (prizeArray) => {
+    if (!prizeArray || !Array.isArray(prizeArray) || prizeArray.length === 0) {
+      return "N/A";
+    }
+    
+    const total = prizeArray.reduce((sum, prize) => sum + (prize.amount || 0), 0);
+    return `₹${total.toLocaleString()}`;
+  };
+
   return (
     <div className="w-full mt-20 relative overflow-hidden">
       {/* Background decorative elements */}
@@ -122,25 +132,25 @@ const AllEvents = () => {
 
                   {/* Card content with hover animations */}
                   <div className="relative group-hover:opacity-0 transition-all ease-in-out duration-700 cursor-pointer z-10">
-                    {/* Category tag - using discount as category in this case */}
-                    <div className="inline-block text-xs font-medium px-3 py-1 rounded-full bg-[#00FCB8] bg-opacity-20 text-[#00FCB8] mb-4">
-                      {event.discount || "Hackathon"}
-                    </div>
-                    {/* Event Header */}
+                    {event.prize[0] && (
+                      <div className="inline-block text-xs font-medium px-3 py-1 rounded-full bg-[#00FCB8] bg-opacity-20 text-[#00FCB8] mb-4">
+                        Prize Pool: ₹{calculatePrizePool(event.prize)}
+                      </div>
+                    )}
                     <div className="flex items-start justify-between mb-6">
                       <div>
-                        <h3 className="text-2xl font-bold text-white mb-1 group-hover:text-[#00FCB8] transition-colors duration-300">
+                        <h3 className="text-xl font-bold text-white mb-1 group-hover:text-[#00FCB8] transition-colors duration-300">
                           {event.name}
                         </h3>
                         <p className="text-sm text-gray-400">{event.minTeamSize}-{event.maxTeamSize} members</p>
                       </div>
-                      <div className="text-4xl">💻</div> {/* Default icon */}
+                      {/* <div className="text-4xl">💻</div> Default icon */}
                     </div>
                     
                     <div className="mb-6">
                       <p className="text-xs text-gray-400 mb-1">REGISTRATION</p>
                       <p className="text-2xl font-bold text-[#00FCB8]">
-                        {event.registrationEndDate && new Date() < new Date(event.registrationEndDate) ? "OPEN" : "CLOSED"}
+                        OPEN
                       </p>
                     </div>
 
@@ -176,30 +186,42 @@ const AllEvents = () => {
                   {/* Hidden details that appear on hover */}
                   <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-70 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <div className="text-center p-6">
-                      <div className="inline-block p-3 rounded-full bg-[#00FCB8] bg-opacity-20 mb-4">
+                      {/* <div className="inline-block p-3 rounded-full bg-[#00FCB8] bg-opacity-20 mb-4">
                         <div className="w-12 h-12 flex items-center justify-center text-3xl">
                           💻
                         </div>
-                      </div>
+                      </div> */}
                       <h3 className="text-2xl font-bold text-white mb-2">
                         {event.name}
                       </h3>
-                      <p className="text-gray-300 mb-6">
-                        {event.description || "Join us for an exciting hackathon!"}
-                      </p>
+                      
+                      {/* Description with fixed height and HTML rendering */}
+                      {/* <div className="h-24 overflow-y-auto mb-4 text-gray-300 description-content">
+                        {event.description ? (
+                          <div dangerouslySetInnerHTML={{ __html: event.description }} />
+                        ) : (
+                          <p>Join us for an exciting hackathon!</p>
+                        )}
+                      </div> */}
+                      
                       <div className="mb-4">
                         <p className="text-sm text-gray-400">Prize Pool:</p>
-                        {event.prize?.map((prizeItem) => (
-                          <p key={prizeItem._id} className="text-white">
-                            {prizeItem.position}st: ₹{prizeItem.amount}
-                          </p>
-                        ))}
+                        {event.prize && Array.isArray(event.prize) && event.prize.length > 0 ? (
+                          event.prize.map((prizeItem, idx) => (
+                            <p key={idx} className="text-white">
+                              {prizeItem.position}{getOrdinalSuffix(prizeItem.position)}: ₹{prizeItem.amount.toLocaleString()}
+                            </p>
+                          ))
+                        ) : (
+                          <p className="text-white">To be announced</p>
+                        )}
                       </div>
                       <motion.button
                         className="px-6 py-2 bg-[#00FCB8] text-black font-bold rounded-full"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        onClick={() => {
+                        onClick={(e) => {
+                          e.stopPropagation();
                           window.location.href = `/events/${event.slug}`;
                         }}
                       >
@@ -223,6 +245,25 @@ const AllEvents = () => {
       </div>
     </div>
   );
+};
+
+// Helper function to add ordinal suffix to numbers
+const getOrdinalSuffix = (n) => {
+  if (n <= 0) return '';
+  
+  const j = n % 10;
+  const k = n % 100;
+  
+  if (j === 1 && k !== 11) {
+    return 'st';
+  }
+  if (j === 2 && k !== 12) {
+    return 'nd';
+  }
+  if (j === 3 && k !== 13) {
+    return 'rd';
+  }
+  return 'th';
 };
 
 export default AllEvents;

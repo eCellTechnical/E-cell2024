@@ -236,8 +236,8 @@ Ready to witness the rise of game-changers?
         </div>
         
         <div className="text-right">
-          <p className="text-gray-400 text-sm">Early Bird</p>
-          <p className="text-3xl font-bold text-[#00FCB8]">₹999</p>
+          <p className="text-gray-400 text-sm">Prime</p>
+          <p className="text-3xl font-bold text-[#00FCB8]">Entry</p>
         </div>
       </div>
 
