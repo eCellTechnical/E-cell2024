@@ -65,7 +65,7 @@ function Header() {
             <Link to="/endeavour">
               <img
                 src={endeavourLogo || "end2.png"}
-                className="w-14 h-8 lg:w-44 bg-black lg:h-10 z-20 cursor-pointer"
+                className="md:w-12 h-8 lg:w-56 bg-black lg:h-10 z-20 cursor-pointer"
                 alt="Endeavour logo"
               />
             </Link>

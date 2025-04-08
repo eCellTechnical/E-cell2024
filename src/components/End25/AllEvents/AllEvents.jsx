@@ -167,7 +167,7 @@ const AllEvents = () => {
                           FEE
                         </p>
                         <p className="text-xl font-bold text-white">
-                          ${event.fees}
+                        ₹{event.fees}
                         </p>
                       </div>
                     </div>
@@ -191,7 +191,7 @@ const AllEvents = () => {
                         <p className="text-sm text-gray-400">Prize Pool:</p>
                         {event.prize?.map((prizeItem) => (
                           <p key={prizeItem._id} className="text-white">
-                            {prizeItem.position}st: ${prizeItem.amount}
+                            {prizeItem.position}st: ₹{prizeItem.amount}
                           </p>
                         ))}
                       </div>

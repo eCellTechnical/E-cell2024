@@ -48,6 +48,11 @@ const Organizer = () => {
       name: "Mr. Sourabh Goyal",
       position: "Founder @ Goalchy Club",
     },
+     {
+      image: SourabhGoyal,
+      name: "Mr. Sourabh Goyal",
+      position: "Founder @ Goalchy Club",
+    },
   ];
   return (
     <div className="dark:bg-gray-900 bg-white" id="team">
