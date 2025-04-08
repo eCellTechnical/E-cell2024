@@ -14,7 +14,14 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import PropTypes from "prop-types";
 
-const EventRegistrationPopup = ({ isOpen, onClose, eventSlug, eventName, eventFees, qrCode }) => {
+const EventRegistrationPopup = ({
+  isOpen,
+  onClose,
+  eventSlug,
+  eventName,
+  eventFees,
+  qrCode,
+}) => {
   const [activeTab, setActiveTab] = useState("create"); // 'create' or 'join'
   const [formData, setFormData] = useState({
     eventSlug: eventSlug || "",
@@ -152,7 +159,7 @@ const EventRegistrationPopup = ({ isOpen, onClose, eventSlug, eventName, eventFe
   };
 
   if (!isOpen) return null;
-  
+
   const displayEventName =
     eventName ||
     (formData.eventSlug ? formData.eventSlug.replace(/-/g, " ") : "the event");
@@ -169,7 +176,7 @@ const EventRegistrationPopup = ({ isOpen, onClose, eventSlug, eventName, eventFe
             <X size={24} />
           </button>
         </div>
-        
+
         <div className="p-6 md:p-8">
           <p className="mb-6 text-md text-gray-300">
             Register for{" "}
@@ -177,7 +184,7 @@ const EventRegistrationPopup = ({ isOpen, onClose, eventSlug, eventName, eventFe
               {displayEventName}
             </span>
           </p>
-          
+
           {/* Toggle between Create and Join Team */}
           <div className="flex mb-8 bg-[#111920] rounded-lg p-1.5 max-w-sm mx-auto">
             <button
@@ -201,25 +208,32 @@ const EventRegistrationPopup = ({ isOpen, onClose, eventSlug, eventName, eventFe
               Join Team
             </button>
           </div>
-          
+
           {success ? (
             <div className="rounded-md bg-[#0d3331] p-6 border border-[#00fcb8] flex items-center max-w-lg mx-auto">
               <div className="mr-4 text-[#00fcb8]">
-                <svg className="h-8 w-8" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                <svg
+                  className="h-8 w-8"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                    clipRule="evenodd"
+                  />
                 </svg>
               </div>
               <div>
                 <h3 className="text-lg font-medium text-[#00fcb8]">
-                  {activeTab === "create" ? "Registration" : "Join"}{" "}
-                  successful!
+                  {activeTab === "create" ? "Registration" : "Join"} successful!
                 </h3>
                 <div className="mt-2 text-md text-green-300">
                   <p>
                     {activeTab === "create"
                       ? "Your team has been registered."
-                      : "You have successfully joined the team."}
-                    {" "}Redirecting to confirmation page...
+                      : "You have successfully joined the team."}{" "}
+                    Redirecting to confirmation page...
                   </p>
                 </div>
               </div>
@@ -248,7 +262,7 @@ const EventRegistrationPopup = ({ isOpen, onClose, eventSlug, eventName, eventFe
                     className="bg-[#111920] appearance-none block w-full px-4 py-3 border border-gray-700 rounded-md shadow-sm placeholder-gray-500 text-gray-300 focus:outline-none focus:ring-[#00fcb8] focus:border-[#00fcb8] sm:text-sm"
                   />
                 </div>
-                
+
                 <div>
                   <label
                     htmlFor="leaderId"
@@ -266,7 +280,7 @@ const EventRegistrationPopup = ({ isOpen, onClose, eventSlug, eventName, eventFe
                   />
                 </div>
               </div>
-              
+
               {activeTab === "create" ? (
                 <>
                   <div>
@@ -287,27 +301,38 @@ const EventRegistrationPopup = ({ isOpen, onClose, eventSlug, eventName, eventFe
                       placeholder="Enter your team name"
                     />
                   </div>
-                  
+
                   {/* Payment Section */}
                   <div className="bg-[#111920] p-6 rounded-xl border border-gray-700 mt-8">
                     <h3 className="text-white font-bold text-lg mb-4 flex items-center">
                       <span className="mr-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-[#00fcb8]" viewBox="0 0 20 20" fill="currentColor">
-                          <path fillRule="evenodd" d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="h-5 w-5 text-[#00fcb8]"
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z"
+                            clipRule="evenodd"
+                          />
                         </svg>
                       </span>
                       Payment Details
                     </h3>
-                    
+
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="flex flex-col">
                         <div className="mb-6">
-                          <p className="text-gray-300 text-sm mb-2">Amount to Pay:</p>
+                          <p className="text-gray-300 text-sm mb-2">
+                            Amount to Pay:
+                          </p>
                           <p className="text-[#00fcb8] font-bold text-2xl">
                             ₹{discountedPrice}
                           </p>
                         </div>
-                        
+
                         <div className="mb-4">
                           <label
                             htmlFor="paymentTransactionId"
@@ -326,7 +351,7 @@ const EventRegistrationPopup = ({ isOpen, onClose, eventSlug, eventName, eventFe
                             placeholder="Enter your payment transaction ID"
                           />
                         </div>
-                        
+
                         <div>
                           <label
                             htmlFor="paymentScreenshot"
@@ -339,19 +364,22 @@ const EventRegistrationPopup = ({ isOpen, onClose, eventSlug, eventName, eventFe
                               <div className="flex flex-col items-center justify-center pt-5 pb-6">
                                 <Upload className="w-8 h-8 mb-3 text-gray-400" />
                                 <p className="mb-2 text-sm text-gray-400">
-                                  <span className="font-semibold">Click to upload</span> or drag and drop
+                                  <span className="font-semibold">
+                                    Click to upload
+                                  </span>{" "}
+                                  or drag and drop
                                 </p>
                                 <p className="text-xs text-gray-500">
-                                  {formData.paymentScreenshot 
-                                    ? formData.paymentScreenshot.name 
+                                  {formData.paymentScreenshot
+                                    ? formData.paymentScreenshot.name
                                     : "PNG, JPG (MAX. 5MB)"}
                                 </p>
                               </div>
-                              <input 
-                                id="paymentScreenshot" 
-                                name="paymentScreenshot" 
-                                type="file" 
-                                className="hidden" 
+                              <input
+                                id="paymentScreenshot"
+                                name="paymentScreenshot"
+                                type="file"
+                                className="hidden"
                                 accept="image/*"
                                 onChange={handleFileChange}
                                 required
@@ -360,13 +388,15 @@ const EventRegistrationPopup = ({ isOpen, onClose, eventSlug, eventName, eventFe
                           </div>
                         </div>
                       </div>
-                      
+
                       <div className="flex flex-col items-center justify-center bg-gray-50 p-4 rounded-lg">
-                        <p className="text-gray-700 text-sm font-medium mb-3">Scan QR Code to Pay:</p>
+                        <p className="text-gray-700 text-sm font-medium mb-3">
+                          Scan QR Code to Pay:
+                        </p>
                         <div className="flex justify-center bg-white p-3 rounded-lg shadow-md">
-                          <img 
-                            src={qrCode} 
-                            alt="Payment QR Code" 
+                          <img
+                            src={qrCode}
+                            alt="Payment QR Code"
                             className="w-full max-w-xs object-contain"
                           />
                         </div>
@@ -394,13 +424,24 @@ const EventRegistrationPopup = ({ isOpen, onClose, eventSlug, eventName, eventFe
                   />
                 </div>
               )}
-              
+
               {error && (
                 <div className="rounded-md bg-[#331111] p-5 border border-red-500 mb-6 animate-pulse">
                   <div className="flex items-center">
                     <div className="mr-4 text-red-500">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-6 w-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
                       </svg>
                     </div>
                     <div>
@@ -415,7 +456,7 @@ const EventRegistrationPopup = ({ isOpen, onClose, eventSlug, eventName, eventFe
                   </div>
                 </div>
               )}
-              
+
               <div className="pt-4">
                 <button
                   type="submit"
@@ -424,14 +465,34 @@ const EventRegistrationPopup = ({ isOpen, onClose, eventSlug, eventName, eventFe
                 >
                   {isSubmitting ? (
                     <div className="flex items-center">
-                      <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-black" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      <svg
+                        className="animate-spin -ml-1 mr-3 h-5 w-5 text-black"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <circle
+                          className="opacity-25"
+                          cx="12"
+                          cy="12"
+                          r="10"
+                          stroke="currentColor"
+                          strokeWidth="4"
+                        ></circle>
+                        <path
+                          className="opacity-75"
+                          fill="currentColor"
+                          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                        ></path>
                       </svg>
-                      {activeTab === "create" ? "Creating Team..." : "Joining Team..."}
+                      {activeTab === "create"
+                        ? "Creating Team..."
+                        : "Joining Team..."}
                     </div>
+                  ) : activeTab === "create" ? (
+                    "Create Team"
                   ) : (
-                    activeTab === "create" ? "Create Team" : "Join Team"
+                    "Join Team"
                   )}
                 </button>
               </div>
@@ -466,7 +527,7 @@ function App() {
         );
         console.log(response.data.data.event);
         setEventData(response.data.data.event);
-        
+
         setError(null);
       } catch (err) {
         console.error("Error fetching event data:", err);
@@ -508,35 +569,61 @@ function App() {
   }, [eventSlug]);
 
   useEffect(() => {
-    if (!eventData) return;
-
+    if (!eventData?.registrationEndDate) return;
+  
     const calculateTimeRemaining = () => {
-      const endDate = new Date(eventData.registrationEndDate);
-      const now = new Date();
-      const difference = endDate - now;
-
-      if (difference <= 0) {
+      try {
+        // Parse the date string properly (assuming it's in ISO format)
+        const endDate = new Date(eventData.registrationEndDate);
+        
+        // Validate the date
+        if (isNaN(endDate.getTime())) {
+          console.error('Invalid registration end date format');
+          return { days: 0, hours: 0, minutes: 0, seconds: 0 };
+        }
+  
+        const now = new Date();
+        const difference = endDate - now;
+  
+        if (difference <= 0) {
+          return { days: 0, hours: 0, minutes: 0, seconds: 0 };
+        }
+  
+        const seconds = Math.floor((difference / 1000) % 60);
+        const minutes = Math.floor((difference / (1000 * 60)) % 60);
+        const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+  
+        return { days, hours, minutes, seconds };
+      } catch (error) {
+        console.error('Error in countdown calculation:', error);
         return { days: 0, hours: 0, minutes: 0, seconds: 0 };
       }
-
-      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-      const hours = Math.floor(
-        (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-      );
-      const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-
-      return { days, hours, minutes, seconds };
     };
-
-    setTimeRemaining(calculateTimeRemaining());
-    const timer = setInterval(() => {
-      setTimeRemaining(calculateTimeRemaining());
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, [eventData]);
-
+  
+    // Initial calculation
+    const initialTime = calculateTimeRemaining();
+    setTimeRemaining(initialTime);
+  
+    // Only start timer if time hasn't expired
+    if (initialTime.days > 0 || initialTime.hours > 0 || initialTime.minutes > 0 || initialTime.seconds > 0) {
+      const timer = setInterval(() => {
+        setTimeRemaining(prev => {
+          const newTime = calculateTimeRemaining();
+          
+          // Check if time has expired
+          if (newTime.days <= 0 && newTime.hours <= 0 && newTime.minutes <= 0 && newTime.seconds <= 0) {
+            clearInterval(timer);
+            return newTime;
+          }
+          
+          return newTime;
+        });
+      }, 1000);
+  
+      return () => clearInterval(timer);
+    }
+  }, [eventData?.registrationEndDate]);
   if (loading) {
     return (
       <div className="font-sans pt-20 leading-[1.5] font-normal text-white bg-[#131313] antialiased flex justify-center items-center h-screen">
@@ -640,11 +727,18 @@ function App() {
                 <hr className="w-full h-2 opacity-20" />
                 <div className="flex flex-col sm:flex-row gap-3 w-full">
                   <div className="w-full sm:w-[50%] rounded-md bg-[#18222D] p-4 mb-3 sm:mb-0">
-                    <p className="text-[16px] font-normal">PRIZE MONEY</p>
+                    <p className="text-[16px] font-normal">PRIZE POOL</p>
                     <p className="text-[#00fcb8] text-[18px] flex font-bold items-center">
                       <IndianRupee className="p-1" />
-                      {eventData.prize?.[0]?.amount > 0
-                        ? `Rs.${eventData.prize[0].amount}`
+                      {eventData.prize?.length > 0
+                        ? eventData.prize[0].amount > 0
+                          ? eventData.prize.length === 1
+                            ? `Rs.${eventData.prize[0].amount}`
+                            : `Rs.${eventData.prize.reduce(
+                                (sum, prize) => sum + (prize.amount || 0),
+                                0
+                              )}`
+                          : "To be announced"
                         : "To be announced"}
                     </p>
                   </div>
@@ -703,155 +797,159 @@ function App() {
                   ))}
                 </div>
               </div>
-            </div>
-            <div className="lg:col-span-3 h-full mt-4 lg:mt-0">
-              <div className="lg:sticky lg:top-4 bg-[#18222D] rounded-lg">
-                <div className="bg-gradient-to-r text-black from-[#00fcb8] to-[#00d06d] rounded-t-lg p-3 md:p-4 flex items-center">
-                  <BadgePercent size={20} className="mr-2" />
-                  <div>
-                    <p className="font-bold text-sm md:text-base">
-                      Early Bird Discount
-                    </p>
-                    <p className="text-xs md:text-sm">
-                      {eventData.discount} off until registration closes
-                    </p>
-                  </div>
-                </div>
-                <div className="bg-[#111920] rounded-lg p-3 md:p-4 m-2 md:m-4">
-                  <div className="flex items-center mb-2 md:mb-3">
-                    <Clock size={16} className="mr-2 text-[#00fcb8]" />
-                    <h3 className="text-white font-bold text-sm md:text-base">
-                      Registration Closes In
-                    </h3>
-                  </div>
-                  <div className="grid grid-cols-4 gap-1 md:gap-2 text-center">
-                    <div className="bg-[#18222D] rounded p-1 md:p-2">
-                      <p className="text-[#00fcb8] text-lg md:text-2xl font-bold">
-                        {timeRemaining.days}
-                      </p>
-                      <p className="text-[10px] md:text-xs text-gray-400">
-                        Days
-                      </p>
+
+              <div className="flex flex-col gap-4 mt-8">
+                <p className="text-xl md:text-[24px] font-bold">
+                  FREQUENTLY ASKED QUESTIONS
+                </p>
+                <div className="space-y-4">
+                  {eventData.faq?.map((item, index) => (
+                    <div key={index} className="bg-[#18222D] rounded-lg p-4">
+                      <details className="group">
+                        <summary className="flex justify-between items-center font-medium cursor-pointer list-none">
+                          <span className="text-[#00fcb8]">{item.ques}</span>
+                          <span className="transition group-open:rotate-180">
+                            <svg
+                              fill="none"
+                              height="24"
+                              shapeRendering="geometricPrecision"
+                              stroke="currentColor"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="1.5"
+                              viewBox="0 0 24 24"
+                              width="24"
+                            >
+                              <path d="M6 9l6 6 6-6"></path>
+                            </svg>
+                          </span>
+                        </summary>
+                        <p className="text-gray-300 mt-3 group-open:animate-fadeIn">
+                          {item.ans}
+                        </p>
+                      </details>
                     </div>
-                    <div className="bg-[#18222D] rounded p-1 md:p-2">
-                      <p className="text-[#00fcb8] text-lg md:text-2xl font-bold">
-                        {timeRemaining.hours}
-                      </p>
-                      <p className="text-[10px] md:text-xs text-gray-400">
-                        Hours
-                      </p>
-                    </div>
-                    <div className="bg-[#18222D] rounded p-1 md:p-2">
-                      <p className="text-[#00fcb8] text-lg md:text-2xl font-bold">
-                        {timeRemaining.minutes}
-                      </p>
-                      <p className="text-[10px] md:text-xs text-gray-400">
-                        Mins
-                      </p>
-                    </div>
-                    <div className="bg-[#18222D] rounded p-1 md:p-2">
-                      <p className="text-[#00fcb8] text-lg md:text-2xl font-bold">
-                        {timeRemaining.seconds}
-                      </p>
-                      <p className="text-[10px] md:text-xs text-gray-400">
-                        Secs
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div className="bg-[#111920] p-3 md:p-4 mx-2 md:mx-4">
-                  <h3 className="text-white font-bold mb-2 md:mb-3 text-sm md:text-base">
-                    Price Details
-                  </h3>
-                  <div className="flex justify-between mb-1 md:mb-2 text-sm md:text-base">
-                    <p className="text-gray-400">Entry Fee</p>
-                    <p className="text-white flex items-center">
-                      <IndianRupee size={12} className="md:w-3.5 md:h-3.5" />
-                      <span>{eventData.fees}</span>
-                    </p>
-                  </div>
-                  <div className="flex justify-between mb-1 md:mb-2 text-sm md:text-base">
-                    <p className="text-gray-400">Discount</p>
-                    <p className="text-[#00fcb8] flex items-center">
-                      - <IndianRupee size={12} className="md:w-3.5 md:h-3.5" />
-                      <span>{discountAmount}</span>
-                    </p>
-                  </div>
-                  <hr className="border-gray-700 my-2 md:my-3" />
-                  <div className="flex justify-between font-bold text-sm md:text-base">
-                    <p className="text-white">Total</p>
-                    <p className="text-[#00fcb8] flex items-center">
-                      <IndianRupee size={12} className="md:w-3.5 md:h-3.5" />
-                      <span>{discountedPrice}</span>
-                    </p>
-                  </div>
-                </div>
-                <div className="p-3 md:p-4 mx-2 md:mx-4">
-                  <h3 className="text-white font-bold mb-2 md:mb-3 text-sm md:text-base">
-                    Event Details
-                  </h3>
-                  <div className="flex items-center mb-1 md:mb-2">
-                    <Users size={16} className="mr-2 text-gray-400" />
-                    <div>
-                      <p className="text-white text-xs md:text-sm">
-                        {registeredTeams} teams registered
-                      </p>
-                      <p className="text-[10px] md:text-xs text-gray-400">
-                        Max 60 teams allowed
-                      </p>
-                    </div>
-                  </div>
-                  <div className="w-full bg-[#18222D] rounded-full h-1.5 md:h-2 mt-1">
-                    <div
-                      className="bg-[#00fcb8] h-1.5 md:h-2 rounded-full"
-                      style={{ width: `${registrationPercentage}%` }}
-                    ></div>
-                  </div>
-                </div>
-                <div className="flex flex-col gap-2 md:gap-3 p-3 md:p-4 mx-2 md:mx-4 sticky bottom-0 md:relative bg-[#18222D] md:bg-transparent">
-                  <button
-                    className="bg-[#00fcb8] cursor-pointer hover:bg-green-500 text-black font-bold rounded-lg py-2 md:py-3 w-full text-sm md:text-base"
-                    onClick={() => {
-                      if (
-                        isRegistered &&
-                        localStorage.getItem("userId") !== null &&
-                        localStorage.getItem("token") !== undefined
-                      ) {
-                        window.location.href = `/endeavour/profile?events`;
-                      } else if (
-                        localStorage.getItem("userId") === null ||
-                        localStorage.getItem("token") === undefined
-                      ) {
-                        window.location.href = `/endeavour/login`;
-                      } else {
-                        setIsRegistrationOpen(true);
-                      }
-                    }}
-                  >
-                    {isRegistered ? "Dashboard" : "Register Now"}
-                  </button>
-                  <button
-                    className="flex justify-center cursor-pointer items-center bg-[#111920] hover:bg-[#0e161f] text-white font-semibold rounded-lg py-2 md:py-3 w-full text-sm md:text-base"
-                    onClick={() => {
-                      const currentUrl = window.location.href;
-                      const message = `Check out this event: ₹{currentUrl}`;
-                      const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(
-                        message
-                      )}`;
-                      window.open(whatsappUrl, "_blank");
-                    }}
-                  >
-                    <Share2 size={16} className="mr-2" />
-                    Share Event
-                  </button>
-                </div>
-                <div className="rounded-md p-2 md:p-4">
-                  <p className="text-gray-400 text-xs md:text-sm text-center">
-                    Need help? Contact support
-                  </p>
+                  ))}
                 </div>
               </div>
             </div>
+
+            <div className="lg:col-span-3 h-full mt-4 lg:mt-0">
+  <div className="lg:sticky lg:top-4 bg-[#18222D] rounded-lg overflow-hidden">
+    {/* Glassy Effect Banner */}
+    <div className="relative bg-gradient-to-r from-[#00fcb8]/20 to-[#00d06d]/20 backdrop-blur-sm p-4 border-b border-[#00fcb8]/30">
+      <div className="absolute inset-0 bg-[#18222D]/50 rounded-t-lg"></div>
+      <div className="relative z-10 flex items-center">
+        <Clock size={20} className="mr-3 text-[#00fcb8]" />
+        <div>
+          <p className="font-bold text-[#00fcb8] text-sm md:text-base">
+            REGISTRATION ENDING SOON!
+          </p>
+          <p className="text-[#00fcb8]/80 text-xs md:text-sm">
+            Limited spots available - Don't miss out
+          </p>
+        </div>
+      </div>
+    </div>
+
+    {/* Countdown Timer */}
+    <div className="bg-[#111920]/80 backdrop-blur-sm rounded-lg p-4 m-3 border border-[#00fcb8]/20">
+      <div className="grid grid-cols-4 gap-2 text-center">
+        <div className="bg-[#18222D]/80 rounded p-2 border border-[#00fcb8]/10">
+          <p className="text-[#00fcb8] text-xl md:text-2xl font-bold">
+            {timeRemaining.days}
+          </p>
+          <p className="text-[10px] md:text-xs text-gray-300">Days</p>
+        </div>
+        <div className="bg-[#18222D]/80 rounded p-2 border border-[#00fcb8]/10">
+          <p className="text-[#00fcb8] text-xl md:text-2xl font-bold">
+            {timeRemaining.hours}
+          </p>
+          <p className="text-[10px] md:text-xs text-gray-300">Hours</p>
+        </div>
+        <div className="bg-[#18222D]/80 rounded p-2 border border-[#00fcb8]/10">
+          <p className="text-[#00fcb8] text-xl md:text-2xl font-bold">
+            {timeRemaining.minutes}
+          </p>
+          <p className="text-[10px] md:text-xs text-gray-300">Mins</p>
+        </div>
+        <div className="bg-[#18222D]/80 rounded p-2 border border-[#00fcb8]/10">
+          <p className="text-[#00fcb8] text-xl md:text-2xl font-bold">
+            {timeRemaining.seconds}
+          </p>
+          <p className="text-[10px] md:text-xs text-gray-300">Secs</p>
+        </div>
+      </div>
+    </div>
+
+    {/* Price Details with Glass Effect */}
+    <div className="bg-[#111920]/80 backdrop-blur-sm p-4 mx-3 my-4 rounded-lg border border-[#00fcb8]/20">
+      <h3 className="text-white font-bold mb-3 text-sm md:text-base flex items-center">
+        <IndianRupee size={16} className="mr-2 text-[#00fcb8]" />
+        PRICE DETAILS
+      </h3>
+      <div className="space-y-2">
+        <div className="flex justify-between">
+          <p className="text-gray-300 text-sm">Entry Fee</p>
+          <p className="text-white flex items-center text-sm">
+            <IndianRupee size={12} className="mr-1" />
+            {eventData.fees}
+          </p>
+        </div>
+        <hr className="border-[#00fcb8]/10" />
+        <div className="flex justify-between font-bold">
+          <p className="text-white">Total</p>
+          <p className="text-[#00fcb8] flex items-center">
+            <IndianRupee size={12} className="mr-1" />
+            {eventData.fees}
+          </p>
+        </div>
+      </div>
+    </div>
+
+    {/* Action Buttons */}
+    <div className="p-4 mx-3 sticky bottom-0 bg-[#18222D]/80 backdrop-blur-sm border-t border-[#00fcb8]/20">
+      <div className="flex flex-col gap-3">
+        <button
+          className="bg-gradient-to-r from-[#00fcb8] to-[#00d06d] hover:from-[#00d06d] hover:to-[#00fcb8] text-black font-bold rounded-lg py-3 w-full text-sm md:text-base transition-all transform hover:scale-[1.01] shadow-lg shadow-[#00fcb8]/20"
+          onClick={() => {
+            if (isRegistered &&
+                localStorage.getItem("userId") !== null &&
+                localStorage.getItem("token") !== undefined) {
+              window.location.href = `/endeavour/profile?events`;
+            } else if (localStorage.getItem("userId") === null ||
+                      localStorage.getItem("token") === undefined) {
+              window.location.href = `/endeavour/login`;
+            } else {
+              setIsRegistrationOpen(true);
+            }
+          }}
+        >
+          {isRegistered ? "GO TO DASHBOARD" : "REGISTER NOW"}
+        </button>
+        <button
+          className="flex justify-center items-center bg-[#111920]/80 hover:bg-[#0e161f] text-white font-semibold rounded-lg py-3 w-full text-sm md:text-base border border-[#00fcb8]/30 transition-all"
+          onClick={() => {
+            const currentUrl = window.location.href;
+            const message = `Check out this event: ${currentUrl}`;
+            const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, "_blank");
+          }}
+        >
+          <Share2 size={16} className="mr-2" />
+          SHARE EVENT
+        </button>
+      </div>
+    </div>
+
+    {/* Support */}
+    <div className="rounded-md p-3 text-center">
+      <p className="text-gray-400 text-xs md:text-sm">
+        Need help? <span className="text-[#00fcb8] cursor-pointer hover:underline">Contact support</span>
+      </p>
+    </div>
+  </div>
+</div>
           </div>
         </div>
       </div>
