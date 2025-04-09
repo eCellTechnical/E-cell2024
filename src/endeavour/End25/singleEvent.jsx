@@ -731,7 +731,7 @@ function App() {
     },
     {
       id: 2,
-      label: "Prize pool",
+      label: "Prizes Worth " + eventData.prize[0].amount +"K+",
       icon: <IndianRupee color="white" size={20} className="md:w-6 md:h-6" />,
       title: "Rewards",
     },
