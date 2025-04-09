@@ -20,7 +20,7 @@ function ForgotPassword() {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/v1/forgot-password",
+        "https://two5-backend.onrender.com/api/v1/forgot-password",
         { email }
       );
 

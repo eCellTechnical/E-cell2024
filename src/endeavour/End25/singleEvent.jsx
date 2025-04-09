@@ -100,7 +100,7 @@ useEffect(() => {
       // Upload payment screenshot to Cloudinary
       const screenshotUrl = await uploadImage(formData.paymentScreenshot);
       const response = await axios.post(
-        "http://localhost:5000/api/v1/addTeam",
+        "https://two5-backend.onrender.com/api/v1/addTeam",
         {
           eventSlug: formData.eventSlug,
           leaderId: formData.leaderId,
@@ -135,7 +135,7 @@ useEffect(() => {
         throw new Error("Team code is required");
       }
       const response = await axios.post(
-        "http://localhost:5000/api/v1/joinTeam",
+        "https://two5-backend.onrender.com/api/v1/joinTeam",
         {
           teamCode: formData.teamCode,
           userId: formData.leaderId,
@@ -525,7 +525,7 @@ function App() {
       try {
         setLoading(true);
         const response = await axios.get(
-          `http://localhost:5000/api/v1/events/${eventSlug}`
+          `https://two5-backend.onrender.com/api/v1/events/${eventSlug}`
         );
         console.log(response.data.data.event);
         setEventData(response.data.data.event);
@@ -547,7 +547,7 @@ function App() {
       try {
         // Make POST request to the user endpoint
         const response = await axios.get(
-          `http://localhost:5000/api/v1/users/${userId}`,
+          `https://two5-backend.onrender.com/api/v1/users/${userId}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -603,7 +603,7 @@ function App() {
       // const token = localStorage.getItem("token");
       if (userId) {
         const response = await axios.post(
-          `http://localhost:5000/api/v1/events/check-registration`,
+          `https://two5-backend.onrender.com/api/v1/events/check-registration`,
           {
             eventSlug: eventSlug,
             userId: userId,

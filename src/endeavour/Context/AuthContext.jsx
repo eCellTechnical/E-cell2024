@@ -114,7 +114,7 @@ export const AuthProvider = ({ children }) => {
       const userId = localStorage.getItem('userId');
       if (!userId) return;
       
-      const response = await axios.get(`http://localhost:5000/api/v1/users/${userId}`);
+      const response = await axios.get(`https://two5-backend.onrender.com/api/v1/users/${userId}`);
       
       if (response.data.success) {
         setUser(response.data.data.user);
@@ -133,7 +133,7 @@ export const AuthProvider = ({ children }) => {
   // Refresh token function
   const refreshToken = async () => {
     try {
-      const response = await axios.post('http://localhost:5000/api/v1/refresh-token');
+      const response = await axios.post('https://two5-backend.onrender.com/api/v1/refresh-token');
       
       if (response.data.success) {
         const { token, user: userData } = response.data.data;
@@ -171,7 +171,7 @@ export const AuthProvider = ({ children }) => {
       setLoading(true);
       
       const response = await axios.post(
-        "http://localhost:5000/api/v1/login",
+        "https://two5-backend.onrender.com/api/v1/login",
         { email, password }
       );
 
@@ -232,7 +232,7 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem('userId');
     
     // Clear server-side session/cookies
-    axios.post('http://localhost:5000/api/v1/logout')
+    axios.post('https://two5-backend.onrender.com/api/v1/logout')
       .catch(err => console.error("Logout request failed:", err));
     
     // Update state

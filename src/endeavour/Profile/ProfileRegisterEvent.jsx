@@ -23,7 +23,7 @@ function ProfileRegisteredEvents() {
     
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/v1/team/user/registered-events",
+        "https://two5-backend.onrender.com/api/v1/team/user/registered-events",
         { userId },
         { 
           headers: { 

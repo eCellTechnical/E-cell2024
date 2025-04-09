@@ -27,7 +27,7 @@ function Register() {
       setIsChecking(true);
       try {
         const res = await axios.post(
-          `http://localhost:5000/api/v1/search-username`,
+          `https://two5-backend.onrender.com/api/v1/search-username`,
           { name: formData.name }
         );
         setValidUserName(res.data.msg === "Not Taken" ? 1 : 0);
@@ -65,7 +65,7 @@ function Register() {
     
     try {
       const response = await axios.post(
-        `http://localhost:5000/api/v1/register`, 
+        `https://two5-backend.onrender.com/api/v1/register`, 
         {
           ...formData,
           isAdmin: false,

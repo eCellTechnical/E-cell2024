@@ -22,7 +22,7 @@ function Login() {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/v1/login",
+        "https://two5-backend.onrender.com/api/v1/login",
         { email, password }
       );
 

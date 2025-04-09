@@ -72,7 +72,7 @@ function VerifyOTP() {
   const handleResendOTP = async () => {
     setDisable(true);
     try {
-      const response = await axios.post("http://localhost:5000/api/v1/resend-otp", {
+      const response = await axios.post("https://two5-backend.onrender.com/api/v1/resend-otp", {
         email: email
       });
       
@@ -125,7 +125,7 @@ function VerifyOTP() {
     }
     
     try {
-      const response = await axios.post("http://localhost:5000/api/v1/verify-otp", {
+      const response = await axios.post("https://two5-backend.onrender.com/api/v1/verify-otp", {
         email: email,
         otp: enteredOTP
       });

@@ -70,7 +70,7 @@ function Profile() {
 
     try {
       const response = await axios.get(
-        `http://localhost:5000/api/v1/users/${userId}`,
+        `https://two5-backend.onrender.com/api/v1/users/${userId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -123,7 +123,7 @@ function Profile() {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/v1/user/teams",
+        "https://two5-backend.onrender.com/api/v1/user/teams",
         { userId },
         {
           headers: {
@@ -195,7 +195,7 @@ function Profile() {
       }
 
       const response = await axios.put(
-        `http://localhost:5000/api/v1/users/${userId}`,
+        `https://two5-backend.onrender.com/api/v1/users/${userId}`,
         updateData,
         {
           headers: {

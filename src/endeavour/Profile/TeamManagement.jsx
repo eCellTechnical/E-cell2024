@@ -38,7 +38,7 @@ export default function TeamManagementPopup({ teamId, isOpen, onClose, onTeamJoi
     }
     
     try {
-      const teamResponse = await axios.get(`http://localhost:5000/api/v1/teams/${teamId}`, {
+      const teamResponse = await axios.get(`https://two5-backend.onrender.com/api/v1/teams/${teamId}`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -53,7 +53,7 @@ export default function TeamManagementPopup({ teamId, isOpen, onClose, onTeamJoi
         setIsLeader(teamData.leaderId === userId);
         
         const membersResponse = await axios.post(
-          "http://localhost:5000/api/v1/team/members", 
+          "https://two5-backend.onrender.com/api/v1/team/members", 
           { teamId },
           {
             headers: {
@@ -66,7 +66,7 @@ export default function TeamManagementPopup({ teamId, isOpen, onClose, onTeamJoi
           const memberIds = membersResponse.data.data.members.map(member => member.userId);
           
           const userDetailsPromises = memberIds.map(userId => 
-            axios.get(`http://localhost:5000/api/v1/users/${userId}`, {
+            axios.get(`https://two5-backend.onrender.com/api/v1/users/${userId}`, {
               headers: {
                 Authorization: `Bearer ${token}`
               }
@@ -111,7 +111,7 @@ export default function TeamManagementPopup({ teamId, isOpen, onClose, onTeamJoi
     try {
       setJoiningTeam(true);
       const response = await axios.post(
-        "http://localhost:5000/api/v1/joinTeam",
+        "https://two5-backend.onrender.com/api/v1/joinTeam",
         {
           userId,
           teamCode: joinTeamCode.trim()
