@@ -264,7 +264,7 @@ function Navbar() {
                 </div>
               </div>
               <a
-                onClick={() => history("/endeavour")}
+                onClick={() => window.location.href = "/endeavour"}
                 className="endeavour font-medium text-black dark:text-white px-5"
               >
                 Endeavour

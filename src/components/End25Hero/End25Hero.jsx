@@ -53,7 +53,7 @@ const End25Hero = () => {
 
   return (
     <div className="relative flex flex-col md:flex-row pt-22 md:pt-20 items-center justify-between w-full min-h-screen bg-black overflow-hidden px-6 md:px-12 lg:px-20 py-16">
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      <div className="absolute inset-0  overflow-hidden pointer-events-none">
         <motion.div
           className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] rounded-full bg-[#00FCB8] opacity-30 blur-[120px]"
           animate={{
@@ -85,7 +85,7 @@ const End25Hero = () => {
       <div className="w-full md:w-1/2 z-10">
         <motion.div
           variants={textVariants}
-          className="w-full flex mb-6"
+          className="w-full flex mb-6 z-50"
         >
           <div className="relative">
             <div className="absolute -top-1 -left-1 w-6 h-6 border-t-2 border-l-2 border-white opacity-60"></div>
@@ -244,7 +244,7 @@ Ready to witness the rise of game-changers?
 
       {/* CTA Button */}
       <motion.button
-        className="w-full py-3 bg-[#00FCB8] text-black font-bold rounded-md"
+        className="w-full py-3 bg-[#00FCB8]  text-black font-bold rounded-md"
         whileHover={{ scale: 1.03 }}
         whileTap={{ scale: 0.97 }}
         onClick={() => {
