@@ -90,7 +90,7 @@ const PastSpeakers = () => {
   };
 
   return (
-    <div className="w-full pl-20 pr-20 py-12 px-4">
+    <div className="w-full md:pl-20 md:pr-20 py-12 px-4">
       <div className="container mx-auto">
         <div className="text-white text-center mb-12 font-modern">
           <div className="inline-block px-4 py-2 bg-opacity-20 bg-[#00FCB8] rounded-md mb-3">

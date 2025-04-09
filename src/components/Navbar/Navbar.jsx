@@ -741,10 +741,8 @@ function Navbar() {
             </div>
             <a
 
-              onClick={() => {
-                window.location.href = "/";
-                setMainMenu(0);
-              }}
+onClick={() => window.location.href = "/endeavour"}
+
               className=""
             >
               Endeavour

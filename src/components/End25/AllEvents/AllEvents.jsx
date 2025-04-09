@@ -87,7 +87,7 @@ const AllEvents = () => {
   };
 
   return (
-    <div className="w-full pl-20 pr-20 mt-20 relative overflow-hidden">
+    <div className="w-full pl-20 md:pr-20 md:mt-20 relative overflow-hidden">
       {/* Background decorative elements */}
       <div className="absolute top-0 left-0 w-full h-full">
         <div className="absolute top-20 left-10 w-96 h-96 rounded-full bg-[#00FCB8] opacity-5 blur-3xl"></div>

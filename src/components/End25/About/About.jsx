@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 const EventInfoSection = () => {
   return (
-    <div className="w-full py-16 pl-20 pr-20 relative overflow-hidden">
+    <div className="w-full py-16 md:pl-20 md:pr-20 relative overflow-hidden">
       {/* Background decorative elements */}
       <div className="absolute top-0 left-0 w-full h-full opacity-5">
         <div className="absolute top-10 left-10 w-64 h-64 rounded-full border border-[#00FCB8]"></div>
