@@ -97,7 +97,12 @@ function Register() {
   }, [pathname]);
 
   return (
-    <div className=" bg-gradient-to-br from-black to-gray-900 flex items-center md:pb-16 justify-center pt-16 md:pt-28 md:p-28">
+    <div className="  bg-gradient-to-b from-black via-[#001a1a] to-black  flex items-center md:pb-16 justify-center pt-16 md:pt-28 md:p-28">
+      <div className="absolute top-0 left-0 w-full h-full border-t border-l border-teal-500/5 grid grid-cols-4 grid-rows-4">
+          {[...Array(16)].map((_, i) => (
+            <div key={i} className="border-b border-r border-teal-500/5" />
+          ))}
+        </div>
       <div className="w-full max-w-md bg-gray-900/80 backdrop-blur-sm rounded-2xl border border-gray-800 p-8 shadow-xl">
         {/* Header */}
         <div className="text-center mb-8">
@@ -128,7 +133,7 @@ function Register() {
                       : "border-red-500"
                     : "border-gray-700"
                 } rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent`}
-                placeholder="Anant Mittal"
+                placeholder="Example Name"
                 minLength={3}
                 maxLength={50}
                 required
@@ -173,7 +178,7 @@ function Register() {
               value={formData.email}
               onChange={handleChange}
               className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
-              placeholder="anant2428cs1587@kiet.edu"
+              placeholder="test1234@kiet.edu"
               required
             />
           </div>
@@ -230,7 +235,7 @@ function Register() {
               value={formData.phone}
               onChange={handleChange}
               className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
-              placeholder="+91 9876543210"
+              placeholder="9876543XXX"
               pattern="[6-9]{1}[0-9]{9}"
               maxLength={10}
               required

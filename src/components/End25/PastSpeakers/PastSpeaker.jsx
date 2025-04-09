@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import sandeepImage from '../../../assets/people/sandeep.jpg';
 
 const PastSpeakers = () => {
   const artistsData = [
@@ -22,14 +23,14 @@ const PastSpeakers = () => {
       name: "Sandeep Jain",
       designation: "Founder",
       company: "GeeksforGeeks",
-      image: "/src/assets/people/sandeep.jpg"
+      image: "https://media.licdn.com/dms/image/v2/C4D03AQGGB6CT6NqFzQ/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1618725077549?e=1749686400&v=beta&t=kvhr57aPIJmClQcA2t9-qcpOVKRA9pcjeCNsDgECSmc"
     },
     {
       id: 4,
       name: "Sachin Saxena",
       designation: "Marketing Head",
       company: "Innovaccer",
-      image: "/src/assets/people/sachin.jpeg"
+      image: "https://media.licdn.com/dms/image/v2/D5603AQG6MbR3O4M14g/profile-displayphoto-shrink_400_400/B56ZRq6.ztGoAg-/0/1736960635132?e=1749686400&v=beta&t=N_GqmUu7OFO5FD6v_U90uphlda3B1Ked0QBkvOLiOos"
     },
     {
       id: 5,
@@ -57,7 +58,7 @@ const PastSpeakers = () => {
       name: "Sunit Dutt",
       designation: "President of Devices",
       company: "Reliance Jio",
-      image: "/src/assets/people/sunil-dutt.jpg"
+      image: "https://media.licdn.com/dms/image/v2/C5103AQFPxmIaowkurA/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1526956438305?e=1749686400&v=beta&t=HGC5TpYnTc_3SfNvH4L4ckRmZ2b2xwAxqerfm132FmE"
     },
     {
       id: 9,
@@ -89,7 +90,7 @@ const PastSpeakers = () => {
   };
 
   return (
-    <div className="w-full py-12 px-4">
+    <div className="w-full pl-20 pr-20 py-12 px-4">
       <div className="container mx-auto">
         <div className="text-white text-center mb-12 font-modern">
           <div className="inline-block px-4 py-2 bg-opacity-20 bg-[#00FCB8] rounded-md mb-3">
@@ -140,6 +141,7 @@ const ArtistCard = ({ artist, className }) => {
         src={artist.image} 
         alt={artist.name} 
         className="w-full h-full object-cover"
+         loading="lazy"
       />
       
       <motion.div 

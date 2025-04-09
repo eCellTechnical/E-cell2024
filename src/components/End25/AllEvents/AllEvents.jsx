@@ -10,17 +10,20 @@ const AllEvents = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await axios.get("https://two5-backend.onrender.com/api/v1/events", {
-          headers: {
-            'Cache-Control': 'no-cache', // Prevent caching
-            'Pragma': 'no-cache'
+        const response = await axios.get(
+          "https://two5-backend.onrender.com/api/v1/events",
+          {
+            headers: {
+              "Cache-Control": "no-cache", // Prevent caching
+              Pragma: "no-cache",
+            },
           }
-        });
-        
+        );
+
         // If response.data is an array, use it directly
         if (Array.isArray(response.data.data.events)) {
           setEvents(response.data.data.events);
-        } 
+        }
         // If response.data has an events property that's an array
         else if (Array.isArray(response.data?.events)) {
           setEvents(response.data.events);
@@ -44,11 +47,8 @@ const AllEvents = () => {
   if (loading) {
     return (
       <div className="w-full mt-20 relative overflow-hidden">
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center">
-            <h2 className="text-5xl font-bold text-white mb-3">OUR EVENTS</h2>
-            <p className="text-gray-400">Loading events...</p>
-          </div>
+        <div className="min-h-screen bg-black text-white flex justify-center items-center">
+          <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-[#00f8bd]"></div>
         </div>
       </div>
     );
@@ -69,7 +69,7 @@ const AllEvents = () => {
 
   // Helper function to format date
   const formatDate = (dateString) => {
-    const options = { year: 'numeric', month: 'short', day: 'numeric' };
+    const options = { year: "numeric", month: "short", day: "numeric" };
     return new Date(dateString).toLocaleDateString(undefined, options);
   };
 
@@ -78,13 +78,16 @@ const AllEvents = () => {
     if (!prizeArray || !Array.isArray(prizeArray) || prizeArray.length === 0) {
       return "N/A";
     }
-    
-    const total = prizeArray.reduce((sum, prize) => sum + (prize.amount || 0), 0);
+
+    const total = prizeArray.reduce(
+      (sum, prize) => sum + (prize.amount || 0),
+      0
+    );
     return `₹${total.toLocaleString()}`;
   };
 
   return (
-    <div className="w-full mt-20 relative overflow-hidden">
+    <div className="w-full pl-20 pr-20 mt-20 relative overflow-hidden">
       {/* Background decorative elements */}
       <div className="absolute top-0 left-0 w-full h-full">
         <div className="absolute top-20 left-10 w-96 h-96 rounded-full bg-[#00FCB8] opacity-5 blur-3xl"></div>
@@ -109,7 +112,9 @@ const AllEvents = () => {
 
         {events.length === 0 ? (
           <div className="text-center py-20">
-            <p className="text-gray-400 text-xl">No events available at the moment.</p>
+            <p className="text-gray-400 text-xl">
+              No events available at the moment.
+            </p>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
@@ -122,7 +127,7 @@ const AllEvents = () => {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true, margin: "-100px" }}
                 onClick={() => {
-                  console.log("first")
+                  console.log("first");
                   window.location.href = `/endeavour/events/${event.slug}`;
                 }}
               >
@@ -134,7 +139,7 @@ const AllEvents = () => {
                   <div className="relative group-hover:opacity-0 transition-all ease-in-out duration-700 cursor-pointer z-10">
                     {event.prize[0] && (
                       <div className="inline-block text-xs font-medium px-3 py-1 rounded-full bg-[#00FCB8] bg-opacity-20 text-[#00FCB8] mb-4">
-                        Prize Pool: ₹{calculatePrizePool(event.prize)}
+                        Prize Pool: {calculatePrizePool(event.prize)}K+
                       </div>
                     )}
                     <div className="flex items-start justify-between mb-6">
@@ -142,16 +147,16 @@ const AllEvents = () => {
                         <h3 className="text-xl font-bold text-white mb-1 group-hover:text-[#00FCB8] transition-colors duration-300">
                           {event.name}
                         </h3>
-                        <p className="text-sm text-gray-400">{event.minTeamSize}-{event.maxTeamSize} members</p>
+                        <p className="text-sm text-gray-400">
+                          {event.minTeamSize}-{event.maxTeamSize} members
+                        </p>
                       </div>
                       {/* <div className="text-4xl">💻</div> Default icon */}
                     </div>
-                    
+
                     <div className="mb-6">
                       <p className="text-xs text-gray-400 mb-1">REGISTRATION</p>
-                      <p className="text-2xl font-bold text-[#00FCB8]">
-                        OPEN
-                      </p>
+                      <p className="text-2xl font-bold text-[#00FCB8]">OPEN</p>
                     </div>
 
                     {/* Divider line with animation */}
@@ -177,7 +182,7 @@ const AllEvents = () => {
                           FEE
                         </p>
                         <p className="text-xl font-bold text-white">
-                        ₹{event.fees}
+                          ₹{event.fees}
                         </p>
                       </div>
                     </div>
@@ -194,7 +199,7 @@ const AllEvents = () => {
                       <h3 className="text-2xl font-bold text-white mb-2">
                         {event.name}
                       </h3>
-                      
+
                       {/* Description with fixed height and HTML rendering */}
                       {/* <div className="h-24 overflow-y-auto mb-4 text-gray-300 description-content">
                         {event.description ? (
@@ -203,13 +208,15 @@ const AllEvents = () => {
                           <p>Join us for an exciting hackathon!</p>
                         )}
                       </div> */}
-                      
+
                       <div className="mb-4">
                         <p className="text-sm text-gray-400">Prize Pool:</p>
-                        {event.prize && Array.isArray(event.prize) && event.prize.length > 0 ? (
+                        {event.prize &&
+                        Array.isArray(event.prize) &&
+                        event.prize.length > 0 ? (
                           event.prize.map((prizeItem, idx) => (
                             <p key={idx} className="text-white">
-                              {prizeItem.position}{getOrdinalSuffix(prizeItem.position)}: ₹{prizeItem.amount.toLocaleString()}
+                              {prizeItem.amount.toLocaleString()}K+
                             </p>
                           ))
                         ) : (
@@ -225,7 +232,10 @@ const AllEvents = () => {
                           window.location.href = `/events/${event.slug}`;
                         }}
                       >
-                        {event.registrationEndDate && new Date() < new Date(event.registrationEndDate) ? "REGISTER NOW" : "VIEW DETAILS"}
+                        {event.registrationEndDate &&
+                        new Date() < new Date(event.registrationEndDate)
+                          ? "REGISTER NOW"
+                          : "VIEW DETAILS"}
                       </motion.button>
                     </div>
                   </div>
@@ -247,23 +257,22 @@ const AllEvents = () => {
   );
 };
 
-// Helper function to add ordinal suffix to numbers
 const getOrdinalSuffix = (n) => {
-  if (n <= 0) return '';
-  
+  if (n <= 0) return "";
+
   const j = n % 10;
   const k = n % 100;
-  
+
   if (j === 1 && k !== 11) {
-    return 'st';
+    return "st";
   }
   if (j === 2 && k !== 12) {
-    return 'nd';
+    return "nd";
   }
   if (j === 3 && k !== 13) {
-    return 'rd';
+    return "rd";
   }
-  return 'th';
+  return "th";
 };
 
 export default AllEvents;

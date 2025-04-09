@@ -42,7 +42,7 @@ function Login() {
         
         setTimeout(() => {
           const userId = localStorage.getItem("userId");
-          navigate(`/endeavour/${userId}`);
+          window.location.href = `/endeavour/${userId}`;
         }, 1000);
       } else {
         toast.error(response.data.message || "Login failed");
@@ -55,7 +55,12 @@ function Login() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black to-gray-900 flex items-center justify-center p-4">
+    <div className="min-h-screen  bg-gradient-to-b from-black via-[#001a1a] to-black  flex items-center justify-center p-4">
+      <div className="absolute top-0 left-0 w-full h-full border-t border-l border-teal-500/5 grid grid-cols-4 grid-rows-4">
+          {[...Array(16)].map((_, i) => (
+            <div key={i} className="border-b border-r border-teal-500/5" />
+          ))}
+        </div>
       <div className="w-full max-w-md bg-gray-900/80 backdrop-blur-sm rounded-2xl border border-gray-800 p-8 shadow-xl">
         {/* Logo/Header */}
         <div className="text-center mb-8">

@@ -35,10 +35,9 @@ const EventRegistrationPopup = ({
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
   const [discountedPrice, setDiscountedPrice] = useState(eventFees);
-  
 
-useEffect(() => {
-  const getEventSlugFromUrl = () => {
+  useEffect(() => {
+    const getEventSlugFromUrl = () => {
       if (typeof window !== "undefined") {
         const path = window.location.pathname;
         const match = path.match(/\/events\/([^/]+)/);
@@ -518,7 +517,8 @@ function App() {
   const [isRegistrationOpen, setIsRegistrationOpen] = useState(false);
   const [isRegistered, setIsRegistered] = useState(false);
   const [isUserFieldsValid, setIsUserFieldsValid] = useState(false);
-  const [showProfileIncompletePopup, setShowProfileIncompletePopup] = useState(false);
+  const [showProfileIncompletePopup, setShowProfileIncompletePopup] =
+    useState(false);
 
   useEffect(() => {
     const fetchEventData = async () => {
@@ -539,8 +539,6 @@ function App() {
       }
     };
 
-
-    
     const checkUserFields = async () => {
       const userId = localStorage.getItem("userId");
       const token = localStorage.getItem("token");
@@ -591,14 +589,9 @@ function App() {
       }
     };
 
-   checkUserFields()
-  
-    
+    checkUserFields();
 
     const checkIsRegisterd = async () => {
-
-
-
       const userId = localStorage.getItem("userId");
       // const token = localStorage.getItem("token");
       if (userId) {
@@ -631,7 +624,6 @@ function App() {
 
   useEffect(() => {
     if (!eventData?.registrationEndDate) return;
-
 
     const calculateTimeRemaining = () => {
       try {
@@ -698,8 +690,8 @@ function App() {
   }, [eventData?.registrationEndDate]);
   if (loading) {
     return (
-      <div className="font-sans pt-20 leading-[1.5] font-normal text-white bg-[#131313] antialiased flex justify-center items-center h-screen">
-        <div>Loading event details...</div>
+      <div className="min-h-screen bg-black text-white flex justify-center items-center">
+        <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-[#00f8bd]"></div>
       </div>
     );
   }
@@ -754,18 +746,15 @@ function App() {
     100
   );
 
-  
-
   return (
     <div className="font-sans pt-20 leading-[1.5] font-normal text-white bg-gradient-to-b from-black via-[#001a1a] to-black antialiased">
-       <div className="absolute top-0 left-0 w-full h-full border-t border-l border-teal-500/5 grid grid-cols-4 grid-rows-4">
-          {[...Array(16)].map((_, i) => (
-            <div key={i} className="border-b border-r border-teal-500/5" />
-          ))}
-        </div>
-      
+      <div className="absolute top-0 left-0 w-full h-full border-t border-l border-teal-500/5 grid grid-cols-4 grid-rows-4">
+        {[...Array(16)].map((_, i) => (
+          <div key={i} className="border-b border-r border-teal-500/5" />
+        ))}
+      </div>
+
       <div className="p-4 md:p-0">
-        
         <div className="w-full md:w-[90%] lg:w-[80%] mx-auto p-2 md:p-4 relative min-h-screen">
           <div className="grid grid-cols-1 lg:grid-cols-10 gap-3">
             <div className="lg:col-span-7 pb-8">
@@ -775,6 +764,7 @@ function App() {
                     src={eventData.poster}
                     className="w-full h-full rounded-lg"
                     alt="IPL Event"
+                    loading="lazy"
                   />
                 </div>
               </div>
@@ -786,16 +776,18 @@ function App() {
                   <button
                     className="p-2 sm:p-3 text-base sm:text-[18px] font-bold rounded-md w-full sm:w-[20%] text-black bg-[#00fcb8]"
                     onClick={async () => {
-                      if (isRegistered && 
-                          localStorage.getItem("userId") && 
-                          localStorage.getItem("token")) {
+                      if (
+                        isRegistered &&
+                        localStorage.getItem("userId") &&
+                        localStorage.getItem("token")
+                      ) {
                         window.location.href = `/endeavour/profile?events`;
-                      } 
-                      else if (!localStorage.getItem("userId") || 
-                               !localStorage.getItem("token")) {
+                      } else if (
+                        !localStorage.getItem("userId") ||
+                        !localStorage.getItem("token")
+                      ) {
                         window.location.href = `/endeavour/login`;
-                      }
-                      else {
+                      } else {
                         if (!isUserFieldsValid) {
                           setShowProfileIncompletePopup(true);
                         } else {
@@ -1004,16 +996,18 @@ function App() {
                     <button
                       className="bg-gradient-to-r from-[#00fcb8] to-[#00d06d] hover:from-[#00d06d] hover:to-[#00fcb8] text-black font-bold rounded-lg py-3 w-full text-sm md:text-base transition-all transform hover:scale-[1.01] shadow-lg shadow-[#00fcb8]/20"
                       onClick={async () => {
-                        if (isRegistered && 
-                            localStorage.getItem("userId") && 
-                            localStorage.getItem("token")) {
+                        if (
+                          isRegistered &&
+                          localStorage.getItem("userId") &&
+                          localStorage.getItem("token")
+                        ) {
                           window.location.href = `/endeavour/profile?events`;
-                        } 
-                        else if (!localStorage.getItem("userId") || 
-                                 !localStorage.getItem("token")) {
+                        } else if (
+                          !localStorage.getItem("userId") ||
+                          !localStorage.getItem("token")
+                        ) {
                           window.location.href = `/endeavour/login`;
-                        }
-                        else {
+                        } else {
                           if (!isUserFieldsValid) {
                             setShowProfileIncompletePopup(true);
                           } else {
@@ -1065,37 +1059,38 @@ function App() {
         qrCode={eventData.qrcode}
       />
 
-{showProfileIncompletePopup && (
-    <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-4">
-      <div className="bg-gradient-to-b from-[#1e2a38] to-[#18222D] rounded-xl w-full max-w-md p-6 border border-gray-700">
-        <div className="flex justify-between items-center mb-4">
-          <h3 className="text-xl font-bold text-[#00fcb8]">Profile Incomplete</h3>
-          <button 
-            onClick={() => setShowProfileIncompletePopup(false)}
-            className="text-gray-400 hover:text-white"
-          >
-            <X size={24} />
-          </button>
+      {showProfileIncompletePopup && (
+        <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-4">
+          <div className="bg-gradient-to-b from-[#1e2a38] to-[#18222D] rounded-xl w-full max-w-md p-6 border border-gray-700">
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="text-xl font-bold text-[#00fcb8]">
+                Profile Incomplete
+              </h3>
+              <button
+                onClick={() => setShowProfileIncompletePopup(false)}
+                className="text-gray-400 hover:text-white"
+              >
+                <X size={24} />
+              </button>
+            </div>
+            <p className="text-gray-300 mb-6">
+              Please complete your profile information before registering for
+              events.
+            </p>
+            <div className="flex justify-centre gap-3">
+              <button
+                onClick={() => {
+                  setShowProfileIncompletePopup(false);
+                  window.location.href = "/endeavour/profile";
+                }}
+                className="px-4 py-2 bg-[#00fcb8] text-black font-bold rounded-md"
+              >
+                Complete Profile
+              </button>
+            </div>
+          </div>
         </div>
-        <p className="text-gray-300 mb-6">
-          Please complete your profile information before registering for events.
-        </p>
-        <div className="flex justify-centre gap-3">
-        
-          <button
-            onClick={() => {
-              setShowProfileIncompletePopup(false);
-              window.location.href = '/endeavour/profile';
-            }}
-            className="px-4 py-2 bg-[#00fcb8] text-black font-bold rounded-md"
-          >
-            Complete Profile
-          </button>
-        </div>
-      </div>
-    </div>
-  )}
-
+      )}
     </div>
   );
 }

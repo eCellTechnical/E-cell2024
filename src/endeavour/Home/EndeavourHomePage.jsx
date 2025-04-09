@@ -261,7 +261,7 @@ function EndeavourHomePage() {
   }, [pathname]);
 
   return (
-    <div className="pt-[3vh] h-full w-full flex flex-col justify-center items-center text-white overflow-hidden relative">
+    <div className="pt-[3vh] h-full flex flex-col justify-center items-center text-white overflow-hidden relative">
       {/* Background Layers */}
       <div className="fixed inset-0 bg-gradient-to-b from-black via-[#001a1a] to-black" />
       
@@ -305,7 +305,7 @@ function EndeavourHomePage() {
 
         {/* Events Section */}
         <AnimatedSection
-          className="pt-6 z-10 w-full"
+          className="pt-6 z-10  w-full"
           delay={0.1}
           sectionName="EVENTS"
         >
@@ -317,7 +317,7 @@ function EndeavourHomePage() {
           >
             <Suspense fallback={
               <div className="h-[300px] md:h-[400px] flex items-center justify-center">
-                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-teal-500" />
+                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2  border-teal-500" />
               </div>
             }>
               <StaggerContainer>

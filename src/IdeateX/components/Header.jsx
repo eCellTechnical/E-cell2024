@@ -1,48 +1,43 @@
 import { useState, useEffect } from "react";
-import { Menu, X, User, LogOut } from "lucide-react"; // Added User and LogOut icons
-import { Link, useNavigate } from "react-router-dom"; // Added useNavigate
+import { Menu, X, User, LogOut } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
 import endeavourLogo from "../../assets/end2.png";
+
+const useAuth = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    // Check on initial load
+    const token = localStorage.getItem('token');
+    setIsLoggedIn(!!token);
+  }, []);
+
+  const login = (token) => {
+    localStorage.setItem('token', token);
+    setIsLoggedIn(true);
+  };
+
+  const logout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('userId');
+    setIsLoggedIn(false);
+  };
+
+  return { isLoggedIn, login, logout };
+};
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const { isLoggedIn, logout } = useAuth(); // Use the custom hook
   const navigate = useNavigate();
-  
-  // Check if user is logged in on component mount and when localStorage changes
-  useEffect(() => {
-    const checkLoginStatus = () => {
-      const token = localStorage.getItem('token');
-      setIsLoggedIn(!!token);
-    };
-    
-    // Check on component mount
-    checkLoginStatus();
-    
-    // Set up event listener for storage changes (in case user logs in/out in another tab)
-    window.addEventListener('storage', checkLoginStatus);
-    
-    // Cleanup
-    return () => {
-      window.removeEventListener('storage', checkLoginStatus);
-    };
-  }, []);
   
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
   const handleLogout = () => {
-    // Clear auth data from localStorage
-    localStorage.removeItem('token');
-    localStorage.removeItem('userId');
-    
-    // Update state
-    setIsLoggedIn(false);
-    
-    // Navigate to home page
+    logout(); // Use the logout function from the hook
     navigate('/endeavour');
-    
-    // Close menu if open
     if (isMenuOpen) {
       setIsMenuOpen(false);
     }
@@ -50,8 +45,6 @@ function Header() {
 
   const navigateToProfile = () => {
     navigate('/endeavour/profile');
-    
-    // Close menu if open
     if (isMenuOpen) {
       setIsMenuOpen(false);
     }

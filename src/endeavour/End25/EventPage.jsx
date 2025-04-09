@@ -1,8 +1,10 @@
 import AllEvents from "../../components/End25/AllEvents/AllEvents"
 
 function EndEventPage() {
+
+  
   return (
-    <div className="bg-black bg-opacity p-6 " >
+    <div className="bg-black  bg-opacity p-6 " >
          <div className="fixed inset-0 bg-gradient-to-b from-black via-[#001a1a] to-black"></div>
          
         <div className="absolute top-0 left-0 w-full h-full border-t border-l border-teal-500/5 grid grid-cols-4 grid-rows-4">

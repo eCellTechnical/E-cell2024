@@ -328,6 +328,7 @@ function Profile() {
                     src={`https://avatar.iran.liara.run/public/${
                       user.gender === "male" ? "`girl`" : "boy"
                     }`}
+                    loading="lazy"
                     alt="Profile"
                   />
                 ) : (
@@ -668,12 +669,12 @@ function Profile() {
                           </div>
                         </div>
                         <div className="mt-4 pt-3 border-t border-gray-800">
-                          <DescriptionText
+                          {/* <DescriptionText
                             htmlContent={team.eventId.description}
-                          />
+                          /> */}
 
                           <p className="text-gray-500 text-xs mt-2">
-                            Members: {team.members.length + 1}
+                            Members: {team.members.length}
                           </p>
                         </div>
                       </div>
