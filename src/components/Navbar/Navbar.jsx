@@ -740,8 +740,9 @@ function Navbar() {
               </div>
             </div>
             <a
+
               onClick={() => {
-                history("/endeavour");
+                window.location.href = "/";
                 setMainMenu(0);
               }}
               className=""
