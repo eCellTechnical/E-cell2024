@@ -804,15 +804,14 @@ function App() {
                   <div className="w-full sm:w-[50%] rounded-md bg-[#18222D] p-4 mb-3 sm:mb-0">
                     <p className="text-[16px] font-normal">PRIZE POOL</p>
                     <p className="text-[#00fcb8] text-[18px] flex font-bold items-center">
-                      <IndianRupee className="p-1" />
                       {eventData.prize?.length > 0
                         ? eventData.prize[0].amount > 0
                           ? eventData.prize.length === 1
-                            ? `Rs.${eventData.prize[0].amount}`
-                            : `Rs.${eventData.prize.reduce(
+                            ? `${eventData.prize[0].amount}K+`
+                            : `${eventData.prize.reduce(
                                 (sum, prize) => sum + (prize.amount || 0),
                                 0
-                              )}`
+                              )}K+`
                           : "To be announced"
                         : "To be announced"}
                     </p>
