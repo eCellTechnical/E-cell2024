@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
-// import img1 from "../../assets/Login/signup.jpeg";
 
 function VerifyOTP() {
   const navigate = useNavigate();
@@ -23,7 +22,7 @@ function VerifyOTP() {
         autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
-        theme: "colored",
+        theme: "dark",
       });
     }
   }, [location.state, navigate]);
@@ -48,7 +47,6 @@ function VerifyOTP() {
       newOTP[index] = value;
       setOTP(newOTP);
       
-      // Auto-focus next input
       if (value && index < 5) {
         document.getElementById(`otp-${index + 1}`).focus();
       }
@@ -56,7 +54,6 @@ function VerifyOTP() {
   };
 
   const handleKeyDown = (index, e) => {
-    // Handle backspace - move to previous input if current is empty
     if (e.key === "Backspace" && !otp[index] && index > 0) {
       document.getElementById(`otp-${index - 1}`).focus();
     }
@@ -85,7 +82,7 @@ function VerifyOTP() {
           autoClose: 3000,
           hideProgressBar: false,
           closeOnClick: true,
-          theme: "colored",
+          theme: "dark",
         });
         setTimer(60);
         setCanResend(false);
@@ -95,7 +92,7 @@ function VerifyOTP() {
           autoClose: 3000,
           hideProgressBar: false,
           closeOnClick: true,
-          theme: "colored",
+          theme: "dark",
         });
       }
     } catch (error) {
@@ -104,7 +101,7 @@ function VerifyOTP() {
         autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
-        theme: "colored",
+        theme: "dark",
       });
     }
     setDisable(false);
@@ -121,7 +118,7 @@ function VerifyOTP() {
         autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
-        theme: "colored",
+        theme: "dark",
       });
       setDisable(false);
       return;
@@ -139,7 +136,7 @@ function VerifyOTP() {
           autoClose: 3000,
           hideProgressBar: false,
           closeOnClick: true,
-          theme: "colored",
+          theme: "dark",
         });
         navigate("/endeavour/login");
       } else {
@@ -148,7 +145,7 @@ function VerifyOTP() {
           autoClose: 3000,
           hideProgressBar: false,
           closeOnClick: true,
-          theme: "colored",
+          theme: "dark",
         });
       }
     } catch (error) {
@@ -157,71 +154,99 @@ function VerifyOTP() {
         autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
-        theme: "colored",
+        theme: "dark",
       });
     }
     setDisable(false);
   };
 
   return (
-    <div className="flex flex-row w-full h-[100vh]">
-      {/* <div className="hidden md:flex w-1/2">
-        <img
-          src={img1}
-          className="h-full w-full"
-          alt=""
-          style={{ objectFit: "cover" }}
-        />
-      </div> */}
-      <div className="pt-[15vh] md:pt-[20vh] pb-8 bg-black text-white w-full  flex flex-col justify-center items-center">
-        <h1 className="text-4xl text-[#007827] font-semibold tracking-wider">
-          Verify Your Email
-        </h1>
-        <p className="text-[#6a6a6a] font-medium text-center px-8 mt-2">
-          We`ve sent a 6-digit OTP to <span className="font-bold">{email}</span>. Please enter it below to complete your registration.
-        </p>
-        
-        <form 
-          className="flex flex-col w-full justify-center items-center mt-8"
-          onSubmit={handleSubmit}
-        >
-          <div className="flex justify-center gap-2 md:gap-3 w-[75%] md:w-[60%]">
-            {otp.map((digit, index) => (
-              <input
-                key={index}
-                id={`otp-${index}`}
-                className="w-12 h-12 text-center border-2 text-black border-[#a5a5a57e] bg-white rounded-lg p-2 focus:outline-none focus:border-[#00f8bd] font-bold text-xl"
-                type="text"
-                maxLength="1"
-                value={digit}
-                onChange={(e) => handleOTPChange(index, e)}
-                onKeyDown={(e) => handleKeyDown(index, e)}
-                onPaste={index === 0 ? handlePaste : null}
-                autoFocus={index === 0}
-              />
-            ))}
+    <div className="min-h-screen bg-gradient-to-b from-black via-[#001a1a] to-black flex items-center justify-center p-4">
+       <div className="absolute top-0 left-0 w-full h-full border-t border-l border-teal-500/5 grid grid-cols-4 grid-rows-4">
+          {[...Array(16)].map((_, i) => (
+            <div key={i} className="border-b border-r border-teal-500/5" />
+          ))}
+        </div>
+      <div className="w-full z-50 max-w-md bg-teal-500/5 rounded-2xl shadow-xl overflow-hidden border border-gray-700">
+        <div className="p-8">
+          <div className="text-center mb-8">
+            <div className="w-16 h-16 bg-emerald-500/10 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg 
+                xmlns="http://www.w3.org/2000/svg" 
+                className="h-8 w-8 text-emerald-400" 
+                fill="none" 
+                viewBox="0 0 24 24" 
+                stroke="currentColor"
+              >
+                <path 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round" 
+                  strokeWidth={2} 
+                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" 
+                />
+              </svg>
+            </div>
+            <h1 className="text-2xl font-bold text-white mb-2">Verify Your Email</h1>
+            <p className="text-gray-400">
+              We've sent a code to <span className="font-medium text-emerald-400">{email}</span>
+            </p>
           </div>
-          
-          <button
-            type="submit"
-            disabled={disable}
-            className="w-[75%] md:w-[60%] bg-[#00f699] hover:bg-[#00f8bd] text-[#007827] font-bold rounded-full py-2 mt-8 z-10 transition-colors disabled:opacity-70"
-          >
-            Verify OTP
-          </button>
-          
-          <div className="flex justify-center w-full items-center z-10 text-sm mt-4 font-semibold text-[#595959]">
-            Didn`t receive the code?
+
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="flex justify-between space-x-3">
+              {otp.map((digit, index) => (
+                <input
+                  key={index}
+                  id={`otp-${index}`}
+                  className="w-12 h-14 text-center z-50 text-white text-2xl font-bold bg-black border-2 border-gray-600 rounded-lg focus:outline-none focus:border-emerald-400 focus:ring-2 focus:ring-emerald-400/30 transition-all"
+                  type="text"
+                  maxLength="1"
+                  value={digit}
+                  onChange={(e) => handleOTPChange(index, e)}
+                  onKeyDown={(e) => handleKeyDown(index, e)}
+                  onPaste={index === 0 ? handlePaste : null}
+                  autoFocus={index === 0}
+                />
+              ))}
+            </div>
+
             <button
-              type="button"
-              onClick={handleResendOTP}
-              disabled={!canResend || disable}
-              className={`ml-1 font-medium ${canResend ? "text-[#00f8bd] hover:text-[#007827]" : "text-gray-400"}`}
+              type="submit"
+              disabled={disable}
+              className="w-full py-3 z-50 cursor-pointer px-4 bg-emerald-500 hover:bg-emerald-600 text-white font-semibold rounded-lg shadow-md transition-colors duration-300 disabled:opacity-70 disabled:cursor-not-allowed"
             >
-              {canResend ? "Resend OTP" : `Resend in ${timer}s`}
+              {disable ? (
+                <span className="flex items-center justify-center">
+                  <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                  Verifying...
+                </span>
+              ) : (
+                "Verify OTP"
+              )}
             </button>
-          </div>
-        </form>
+
+            <div className="text-center text-sm text-gray-400">
+              Didn't receive the code?
+              <button
+                type="button"
+                onClick={handleResendOTP}
+                disabled={!canResend || disable}
+                className={`ml-1 font-medium ${canResend ? "text-emerald-400 hover:text-emerald-300" : "text-gray-500"}`}
+              >
+                {canResend ? "Resend OTP" : `Resend in ${timer}s`}
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <div className="bg-gray-700/50 px-6 py-4 text-center">
+          <p className="text-xs text-gray-400">
+            Having trouble? <span className="text-emerald-400 cursor-pointer hover:underline">Contact support</span>
+          </p>
+        </div>
       </div>
     </div>
   );

@@ -44,12 +44,10 @@ function Profile() {
   const [newPasswordVisible, setNewPasswordVisible] = useState(false);
   const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
 
-
   const { search } = useLocation();
   const query = new URLSearchParams(search);
 
-  const hasEvents = query.has('events');
-
+  const hasEvents = query.has("events");
 
   const [activeTab, setActiveTab] = useState(hasEvents ? "events" : "profile");
   const [selectedTeamId, setSelectedTeamId] = useState(null);
@@ -224,6 +222,10 @@ function Profile() {
         });
 
         fetchUserData();
+
+        setTimeout(() => {
+          navigate("/endeavour/events");
+        }, 2000);
       } else {
         toast.error(response.data.message || "Update failed", {
           position: "top-center",
@@ -272,9 +274,16 @@ function Profile() {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white py-12 md:pt-28 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-b from-black via-[#001a1a] to-black text-white py-12 md:pt-28 px-4 sm:px-6 lg:px-8">
+      {/* <div className="absolute  z-10 top-0 left-0 w-full h-full border-t border-l border-teal-500/5 grid grid-cols-4 grid-rows-4">
+          {[...Array(16)].map((_, i) => (
+            <div key={i} className="border-b border-r border-teal-500/5" />
+          ))}
+        </div> */}
+
       <div className="max-w-4xl mx-auto">
         {/* Header */}
+
         <div className="text-center mb-10">
           <h1 className="text-4xl md:text-5xl font-bold text-[#00f8bd] mb-2">
             Your Profile
@@ -314,8 +323,16 @@ function Profile() {
           <div className="bg-gray-900 rounded-xl p-6 md:p-8 shadow-xl">
             <div className="flex items-center mb-8">
               <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-gradient-to-r from-[#00f699] to-[#00f8bd] flex items-center justify-center text-[#007827] text-xl md:text-2xl font-bold">
-                {user.name ? <img src={`https://avatar.iran.liara.run/public/${user.gender === "male" ? "`girl`" : "boy"}`} alt="Profile" /> : "U"}
-
+                {user.name ? (
+                  <img
+                    src={`https://avatar.iran.liara.run/public/${
+                      user.gender === "male" ? "`girl`" : "boy"
+                    }`}
+                    alt="Profile"
+                  />
+                ) : (
+                  "U"
+                )}
               </div>
               <div className="ml-4">
                 <h2 className="text-2xl font-bold">{user.name}</h2>
@@ -651,9 +668,10 @@ function Profile() {
                           </div>
                         </div>
                         <div className="mt-4 pt-3 border-t border-gray-800">
-                          <p className="text-gray-400 text-sm">
-                            {team.eventId.description}
-                          </p>
+                          <DescriptionText
+                            htmlContent={team.eventId.description}
+                          />
+
                           <p className="text-gray-500 text-xs mt-2">
                             Members: {team.members.length + 1}
                           </p>
@@ -686,6 +704,47 @@ function Profile() {
         isOpen={showTeamPopup}
         onClose={() => setShowTeamPopup(false)}
       />
+    </div>
+  );
+}
+
+function DescriptionText({ htmlContent }) {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const getShortDescription = (html) => {
+    const tempDiv = document.createElement("div");
+    tempDiv.innerHTML = html;
+    const text = tempDiv.textContent || tempDiv.innerText || "";
+
+    // Get first 150 characters (approximate for 2 lines)
+    const shortText = text.substring(0, 150);
+
+    // Find the last space to avoid cutting words
+    const lastSpace = shortText.lastIndexOf(" ");
+    return lastSpace > 0
+      ? shortText.substring(0, lastSpace) + "..."
+      : shortText + "...";
+  };
+
+  return (
+    <div className="relative">
+      <div
+        className="text-gray-400 text-sm overflow-hidden"
+        style={{
+          display: "-webkit-box",
+          WebkitLineClamp: isExpanded ? "unset" : 2,
+          WebkitBoxOrient: "vertical",
+          lineHeight: "1.4",
+          maxHeight: isExpanded ? "none" : "2.8em",
+        }}
+        dangerouslySetInnerHTML={{ __html: htmlContent }}
+      />
+      <button
+        onClick={() => setIsExpanded(!isExpanded)}
+        className="text-emerald-400 hover:text-emerald-300 text-xs font-medium mt-1 focus:outline-none"
+      >
+        {isExpanded ? "Read Less" : "Read More"}
+      </button>
     </div>
   );
 }

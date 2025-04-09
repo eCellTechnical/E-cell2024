@@ -35,10 +35,10 @@ const EventRegistrationPopup = ({
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
   const [discountedPrice, setDiscountedPrice] = useState(eventFees);
+  
 
-  useEffect(() => {
-    // Set eventSlug from props or URL path
-    const getEventSlugFromUrl = () => {
+useEffect(() => {
+  const getEventSlugFromUrl = () => {
       if (typeof window !== "undefined") {
         const path = window.location.pathname;
         const match = path.match(/\/events\/([^/]+)/);
@@ -517,6 +517,8 @@ function App() {
   });
   const [isRegistrationOpen, setIsRegistrationOpen] = useState(false);
   const [isRegistered, setIsRegistered] = useState(false);
+  const [isUserFieldsValid, setIsUserFieldsValid] = useState(false);
+  const [showProfileIncompletePopup, setShowProfileIncompletePopup] = useState(false);
 
   useEffect(() => {
     const fetchEventData = async () => {
@@ -537,7 +539,66 @@ function App() {
       }
     };
 
+
+    
+    const checkUserFields = async () => {
+      const userId = localStorage.getItem("userId");
+      const token = localStorage.getItem("token");
+      try {
+        // Make POST request to the user endpoint
+        const response = await axios.get(
+          `http://localhost:5000/api/v1/users/${userId}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        // Extract user data from response
+        const user = response.data;
+
+        console.log(user.data.user);
+        // Check required fields
+        const requiredFields = [
+          "email",
+          "name",
+          "phone",
+          "college",
+          "age",
+          "gender",
+          "libId",
+          "rollNo",
+        ];
+        for (const field of requiredFields) {
+          console.log(field, user.data.user[field]);
+          if (
+            !user.data.user[field] ||
+            user.data.user[field] === "" ||
+            user.data.user[field] === 0
+          ) {
+            console.log(`Field ${field} is invalid`);
+
+            setIsUserFieldsValid(false);
+            return;
+          }
+        }
+
+        setIsUserFieldsValid(true);
+      } catch (error) {
+        console.error("Error checking user fields:", error);
+        setIsUserFieldsValid(false);
+      }
+    };
+
+   checkUserFields()
+  
+    
+
     const checkIsRegisterd = async () => {
+
+
+
       const userId = localStorage.getItem("userId");
       // const token = localStorage.getItem("token");
       if (userId) {
@@ -570,57 +631,68 @@ function App() {
 
   useEffect(() => {
     if (!eventData?.registrationEndDate) return;
-  
+
+
     const calculateTimeRemaining = () => {
       try {
         // Parse the date string properly (assuming it's in ISO format)
         const endDate = new Date(eventData.registrationEndDate);
-        
+
         // Validate the date
         if (isNaN(endDate.getTime())) {
-          console.error('Invalid registration end date format');
+          console.error("Invalid registration end date format");
           return { days: 0, hours: 0, minutes: 0, seconds: 0 };
         }
-  
+
         const now = new Date();
         const difference = endDate - now;
-  
+
         if (difference <= 0) {
           return { days: 0, hours: 0, minutes: 0, seconds: 0 };
         }
-  
+
         const seconds = Math.floor((difference / 1000) % 60);
         const minutes = Math.floor((difference / (1000 * 60)) % 60);
         const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
         const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-  
+
         return { days, hours, minutes, seconds };
       } catch (error) {
-        console.error('Error in countdown calculation:', error);
+        console.error("Error in countdown calculation:", error);
         return { days: 0, hours: 0, minutes: 0, seconds: 0 };
       }
     };
-  
+
     // Initial calculation
     const initialTime = calculateTimeRemaining();
     setTimeRemaining(initialTime);
-  
+
     // Only start timer if time hasn't expired
-    if (initialTime.days > 0 || initialTime.hours > 0 || initialTime.minutes > 0 || initialTime.seconds > 0) {
+    if (
+      initialTime.days > 0 ||
+      initialTime.hours > 0 ||
+      initialTime.minutes > 0 ||
+      initialTime.seconds > 0
+    ) {
       const timer = setInterval(() => {
-        setTimeRemaining(prev => {
+        setTimeRemaining((prev) => {
           const newTime = calculateTimeRemaining();
-          
+
           // Check if time has expired
-          if (newTime.days <= 0 && newTime.hours <= 0 && newTime.minutes <= 0 && newTime.seconds <= 0) {
+          if (
+            newTime.days <= 0 &&
+            newTime.hours <= 0 &&
+            newTime.minutes <= 0 &&
+            newTime.seconds <= 0
+          ) {
             clearInterval(timer);
             return newTime;
           }
-          
+
           return newTime;
         });
       }, 1000);
-  
+
       return () => clearInterval(timer);
     }
   }, [eventData?.registrationEndDate]);
@@ -682,9 +754,18 @@ function App() {
     100
   );
 
+  
+
   return (
-    <div className="font-sans pt-20 leading-[1.5] font-normal text-white bg-[#131313] antialiased">
+    <div className="font-sans pt-20 leading-[1.5] font-normal text-white bg-gradient-to-b from-black via-[#001a1a] to-black antialiased">
+       <div className="absolute top-0 left-0 w-full h-full border-t border-l border-teal-500/5 grid grid-cols-4 grid-rows-4">
+          {[...Array(16)].map((_, i) => (
+            <div key={i} className="border-b border-r border-teal-500/5" />
+          ))}
+        </div>
+      
       <div className="p-4 md:p-0">
+        
         <div className="w-full md:w-[90%] lg:w-[80%] mx-auto p-2 md:p-4 relative min-h-screen">
           <div className="grid grid-cols-1 lg:grid-cols-10 gap-3">
             <div className="lg:col-span-7 pb-8">
@@ -704,20 +785,22 @@ function App() {
                   </p>
                   <button
                     className="p-2 sm:p-3 text-base sm:text-[18px] font-bold rounded-md w-full sm:w-[20%] text-black bg-[#00fcb8]"
-                    onClick={() => {
-                      if (
-                        isRegistered &&
-                        localStorage.getItem("userId") !== null &&
-                        localStorage.getItem("token") !== undefined
-                      ) {
+                    onClick={async () => {
+                      if (isRegistered && 
+                          localStorage.getItem("userId") && 
+                          localStorage.getItem("token")) {
                         window.location.href = `/endeavour/profile?events`;
-                      } else if (
-                        localStorage.getItem("userId") === null ||
-                        localStorage.getItem("token") === undefined
-                      ) {
+                      } 
+                      else if (!localStorage.getItem("userId") || 
+                               !localStorage.getItem("token")) {
                         window.location.href = `/endeavour/login`;
-                      } else {
-                        setIsRegistrationOpen(true);
+                      }
+                      else {
+                        if (!isUserFieldsValid) {
+                          setShowProfileIncompletePopup(true);
+                        } else {
+                          setIsRegistrationOpen(true);
+                        }
                       }
                     }}
                   >
@@ -835,121 +918,140 @@ function App() {
             </div>
 
             <div className="lg:col-span-3 h-full mt-4 lg:mt-0">
-  <div className="lg:sticky lg:top-4 bg-[#18222D] rounded-lg overflow-hidden">
-    {/* Glassy Effect Banner */}
-    <div className="relative bg-gradient-to-r from-[#00fcb8]/20 to-[#00d06d]/20 backdrop-blur-sm p-4 border-b border-[#00fcb8]/30">
-      <div className="absolute inset-0 bg-[#18222D]/50 rounded-t-lg"></div>
-      <div className="relative z-10 flex items-center">
-        <Clock size={20} className="mr-3 text-[#00fcb8]" />
-        <div>
-          <p className="font-bold text-[#00fcb8] text-sm md:text-base">
-            REGISTRATION ENDING SOON!
-          </p>
-          <p className="text-[#00fcb8]/80 text-xs md:text-sm">
-            Limited spots available - Don't miss out
-          </p>
-        </div>
-      </div>
-    </div>
+              <div className="lg:sticky lg:top-4 bg-[#18222D] rounded-lg overflow-hidden">
+                {/* Glassy Effect Banner */}
+                <div className="relative bg-gradient-to-r from-[#00fcb8]/20 to-[#00d06d]/20 backdrop-blur-sm p-4 border-b border-[#00fcb8]/30">
+                  <div className="absolute inset-0 bg-[#18222D]/50 rounded-t-lg"></div>
+                  <div className="relative z-10 flex items-center">
+                    <Clock size={20} className="mr-3 text-[#00fcb8]" />
+                    <div>
+                      <p className="font-bold text-[#00fcb8] text-sm md:text-base">
+                        REGISTRATION ENDING SOON!
+                      </p>
+                      <p className="text-[#00fcb8]/80 text-xs md:text-sm">
+                        Limited spots available - Don't miss out
+                      </p>
+                    </div>
+                  </div>
+                </div>
 
-    {/* Countdown Timer */}
-    <div className="bg-[#111920]/80 backdrop-blur-sm rounded-lg p-4 m-3 border border-[#00fcb8]/20">
-      <div className="grid grid-cols-4 gap-2 text-center">
-        <div className="bg-[#18222D]/80 rounded p-2 border border-[#00fcb8]/10">
-          <p className="text-[#00fcb8] text-xl md:text-2xl font-bold">
-            {timeRemaining.days}
-          </p>
-          <p className="text-[10px] md:text-xs text-gray-300">Days</p>
-        </div>
-        <div className="bg-[#18222D]/80 rounded p-2 border border-[#00fcb8]/10">
-          <p className="text-[#00fcb8] text-xl md:text-2xl font-bold">
-            {timeRemaining.hours}
-          </p>
-          <p className="text-[10px] md:text-xs text-gray-300">Hours</p>
-        </div>
-        <div className="bg-[#18222D]/80 rounded p-2 border border-[#00fcb8]/10">
-          <p className="text-[#00fcb8] text-xl md:text-2xl font-bold">
-            {timeRemaining.minutes}
-          </p>
-          <p className="text-[10px] md:text-xs text-gray-300">Mins</p>
-        </div>
-        <div className="bg-[#18222D]/80 rounded p-2 border border-[#00fcb8]/10">
-          <p className="text-[#00fcb8] text-xl md:text-2xl font-bold">
-            {timeRemaining.seconds}
-          </p>
-          <p className="text-[10px] md:text-xs text-gray-300">Secs</p>
-        </div>
-      </div>
-    </div>
+                {/* Countdown Timer */}
+                <div className="bg-[#111920]/80 backdrop-blur-sm rounded-lg p-4 m-3 border border-[#00fcb8]/20">
+                  <div className="grid grid-cols-4 gap-2 text-center">
+                    <div className="bg-[#18222D]/80 rounded p-2 border border-[#00fcb8]/10">
+                      <p className="text-[#00fcb8] text-xl md:text-2xl font-bold">
+                        {timeRemaining.days}
+                      </p>
+                      <p className="text-[10px] md:text-xs text-gray-300">
+                        Days
+                      </p>
+                    </div>
+                    <div className="bg-[#18222D]/80 rounded p-2 border border-[#00fcb8]/10">
+                      <p className="text-[#00fcb8] text-xl md:text-2xl font-bold">
+                        {timeRemaining.hours}
+                      </p>
+                      <p className="text-[10px] md:text-xs text-gray-300">
+                        Hours
+                      </p>
+                    </div>
+                    <div className="bg-[#18222D]/80 rounded p-2 border border-[#00fcb8]/10">
+                      <p className="text-[#00fcb8] text-xl md:text-2xl font-bold">
+                        {timeRemaining.minutes}
+                      </p>
+                      <p className="text-[10px] md:text-xs text-gray-300">
+                        Mins
+                      </p>
+                    </div>
+                    <div className="bg-[#18222D]/80 rounded p-2 border border-[#00fcb8]/10">
+                      <p className="text-[#00fcb8] text-xl md:text-2xl font-bold">
+                        {timeRemaining.seconds}
+                      </p>
+                      <p className="text-[10px] md:text-xs text-gray-300">
+                        Secs
+                      </p>
+                    </div>
+                  </div>
+                </div>
 
-    {/* Price Details with Glass Effect */}
-    <div className="bg-[#111920]/80 backdrop-blur-sm p-4 mx-3 my-4 rounded-lg border border-[#00fcb8]/20">
-      <h3 className="text-white font-bold mb-3 text-sm md:text-base flex items-center">
-        <IndianRupee size={16} className="mr-2 text-[#00fcb8]" />
-        PRICE DETAILS
-      </h3>
-      <div className="space-y-2">
-        <div className="flex justify-between">
-          <p className="text-gray-300 text-sm">Entry Fee</p>
-          <p className="text-white flex items-center text-sm">
-            <IndianRupee size={12} className="mr-1" />
-            {eventData.fees}
-          </p>
-        </div>
-        <hr className="border-[#00fcb8]/10" />
-        <div className="flex justify-between font-bold">
-          <p className="text-white">Total</p>
-          <p className="text-[#00fcb8] flex items-center">
-            <IndianRupee size={12} className="mr-1" />
-            {eventData.fees}
-          </p>
-        </div>
-      </div>
-    </div>
+                {/* Price Details with Glass Effect */}
+                <div className="bg-[#111920]/80 backdrop-blur-sm p-4 mx-3 my-4 rounded-lg border border-[#00fcb8]/20">
+                  <h3 className="text-white font-bold mb-3 text-sm md:text-base flex items-center">
+                    <IndianRupee size={16} className="mr-2 text-[#00fcb8]" />
+                    PRICE DETAILS
+                  </h3>
+                  <div className="space-y-2">
+                    <div className="flex justify-between">
+                      <p className="text-gray-300 text-sm">Entry Fee</p>
+                      <p className="text-white flex items-center text-sm">
+                        <IndianRupee size={12} className="mr-1" />
+                        {eventData.fees}
+                      </p>
+                    </div>
+                    <hr className="border-[#00fcb8]/10" />
+                    <div className="flex justify-between font-bold">
+                      <p className="text-white">Total</p>
+                      <p className="text-[#00fcb8] flex items-center">
+                        <IndianRupee size={12} className="mr-1" />
+                        {eventData.fees}
+                      </p>
+                    </div>
+                  </div>
+                </div>
 
-    {/* Action Buttons */}
-    <div className="p-4 mx-3 sticky bottom-0 bg-[#18222D]/80 backdrop-blur-sm border-t border-[#00fcb8]/20">
-      <div className="flex flex-col gap-3">
-        <button
-          className="bg-gradient-to-r from-[#00fcb8] to-[#00d06d] hover:from-[#00d06d] hover:to-[#00fcb8] text-black font-bold rounded-lg py-3 w-full text-sm md:text-base transition-all transform hover:scale-[1.01] shadow-lg shadow-[#00fcb8]/20"
-          onClick={() => {
-            if (isRegistered &&
-                localStorage.getItem("userId") !== null &&
-                localStorage.getItem("token") !== undefined) {
-              window.location.href = `/endeavour/profile?events`;
-            } else if (localStorage.getItem("userId") === null ||
-                      localStorage.getItem("token") === undefined) {
-              window.location.href = `/endeavour/login`;
-            } else {
-              setIsRegistrationOpen(true);
-            }
-          }}
-        >
-          {isRegistered ? "GO TO DASHBOARD" : "REGISTER NOW"}
-        </button>
-        <button
-          className="flex justify-center items-center bg-[#111920]/80 hover:bg-[#0e161f] text-white font-semibold rounded-lg py-3 w-full text-sm md:text-base border border-[#00fcb8]/30 transition-all"
-          onClick={() => {
-            const currentUrl = window.location.href;
-            const message = `Check out this event: ${currentUrl}`;
-            const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`;
-            window.open(whatsappUrl, "_blank");
-          }}
-        >
-          <Share2 size={16} className="mr-2" />
-          SHARE EVENT
-        </button>
-      </div>
-    </div>
+                {/* Action Buttons */}
+                <div className="p-4 mx-3 sticky bottom-0 bg-[#18222D]/80 backdrop-blur-sm border-t border-[#00fcb8]/20">
+                  <div className="flex flex-col gap-3">
+                    <button
+                      className="bg-gradient-to-r from-[#00fcb8] to-[#00d06d] hover:from-[#00d06d] hover:to-[#00fcb8] text-black font-bold rounded-lg py-3 w-full text-sm md:text-base transition-all transform hover:scale-[1.01] shadow-lg shadow-[#00fcb8]/20"
+                      onClick={async () => {
+                        if (isRegistered && 
+                            localStorage.getItem("userId") && 
+                            localStorage.getItem("token")) {
+                          window.location.href = `/endeavour/profile?events`;
+                        } 
+                        else if (!localStorage.getItem("userId") || 
+                                 !localStorage.getItem("token")) {
+                          window.location.href = `/endeavour/login`;
+                        }
+                        else {
+                          if (!isUserFieldsValid) {
+                            setShowProfileIncompletePopup(true);
+                          } else {
+                            setIsRegistrationOpen(true);
+                          }
+                        }
+                      }}
+                    >
+                      {isRegistered ? "GO TO DASHBOARD" : "REGISTER NOW"}
+                    </button>
+                    <button
+                      className="flex justify-center items-center bg-[#111920]/80 hover:bg-[#0e161f] text-white font-semibold rounded-lg py-3 w-full text-sm md:text-base border border-[#00fcb8]/30 transition-all"
+                      onClick={() => {
+                        const currentUrl = window.location.href;
+                        const message = `Check out this event: ${currentUrl}`;
+                        const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(
+                          message
+                        )}`;
+                        window.open(whatsappUrl, "_blank");
+                      }}
+                    >
+                      <Share2 size={16} className="mr-2" />
+                      SHARE EVENT
+                    </button>
+                  </div>
+                </div>
 
-    {/* Support */}
-    <div className="rounded-md p-3 text-center">
-      <p className="text-gray-400 text-xs md:text-sm">
-        Need help? <span className="text-[#00fcb8] cursor-pointer hover:underline">Contact support</span>
-      </p>
-    </div>
-  </div>
-</div>
+                {/* Support */}
+                <div className="rounded-md p-3 text-center">
+                  <p className="text-gray-400 text-xs md:text-sm">
+                    Need help?{" "}
+                    <span className="text-[#00fcb8] cursor-pointer hover:underline">
+                      Contact support
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -962,6 +1064,38 @@ function App() {
         eventFees={eventData.fees}
         qrCode={eventData.qrcode}
       />
+
+{showProfileIncompletePopup && (
+    <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-4">
+      <div className="bg-gradient-to-b from-[#1e2a38] to-[#18222D] rounded-xl w-full max-w-md p-6 border border-gray-700">
+        <div className="flex justify-between items-center mb-4">
+          <h3 className="text-xl font-bold text-[#00fcb8]">Profile Incomplete</h3>
+          <button 
+            onClick={() => setShowProfileIncompletePopup(false)}
+            className="text-gray-400 hover:text-white"
+          >
+            <X size={24} />
+          </button>
+        </div>
+        <p className="text-gray-300 mb-6">
+          Please complete your profile information before registering for events.
+        </p>
+        <div className="flex justify-centre gap-3">
+        
+          <button
+            onClick={() => {
+              setShowProfileIncompletePopup(false);
+              window.location.href = '/endeavour/profile';
+            }}
+            className="px-4 py-2 bg-[#00fcb8] text-black font-bold rounded-md"
+          >
+            Complete Profile
+          </button>
+        </div>
+      </div>
+    </div>
+  )}
+
     </div>
   );
 }
