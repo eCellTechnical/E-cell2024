@@ -20,15 +20,20 @@ const EventInfoSection = () => {
             transition={{ duration: 0.7 }}
             viewport={{ once: true }}
           >
-            <div className="relative">
-              <div className="absolute -top-3 -left-3 w-24 h-24 border-t-2 border-l-2 border-[#00FCB8]"></div>
-              <div className="absolute -bottom-3 -right-3 w-24 h-24 border-b-2 border-r-2 border-[#00FCB8]"></div>
-              <img 
-                src="https://media.licdn.com/dms/image/v2/D5622AQGVdC4vmY4O8g/feedshare-shrink_800/feedshare-shrink_800/0/1726242137754?e=2147483647&v=beta&t=vXLqETOtS5TLkPYYpVPrs2JrEhc2X8-ZxgXIj9hr1s8" 
-                alt="Event attendees" 
-                className="w-full h-auto rounded-md shadow-lg"
-              />
-            </div>
+         <div className="relative w-full overflow-hidden" style={{ aspectRatio: "4/3.5" }}>
+  {/* Decorative Borders */}
+  <div className="absolute -top-3 -left-3 w-24 h-24 border-t-2 border-l-2 border-[#00FCB8]"></div>
+  <div className="absolute -bottom-3 -right-3 w-24 h-24 border-b-2 border-r-2 border-[#00FCB8]"></div>
+  
+  {/* YouTube Embed (4:5 Ratio) */}
+  <iframe
+    src="https://www.youtube.com/embed/VVQ2YXqLbio"
+    className="absolute inset-0 w-full h-full object-cover"
+    frameBorder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowFullScreen
+  ></iframe>
+</div>
           </motion.div>
           
           {/* Right side - Content */}

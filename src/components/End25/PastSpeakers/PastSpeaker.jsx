@@ -9,7 +9,7 @@ const PastSpeakers = () => {
       name: "Abhishek Singh",
       designation: "Author, TEDx speaker, and founder ",
       company: "Social Cosmo",
-      image: "https://media.licdn.com/dms/image/v2/D4E03AQHKrTOqnofp5A/profile-displayphoto-shrink_200_200/B4EZO.vxJ3H0Ac-/0/1734072014074?e=2147483647&v=beta&t=TqwwHXuOCBMy6MexovBS7YvqOaefsyKutvVfCaGGEXc"
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR27f_96gfQyyNxw9Es7FSHYHWzkN8NC4x5Xg&s"
     },
     {
       id: 2,
@@ -23,28 +23,28 @@ const PastSpeakers = () => {
       name: "Sandeep Jain",
       designation: "Founder",
       company: "GeeksforGeeks",
-      image: "https://media.licdn.com/dms/image/v2/C4D03AQGGB6CT6NqFzQ/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1618725077549?e=1749686400&v=beta&t=kvhr57aPIJmClQcA2t9-qcpOVKRA9pcjeCNsDgECSmc"
+      image: "https://planify-main.s3.amazonaws.com/media/images/documents/Sandeep_Jain.webp"
     },
     {
       id: 4,
       name: "Sachin Saxena",
       designation: "Marketing Head",
       company: "Innovaccer",
-      image: "https://media.licdn.com/dms/image/v2/D5603AQG6MbR3O4M14g/profile-displayphoto-shrink_400_400/B56ZRq6.ztGoAg-/0/1736960635132?e=1749686400&v=beta&t=N_GqmUu7OFO5FD6v_U90uphlda3B1Ked0QBkvOLiOos"
+      image: "https://etimg.etb2bimg.com/thumb/msid-82168741,width-1200,height-900,resizemode-4/.jpg"
     },
     {
       id: 5,
       name: "Manik Sehgal",
       designation: "Founder",
       company: "Raasa Kart",
-      image: "https://media.licdn.com/dms/image/v2/D4D03AQFceU-67SCp9g/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1698552827093?e=2147483647&v=beta&t=iTCraFbCpgsnNO7oWSMAIOqSzgDPij1FRk5ePVrTFyU"
+      image: "https://tianslab.com/wp-content/uploads/2023/12/Raasa-Deal-1024x576.jpg"
     },
     {
       id: 6,
       name: "Priyaranjan Kumar",
       designation: "Angel Investor, Author and Founder",
       company: "Ground Up Consulting",
-      image: "https://media.licdn.com/dms/image/v2/D4D03AQEAuLSlKhpInQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1705894550355?e=2147483647&v=beta&t=rXjWR9WRYIxi1WfzARvVTnogqIaMBumAniq-ath6Icw"
+      image: "https://www.printbusinessoutlook.com/wp-content/uploads/2025/01/priya.jpg"
     },
     {
       id: 7,
@@ -58,21 +58,21 @@ const PastSpeakers = () => {
       name: "Sunit Dutt",
       designation: "President of Devices",
       company: "Reliance Jio",
-      image: "https://media.licdn.com/dms/image/v2/C5103AQFPxmIaowkurA/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1526956438305?e=1749686400&v=beta&t=HGC5TpYnTc_3SfNvH4L4ckRmZ2b2xwAxqerfm132FmE"
+      image: "https://etimg.etb2bimg.com/photo/36354042.cms"
     },
     {
       id: 9,
       name: "Prince Gupta",
       designation: "Founder",
       company: "Educaptain",
-      image: "https://media.licdn.com/dms/image/D4D03AQGi4ddiPa4vXA/profile-displayphoto-shrink_200_200/0/1688466550935?e=2147483647&v=beta&t=5UrgPhWXxNlnznLeqSIyGxeezqkZot_W3bi_2-gsi4I"
+      image: "https://res.cloudinary.com/dlnyjfht1/image/upload/v1744355753/1688466550935_h46ixn.jpg"
     },
     {
       id: 10,
       name: "Aniket Dhiman",
       designation: "Founder",
       company: "Expotent",
-      image: "https://media.licdn.com/dms/image/D4D03AQElC1UzegceyA/profile-displayphoto-shrink_200_200/0/1672922272749?e=2147483647&v=beta&t=ZDGZ9sds87OuGpHTSS_kfrFNBSihPqwN2aFjIoSwzl8"
+      image: "https://res.cloudinary.com/dlnyjfht1/image/upload/v1744355753/images_r6hjjv.jpg"
     }
   ];
 
