@@ -11,37 +11,9 @@ function Register() {
     phone: "",
     name: ""
   });
-  const [validUserName, setValidUserName] = useState(0);
   const [passwordVisibility, setPasswordVisibility] = useState(false);
   const [disable, setDisable] = useState(false);
-  const [isChecking, setIsChecking] = useState(false);
   axios.defaults.withCredentials = true;
-
-  useEffect(() => {
-    const checkUsername = async () => {
-      if (formData.name.length < 3) {
-        setValidUserName(0);
-        return;
-      }
-      
-      setIsChecking(true);
-      try {
-        const res = await axios.post(
-          `https://two5-backend.onrender.com/api/v1/search-username`,
-          { name: formData.name }
-        );
-        setValidUserName(res.data.msg === "Not Taken" ? 1 : 0);
-      } catch (error) {
-        console.error("Error checking username:", error);
-        setValidUserName(0);
-      } finally {
-        setIsChecking(false);
-      }
-    };
-
-    const timer = setTimeout(checkUsername, 1000);
-    return () => clearTimeout(timer);
-  }, [formData.name]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -54,14 +26,6 @@ function Register() {
   async function handleSubmit(e) {
     e.preventDefault();
     setDisable(true);
-
-    if (validUserName === 0) {
-      setDisable(false);
-      return toast.warn("Please choose a valid username", {
-        position: "top-center",
-        theme: "colored",
-      });
-    }
     
     try {
       const response = await axios.post(
@@ -97,7 +61,7 @@ function Register() {
   }, [pathname]);
 
   return (
-    <div className="  bg-gradient-to-b from-black via-[#001a1a] to-black  flex items-center md:pb-16 justify-center pt-16 md:pt-28 md:p-28">
+    <div className="bg-gradient-to-b from-black via-[#001a1a] to-black  flex items-center md:pb-16 justify-center pt-16 md:pt-28 md:p-28">
       <div className="absolute top-0 left-0 w-full h-full border-t border-l border-teal-500/5 grid grid-cols-4 grid-rows-4">
           {[...Array(16)].map((_, i) => (
             <div key={i} className="border-b border-r border-teal-500/5" />
@@ -119,51 +83,18 @@ function Register() {
             <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-1">
               Full Name
             </label>
-            <div className="relative">
-              <input
-                id="name"
-                name="name"
-                type="text"
-                value={formData.name}
-                onChange={handleChange}
-                className={`w-full px-4 py-3 bg-gray-800 border ${
-                  formData.name.length > 0 
-                    ? validUserName === 1 
-                      ? "border-emerald-500" 
-                      : "border-red-500"
-                    : "border-gray-700"
-                } rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent`}
-                placeholder="Example Name"
-                minLength={3}
-                maxLength={50}
-                required
-              />
-              {isChecking && formData.name.length >= 3 && (
-                <div className="absolute right-3 top-3.5">
-                  <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-emerald-500"></div>
-                </div>
-              )}
-              {!isChecking && formData.name.length >= 3 && validUserName === 1 && (
-                <div className="absolute right-3 top-3.5 text-emerald-500">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                  </svg>
-                </div>
-              )}
-              {!isChecking && formData.name.length >= 3 && validUserName === 0 && (
-                <div className="absolute right-3 top-3.5 text-red-500">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
-                  </svg>
-                </div>
-              )}
-            </div>
-            {formData.name.length >= 3 && !isChecking && validUserName === 0 && (
-              <p className="mt-1 text-xs text-red-500">Username is already taken</p>
-            )}
-            {formData.name.length >= 3 && !isChecking && validUserName === 1 && (
-              <p className="mt-1 text-xs text-emerald-500">Username is available</p>
-            )}
+            <input
+              id="name"
+              name="name"
+              type="text"
+              value={formData.name}
+              onChange={handleChange}
+              className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+              placeholder="Example Name"
+              minLength={3}
+              maxLength={50}
+              required
+            />
           </div>
 
           {/* Email Field */}
@@ -247,9 +178,9 @@ function Register() {
           <div className="pt-2">
             <button
               type="submit"
-              disabled={disable || validUserName === 0}
+              disabled={disable}
               className={`w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-lg font-bold text-white ${
-                disable || validUserName === 0
+                disable
                   ? "bg-gray-700 cursor-not-allowed"
                   : "bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700"
               } focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 transition-all duration-200`}
