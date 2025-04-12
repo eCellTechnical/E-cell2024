@@ -511,12 +511,11 @@ function Profile() {
                 </div>
 
                 {/* Password Change Section */}
-                <div className="pt-4 border-t border-gray-800">
+{/*                 <div className="pt-4 border-t border-gray-800">
                   <h3 className="text-lg font-medium text-[#00f8bd] mb-4">
                     Change Password
                   </h3>
 
-                  {/* Current Password Field */}
                   <div className="space-y-1 mb-4">
                     <label className="block text-sm font-medium text-gray-400">
                       Current Password
@@ -542,7 +541,6 @@ function Profile() {
                     </div>
                   </div>
 
-                  {/* New Password Field */}
                   <div className="space-y-1 mb-4">
                     <label className="block text-sm font-medium text-gray-400">
                       New Password
@@ -568,7 +566,6 @@ function Profile() {
                     </div>
                   </div>
 
-                  {/* Confirm New Password Field */}
                   <div className="space-y-1">
                     <label className="block text-sm font-medium text-gray-400">
                       Confirm New Password
@@ -594,7 +591,7 @@ function Profile() {
                     </div>
                   </div>
                 </div>
-
+ */}
                 {/* Submit Button */}
                 <div className="pt-6">
                   <button
