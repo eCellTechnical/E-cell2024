@@ -852,11 +852,7 @@ function App() {
                       <div className="flex justify-between items-center w-full mb-2 md:mb-4">
                         <div className="p-1 md:p-2">{option.icon}</div>
                         <div className="p-1 md:p-2">
-                          <Plus
-                            color="white"
-                            size={16}
-                            className="md:w-5 md:h-5"
-                          />
+                         
                         </div>
                       </div>
                       <div className="mt-2 md:mt-4">
