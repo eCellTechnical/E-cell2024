@@ -340,7 +340,7 @@ export default function Foot() {
             <div className="input-group w-[90%] flex flex-row mb-5 mt-2 lg:mt-5 justify-center items-center">
               <input
                 type="email"
-                className="md:mr-3 !mb-0 w-full !border-0 !border-b-2 !rounded-none !border-b-[#00FCB8] bg-transparent outline-none p-1"
+                className="md:mr-3 !mb-3 w-full !border-0 !border-b-2 !rounded-none !border-b-[#00FCB8] bg-transparent outline-none p-1"
                 id="Email"
                 name="Email"
                 placeholder="example@gmail.com"

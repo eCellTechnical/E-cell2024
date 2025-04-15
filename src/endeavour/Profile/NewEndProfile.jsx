@@ -683,7 +683,7 @@ function Profile() {
                       You haven&#39;t registered for any events yet.
                     </p>
                     <button
-                      onClick={() => navigate("/events")}
+                      onClick={() => navigate("/endeavour/events")}
                       className="bg-gradient-to-r from-[#00f699] to-[#00f8bd] text-[#007827] font-bold rounded-full px-6 py-3 transition-all hover:shadow-lg"
                     >
                       Browse Events

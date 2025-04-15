@@ -87,15 +87,15 @@ const End25Hero = () => {
           variants={textVariants}
           className="w-full flex mb-6 z-50"
         >
-          <div className="relative">
+          <div className="relative mt-3">
             <div className="absolute -top-1 -left-1 w-6 h-6 border-t-2 border-l-2 border-white opacity-60"></div>
             <div className="absolute -top-1 -right-1 w-6 h-6 border-t-2 border-r-2 border-white opacity-60"></div>
             <motion.div
               variants={textVariants}
-              className="px-6 py-2 backdrop-blur-sm bg-white/10 "
+              className="px-6 py-2  backdrop-blur-sm bg-white/10 "
             >
               <span
-                className="text-sm font-medium tracking-wider uppercase"
+                className="text-sm font-medium  tracking-wider uppercase"
                 style={{ color: "#00fcb8" }}
               >
                 May 02-03, 2025 • ECELL KIET
