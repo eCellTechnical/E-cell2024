@@ -93,6 +93,9 @@ const EventRegistrationPopup = ({
       if (!formData.paymentTransactionId.trim()) {
         throw new Error("Transaction ID is required");
       }
+      if (formData.paymentTransactionId.trim().length !== 12) {
+        throw new Error("Transaction ID must be exactly 12 characters long");
+      }
       if (!formData.paymentScreenshot) {
         throw new Error("Payment screenshot is required");
       }
