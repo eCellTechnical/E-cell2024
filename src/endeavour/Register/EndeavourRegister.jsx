@@ -44,7 +44,7 @@ function Register() {
           position: "top-center",
           theme: "colored",
         });
-        navigate("/verify-otp", { state: { email: formData.email } });
+        navigate("/endeavour/verify-otp", { state: { email: formData.email } });
       } else {
         toast.error(response.data.message || "Registration failed");
       }

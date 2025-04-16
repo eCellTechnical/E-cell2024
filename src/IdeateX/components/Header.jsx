@@ -82,7 +82,7 @@ function Header() {
               href="/endeavour#about"
               className="font-semibold text-white hover:text-[#00f699] transition-colors"
             >
-              ABOUT
+              ABOUT US
             </a>
             <a
               href="/endeavour/events"
@@ -169,7 +169,7 @@ function Header() {
               onClick={toggleMenu}
               className="text-white font-semibold text-xl hover:text-[#00f699]"
             >
-              ABOUT
+              ABOUT US
             </a>
             <a
               href="/endeavour/events"

@@ -192,7 +192,7 @@ function App() {
                 element={<RegisterEvent />}
               />
               <Route
-                path="verify-otp"
+                path="/endeavour/verify-otp"
                 element={<VerifyOtp />}
               />
               <Route
