@@ -193,12 +193,12 @@ function VerifyOTP() {
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="flex justify-between space-x-3">
+            <div className="flex  justify-between space-x-1 sm:space-x-3">
               {otp.map((digit, index) => (
                 <input
                   key={index}
                   id={`otp-${index}`}
-                  className="w-12 h-14 text-center z-50 text-white text-2xl font-bold bg-black border-2 border-gray-600 rounded-lg focus:outline-none focus:border-emerald-400 focus:ring-2 focus:ring-emerald-400/30 transition-all"
+                  className="w-8 h-10 sm:w-12 sm:h-14 text-center z-50 text-white text-xl sm:text-2xl font-bold bg-black border-2 border-gray-600 rounded-lg focus:outline-none focus:border-emerald-400 focus:ring-2 focus:ring-emerald-400/30 transition-all"
                   type="text"
                   maxLength="1"
                   value={digit}
