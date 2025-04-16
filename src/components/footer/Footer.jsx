@@ -322,9 +322,9 @@ export default function Foot() {
             </div>
           </div>
 
-          <div className="lowerfoot bg-white dark:bg-black z-10 !w-[100vw] font-medium text-xs md:text-sm dark:font-medium flex justify-between">
-            <h3 className="w-1/2 pl-8">IGNITEX SOLUTIONS PVT. LTD.</h3>
-            <h3 className="w-1/2 text-right pr-10 border-l-[1px] border-[#b6b6b6]">
+          <div className="lowerfoot bg-white dark:bg-black z-10 !w-[100vw] font-medium text-xs md:text-sm dark:font-medium flex justify-center">
+            {/* <h3 className="w-1/2 pl-8">IGNITEX SOLUTIONS PVT. LTD.</h3> */}
+            <h3 className="w-full text-center ">
               Made with ❤️ E-Cell 2024
             </h3>
           </div>
@@ -592,9 +592,9 @@ export default function Foot() {
           </div>
         </div>
       
-        <div className="lowerfoot bg-black/80 backdrop-blur-sm z-10 !w-[100vw] text-xs md:text-sm flex justify-between py-4 px-8">
-          <h3 className="w-1/2">IGNITEX SOLUTIONS PVT. LTD.</h3>
-          <h3 className="w-1/2 text-right border-l-[1px] border-[#00FCB8]/30">
+        <div className="lowerfoot bg-black/80 backdrop-blur-sm z-10 !w-[100vw] text-xs md:text-sm flex justify-center py-4 px-8">
+          {/* <h3 className="w-1/2">IGNITEX SOLUTIONS PVT. LTD.</h3> */}
+          <h3 className="w-full text-center border-[#00FCB8]/30">
             Made with <span className="text-[#00FCB8]">❤️</span> E-Cell 2024
           </h3>
         </div>
