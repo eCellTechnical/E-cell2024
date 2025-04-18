@@ -16,7 +16,7 @@ function VerifyOTP() {
     if (location.state?.email) {
       setEmail(location.state.email);
     } else {
-      navigate("/register");
+      navigate("/endeavour/register");
       toast.error("Please register first", {
         position: "top-center",
         autoClose: 3000,
@@ -42,7 +42,8 @@ function VerifyOTP() {
 
   const handleOTPChange = (index, e) => {
     const value = e.target.value;
-    if (value && !isNaN(value) && value.length <= 1) {
+    // Allow empty values or valid digits
+    if ((value === "" || (!isNaN(value) && value.length <= 1))) {
       const newOTP = [...otp];
       newOTP[index] = value;
       setOTP(newOTP);
@@ -54,8 +55,27 @@ function VerifyOTP() {
   };
 
   const handleKeyDown = (index, e) => {
-    if (e.key === "Backspace" && !otp[index] && index > 0) {
+    if (e.key === "Backspace") {
+      e.preventDefault(); // Prevent the default backspace behavior
+      
+      if (otp[index]) {
+        // If there's content in the current field, clear it
+        const newOTP = [...otp];
+        newOTP[index] = "";
+        setOTP(newOTP);
+      } else if (index > 0) {
+        // If current field is empty, move to previous field and clear it
+        const newOTP = [...otp];
+        newOTP[index - 1] = "";
+        setOTP(newOTP);
+        document.getElementById(`otp-${index - 1}`).focus();
+      }
+    } else if (e.key === "ArrowLeft" && index > 0) {
+      // Move to previous input on left arrow key
       document.getElementById(`otp-${index - 1}`).focus();
+    } else if (e.key === "ArrowRight" && index < 5) {
+      // Move to next input on right arrow key
+      document.getElementById(`otp-${index + 1}`).focus();
     }
   };
 
@@ -193,7 +213,7 @@ function VerifyOTP() {
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="flex  justify-between space-x-1 sm:space-x-3">
+            <div className="flex justify-between space-x-1 sm:space-x-3">
               {otp.map((digit, index) => (
                 <input
                   key={index}
@@ -206,6 +226,12 @@ function VerifyOTP() {
                   onKeyDown={(e) => handleKeyDown(index, e)}
                   onPaste={index === 0 ? handlePaste : null}
                   autoFocus={index === 0}
+                  onClick={() => {
+                    // Allow refocusing on empty fields
+                    if (!otp[index]) {
+                      document.getElementById(`otp-${index}`).select();
+                    }
+                  }}
                 />
               ))}
             </div>
