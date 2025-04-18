@@ -44,6 +44,11 @@ const Footer = React.lazy(() => import("./components/footer/Footer"));
 const EndeavourHomePage = React.lazy(() =>
   import("./endeavour/Home/EndeavourHomePage")
 );
+
+const End25Eve = React.lazy(() =>
+  import("./endeavour/Eve25/Eve25")
+);
+
 const EndeavourLogin = React.lazy(() =>
   import("./endeavour/Login/EndeavourLogin")
 );
@@ -174,6 +179,8 @@ function App() {
 
               {/* Important  */}
             <Route path="/endeavour" element={<EndeavourHomePage />} />
+            <Route path="/endeavour/eve" element={<End25Eve />} />
+
              <Route path="/endeavour/login" element={<EndeavourLogin />} />
               <Route
                 path="/endeavour/forget-password"

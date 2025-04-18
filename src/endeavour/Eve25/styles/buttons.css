@@ -1,0 +1,49 @@
+
+.btn-default{
+	position: relative;
+	display: inline-block;
+	/* font-family: var(--accent-font); */
+	font-size: 18px;
+	font-weight: 600;
+	line-height: 1em;
+	text-transform: uppercase;
+	background: transparent;
+	color: var(--accent-primary-color);
+	border: none;
+	border-radius: 0;
+	padding: 16px 30px;
+	overflow: hidden;
+	transition: all 0.4s ease-in-out;
+	z-index: 1;
+}
+
+.btn-default:before{
+	content: "";
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	width: 50px;
+	height: 100%;
+	background: #068766;
+	border-radius: 100px;
+	transition: all 0.4s ease-in-out;
+	z-index: -1;
+}
+
+.btn-default:hover:before{
+	width: 100%;
+}
+
+/* Responsive styles
+@media (max-width: 640px) {
+  .btn-default{
+    width: 220px;
+  }
+}
+
+@media (max-width: 480px) {
+  .btn-default{
+    width: 220px;
+  }
+} */

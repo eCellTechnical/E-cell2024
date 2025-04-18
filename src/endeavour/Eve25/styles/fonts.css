@@ -1,0 +1,16 @@
+
+
+@font-face {
+    font-family: 'Gagalin';
+    /* if in src/assets: */
+    src: url('../assets/Fonts/Gagalin-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  
+.custom-font {
+    font-family: 'Gagalin', sans-serif;
+  }
+  
+  
