@@ -49,8 +49,19 @@ function Register() {
         toast.error(response.data.message || "Registration failed");
       }
     } catch (error) {
-      const errorMsg = error.response?.data?.message || "Network error. Please try again later";
-      toast.error(errorMsg);
+
+      if (error.response && error.response.data.message === "Resend") {
+        const errorMsg = "Verify your email";
+        toast.error(errorMsg);
+        navigate("/endeavour/verify-otp", { state: { email: formData.email } });
+      } 
+      else{
+        const errorMsg = error.response?.data?.message || "Network error. Please try again later";
+        toast.error(errorMsg);
+
+      }
+
+
     }
     setDisable(false);
   }

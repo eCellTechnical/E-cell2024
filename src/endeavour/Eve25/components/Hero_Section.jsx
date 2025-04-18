@@ -29,7 +29,7 @@ const GradientBorder = ({ children, className }) => {
 // Vertical Scrolling Gallery for desktop only
 const VerticalScroller = () => {
   return (
-    <div className="hidden lg:block absolute right-10 top-20 w-56 overflow-hidden" style={{ height: '80vh' }}>
+    <div className="hidden lg:block absolute right-28 top-20 w-[32rem] overflow-hidden" style={{ height: '80vh' }}>
       <motion.div
         className="flex flex-col gap-6"
         animate={{ y: ["0%", "-50%"] }}
@@ -44,7 +44,7 @@ const VerticalScroller = () => {
       >
         {/* Double the images to create seamless loop */}
         {[...eventImages, ...eventImages].map((src, index) => (
-          <GradientBorder key={index} className="w-56 h-56 rounded-xl">
+          <GradientBorder key={index} className="w-full h-full rounded-xl">
             <img
               src={src}
               alt={`Event ${index % eventImages.length + 1}`}
