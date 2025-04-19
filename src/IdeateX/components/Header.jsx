@@ -102,6 +102,12 @@ function Header() {
             >
               SPONSORS
             </a>
+            <a
+              href="/endeavour/eve"
+              className="font-semibold text-white hover:text-[#00f699] transition-colors"
+            >
+             ENTERTAINMENT EVE
+            </a>
             
             <div className="flex items-center gap-3">
               {isLoggedIn ? (
@@ -191,6 +197,13 @@ function Header() {
               className="text-white font-semibold text-xl hover:text-[#00f699]"
             >
               SPONSORS
+            </a>
+            <a
+              href="/endeavour/eve"
+              onClick={toggleMenu}
+              className="text-white font-semibold text-xl hover:text-[#00f699]"
+            >
+              ENTERTAINMENT EVE
             </a>
           </nav>
           <div className="mt-8 flex flex-col sm:flex-row gap-4">
