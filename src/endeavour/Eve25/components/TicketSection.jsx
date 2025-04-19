@@ -48,7 +48,7 @@ const TicketSection = () => {
   };
 
   return (
-    <div id="ticket" className="bg-black text-white py-16 relative overflow-hidden">
+    <div id="ticket" className=" text-white pt-16 relative overflow-hidden">
       {/* Subtle dark grid background */}
       <div className="absolute inset-0 grid grid-cols-12 grid-rows-12 z-0 opacity-30">
         {[...Array(144)].map((_, i) => (
@@ -81,7 +81,7 @@ const TicketSection = () => {
         }}
       />
       
-      <div className="max-w-6xl mx-auto px-6 relative z-10">
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Main content container */}
         <motion.div 
           className="flex flex-col items-center"
@@ -97,7 +97,7 @@ const TicketSection = () => {
             <h2 className="text-xs uppercase tracking-widest text-teal-400 mb-2">Endeavour 2025</h2>
             <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-3">
               Entertainment
-              <span className="text-teal-500"> Eve</span>
+              <span className="text-teal-500 custom-font"> Eve</span>
             </h1>
             <p className="text-gray-400 max-w-2xl mx-auto">
               The sessions end. The lights dim. One night of insane energy and memories that'll outlive the summit.
@@ -164,141 +164,183 @@ const TicketSection = () => {
             </motion.div>
           </motion.div>
           
-          {/* Enhanced Ticket Display */}
+          {/* Full-width Ticket Display */}
           <motion.div 
             className="w-full mb-20"
             variants={fadeInUp}
           >
-            <div className="flex flex-col md:flex-row gap-12 items-center">
-              {/* Ticket Image Side */}
-              <motion.div 
-                className="md:w-1/2 relative"
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.3 }}
-              >
-                <div className="relative">
-                  {/* Dark glass card effect for ticket */}
-                  <motion.div 
-                    className="absolute inset-0 backdrop-blur-sm bg-black/60 rounded-xl border border-teal-500/20"
-                    whileHover={{
-                      boxShadow: "0 0 30px rgba(20, 184, 166, 0.3)",
-                      borderColor: "rgba(20, 184, 166, 0.4)"
-                    }}
-                  />
-                  
-                  {/* Ticket content */}
-                  <div className="relative p-6 z-10">
-                    {/* Corner accents */}
-                    <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-teal-400/70 rounded-tl"></div>
-                    <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-teal-400/70 rounded-tr"></div>
-                    <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-teal-400/70 rounded-bl"></div>
-                    <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-teal-400/70 rounded-br"></div>
-                    
-                    {/* Ticket image with enhanced styling */}
-                    <div className="relative overflow-hidden rounded-lg border-2 border-teal-500/30">
+            {/* Ticket Container - Full Width */}
+            <motion.div 
+              className="backdrop-blur-md bg-black/30 border border-white/10 rounded-xl p-6 md:p-8 relative overflow-hidden"
+              whileHover={{ 
+                boxShadow: "0 0 40px rgba(20, 184, 166, 0.15)",
+                borderColor: "rgba(20, 184, 166, 0.3)"
+              }}
+              transition={{ duration: 0.4 }}
+            >
+              {/* Decorative accent lines */}
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-teal-500/80 via-teal-400/50 to-transparent"></div>
+              <div className="absolute bottom-0 right-0 w-1/2 h-1 bg-gradient-to-l from-teal-500/80 to-transparent"></div>
+              
+              <div className="flex flex-col lg:flex-row gap-8 md:gap-12">
+                {/* Ticket Visual Side */}
+                <div className="lg:w-3/5 relative">
+                  {/* Full ticket design */}
+                  <div className="relative overflow-hidden rounded-lg border-2 border-teal-500/30 h-full">
+                    {/* Image container with proper aspect ratio */}
+                    <div className="relative pt-[50%] lg:pt-[40%]">
                       <motion.img 
                         src={ticketImage}
                         alt="Entertainment Eve Event" 
-                        className="w-full h-96 object-cover"
+                        className="absolute inset-0 w-full h-full object-contain"
                         initial={{ scale: 1 }}
                         whileHover={{ scale: 1.05 }}
                         transition={{ duration: 0.5 }}
                       />
                       
                       {/* Overlay gradient */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent"></div>
+                    </div>
+                    
+                    {/* Decorative ticket elements */}
+                    <div className="absolute top-4 left-4 w-16 h-16 border-t-2 border-l-2 border-teal-400/70 rounded-tl"></div>
+                    <div className="absolute top-4 right-4 w-16 h-16 border-t-2 border-r-2 border-teal-400/70 rounded-tr"></div>
+                    
+                    {/* Ticket perforation line */}
+                    <div className="absolute right-[20%] top-0 bottom-0 w-0.5 flex flex-col justify-between">
+                      {[...Array(12)].map((_, i) => (
+                        <div key={i} className="h-3 w-full bg-teal-400/40 rounded-full my-2"></div>
+                      ))}
+                    </div>
+                    
+                    {/* Ticket info panel */}
+                    <div className="absolute right-0 top-0 bottom-0 w-[20%] bg-black/70 backdrop-blur-sm border-l border-teal-500/30 flex flex-col justify-center items-center p-4">
+                      <div className="text-teal-400 font-mono text-xs font-bold rotate-90 tracking-widest">ADMIT ONE</div>
+                      <div className="my-8 border-t border-teal-500/30 w-1/2"></div>
+                      <div className="text-white font-mono text-xs rotate-90 tracking-wider">#E2025</div>
+                    </div>
+                    
+                    {/* Ticket details overlay */}
+                    <div className="absolute bottom-0 left-0 right-[20%] px-6 py-8 text-center">
+                      <div className="flex justify-between items-end">
+                        <div>
+                          <div className="text-sm text-teal-400 tracking-widest mb-1 text-left">LIVE EVENT</div>
+                          <h3 className="text-3xl md:text-4xl font-bold mb-2 text-left">ENTERTAINMENT EVE</h3>
+                        </div>
+                        <div className="text-right">
+                          <div className="text-gray-300 font-medium">MAY 3, 2025</div>
+                          <div className="text-teal-400 font-bold">8:00 PM</div>
+                        </div>
+                      </div>
                       
-                      {/* Ticket details overlay */}
-                      <div className="absolute bottom-0 left-0 right-0 px-6 py-8 text-center">
-                        <div className="text-sm text-teal-400 tracking-widest mb-1">ADMIT ONE</div>
-                        <h3 className="text-3xl font-bold mb-2">ENTERTAINMENT EVE</h3>
-                        <div className="text-gray-300 font-medium">MAY 3, 2025 • 8:00 PM</div>
-                        <div className="text-sm text-gray-400 mt-1">KIET AUDITORIUM • #E2025</div>
+                      <div className="mt-4 pt-4 border-t border-white/10 flex justify-between">
+                        <div className="text-sm text-left">
+                          <div className="text-gray-400">VENUE</div>
+                          <div className="text-white font-semibold">KIET AUDITORIUM</div>
+                        </div>
+                        <div className="text-sm text-right">
+                          <div className="text-gray-400">SECTION</div>
+                          <div className="text-white font-semibold">PREMIUM</div>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </motion.div>
-              
-              {/* Description Side */}
-              <motion.div 
-                className="md:w-1/2"
-                variants={fadeInUp}
-              >
-                <motion.div 
-                  className="backdrop-blur-md bg-black/30 border border-white/5 rounded-xl p-8 relative overflow-hidden"
-                  whileHover={{ borderColor: "rgba(20, 184, 166, 0.2)" }}
-                >
-                  {/* Accent line */}
-                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-teal-500/80 to-transparent"></div>
-                  
-                  <h3 className="text-3xl font-bold mb-6 text-white">The Ultimate <span className="text-teal-400">Party</span> Experience</h3>
-                  
-                  <p className="text-gray-300 mb-6 leading-relaxed">
-                    Entertainment Eve isn't just an event — it's the heart-thumping, crowd-cheering, stage-blazing climax of Endeavour 2025. From beats that make you move to moments that leave you screaming.
-                  </p>
-                  
-                  <p className="text-gray-300 mb-8 leading-relaxed">
-                    This is where you drop the formals and bring out the wild. No filters, no FOMO — just you, your gang, and the craziest night of the fest.
-                  </p>
-                  
-                  <motion.button 
-                    className="block w-full py-4 bg-black border border-teal-500 text-teal-400 rounded-lg font-medium tracking-wide"
-                    whileHover={{ 
-                      backgroundColor: "rgba(20, 184, 166, 0.1)",
-                      boxShadow: "0 0 20px rgba(20, 184, 166, 0.2)"
-                    }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    RESERVE YOUR SPOT
-                  </motion.button>
-                </motion.div>
-              </motion.div>
-            </div>
+                
+                {/* Description Side */}
+                <div className="lg:w-2/5">
+                  <div className="h-full flex flex-col justify-between">
+                    <div>
+                      <h3 className="text-3xl font-bold mb-6 text-white">The Ultimate <span className="text-teal-400">Party</span> Experience</h3>
+                      
+                      <p className="text-gray-300 mb-6 leading-relaxed">
+                        Entertainment Eve isn't just an event — it's the heart-thumping, crowd-cheering, stage-blazing climax of Endeavour 2025. From beats that make you move to moments that leave you screaming.
+                      </p>
+                      
+                      <p className="text-gray-300 mb-8 leading-relaxed">
+                        This is where you drop the formals and bring out the wild. No filters, no FOMO — just you, your gang, and the craziest night of the fest.
+                      </p>
+                    </div>
+                    
+                 
+                    
+                    {/* CTA Button */}
+                    <motion.button 
+                      className="w-full py-4 bg-black/80 border-2 border-teal-500 text-teal-400 rounded-lg font-bold tracking-wide overflow-hidden relative group"
+                      whileHover={{ 
+                        borderColor: "#14b8a6",
+                      }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      {/* Button background animation */}
+                      <motion.div 
+                        className="absolute inset-0 bg-teal-500/10 -translate-x-full group-hover:translate-x-0"
+                        transition={{ duration: 0.5 }}
+                      />
+                      
+                      {/* Button text with shine effect */}
+                      <span className="relative z-10 flex items-center justify-center">
+                        <span>RESERVE YOUR SPOT</span>
+                        <motion.span 
+                          className="ml-2"
+                          animate={{ 
+                            scale: [1, 1.2, 1],
+                            opacity: [1, 0.8, 1]
+                          }}
+                          transition={{
+                            duration: 2,
+                            repeat: Infinity,
+                            ease: "easeInOut"
+                          }}
+                        >
+                          →
+                        </motion.span>
+                      </span>
+                    </motion.button>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
           </motion.div>
           
-          {/* Final CTA section */}
+          {/* Event highlights - New section */}
           <motion.div 
-            className="w-full"
+            className="w-full mb-16"
             variants={fadeInUp}
           >
-            <motion.div 
-              className="backdrop-blur-lg bg-black/50 border border-white/10 rounded-xl p-8 text-center relative overflow-hidden"
-              whileHover={{ boxShadow: "0 0 30px rgba(20, 184, 166, 0.15)" }}
-            >
-              {/* Glassmorphism decorative accents */}
-              <div className="absolute top-0 left-0 w-full h-16 bg-gradient-to-b from-white/5 to-transparent"></div>
-              <div className="absolute -bottom-10 -right-10 w-40 h-40 rounded-full bg-teal-500/10 blur-xl"></div>
-              <div className="absolute -bottom-10 -left-10 w-40 h-40 rounded-full bg-teal-500/5 blur-xl"></div>
-              
-              <motion.p 
-                className="text-2xl md:text-3xl font-medium mb-8 relative z-10"
-                animate={{
-                  opacity: [0.9, 1, 0.9],
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              >
-                <span className="text-gray-300">Miss it, and you miss the </span>
-                <span className="text-teal-400 font-bold">vibe</span>
-              </motion.p>
-              
-              <motion.div 
-                className="relative inline-block"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <motion.button 
-                  className="px-12 py-5 bg-teal-500 text-black font-bold tracking-wider rounded-lg text-lg"
-                  whileHover={{ boxShadow: "0 0 25px rgba(20, 184, 166, 0.5)" }}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {[
+                {
+                  icon: "🎤",
+                  title: "Star Performances",
+                  description: "Experience breathtaking performances by top artists that will leave you speechless."
+                },
+                {
+                  icon: "🔊",
+                  title: "Sonic Experience",
+                  description: "Feel the music with our state-of-the-art sound systems and immersive audio engineering."
+                },
+                {
+                  icon: "🌠",
+                  title: "Magical Atmosphere",
+                  description: "Cutting-edge visual effects and lighting that transform the venue into another dimension."
+                }
+              ].map((item, idx) => (
+                <motion.div 
+                  key={idx}
+                  className="backdrop-blur-sm bg-black/40 border border-white/5 rounded-lg p-6 hover:border-teal-500/30"
+                  whileHover={{ 
+                    y: -5,
+                    boxShadow: "0 10px 30px -15px rgba(20, 184, 166, 0.25)"
+                  }}
+                  transition={{ duration: 0.3 }}
                 >
-                  GET TICKETS NOW
-                </motion.button>
-              </motion.div>
-            </motion.div>
+                  <div className="text-4xl mb-4">{item.icon}</div>
+                  <h3 className="text-xl font-bold mb-2 text-white">{item.title}</h3>
+                  <p className="text-gray-400">{item.description}</p>
+                </motion.div>
+              ))}
+            </div>
           </motion.div>
         </motion.div>
       </div>
