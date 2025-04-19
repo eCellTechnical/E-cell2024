@@ -16,7 +16,7 @@ export default function Glimpses() {
   const [waveOffset, setWaveOffset] = useState(0);
 
   // Images for the marquees
-  const images = [glimp1, glimp2, glimp3, glimp4, glimp5, glimp6, glimp7, glimp8];
+  const images = ["https://res.cloudinary.com/dvxhlfuox/image/upload/v1745070205/PXL_20240503_091455757_qugz8w.jpg", glimp1, glimp2, glimp3, glimp4, glimp5,"https://res.cloudinary.com/dvxhlfuox/image/upload/v1745070205/PXL_20240503_133709127_i3psqv.jpg", glimp6, glimp7, glimp8, 'https://res.cloudinary.com/dvxhlfuox/image/upload/v1745070205/PXL_20240503_144543059_cqviun.jpg'];
   const imageWidth = 300; // Fixed width for images
   const gap = 16; // Gap between images
 
@@ -35,7 +35,7 @@ export default function Glimpses() {
   }, [images.length]);
 
   return (
-    <div className=" w-full min-h-screen md:px-0 px-4 flex flex-col items-center justify-center relative overflow-hidden py-8">
+    <div className=" w-full pb-16 md:pb-28 md:px-0 px-4 flex flex-col items-center justify-center relative overflow-hidden py-8">
       {/* Background Audio Wave Decorations */}
       <div className="absolute left-0 right-0 bottom-0 top-0 flex items-center pointer-events-none z-0">
         <svg className="w-full h-full" viewBox="0 0 1200 600" preserveAspectRatio="none">
@@ -74,12 +74,12 @@ export default function Glimpses() {
         <div className="relative overflow-hidden py-3">
          
           <div className="overflow-hidden">
-            <h1 className="text-white text-4xl md:text-6xl font-bold mb-3 animate-slide-in-left">
+            <h1 className="text-white text-5xl md:text-7xl font-bold mb-3 animate-slide-in-left">
               <span className="text-transparent custom-font bg-clip-text bg-gradient-to-r from-teal-400 to-emerald-500">GLIMPSES</span>
             </h1>
           </div>
           <div className="overflow-hidden">
-            <h3 className="text-white text-3xl md:text-4xl font-bold mb-2 animate-slide-in-right">
+            <h3 className="text-white text-5xl md:text-5xl font-bold mb-2 animate-slide-in-right">
               OF THE PAST
             </h3>
           </div>

@@ -6,7 +6,7 @@ import ticketImage from "../assets/images/tkt-soon.png";
 const TicketSection = () => {
   const [isHovered, setIsHovered] = useState(false);
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-  const targetDate = useMemo(() => new Date("2025-05-03T00:00:00"), []);
+  const targetDate = useMemo(() => new Date("2025-05-02T16:00:00"), []);
 
   // Calculate time left until the target date
   useEffect(() => {
@@ -48,7 +48,7 @@ const TicketSection = () => {
   };
 
   return (
-    <div id="ticket" className=" text-white pt-16 relative overflow-hidden">
+    <div id="ticket" className=" text-white pt-16 md:pt-16 relative overflow-hidden">
       {/* Subtle dark grid background */}
       <div className="absolute inset-0 grid grid-cols-12 grid-rows-12 z-0 opacity-30">
         {[...Array(144)].map((_, i) => (
@@ -96,8 +96,8 @@ const TicketSection = () => {
           >
             <h2 className="text-xs uppercase tracking-widest text-teal-400 mb-2">Endeavour 2025</h2>
             <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-3">
-              Entertainment
-              <span className="text-teal-500 custom-font"> Eve</span>
+              EVE
+              <span className="text-teal-500 custom-font"> Live in</span>
             </h1>
             <p className="text-gray-400 max-w-2xl mx-auto">
               The sessions end. The lights dim. One night of insane energy and memories that'll outlive the summit.
@@ -182,16 +182,16 @@ const TicketSection = () => {
               <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-teal-500/80 via-teal-400/50 to-transparent"></div>
               <div className="absolute bottom-0 right-0 w-1/2 h-1 bg-gradient-to-l from-teal-500/80 to-transparent"></div>
               
-              <div className="flex flex-col lg:flex-row gap-8 md:gap-12">
+              <div className="flex flex-col items-center  lg:flex-row gap-8 md:gap-12">
                 {/* Ticket Visual Side */}
                 <div className="lg:w-3/5 relative">
                   {/* Full ticket design */}
-                  <div className="relative overflow-hidden rounded-lg border-2 border-teal-500/30 h-full">
+                  <div className="relative overflow-hidden rounded-lg md:p-8 border-2 border-teal-500/30 h-full">
                     {/* Image container with proper aspect ratio */}
                     <div className="relative pt-[50%] lg:pt-[40%]">
                       <motion.img 
                         src={ticketImage}
-                        alt="Entertainment Eve Event" 
+                        alt="Eve Live In" 
                         className="absolute inset-0 w-full h-full object-contain"
                         initial={{ scale: 1 }}
                         whileHover={{ scale: 1.05 }}
@@ -199,7 +199,7 @@ const TicketSection = () => {
                       />
                       
                       {/* Overlay gradient */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent"></div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black hidden md:flex via-black/70 to-transparent"></div>
                     </div>
                     
                     {/* Decorative ticket elements */}
@@ -214,31 +214,31 @@ const TicketSection = () => {
                     </div>
                     
                     {/* Ticket info panel */}
-                    <div className="absolute right-0 top-0 bottom-0 w-[20%] bg-black/70 backdrop-blur-sm border-l border-teal-500/30 flex flex-col justify-center items-center p-4">
-                      <div className="text-teal-400 font-mono text-xs font-bold rotate-90 tracking-widest">ADMIT ONE</div>
+                    <div className="absolute right-0 top-0 bottom-0 w-[20%] hidden md:flex bg-black/70 backdrop-blur-sm border-l border-teal-500/30  flex-col justify-center items-center p-4">
+                      <div className="text-teal-400 font-mono text-xs font-bold rotate-90 tracking-widest">COMING SOON</div>
                       <div className="my-8 border-t border-teal-500/30 w-1/2"></div>
-                      <div className="text-white font-mono text-xs rotate-90 tracking-wider">#E2025</div>
+                      <div className="text-white font-mono text-xs rotate-90 tracking-wider">#2K25</div>
                     </div>
                     
                     {/* Ticket details overlay */}
-                    <div className="absolute bottom-0 left-0 right-[20%] px-6 py-8 text-center">
+                    <div className="absolute bottom-0 hidden md:flex-col left-0 right-[20%] px-6 py-8 text-center">
                       <div className="flex justify-between items-end">
                         <div>
                           <div className="text-sm text-teal-400 tracking-widest mb-1 text-left">LIVE EVENT</div>
                           <h3 className="text-3xl md:text-4xl font-bold mb-2 text-left">ENTERTAINMENT EVE</h3>
                         </div>
                         <div className="text-right">
-                          <div className="text-gray-300 font-medium">MAY 3, 2025</div>
-                          <div className="text-teal-400 font-bold">8:00 PM</div>
+                          <div className="text-gray-300 font-medium">MAY 2-3, 2025</div>
+                          <div className="text-teal-400 font-bold">4:00 PM</div>
                         </div>
                       </div>
                       
-                      <div className="mt-4 pt-4 border-t border-white/10 flex justify-between">
+                      <div className="mt-4 pt-4 border-t  border-white/10 flex justify-between">
                         <div className="text-sm text-left">
                           <div className="text-gray-400">VENUE</div>
                           <div className="text-white font-semibold">KIET AUDITORIUM</div>
                         </div>
-                        <div className="text-sm text-right">
+                        <div className="text-sm hidden md:flex-col text-right">
                           <div className="text-gray-400">SECTION</div>
                           <div className="text-white font-semibold">PREMIUM</div>
                         </div>
@@ -280,7 +280,7 @@ const TicketSection = () => {
                       
                       {/* Button text with shine effect */}
                       <span className="relative z-10 flex items-center justify-center">
-                        <span>RESERVE YOUR SPOT</span>
+                        <span>COMING SOON</span>
                         <motion.span 
                           className="ml-2"
                           animate={{ 
