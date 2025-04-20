@@ -78,12 +78,12 @@ function Header() {
             <a href="/endeavour" className="font-semibold text-white hover:text-[#00f699] transition-colors">
               HOME
             </a>
-            <a
+            {/* <a
               href="/endeavour#about"
               className="font-semibold text-white hover:text-[#00f699] transition-colors"
             >
               ABOUT US
-            </a>
+            </a> */}
             <a
               href="/endeavour/events"
               className="font-semibold text-white hover:text-[#00f699] transition-colors"
@@ -170,13 +170,13 @@ function Header() {
             >
               HOME
             </a>
-            <a
+            {/* <a
               href="/endeavour#about"
               onClick={toggleMenu}
               className="text-white font-semibold text-xl hover:text-[#00f699]"
             >
               ABOUT US
-            </a>
+            </a> */}
             <a
               href="/endeavour/events"
               onClick={toggleMenu}
