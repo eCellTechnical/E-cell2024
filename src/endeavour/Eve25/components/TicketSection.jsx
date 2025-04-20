@@ -215,9 +215,9 @@ const TicketSection = () => {
                     
                     {/* Ticket info panel */}
                     <div className="absolute right-0 top-0 bottom-0 w-[20%] hidden md:flex bg-black/70 backdrop-blur-sm border-l border-teal-500/30  flex-col justify-center items-center p-4">
-                      <div className="text-teal-400 font-mono text-xs font-bold rotate-90 tracking-widest">COMING SOON</div>
-                      <div className="my-8 border-t border-teal-500/30 w-1/2"></div>
-                      <div className="text-white font-mono text-xs rotate-90 tracking-wider">#2K25</div>
+                      <div className="text-teal-400 font-mono text-xs font-bold rotate-90 tracking-widest ">COMING SOON</div>
+                      {/* <div className="my-8  border-t border-teal-500/30 w-1/2"></div> */}
+                      {/* <div className="text-white font-mono text-xs rotate-90 tracking-wider">#2K25</div> */}
                     </div>
                     
                     {/* Ticket details overlay */}

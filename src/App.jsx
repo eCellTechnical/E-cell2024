@@ -1,5 +1,5 @@
 import React, { Suspense, useEffect, useState } from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
 import { ThemeProvider } from "./context/theme";
 import { Analytics } from "@vercel/analytics/react";
 
@@ -64,6 +64,7 @@ const ResetPassword = React.lazy(() =>
 const EndeavourRegister = React.lazy(() =>
   import("./endeavour/Register/EndeavourRegister")
 );
+const ImagePopup = React.lazy(() => import("./components/ImagePopComponent"));
 
 const RegisterEventForm = React.lazy(() =>
   import("./endeavour/End25/RegisterEventForm")
@@ -104,6 +105,27 @@ import PrivacyPolicy2 from "./pages/PrivacyPolicy/Policy2";
 // import CommingSoon from "./endeavour/CommingSoon/CommingSoon";
 // import NewCerti from "./components/newCerti/NewCerti";
 
+// RouteChangeTracker component to detect when we're on the /endeavour route
+const RouteChangeTracker = ({ children }) => {
+  const location = useLocation();
+  const [showPopup, setShowPopup] = useState(false);
+
+  useEffect(() => {
+    // Check if current path is /endeavour exactly
+    if (location.pathname === '/endeavour') {
+      setShowPopup(true);
+    } else {
+      setShowPopup(false);
+    }
+  }, [location]);
+
+  return (
+    <>
+      {showPopup && <ImagePopup onClose={() => setShowPopup(false)} />}
+      {children}
+    </>
+  );
+};
 function App() {
   const [themeMode, setThemeMode] = useState("dark");
 
@@ -147,6 +169,7 @@ function App() {
           <Navbar />
           <ToastContainer />
           <Suspense fallback={<Loader />}>
+          {/* <RouteChangeTracker> */}
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/discover" element={<Discover />} />
@@ -228,6 +251,7 @@ function App() {
               <Route path="/endeavour/speakers" element={<Speakers />} />  */}
               <Route path="*" element={<Error404 />} />
             </Routes>
+            {/* </RouteChangeTracker> */}
           </Suspense>
           <Footer />
         </ThemeProvider>

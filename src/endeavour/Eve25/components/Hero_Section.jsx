@@ -2,15 +2,11 @@ import { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 const eventImages = [
-  "https://in.bmscdn.com/events/moviecard/ET00429769.jpg",
-  "https://in.bmscdn.com/events/moviecard/ET00440583.jpg",
-  "https://in.bmscdn.com/events/moviecard/ET00429769.jpg",
-  "https://in.bmscdn.com/events/moviecard/ET00440583.jpg",
-  "https://in.bmscdn.com/events/moviecard/ET00429769.jpg",
-  "https://in.bmscdn.com/events/moviecard/ET00440583.jpg",
-  "https://in.bmscdn.com/events/moviecard/ET00429769.jpg",
-  "https://in.bmscdn.com/events/moviecard/ET00440583.jpg",
-  "https://in.bmscdn.com/events/moviecard/ET00429769.jpg",
+  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqtLE0JM0SqwFwyTCPS6p98YsPgYdsH5SBsw&s",
+  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqtLE0JM0SqwFwyTCPS6p98YsPgYdsH5SBsw&s",
+  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqtLE0JM0SqwFwyTCPS6p98YsPgYdsH5SBsw&s",
+  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqtLE0JM0SqwFwyTCPS6p98YsPgYdsH5SBsw&s",
+  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqtLE0JM0SqwFwyTCPS6p98YsPgYdsH5SBsw&s",
 
 
 ];
@@ -134,7 +130,7 @@ const Index = () => {
           >
             Step into an evening crafted for pure delight — a perfect blend of
             rhythm, lights, and unforgettable moments. From soulful tunes to
-            feel-good energy, it's more than an event — it's an experience.
+            feel-good energy, it`s more than an event — it`s an experience.
           </motion.p>
 
           <motion.div
@@ -230,7 +226,7 @@ const Index = () => {
                 Location
               </span>
               <span className="font-bold text-sm sm:text-xl">
-                Main Auditorium
+                Auditorium, KIET
               </span>
             </motion.div>
           </div>
@@ -277,7 +273,7 @@ const Index = () => {
 
         {/* Vertical Scrolling Gallery - Only visible on desktop */}
         <div
-          className="hidden lg:block absolute  right-28 top-20 w-[32rem] overflow-hidden"
+          className="hidden lg:block absolute  right-28 top-20 w-[20rem] overflow-hidden"
           style={{ height: "80vh" }}
         >
           <motion.div
