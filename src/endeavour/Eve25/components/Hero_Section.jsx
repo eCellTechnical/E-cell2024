@@ -94,7 +94,8 @@ const Index = () => {
                 backgroundImage:
                   "linear-gradient(to right, #00ffd5, #00ccb1, #009e88, #00ffd5)",
                 backgroundSize: "200% 100%",
-                fontSize: "clamp(2.5rem, 15vw, 5.5rem)",
+                fontSize: "clamp(2.5rem, 12vw, 5.5rem)",
+                letterSpacing: "1px",
                 lineHeight: "0.8",
               }}
               animate={{
@@ -107,7 +108,7 @@ const Index = () => {
               }}
             >
               ENTERTAINMENT{" "}
-              <span className="text-[2em] custom-font sm:text-[1.1em]">
+              <span className="text-[2em] custom-font sm:text-[5.5rem]">
                 EVE
               </span>
             </motion.div>
@@ -119,7 +120,7 @@ const Index = () => {
             animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 30 }}
             transition={{ duration: 0.8, delay: 0.5 }}
           >
-            Where Vibes Meet Velocity
+            Vibes.Lights.Madness.
           </motion.h2>
 
           <motion.p
@@ -128,9 +129,7 @@ const Index = () => {
             animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 40 }}
             transition={{ duration: 0.8, delay: 0.7 }}
           >
-            Step into an evening crafted for pure delight — a perfect blend of
-            rhythm, lights, and unforgettable moments. From soulful tunes to
-            feel-good energy, it`s more than an event — it`s an experience.
+            Come join us for an evening packed with mic-dropping performances, jaw-aching laughter, soulful tunes, and moments that hit right in the feels. From pure madness to pure magic — it’s not just a night, it’s the vibe you’ve been waiting for.
           </motion.p>
 
           <motion.div
