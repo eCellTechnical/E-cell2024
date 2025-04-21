@@ -487,30 +487,31 @@ function Profile() {
                     />
                   </div>
 
-                  {/* Kit Taken Field */}
-                  <div className="flex items-center pt-2">
-                    <div className="flex items-center">
-                      <span className="mr-3 text-sm font-medium text-gray-400">
-                        Kit Collected
-                      </span>
-                      <div className="relative inline-flex items-center cursor-pointer">
-                        <input
-                          type="checkbox"
-                          id="kitTaken"
-                          checked={user.kitTaken}
-                          readOnly
-                          className="sr-only peer"
-                        />
-                        <div className="w-11 h-6 bg-gray-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#00f8bd]"></div>
-                        <span className="ml-2 text-sm font-medium text-gray-300">
-                          {user.kitTaken ? "Yes" : "No"}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                            {user.kitTaken && (
+                            <div className="flex items-center pt-2">
+                              <div className="flex items-center">
+                              <span className="mr-3 text-sm font-medium text-gray-400">
+                                Kit Collected
+                              </span>
+                              <div className="relative inline-flex items-center cursor-pointer">
+                                <input
+                                type="checkbox"
+                                id="kitTaken"
+                                checked={user.kitTaken}
+                                readOnly
+                                className="sr-only peer"
+                                />
+                                <div className="w-11 h-6 bg-gray-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#00f8bd]"></div>
+                                <span className="ml-2 text-sm font-medium text-gray-300">
+                                {user.kitTaken ? "Yes" : "No"}
+                                </span>
+                              </div>
+                              </div>
+                            </div>
+                            )}
+                          </div>
 
-                {/* Password Change Section */}
+                          {/* Password Change Section */}
 {/*                 <div className="pt-4 border-t border-gray-800">
                   <h3 className="text-lg font-medium text-[#00f8bd] mb-4">
                     Change Password
