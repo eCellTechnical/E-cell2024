@@ -49,6 +49,11 @@ function Login() {
       }
     } catch (error) {
       const errorMsg = error.response?.data?.message || "Network error. Please try again later";
+
+      if(errorMsg === "Account not verified. Please verify your email first.") {
+        navigate("/endeavour/verify-otp", { state: { email } });
+      }
+
       toast.error(errorMsg);
     }
     setDisable(false);
