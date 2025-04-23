@@ -3,6 +3,8 @@ import TeamManagementPopup from "./TeamManagement";
 import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
+import EventRegistrationPopup from "../End25/PayementPopup";
+import PaymentModal from "../End25/CompletePayement";
 
 function Profile() {
   const navigate = useNavigate();
@@ -251,6 +253,40 @@ function Profile() {
     }
   };
 
+  const [showPaymentModal, setShowPaymentModal] = useState(false);
+  const [createdTeamId, setCreatedTeamId] = useState(null);
+  const [qrCode, setqrCode] = useState(null);
+  const [discountedPrice, setDiscountedPrice] = useState(null);
+  const [displayEventName, setEventName] = useState(null);
+
+  const openPaymentPopup = (team) => {
+    setCreatedTeamId(team._id);
+
+    const fetchEventData = async () => {
+      try {
+        setLoading(true);
+        const response = await axios.get(
+          `https://two5-backend.onrender.com/api/v1/events/${team.eventSlug}`
+        );
+
+        console.log(response.data.data.event.name);
+
+        setEventName(response.data.data.event.name);
+
+        setqrCode(response.data.data.event.qrcode);
+        setDiscountedPrice(response.data.data.event.fees);
+      } catch (err) {
+        console.error("Error fetching event data:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchEventData();
+
+    setShowPaymentModal(true);
+  };
+
   const formatDate = (dateString) => {
     const date = new Date(dateString);
     return date.toLocaleDateString("en-US", {
@@ -487,32 +523,32 @@ function Profile() {
                     />
                   </div>
 
-                            {user.kitTaken && (
-                            <div className="flex items-center pt-2">
-                              <div className="flex items-center">
-                              <span className="mr-3 text-sm font-medium text-gray-400">
-                                Kit Collected
-                              </span>
-                              <div className="relative inline-flex items-center cursor-pointer">
-                                <input
-                                type="checkbox"
-                                id="kitTaken"
-                                checked={user.kitTaken}
-                                readOnly
-                                className="sr-only peer"
-                                />
-                                <div className="w-11 h-6 bg-gray-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#00f8bd]"></div>
-                                <span className="ml-2 text-sm font-medium text-gray-300">
-                                {user.kitTaken ? "Yes" : "No"}
-                                </span>
-                              </div>
-                              </div>
-                            </div>
-                            )}
-                          </div>
+                  {user.kitTaken && (
+                    <div className="flex items-center pt-2">
+                      <div className="flex items-center">
+                        <span className="mr-3 text-sm font-medium text-gray-400">
+                          Kit Collected
+                        </span>
+                        <div className="relative inline-flex items-center cursor-pointer">
+                          <input
+                            type="checkbox"
+                            id="kitTaken"
+                            checked={user.kitTaken}
+                            readOnly
+                            className="sr-only peer"
+                          />
+                          <div className="w-11 h-6 bg-gray-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#00f8bd]"></div>
+                          <span className="ml-2 text-sm font-medium text-gray-300">
+                            {user.kitTaken ? "Yes" : "No"}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
 
-                          {/* Password Change Section */}
-{/*                 <div className="pt-4 border-t border-gray-800">
+                {/* Password Change Section */}
+                {/*                 <div className="pt-4 border-t border-gray-800">
                   <h3 className="text-lg font-medium text-[#00f8bd] mb-4">
                     Change Password
                   </h3>
@@ -658,12 +694,21 @@ function Profile() {
                             >
                               View Event
                             </button>
-                            <button
-                              onClick={() => handleTeamClick(team._id)}
-                              className="bg-[#007827] text-white px-4 py-2 rounded-full hover:bg-[#00582d] transition-colors"
-                            >
-                              Manage Team
-                            </button>
+                            {team.paymentTransactionId === "000000000000" ? (
+                              <button
+                                onClick={() => openPaymentPopup(team)}
+                                className="bg-[#007827] text-white px-4 py-2 rounded-full hover:bg-[#00582d] transition-colors"
+                              >
+                                Complete Payment
+                              </button>
+                            ) : (
+                              <button
+                                onClick={() => handleTeamClick(team._id)}
+                                className="bg-[#007827] text-white px-4 py-2 rounded-full hover:bg-[#00582d] transition-colors"
+                              >
+                                Manage Team
+                              </button>
+                            )}
                           </div>
                         </div>
                         <div className="mt-4 pt-3 border-t border-gray-800">
@@ -703,6 +748,43 @@ function Profile() {
         isOpen={showTeamPopup}
         onClose={() => setShowTeamPopup(false)}
       />
+
+      {showPaymentModal && (
+        <PaymentModal
+          eventName={displayEventName}
+          discountedPrice={discountedPrice}
+          qrCode={qrCode}
+          onClose={() => setShowPaymentModal(false)}
+          onSubmit={async (paymentData) => {
+            try {
+              const token = localStorage.getItem("token");
+              const res = await axios.put(
+                `https://two5-backend.onrender.com/api/v1/teams/${paymentData.teamId}/payment`,
+                {
+                  paymentTransactionId: paymentData.paymentTransactionId,
+                  paymentScreenshot: paymentData.paymentScreenshot,
+                },
+                {
+                  headers: {
+                    Authorization: `Bearer ${token}`,
+                  },
+                }
+              );
+              if (res.data.success) {
+                setTimeout(
+                  () => (window.location.href = "/endeavour/profile?events"),
+                  2000
+                );
+              } else {
+                throw new Error(res.data.message || "Payment update failed");
+              }
+            } catch (err) {
+              console.log("Error updating payment:", err);
+            }
+          }}
+          teamId={createdTeamId}
+        />
+      )}
     </div>
   );
 }
