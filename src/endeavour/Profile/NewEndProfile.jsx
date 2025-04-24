@@ -61,6 +61,25 @@ function Profile() {
     fetchRegisteredEvents();
   }, [location.pathname]);
 
+  useEffect(()=>{
+    if (query.get("success") === "true") {
+      toast.success("Payment successful!", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        theme: "colored",
+      });
+    } else if (query.get("success") === "false") {
+      toast.error("Payment unsuccessful!", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        theme: "colored",
+      });
+    }
+  }, [query.get("success")])
   const fetchUserData = async () => {
     setLoading(true);
     const token = localStorage.getItem("token");
@@ -334,21 +353,19 @@ function Profile() {
           <div className="flex space-x-4 p-1 rounded-full bg-gray-900">
             <button
               onClick={() => setActiveTab("profile")}
-              className={`px-6 py-2 rounded-full transition-all ${
-                activeTab === "profile"
+              className={`px-6 py-2 rounded-full transition-all ${activeTab === "profile"
                   ? "bg-[#007827] text-white font-bold"
                   : "text-gray-400 hover:text-white"
-              }`}
+                }`}
             >
               Profile
             </button>
             <button
               onClick={() => setActiveTab("events")}
-              className={`px-6 py-2 rounded-full transition-all ${
-                activeTab === "events"
+              className={`px-6 py-2 rounded-full transition-all ${activeTab === "events"
                   ? "bg-[#007827] text-white font-bold"
                   : "text-gray-400 hover:text-white"
-              }`}
+                }`}
             >
               Events
             </button>
@@ -361,9 +378,8 @@ function Profile() {
               <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-gradient-to-r from-[#00f699] to-[#00f8bd] flex items-center justify-center text-[#007827] text-xl md:text-2xl font-bold">
                 {user.name ? (
                   <img
-                    src={`https://avatar.iran.liara.run/public/${
-                      user.gender === "male" ? "`girl`" : "boy"
-                    }`}
+                    src={`https://avatar.iran.liara.run/public/${user.gender === "male" ? "`girl`" : "boy"
+                      }`}
                     loading="lazy"
                     alt="Profile"
                   />
@@ -694,13 +710,14 @@ function Profile() {
                             >
                               View Event
                             </button>
-                            {team.paymentTransactionId === "000000000000" ? (
+                            {(!team.isVerified && team.paymentTransactionId === "000000000000") ? (
+                              
                               <button
-                                onClick={() => openPaymentPopup(team)}
-                                className="bg-[#007827] text-white px-4 py-2 rounded-full hover:bg-[#00582d] transition-colors"
-                              >
-                                Complete Payment
-                              </button>
+                              onClick={() => openPaymentPopup(team)}
+                              className="bg-[#007827] text-white px-4 py-2 rounded-full hover:bg-[#00582d] transition-colors"
+                            >
+                              Complete Payment
+                            </button>
                             ) : (
                               <button
                                 onClick={() => handleTeamClick(team._id)}
