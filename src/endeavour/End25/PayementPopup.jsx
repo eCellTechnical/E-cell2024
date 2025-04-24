@@ -71,7 +71,7 @@ const EventRegistrationPopup = ({
       );
       const paymentLink = response.data.paymentLink;
       if (paymentLink) {
-        window.location.href = "https://testpay.easebuzz.in/v2/pay/"+paymentLink;
+        window.location.href = "https://pay.easebuzz.in/v2/pay/"+paymentLink;
       } else {
         throw new Error("Failed to fetch payment link");
       }
