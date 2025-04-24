@@ -112,7 +112,7 @@ const RouteChangeTracker = ({ children }) => {
 
   useEffect(() => {
     // Check if current path is /endeavour exactly
-    if (location.pathname === '/endeavour') {
+    if (location.pathname === '/') {
       setShowPopup(true);
     } else {
       setShowPopup(false);
@@ -169,7 +169,7 @@ function App() {
           <Navbar />
           <ToastContainer />
           <Suspense fallback={<Loader />}>
-          {/* <RouteChangeTracker> */}
+          <RouteChangeTracker>
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/discover" element={<Discover />} />
@@ -251,7 +251,7 @@ function App() {
               <Route path="/endeavour/speakers" element={<Speakers />} />  */}
               <Route path="*" element={<Error404 />} />
             </Routes>
-            {/* </RouteChangeTracker> */}
+            </RouteChangeTracker>
           </Suspense>
           <Footer />
         </ThemeProvider>

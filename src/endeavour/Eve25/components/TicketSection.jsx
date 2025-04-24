@@ -2,12 +2,12 @@ import { useEffect, useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import "../styles/buttons.css";
 import ticketImage from "../assets/images/tkt-soon.png";
-
+import { useNavigate } from 'react-router-dom';
 const TicketSection = () => {
   const [isHovered, setIsHovered] = useState(false);
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
   const targetDate = useMemo(() => new Date("2025-05-02T16:00:00"), []);
-
+  const history= useNavigate();
   // Calculate time left until the target date
   useEffect(() => {
     const calculateTimeLeft = () => {
@@ -190,7 +190,7 @@ const TicketSection = () => {
                     {/* Image container with proper aspect ratio */}
                     <div className="relative pt-[50%] lg:pt-[40%]">
                       <motion.img 
-                        src={ticketImage}
+                        src="https://res.cloudinary.com/dgufdt51q/image/upload/v1745482918/g5ei7zujavwam2f8bu9z.png"
                         alt="Eve Live In" 
                         className="absolute inset-0 w-full h-full object-contain"
                         initial={{ scale: 1 }}
@@ -199,7 +199,7 @@ const TicketSection = () => {
                       />
                       
                       {/* Overlay gradient */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black hidden md:flex via-black/70 to-transparent"></div>
+                      {/* <div className="absolute inset-0 bg-gradient-to-t from-black hidden md:flex via-black/70 to-transparent"></div> */}
                     </div>
                     
                     {/* Decorative ticket elements */}
@@ -208,17 +208,17 @@ const TicketSection = () => {
                     
                     {/* Ticket perforation line */}
                     <div className="absolute right-[20%] top-0 bottom-0 w-0.5 flex flex-col justify-between">
-                      {[...Array(12)].map((_, i) => (
-                        <div key={i} className="h-3 w-full bg-teal-400/40 rounded-full my-2"></div>
-                      ))}
+                      {/* {[...Array(12)].map((_, i) => (
+                        // <div key={i} className="h-3 w-full bg-teal-400/40 rounded-full my-2"></div>
+                      ))} */}
                     </div>
                     
                     {/* Ticket info panel */}
-                    <div className="absolute right-0 top-0 bottom-0 w-[20%] hidden md:flex bg-black/70 backdrop-blur-sm border-l border-teal-500/30  flex-col justify-center items-center p-4">
-                      <div className="text-teal-400 font-mono text-xs font-bold rotate-90 tracking-widest ">COMING SOON</div>
+                    {/* <div className="absolute right-0 top-0 bottom-0 w-[20%] hidden md:flex bg-black/70 backdrop-blur-sm border-l border-teal-500/30  flex-col justify-center items-center p-4">
+                      <div className="text-teal-400 font-mono text-xs font-bold rotate-90 tracking-widest ">2-3 May, 2025</div>
                       {/* <div className="my-8  border-t border-teal-500/30 w-1/2"></div> */}
                       {/* <div className="text-white font-mono text-xs rotate-90 tracking-wider">#2K25</div> */}
-                    </div>
+                    {/* </div> */} 
                     
                     {/* Ticket details overlay */}
                     <div className="absolute bottom-0 hidden md:flex-col left-0 right-[20%] px-6 py-8 text-center">
@@ -279,8 +279,12 @@ const TicketSection = () => {
                       />
                       
                       {/* Button text with shine effect */}
-                      <span className="relative z-10 flex items-center justify-center">
-                        <span>COMING SOON</span>
+                      <span className="relative z-10 flex items-center justify-center"
+                      onClick={()=>{
+                        history("/endeavour/events/entertainment-eve")
+                      }}
+                      >
+                        <span >Register Now</span>
                         <motion.span 
                           className="ml-2"
                           animate={{ 

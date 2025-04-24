@@ -316,21 +316,26 @@ function App() {
                 </div>
                 <hr className="w-full h-2 opacity-20" />
                 <div className="flex flex-col sm:flex-row gap-3 w-full">
-                  <div className="w-full sm:w-[50%] rounded-md bg-[#18222D] p-4 mb-3 sm:mb-0">
-                    <p className="text-[16px] font-normal">PRIZE POOL</p>
-                    <p className="text-[#00fcb8] text-[18px] flex font-bold items-center">
-                      {eventData.prize?.length > 0
-                        ? eventData.prize[0].amount > 0
-                          ? eventData.prize.length === 1
-                            ? `${eventData.prize[0].amount}K+`
-                            : `${eventData.prize.reduce(
-                                (sum, prize) => sum + (prize.amount || 0),
-                                0
-                              )}K+`
-                          : "To be announced"
-                        : "To be announced"}
-                    </p>
-                  </div>
+                 {( eventData._id != "6809edde914c67780d0fdaca" ) &&  <div className="w-full sm:w-[50%] rounded-md bg-[#18222D] p-4 mb-3 sm:mb-0">
+                   {( eventData.name != "Entertainment Eve" )&& 
+                    ( 
+                      <div>
+                        <p className="text-[16px] font-normal">PRIZE POOL</p>
+                        <p className="text-[#00fcb8] text-[18px] flex font-bold items-center">
+                          {eventData.prize?.length > 0
+                            ? eventData.prize[0].amount > 0
+                              ? eventData.prize.length === 1
+                                ? `${eventData.prize[0].amount}K+`
+                                : `${eventData.prize.reduce(
+                                    (sum, prize) => sum + (prize.amount || 0),
+                                    0
+                                  )}K+`
+                              : "To be announced"
+                            : "To be announced"}
+                        </p>
+                      </div>
+                    )}
+                  </div>}
                   <div className="w-full sm:w-[50%] rounded-md bg-[#18222D] p-4">
                     <p className="text-[16px] font-normal">EVENT DATE</p>
                     <p className="text-[#00fcb8] text-[18px] flex font-bold items-center">
@@ -356,7 +361,7 @@ function App() {
                   </button>
                 </div>
               </div>
-              <div className="flex flex-col gap-4 pt-4">
+             { ( eventData.name != "Entertainment Eve" ) &&  <div className="flex flex-col gap-4 pt-4">
                 <p className="text-xl md:text-[24px] font-bold">EVENT INFO</p>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-4">
                   {options.map((option) => (
@@ -381,12 +386,14 @@ function App() {
                     </div>
                   ))}
                 </div>
-              </div>
+              </div>}
 
               <div className="flex flex-col gap-4 mt-8">
-                <p className="text-xl md:text-[24px] font-bold">
+                {eventData.faq[0] && 
+                  <p className="text-xl md:text-[24px] font-bold">
                   FREQUENTLY ASKED QUESTIONS
-                </p>
+                </p>}
+
                 <div className="space-y-4">
                   {eventData.faq?.map((item, index) => (
                     <div key={index} className="bg-[#18222D] rounded-lg p-4">

@@ -1,12 +1,12 @@
 import { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
-
+import { useNavigate } from "react-router-dom";
 const eventImages = [
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqtLE0JM0SqwFwyTCPS6p98YsPgYdsH5SBsw&s",
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqtLE0JM0SqwFwyTCPS6p98YsPgYdsH5SBsw&s",
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqtLE0JM0SqwFwyTCPS6p98YsPgYdsH5SBsw&s",
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqtLE0JM0SqwFwyTCPS6p98YsPgYdsH5SBsw&s",
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqtLE0JM0SqwFwyTCPS6p98YsPgYdsH5SBsw&s",
+  "https://res.cloudinary.com/dgufdt51q/image/upload/v1745484347/rrmxvmosvy8xne7rkrjv.png",
+  "https://res.cloudinary.com/dgufdt51q/image/upload/v1745485650/ghbmx8ekeo6rdwwpqzya.png",
+  "https://res.cloudinary.com/dgufdt51q/image/upload/v1745484347/rrmxvmosvy8xne7rkrjv.png",
+  "https://res.cloudinary.com/dgufdt51q/image/upload/v1745485650/ghbmx8ekeo6rdwwpqzya.png",
+  "https://res.cloudinary.com/dgufdt51q/image/upload/v1745484347/rrmxvmosvy8xne7rkrjv.png",
 
 
 ];
@@ -15,7 +15,7 @@ const Index = () => {
   const videoRef = useRef(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [particles, setParticles] = useState([]);
-
+  const history = useNavigate();
   useEffect(() => {
     if (videoRef.current) {
       videoRef.current.playbackRate = 0.75;
@@ -94,7 +94,7 @@ const Index = () => {
                 backgroundImage:
                   "linear-gradient(to right, #00ffd5, #00ccb1, #009e88, #00ffd5)",
                 backgroundSize: "200% 100%",
-                fontSize: "clamp(2.5rem, 12vw, 5.5rem)",
+                fontSize: "clamp(2rem, 12vw, 4rem)",
                 letterSpacing: "1px",
                 lineHeight: "0.8",
               }}
@@ -108,14 +108,14 @@ const Index = () => {
               }}
             >
               ENTERTAINMENT{" "}
-              <span className="text-[2em] custom-font sm:text-[5.5rem]">
+              <span className="text-[2em] custom-font sm:text-[4rem]">
                 EVE
               </span>
             </motion.div>
           </motion.div>
 
           <motion.h2
-            className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-mono mb-4 text-teal-50 tracking-wide"
+            className="text-xl sm:text-2xl md:text-3xl lg:text-3xl font-mono mb-4 text-teal-50 tracking-wide"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 30 }}
             transition={{ duration: 0.8, delay: 0.5 }}
@@ -147,12 +147,14 @@ const Index = () => {
               Past Performers
             </motion.a>
             <motion.a
-              href="#ticket"
-              className="bg-teal-400  text-black hover:text-black font-bold py-3 px-10 rounded-full text-center hover:bg-teal-300 transition-all shadow-lg shadow-teal-500/20"
+              onClick={()=>{
+                history("/endeavour/events/entertainment-eve");
+              }}
+              className="bg-teal-400 cursor-pointer  text-black hover:text-black font-bold py-3 px-10 rounded-full text-center hover:bg-teal-300 transition-all shadow-lg shadow-teal-500/20"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              Coming Soon
+              Register Now
             </motion.a>
           </motion.div>
 

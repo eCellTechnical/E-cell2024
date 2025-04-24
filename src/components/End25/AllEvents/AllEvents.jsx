@@ -22,11 +22,17 @@ const AllEvents = () => {
 
         // If response.data is an array, use it directly
         if (Array.isArray(response.data.data.events)) {
-          setEvents(response.data.data.events);
+          const filteredEvents = response.data.data.events.filter(
+            (event) => event.name !== "Entertainment Eve"
+          );
+          setEvents(filteredEvents);
         }
         // If response.data has an events property that's an array
         else if (Array.isArray(response.data?.events)) {
-          setEvents(response.data.events);
+          const filteredEvents = response.data.events.filter(
+            (event) => event.name !== "Entertainment Eve"
+          );
+          setEvents(filteredEvents);
         }
         // If the structure is different than expected
         else {
@@ -118,7 +124,9 @@ const AllEvents = () => {
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
-            {events.map((event, index) => (
+            {events
+            .filter((event) => event._id !== "6809edde914c67780d0fdaca")
+            .map((event, index) => (
               <motion.div
                 key={event._id}
                 className="group relative"
