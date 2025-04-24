@@ -106,14 +106,18 @@ const EventRegistrationPopup = ({
         if (displayEventName !== "Entertainment Eve" && !formData.teamName.trim()) {
           throw new Error("Team name is required");
         }
+        const uniqueTeamName = displayEventName === "Entertainment Eve" 
+          ? `eve_team_${Math.random().toString(36).substr(2, 9)}` 
+          : formData.teamName;
+
         const resp = await axios.post(
           "https://two5-backend.onrender.com/api/v1/addTeam",
           {
             eventSlug: formData.eventSlug,
             leaderId: formData.leaderId,
-            teamName: displayEventName === "Entertainment Eve" ? "eve" : formData.teamName,
+            teamName: uniqueTeamName,
             paymentTransactionId: formData.paymentTransactionId || "000000000000",
-            paymentScreenshot: "https://res.cloudinary.com/dyry5jopl/image/upload/v1745400763/default-screenshot_srwpls.jpg" || "",
+            paymentScreenshot: "https://res.cloudinary.com/dyry5jopl/image/upload/v1745475326/Gemini_Generated_Image_8c41ke8c41ke8c41_xqfzuc.jpg" || "",
           }
         );
         if (resp.data.success && resp.data.data.team._id) {
