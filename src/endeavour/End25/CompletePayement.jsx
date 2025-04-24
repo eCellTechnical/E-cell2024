@@ -110,7 +110,7 @@ const PaymentModal = ({
           </button>
         </div>
         <form onSubmit={handleSubmit} className="p-6 md:p-8 space-y-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
             <div>
               <p className="text-gray-300 text-sm mb-2">Event:</p>
               <p className="text-[#00fcb8] font-medium capitalize mb-4">
@@ -122,7 +122,12 @@ const PaymentModal = ({
                 ₹{discountedPrice}
               </p>
 
-              <div className="mt-4">
+             {
+
+              eventName === "Entertainment Eve" && (
+              <>
+              
+              <div className=" flex flex-col gap-4">
                 <label
                   htmlFor="paymentTransactionId"
                   className="block text-sm font-medium text-gray-300 mb-2"
@@ -148,7 +153,7 @@ const PaymentModal = ({
                 >
                   Payment Screenshot
                 </label>
-                <label className="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-700 border-dashed rounded-lg cursor-pointer bg-[#18222D] hover:bg-[#111920]">
+                <label className="flex flex-col items-center justify-center  w-full h-32 border-2 border-gray-700 border-dashed rounded-lg cursor-pointer bg-[#18222D] hover:bg-[#111920]">
                   <div className="pt-5 pb-6 text-gray-400 text-center">
                     <Upload size={32} className="mx-auto mb-2" />
                     <p className="text-sm">Click to upload or drag and drop</p>
@@ -168,8 +173,7 @@ const PaymentModal = ({
                   />
                 </label>
               </div>
-            </div>
-            <div className="flex flex-col items-center justify-center bg-gray-50 p-4 rounded-lg">
+         <div className="flex flex-col mt-4 mb-4 items-center justify-center bg-gray-50 p-4 rounded-lg">
               <p className="text-gray-700 text-sm font-medium mb-3">
                 Scan QR Code to Pay:
               </p>
@@ -181,21 +185,29 @@ const PaymentModal = ({
                 />
               </div>
             </div>
+
+            {error && <div className="text-red-500 text-sm">{error}</div>}
+
+<button
+  type="submit"
+  disabled={isSubmitting}
+  className="w-full py-3 rounded-md text-black bg-[#00fcb8] hover:bg-[#00d06d] disabled:opacity-50"
+>
+  {isSubmitting ? "Submitting..." : "Submit"}
+</button>
+
+              </>
+           
+          
+          )}
+
+
           </div>
 
-          {error && <div className="text-red-500 text-sm">{error}</div>}
-
-          <button
-            type="submit"
-            disabled={isSubmitting}
-            className="w-full py-3 rounded-md text-black bg-[#00fcb8] hover:bg-[#00d06d] disabled:opacity-50"
-          >
-            {isSubmitting ? "Submitting..." : "Submit"}
-          </button>
-
+   
           {eventName !== "Entertainment Eve" && (
             <>
-              <div className="text-center text-gray-400">OR</div>
+              {/* <div className="text-center text-gray-400">OR</div> */}
               <button
                 type="button"
                 onClick={handlePaymentGatewayChange}

@@ -413,82 +413,88 @@ const EventRegistrationPopup = ({
                     ₹{discountedPrice}
                   </p>
 
-                  <div className="mt-4">
-                    <label
-                      htmlFor="paymentTransactionId"
-                      className="block text-sm font-medium text-gray-300 mb-2"
-                    >
-                      Transaction ID
-                    </label>
-                    <input
-                      id="paymentTransactionId"
-                      name="paymentTransactionId"
-                      type="text"
-                      value={formData.paymentTransactionId}
-                      onChange={handleChange}
-                      required
-                      className="bg-[#18222D] block w-full px-4 py-3 border border-gray-700 rounded-md text-gray-300 sm:text-sm"
-                      placeholder="Enter transaction ID"
-                    />
-                  </div>
-
-                  <div className="mt-4">
-                    <label
-                      htmlFor="paymentScreenshot"
-                      className="block text-sm font-medium text-gray-300 mb-2"
-                    >
-                      Payment Screenshot
-                    </label>
-                    <label className="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-700 border-dashed rounded-lg cursor-pointer bg-[#18222D] hover:bg-[#111920]">
-                      <div className="pt-5 pb-6 text-gray-400 text-center">
-                        <Upload size={32} className="mx-auto mb-2" />
-                        <p className="text-sm">
-                          Click to upload or drag and drop
-                        </p>
-                        <p className="text-xs mt-1 text-gray-500">
-                          {formData.paymentScreenshot?.name ||
-                            "PNG, JPG (MAX. 5MB)"}
-                        </p>
+                  {displayEventName === "Entertainment Eve" && (
+                    <>
+                      <div className="mt-4">
+                        <label
+                          htmlFor="paymentTransactionId"
+                          className="block text-sm font-medium text-gray-300 mb-2"
+                        >
+                          Transaction ID
+                        </label>
+                        <input
+                          id="paymentTransactionId"
+                          name="paymentTransactionId"
+                          type="text"
+                          value={formData.paymentTransactionId}
+                          onChange={handleChange}
+                          required
+                          className="bg-[#18222D] block w-full px-4 py-3 border border-gray-700 rounded-md text-gray-300 sm:text-sm"
+                          placeholder="Enter transaction ID"
+                        />
                       </div>
-                      <input
-                        id="paymentScreenshot"
-                        name="paymentScreenshot"
-                        type="file"
-                        accept="image/*"
-                        className="hidden"
-                        onChange={handleFileChange}
-                        required
+
+                      <div className="mt-4">
+                        <label
+                          htmlFor="paymentScreenshot"
+                          className="block text-sm font-medium text-gray-300 mb-2"
+                        >
+                          Payment Screenshot
+                        </label>
+                        <label className="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-700 border-dashed rounded-lg cursor-pointer bg-[#18222D] hover:bg-[#111920]">
+                          <div className="pt-5 pb-6 text-gray-400 text-center">
+                            <Upload size={32} className="mx-auto mb-2" />
+                            <p className="text-sm">
+                              Click to upload or drag and drop
+                            </p>
+                            <p className="text-xs mt-1 text-gray-500">
+                              {formData.paymentScreenshot?.name ||
+                                "PNG, JPG (MAX. 5MB)"}
+                            </p>
+                          </div>
+                          <input
+                            id="paymentScreenshot"
+                            name="paymentScreenshot"
+                            type="file"
+                            accept="image/*"
+                            className="hidden"
+                            onChange={handleFileChange}
+                            required
+                          />
+                        </label>
+                      </div>
+                    </>
+                  )}
+                </div>
+                {displayEventName === "Entertainment Eve" && (
+                  <div className="flex flex-col items-center justify-center bg-gray-50 p-4 rounded-lg">
+                    <p className="text-gray-700 text-sm font-medium mb-3">
+                      Scan QR Code to Pay:
+                    </p>
+                    <div className="bg-white p-3 rounded-lg shadow-md">
+                      <img
+                        src={qrCode}
+                        alt="Payment QR Code"
+                        className="w-full max-w-xs object-contain"
                       />
-                    </label>
+                    </div>
                   </div>
-                </div>
-                <div className="flex flex-col items-center justify-center bg-gray-50 p-4 rounded-lg">
-                  <p className="text-gray-700 text-sm font-medium mb-3">
-                    Scan QR Code to Pay:
-                  </p>
-                  <div className="bg-white p-3 rounded-lg shadow-md">
-                    <img
-                      src={qrCode}
-                      alt="Payment QR Code"
-                      className="w-full max-w-xs object-contain"
-                    />
-                  </div>
-                </div>
+                )}
               </div>
 
               {error && <div className="text-red-500 text-sm">{error}</div>}
 
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full py-3 rounded-md text-black bg-[#00fcb8] hover:bg-[#00d06d] disabled:opacity-50"
-              >
-                {isSubmitting ? "Submitting..." : "Submit"}
-              </button>
-
-              {eventName !== "Entertainment Eve" && (
+              {displayEventName === "Entertainment Eve" ? (
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full py-3 rounded-md text-black bg-[#00fcb8] hover:bg-[#00d06d] disabled:opacity-50"
+                >
+                  {isSubmitting ? "Submitting..." : "Submit"}
+                </button>
+              ) : (
                 <>
-                  <div className="text-center text-gray-400">OR</div>
+                  {/* <div className="text-center text-gray-400">OR</div> */}
                   <button
                     type="button"
                     onClick={handlePaymentGatewayChange}
