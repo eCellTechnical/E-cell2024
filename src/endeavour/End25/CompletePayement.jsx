@@ -21,8 +21,6 @@ const PaymentModal = ({
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
-
-    
   };
 
   const handlePaymentGatewayChange = async () => {
@@ -46,7 +44,7 @@ const PaymentModal = ({
       );
       const paymentLink = response.data.paymentLink;
       if (paymentLink) {
-        window.location.href = "https://pay.easebuzz.in/v2/pay/"+paymentLink;
+        window.location.href = "https://pay.easebuzz.in/v2/pay/" + paymentLink;
       } else {
         throw new Error("Failed to fetch payment link");
       }
@@ -78,7 +76,8 @@ const PaymentModal = ({
     setError("");
     try {
       const { paymentTransactionId, paymentScreenshot } = formData;
-      if (!paymentTransactionId.trim()) throw new Error("Transaction ID is required");
+      if (!paymentTransactionId.trim())
+        throw new Error("Transaction ID is required");
       if (paymentTransactionId.trim().length !== 12)
         throw new Error("Transaction ID must be exactly 12 characters long");
       if (!paymentScreenshot) throw new Error("Payment screenshot is required");
@@ -154,7 +153,8 @@ const PaymentModal = ({
                     <Upload size={32} className="mx-auto mb-2" />
                     <p className="text-sm">Click to upload or drag and drop</p>
                     <p className="text-xs mt-1 text-gray-500">
-                      {formData.paymentScreenshot?.name || "PNG, JPG (MAX. 5MB)"}
+                      {formData.paymentScreenshot?.name ||
+                        "PNG, JPG (MAX. 5MB)"}
                     </p>
                   </div>
                   <input
@@ -193,16 +193,19 @@ const PaymentModal = ({
             {isSubmitting ? "Submitting..." : "Submit"}
           </button>
 
-          <div className="text-center text-gray-400">OR</div>
-
-          <button
-            type="button"
-            onClick={handlePaymentGatewayChange}
-            disabled={isSubmitting}
-            className="w-full py-3 rounded-md text-black bg-[#00fcb8] hover:bg-[#00d06d] disabled:opacity-50"
-          >
-            Pay through Payment Gateway
-          </button>
+          {eventName !== "Entertainment Eve" && (
+            <>
+              <div className="text-center text-gray-400">OR</div>
+              <button
+                type="button"
+                onClick={handlePaymentGatewayChange}
+                disabled={isSubmitting}
+                className="w-full py-3 rounded-md text-black bg-[#00fcb8] hover:bg-[#00d06d] disabled:opacity-50"
+              >
+                Pay through Payment Gateway
+              </button>
+            </>
+          )}
         </form>
       </div>
     </div>
