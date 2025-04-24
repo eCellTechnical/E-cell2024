@@ -56,7 +56,7 @@ const EventRegistrationPopup = ({
     try {
       const token = localStorage.getItem("token");
       const response = await axios.post(
-        "http://localhost:5000/api/v1/initiate",
+        "https://two5-backend.onrender.com/api/v1/initiate",
         {
           amount: discountedPrice,
           userId: localStorage.getItem("userId"),
@@ -328,16 +328,16 @@ const EventRegistrationPopup = ({
                 {isSubmitting ? "Submitting..." : "Submit"}
               </button>
 
-              {/* <div className="text-center text-gray-400">OR</div> */}
+              <div className="text-center text-gray-400">OR</div>
 
-              {/* <button
+              <button
                 type="button"
                 onClick={handlePaymentGatewayChange}
                 disabled={isSubmitting}
                 className="w-full py-2 rounded-md text-white bg-[#111920] hover:bg-[#1e2a2e] disabled:opacity-50"
               >
                 Pay through Payment Gateway
-              </button> */}
+              </button>
             </form>
           </div>
         </div>
