@@ -356,9 +356,9 @@ function App() {
                     className=" text-[16px] text-white "
                     dangerouslySetInnerHTML={{ __html: eventData.description }}
                   ></p>
-                  <button className="text-[#00fcb8] font-medium mt-1 block md:hidden">
+                  {/* <button className="text-[#00fcb8] font-medium mt-1 block md:hidden">
                     Read more
-                  </button>
+                  </button> */}
                 </div>
               </div>
              { ( eventData.name != "Entertainment Eve" ) &&  <div className="flex flex-col gap-4 pt-4">
