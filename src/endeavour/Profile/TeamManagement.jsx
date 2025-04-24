@@ -211,7 +211,7 @@ export default function TeamManagementPopup({ teamId, isOpen, onClose, onTeamJoi
                   </div>
                 </div>
                 
-                {isLeader && team?.teamCode && (
+                {isLeader && team?.teamCode && team.eventSlug !=="entertainment-eve" && (
                   <div className="bg-gray-800 p-4 rounded-lg mb-4">
                     <div className="flex justify-between items-center">
                       <p className="text-gray-400 text-sm">Team Invite Code</p>
