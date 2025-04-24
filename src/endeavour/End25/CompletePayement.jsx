@@ -199,7 +199,7 @@ const PaymentModal = ({
             type="button"
             onClick={handlePaymentGatewayChange}
             disabled={isSubmitting}
-            className="w-full py-2 rounded-md text-white bg-[#111920] hover:bg-[#1e2a2e] disabled:opacity-50"
+            className="w-full py-3 rounded-md text-black bg-[#00fcb8] hover:bg-[#00d06d] disabled:opacity-50"
           >
             Pay through Payment Gateway
           </button>
