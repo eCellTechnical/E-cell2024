@@ -50,7 +50,37 @@ const EventRegistrationPopup = ({
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
-
+  const handlePaymentGatewayChange = async () => {
+    setIsSubmitting(true);
+    setError("");
+    try {
+      const token = localStorage.getItem("token");
+      const response = await axios.post(
+        "http://localhost:5000/api/v1/initiate",
+        {
+          amount: discountedPrice,
+          userId: localStorage.getItem("userId"),
+          productinfo: eventName,
+          teamId: createdTeamId,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      const paymentLink = response.data.paymentLink;
+      if (paymentLink) {
+        window.location.href = "https://testpay.easebuzz.in/v2/pay/"+paymentLink;
+      } else {
+        throw new Error("Failed to fetch payment link");
+      }
+    } catch (err) {
+      setError(err.response?.data?.message || err.message);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
   const handleFileChange = (e) => {
     setFormData((prev) => ({ ...prev, paymentScreenshot: e.target.files[0] }));
   };
@@ -73,13 +103,15 @@ const EventRegistrationPopup = ({
     setError("");
     try {
       if (activeTab === "create") {
-        if (!formData.teamName.trim()) throw new Error("Team name is required");
+        if (displayEventName !== "Entertainment Eve" && !formData.teamName.trim()) {
+          throw new Error("Team name is required");
+        }
         const resp = await axios.post(
           "https://two5-backend.onrender.com/api/v1/addTeam",
           {
             eventSlug: formData.eventSlug,
             leaderId: formData.leaderId,
-            teamName: formData.teamName,
+            teamName: displayEventName === "Entertainment Eve" ? "eve" : formData.teamName,
             paymentTransactionId: formData.paymentTransactionId || "000000000000",
             paymentScreenshot: "https://res.cloudinary.com/dyry5jopl/image/upload/v1745400763/default-screenshot_srwpls.jpg" || "",
           }
@@ -184,20 +216,20 @@ const EventRegistrationPopup = ({
             <p className="mb-6 text-md text-gray-300">
               Register for <span className="text-[#00fcb8] font-medium capitalize">{displayEventName}</span>
             </p>
-            <div className="flex mb-8 bg-[#111920] rounded-lg p-1.5 max-w-sm mx-auto">
-              <button
+           {displayEventName!="Entertainment Eve"&& <div className="flex mb-8 bg-[#111920] rounded-lg p-1.5 max-w-sm mx-auto">
+             {  displayEventName!="Entertainment Eve"&& <button
                 className={`flex-1 py-2.5 px-4 rounded-md text-sm font-medium transition-colors ${activeTab === "create" ? "bg-[#00fcb8] text-black shadow-lg" : "text-gray-300 hover:text-white"}`}
                 onClick={() => setActiveTab("create")}
               >
                 Create Team
-              </button>
-              <button
+              </button>}
+             { displayEventName!="Entertainment Eve" && <button
                 className={`flex-1 py-2.5 px-4 rounded-md text-sm font-medium transition-colors ${activeTab === "join" ? "bg-[#00fcb8] text-black shadow-lg" : "text-gray-300 hover:text-white"}`}
                 onClick={() => setActiveTab("join")}
               >
                 Join Team
-              </button>
-            </div>
+              </button>}
+            </div>}
             {!success ? (
               <form onSubmit={handleContinue} className="space-y-6 md:space-y-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -205,17 +237,17 @@ const EventRegistrationPopup = ({
                     <label htmlFor="eventSlug" className="block text-sm font-medium text-gray-300 mb-2">Event</label>
                     <input id="eventSlug" name="eventSlug" type="text" value={displayEventName} disabled className="bg-[#111920] block w-full px-4 py-3 border border-gray-700 rounded-md text-gray-300 sm:text-sm" />
                   </div>
-                  <div>
+                 {displayEventName!="Entertainment Eve"&& <div>
                     <label htmlFor="leaderId" className="block text-sm font-medium text-gray-300 mb-2">{activeTab === "create" ? "Team Leader ID" : "Your ID"}</label>
                     <input id="leaderId" name="leaderId" type="text" value={formData.leaderId} disabled className="bg-[#111920] block w-full px-4 py-3 border border-gray-700 rounded-md text-gray-300 sm:text-sm" />
-                  </div>
+                  </div>}
                 </div>
-                {activeTab === "create" ? (
+                {activeTab === "create" ? (displayEventName!="Entertainment Eve"&&(
                   <div>
                     <label htmlFor="teamName" className="block text-sm font-medium text-gray-300 mb-2">Team Name</label>
                     <input id="teamName" name="teamName" type="text" value={formData.teamName} onChange={handleChange} required className="bg-[#111920] block w-full px-4 py-3 border border-gray-700 rounded-md text-gray-300 sm:text-sm" placeholder="Enter your team name" />
                   </div>
-                ) : (
+                )) : (
                   <div>
                     <label htmlFor="teamCode" className="block text-sm font-medium text-gray-300 mb-2">Team Code</label>
                     <input id="teamCode" name="teamCode" type="text" value={formData.teamCode} onChange={handleChange} required className="bg-[#111920] block w-full px-4 py-3 border border-gray-700 rounded-md text-gray-300 sm:text-sm" placeholder="Enter team code" />
@@ -292,11 +324,11 @@ const EventRegistrationPopup = ({
                 {isSubmitting ? "Submitting..." : "Submit"}
               </button>
 
-              {/* <div className="text-center text-gray-400">OR</div>
+              {/* <div className="text-center text-gray-400">OR</div> */}
 
-              <button
+              {/* <button
                 type="button"
-                onClick={handleChange}
+                onClick={handlePaymentGatewayChange}
                 disabled={isSubmitting}
                 className="w-full py-2 rounded-md text-white bg-[#111920] hover:bg-[#1e2a2e] disabled:opacity-50"
               >
