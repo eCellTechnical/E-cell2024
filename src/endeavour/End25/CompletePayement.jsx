@@ -21,6 +21,40 @@ const PaymentModal = ({
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+
+    
+  };
+
+  const handlePaymentGatewayChange = async () => {
+    setIsSubmitting(true);
+    setError("");
+    try {
+      const token = localStorage.getItem("token");
+      const response = await axios.post(
+        "http://localhost:5000/api/v1/initiate",
+        {
+          amount: discountedPrice,
+          userId: localStorage.getItem("userId"),
+          productinfo: eventName,
+          teamId: teamId,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      const paymentLink = response.data.paymentLink;
+      if (paymentLink) {
+        window.location.href = "https://testpay.easebuzz.in/v2/pay/"+paymentLink;
+      } else {
+        throw new Error("Failed to fetch payment link");
+      }
+    } catch (err) {
+      setError(err.response?.data?.message || err.message);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleFileChange = (e) => {
@@ -163,7 +197,7 @@ const PaymentModal = ({
 
           <button
             type="button"
-            onClick={handleChange}
+            onClick={handlePaymentGatewayChange}
             disabled={isSubmitting}
             className="w-full py-2 rounded-md text-white bg-[#111920] hover:bg-[#1e2a2e] disabled:opacity-50"
           >
