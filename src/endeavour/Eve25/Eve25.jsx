@@ -4,9 +4,14 @@ import TicketSection from "./components/TicketSection";
 import Glimpses from "./components/Glimpses";
 import { StrictMode } from "react";
 import { motion } from "framer-motion";
+import { useEffect } from "react";
 import './app.css';
+// import { useEffect } from "react";
 
 function App() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <StrictMode>
       <motion.div 
