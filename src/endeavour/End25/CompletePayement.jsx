@@ -29,11 +29,11 @@ const PaymentModal = ({
     try {
       const token = localStorage.getItem("token");
       const response = await axios.post(
-        "https://two5-backend.onrender.com/api/v1/initiate",
+        "http://localhost:5000/api/v1/initiate",
         {
-          amount: discountedPrice,
+          // amount: discountedPrice,
           userId: localStorage.getItem("userId"),
-          productinfo: eventName,
+          // productinfo: eventName,
           teamId: teamId,
         },
         {

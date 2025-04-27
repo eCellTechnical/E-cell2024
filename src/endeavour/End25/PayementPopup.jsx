@@ -58,9 +58,9 @@ const EventRegistrationPopup = ({
       const response = await axios.post(
         "https://two5-backend.onrender.com/api/v1/initiate",
         {
-          amount: discountedPrice,
+          // amount: discountedPrice,
           userId: localStorage.getItem("userId"),
-          productinfo: eventName,
+          // productinfo: eventName,
           teamId: createdTeamId,
         },
         {
