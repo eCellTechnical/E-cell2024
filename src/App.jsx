@@ -45,6 +45,10 @@ const EndeavourHomePage = React.lazy(() =>
   import("./endeavour/Home/EndeavourHomePage")
 );
 
+const EndWinner = React.lazy(() =>
+  import("./endeavour/End25/WinnerPage")
+);
+
 const End25Eve = React.lazy(() =>
   import("./endeavour/Eve25/Eve25")
 );
@@ -233,6 +237,10 @@ function App() {
               <Route path="/endeavour/events/:eventSlug" element={<SingleEvent />} />
               <Route path="/endeavour/events/register/:eventSlug" element={<RegisterEventForm />} />
               
+              {/* <Route
+                path="endeavour/winner"
+                element={<EndWinner />}
+              /> */}
 
               {/* <Route path="/endeavour/admin/:admin" element={<Admin />} /> */}
               {/* <Route
