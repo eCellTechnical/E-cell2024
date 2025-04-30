@@ -164,7 +164,7 @@ const AllEvents = () => {
 
                     <div className="mb-6">
                       <p className="text-xs text-gray-400 mb-1">REGISTRATION</p>
-                      <p className="text-2xl font-bold text-[#00FCB8]">OPEN</p>
+                      <p className="text-2xl font-bold text-[#00FCB8]">{event.name === "Treasure Hunt" ? "OPEN" : "CLOSED"}</p>
                     </div>
 
                     {/* Divider line with animation */}
@@ -242,7 +242,7 @@ const AllEvents = () => {
                       >
                         {event.registrationEndDate &&
                         new Date() < new Date(event.registrationEndDate)
-                          ? "REGISTER NOW"
+                          ? "VIEW DETAILS"
                           : "VIEW DETAILS"}
                       </motion.button>
                     </div>

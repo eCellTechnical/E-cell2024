@@ -16,7 +16,6 @@ import PropTypes from "prop-types";
 import EventRegistrationPopup from "./PayementPopup";
 // import DefaultScreenShot from "/assets/default-screenshot.jpg";
 
-
 function App() {
   const { eventSlug } = useParams();
   const [eventData, setEventData] = useState(null);
@@ -31,7 +30,8 @@ function App() {
   const [isRegistrationOpen, setIsRegistrationOpen] = useState(false);
   const [isRegistered, setIsRegistered] = useState(false);
   const [isUserFieldsValid, setIsUserFieldsValid] = useState(false);
-  const [showProfileIncompletePopup, setShowProfileIncompletePopup] = useState(false);
+  const [showProfileIncompletePopup, setShowProfileIncompletePopup] =
+    useState(false);
 
   useEffect(() => {
     const fetchEventData = async () => {
@@ -244,7 +244,7 @@ function App() {
     },
     {
       id: 2,
-      label: "Prizes Worth " + eventData.prize[0].amount +"K+",
+      label: "Prizes Worth " + eventData.prize[0].amount + "K+",
       icon: <IndianRupee color="white" size={20} className="md:w-6 md:h-6" />,
       title: "Rewards",
     },
@@ -258,8 +258,6 @@ function App() {
     (registeredTeams / maxTeams) * 100,
     100
   );
-
-  
 
   return (
     <div className="font-sans pt-20 leading-[1.5] font-normal text-white bg-gradient-to-b from-black via-[#001a1a] to-black antialiased">
@@ -301,41 +299,55 @@ function App() {
                         !localStorage.getItem("userId") ||
                         !localStorage.getItem("token")
                       ) {
-                        window.location.href = "/endeavour/login";
+
+                        if (eventData.name == "Entertainment Eve" || eventData.name == "Treasure Hunt") {
+                          window.location.href = "/endeavour/login";
+                        } else {
+                          alert("Registration is closed.");
+                        }
                       } else {
                         if (!isUserFieldsValid) {
                           setShowProfileIncompletePopup(true);
                         } else {
-                          setIsRegistrationOpen(true);
+                          if (eventData.name == "Entertainment Eve" || eventData.name == "Treasure Hunt") {
+                            setIsRegistrationOpen(true);
+                          } else {
+                            alert("Registration is closed.");
+                          }
                         }
                       }
                     }}
                   >
-                    {isRegistered ? "Dashboard" : "Register Now"}
+                    {isRegistered
+                      ? "Dashboard"
+                      : eventData.name == "Entertainment Eve" || eventData.name == "Treasure Hunt"
+                      ? "Register Now"
+                      : "Closed"}
                   </button>
                 </div>
                 <hr className="w-full h-2 opacity-20" />
                 <div className="flex flex-col sm:flex-row gap-3 w-full">
-                 {( eventData._id != "6809edde914c67780d0fdaca" ) &&  <div className="w-full sm:w-[50%] rounded-md bg-[#18222D] p-4 mb-3 sm:mb-0">
-                   {( eventData.name != "Entertainment Eve" )&& 
-                    ( 
-                      <div>
-                        <p className="text-[16px] font-normal">PRIZE POOL</p>
-                        <p className="text-[#00fcb8] text-[18px] flex font-bold items-center">
-                          {eventData.prize?.length > 0
-                            ? eventData.prize[0].amount > 0
-                              ? eventData.prize.length === 1
-                                ? `${eventData.prize[0].amount}K+`
-                                : `${eventData.prize.reduce(
-                                    (sum, prize) => sum + (prize.amount || 0),
-                                    0
-                                  )}K+`
-                              : "To be announced"
-                            : "To be announced"}
-                        </p>
-                      </div>
-                    )}
-                  </div>}
+                  {eventData._id != "6809edde914c67780d0fdaca" && (
+                    <div className="w-full sm:w-[50%] rounded-md bg-[#18222D] p-4 mb-3 sm:mb-0">
+                      {eventData.name != "Entertainment Eve" && (
+                        <div>
+                          <p className="text-[16px] font-normal">PRIZE POOL</p>
+                          <p className="text-[#00fcb8] text-[18px] flex font-bold items-center">
+                            {eventData.prize?.length > 0
+                              ? eventData.prize[0].amount > 0
+                                ? eventData.prize.length === 1
+                                  ? `${eventData.prize[0].amount}K+`
+                                  : `${eventData.prize.reduce(
+                                      (sum, prize) => sum + (prize.amount || 0),
+                                      0
+                                    )}K+`
+                                : "To be announced"
+                              : "To be announced"}
+                          </p>
+                        </div>
+                      )}
+                    </div>
+                  )}
                   <div className="w-full sm:w-[50%] rounded-md bg-[#18222D] p-4">
                     <p className="text-[16px] font-normal">EVENT DATE</p>
                     <p className="text-[#00fcb8] text-[18px] flex font-bold items-center">
@@ -361,38 +373,39 @@ function App() {
                   </button> */}
                 </div>
               </div>
-             { ( eventData.name != "Entertainment Eve" ) &&  <div className="flex flex-col gap-4 pt-4">
-                <p className="text-xl md:text-[24px] font-bold">EVENT INFO</p>
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-4">
-                  {options.map((option) => (
-                    <div
-                      key={option.id}
-                      className="w-full p-3 md:p-4 rounded-lg bg-[#18222D] flex flex-col items-start"
-                    >
-                      <div className="flex justify-between items-center w-full mb-2 md:mb-4">
-                        <div className="p-1 md:p-2">{option.icon}</div>
-                        <div className="p-1 md:p-2">
-                         
+              {eventData.name != "Entertainment Eve" && (
+                <div className="flex flex-col gap-4 pt-4">
+                  <p className="text-xl md:text-[24px] font-bold">EVENT INFO</p>
+                  <div className="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-4">
+                    {options.map((option) => (
+                      <div
+                        key={option.id}
+                        className="w-full p-3 md:p-4 rounded-lg bg-[#18222D] flex flex-col items-start"
+                      >
+                        <div className="flex justify-between items-center w-full mb-2 md:mb-4">
+                          <div className="p-1 md:p-2">{option.icon}</div>
+                          <div className="p-1 md:p-2"></div>
+                        </div>
+                        <div className="mt-2 md:mt-4">
+                          <h2 className="text-white text-lg md:text-2xl font-bold mb-1">
+                            {option.title}
+                          </h2>
+                          <p className="text-[#00fcb8] text-base md:text-xl font-medium">
+                            {option.label}
+                          </p>
                         </div>
                       </div>
-                      <div className="mt-2 md:mt-4">
-                        <h2 className="text-white text-lg md:text-2xl font-bold mb-1">
-                          {option.title}
-                        </h2>
-                        <p className="text-[#00fcb8] text-base md:text-xl font-medium">
-                          {option.label}
-                        </p>
-                      </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
-              </div>}
+              )}
 
               <div className="flex flex-col gap-4 mt-8">
-                {eventData.faq[0] && 
+                {eventData.faq[0] && (
                   <p className="text-xl md:text-[24px] font-bold">
-                  FREQUENTLY ASKED QUESTIONS
-                </p>}
+                    FREQUENTLY ASKED QUESTIONS
+                  </p>
+                )}
 
                 <div className="space-y-4">
                   {eventData.faq?.map((item, index) => (
@@ -523,17 +536,30 @@ function App() {
                           !localStorage.getItem("userId") ||
                           !localStorage.getItem("token")
                         ) {
-                          window.location.href = "/endeavour/login";
+                          if (eventData.name == "Entertainment Eve" || eventData.name == "Treasure Hunt") {
+                            window.location.href = "/endeavour/login";
+                          } else {
+                            alert("Registration is closed.");
+                          }
                         } else {
                           if (!isUserFieldsValid) {
                             setShowProfileIncompletePopup(true);
                           } else {
-                            setIsRegistrationOpen(true);
+                            if (eventData.name == "Entertainment Eve" || eventData.name == "Treasure Hunt") {
+                              setIsRegistrationOpen(true);
+                            }
+                            else{
+                              alert("Registration is closed.");
+                            }
                           }
                         }
                       }}
                     >
-                      {isRegistered ? "GO TO DASHBOARD" : "REGISTER NOW"}
+                      {isRegistered
+                        ? "GO TO DASHBOARD"
+                        : eventData.name == "Entertainment Eve" || eventData.name == "Treasure Hunt"
+                        ? "REGISTER NOW"
+                        : "CLOSED"}
                     </button>
                     <button
                       className="flex justify-center items-center bg-[#111920]/80 hover:bg-[#0e161f] text-white font-semibold rounded-lg py-3 w-full text-sm md:text-base border border-[#00fcb8]/30 transition-all"
@@ -611,6 +637,5 @@ function App() {
     </div>
   );
 }
-
 
 export default App;
