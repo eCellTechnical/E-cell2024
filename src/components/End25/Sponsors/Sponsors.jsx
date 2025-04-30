@@ -1,73 +1,228 @@
 import { useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
 
+import Adda247 from "../../../assets/EndeavorLogoSponsors/EndeavorLogoSponsors/adda247.png";
+import DelhiEvents from "../../../assets/EndeavorLogoSponsors/EndeavorLogoSponsors/delhievents_logo.jpg";
+import MyEquation from "../../../assets/EndeavorLogoSponsors/EndeavorLogoSponsors/download.png";
+import EatMyNews from "../../../assets/EndeavorLogoSponsors/EndeavorLogoSponsors/eatmynews.png";
+import EdTimes from "../../../assets/EndeavorLogoSponsors/EndeavorLogoSponsors/edtimes.png";
+import EthIndia from "../../../assets/EndeavorLogoSponsors/EndeavorLogoSponsors/ethindia.png";
+import EvePaper from "../../../assets/EndeavorLogoSponsors/EndeavorLogoSponsors/evepaper.jpg";
+import Finlatics from "../../../assets/EndeavorLogoSponsors/EndeavorLogoSponsors/finlatics.png";
+import Herody from "../../../assets/EndeavorLogoSponsors/EndeavorLogoSponsors/herody.jpg";
+import InterviewBuddy from "../../../assets/EndeavorLogoSponsors/EndeavorLogoSponsors/interviewbuddy.webp";
+import KashiHomes from "../../../assets/EndeavorLogoSponsors/EndeavorLogoSponsors/kashihomes.webp";
+import KodeKloud from "../../../assets/EndeavorLogoSponsors/EndeavorLogoSponsors/kodekloud_logo.jpg";
+import Polygon from "../../../assets/EndeavorLogoSponsors/EndeavorLogoSponsors/polygon.webp";
+import PrepInsta from "../../../assets/EndeavorLogoSponsors/EndeavorLogoSponsors/prepinsta_logo.jpg";
+import SevaHub from "../../../assets/EndeavorLogoSponsors/EndeavorLogoSponsors/sevahub.jpeg";
+import SharpEconomy from "../../../assets/EndeavorLogoSponsors/EndeavorLogoSponsors/sharpeconomy.png";
+import StartupNews from "../../../assets/EndeavorLogoSponsors/EndeavorLogoSponsors/startupnewsLogo.jpeg";
+import StarWorks from "../../../assets/EndeavorLogoSponsors/EndeavorLogoSponsors/starworks.png";
+import TheCarzilla from "../../../assets/EndeavorLogoSponsors/EndeavorLogoSponsors/thecarzilla.jpg";
+import Trends from "../../../assets/EndeavorLogoSponsors/EndeavorLogoSponsors/trends.png";
+import TruScholar from "../../../assets/EndeavorLogoSponsors/EndeavorLogoSponsors/truscholar.webp";
+import Unstop from "../../../assets/EndeavorLogoSponsors/EndeavorLogoSponsors/unstop.png";
+import WeBuild from "../../../assets/EndeavorLogoSponsors/EndeavorLogoSponsors/webuild.png";
+import Wolfram from "../../../assets/EndeavorLogoSponsors/EndeavorLogoSponsors/wolfram.jpg";
+import XCentic from "../../../assets/EndeavorLogoSponsors/EndeavorLogoSponsors/XCENTIC.webp";
+import YouthIncorporated from "../../../assets/EndeavorLogoSponsors/EndeavorLogoSponsors/youthincorporsatedd.jpg";
+
+
 const SponsorsCarousel = () => {
   const controlsTop = useAnimation();
+  const controlsMiddle = useAnimation();
   const controlsBottom = useAnimation();
 
   const sponsorsData = [
     {
       id: 1,
-      name: "Bank of Baroda",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Bank_of_Baroda_Logo.svg/1200px-Bank_of_Baroda_Logo.svg.png",
+      name: "Adda247",
+      logo: `${Adda247}`,
     },
     {
       id: 2,
-      name: "Department of Science & Technology",
-      logo: "https://upload.wikimedia.org/wikipedia/en/thumb/7/7a/Department_of_Science_%26_Technology_%28India%29_Logo.png/220px-Department_of_Science_%26_Technology_%28India%29_Logo.png",
+      name: "DelhiEvents",
+      logo: `${DelhiEvents}`,
     },
     {
       id: 3,
-      name: "Westbridge Capital",
-      logo: "https://westbridge.com/wp-content/uploads/2022/03/Westbridge-logo-1.png",
+      name: "My Equation",
+      logo: `${MyEquation}`,
     },
     {
       id: 4,
-      name: "NPCI",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/National_Payments_Corporation_of_India_Logo.svg/1200px-National_Payments_Corporation_of_India_Logo.svg.png",
+      name: "Eat My News",
+      logo: `${EatMyNews}`,
     },
     {
       id: 5,
-      name: "Deutsche Bank",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Deutsche_Bank_AG_Logo.svg/1200px-Deutsche_Bank_AG_Logo.svg.png",
+      name: "Ed Times",
+      logo: `${EdTimes}`,
     },
     {
       id: 6,
-      name: "Deloitte",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Deloitte_Logo.svg/1200px-Deloitte_Logo.svg.png",
+      name: "Eth India",
+      logo: `${EthIndia}`,
     },
     {
       id: 7,
-      name: "Google",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/1200px-Google_2015_logo.svg.png",
+      name: "Eve Paper",
+      logo: `${EvePaper}`,
     },
+    {
+      id: 8,
+      name: "Finlatics",
+      logo: `${Finlatics}`,
+    },
+    {
+      id: 9,
+      name: "Herody",
+      logo: `${Herody}`,
+    },
+    {
+      id: 10,
+      name: "Interview Buddy",
+      logo: `${InterviewBuddy}`,
+    },
+    {
+      id: 11,
+      name: "Kashi Homes",
+      logo: `${KashiHomes}`,
+    },
+    {
+      id: 12,
+      name: "Kode Kloud",
+      logo: `${KodeKloud}`,
+    },
+    {
+      id: 13,
+      name: "Polygon",
+      logo: `${Polygon}`,
+    },
+    {
+      id: 14,
+      name: "PrepInsta",
+      logo: `${PrepInsta}`,
+    },
+    {
+      id: 15,
+      name: "Seva Hub",
+      logo: `${SevaHub}`,
+    },
+    {
+      id: 16,
+      name: "Sharp Economy",
+      logo: `${SharpEconomy}`,
+    },
+    {
+      id: 17,
+      name: "Startup News",
+      logo: `${StartupNews}`,
+    },
+    {
+      id: 18,
+      name: "Star Works",
+      logo: `${StarWorks}`,
+    },
+    {
+      id: 19,
+      name: "The Carzilla",
+      logo: `${TheCarzilla}`,
+    },
+    {
+      id: 20,
+      name: "Trends",
+      logo: `${Trends}`,
+    },
+    {
+      id: 21,
+      name: "TruScholar",
+      logo: `${TruScholar}`,
+    },
+    {
+      id: 22,
+      name: "Unstop",
+      logo: `${Unstop}`,
+    },
+    {
+      id: 23,
+      name: "We Build",
+      logo: `${WeBuild}`,
+    },
+    {
+      id: 24,
+      name: "Wolfram",
+      logo: `${Wolfram}`,
+    },
+    {
+        id : 25 ,
+        name : "XCentric" ,
+        logo : `${XCentic}`
+     },
+     {
+        id : 26 ,
+        name : "Youth Incorporated" ,
+        logo : `${YouthIncorporated}`
+    }
   ];
 
-  useEffect(() => {
-    controlsTop.start({
-      x: [0, -1200],
-      transition: {
-        x: {
-          repeat: Infinity,
-          repeatType: "loop",
-          duration: 30,
-          ease: "linear",
-        },
-      },
-    });
+  const chunkSize = Math.ceil(sponsorsData.length / 3);
+  const sponsorGroups = [
+    sponsorsData.slice(0, chunkSize),
+    sponsorsData.slice(chunkSize, chunkSize * 2),
+    sponsorsData.slice(chunkSize * 2),
+  ];
 
-    controlsBottom.start({
-      x: [-1200, 0],
-      transition: {
-        x: {
-          repeat: Infinity,
-          repeatType: "loop",
-          duration: 30,
-          ease: "linear",
+  const createInfiniteItems = (items) => [...items, ...items, ...items];
+
+  useEffect(() => {
+    const startAnimation = async () => {
+      // Reset to initial position
+      await controlsTop.start({ x: 0 });
+      await controlsMiddle.start({ x: -1200 });
+      await controlsBottom.start({ x: 0 });
+
+      // Start infinite animations
+      controlsTop.start({
+        x: -1200 * 2, // Move two full widths
+        transition: {
+          x: {
+            repeat: Infinity,
+            repeatType: "loop",
+            duration: 60,
+            ease: "linear",
+          },
         },
-      },
-    });
-  }, [controlsTop, controlsBottom]);
+      });
+
+      controlsMiddle.start({
+        x: 0,
+        transition: {
+          x: {
+            repeat: Infinity,
+            repeatType: "loop",
+            duration: 50,
+            ease: "linear",
+          },
+        },
+      });
+
+      controlsBottom.start({
+        x: -1200 * 2,
+        transition: {
+          x: {
+            repeat: Infinity,
+            repeatType: "loop",
+            duration: 70,
+            ease: "linear",
+          },
+        },
+      });
+    };
+
+    startAnimation();
+  }, [controlsTop, controlsMiddle, controlsBottom]);
 
   return (
     <div className="w-full py-16 overflow-hidden bg-gradient-to-b from-black/80 to-[#001a1a]/80 relative">
@@ -100,93 +255,90 @@ const SponsorsCarousel = () => {
           </motion.div>
         </div>
 
-        {/* Revealing Soon Section */}
-        <motion.div 
-          className="flex flex-col items-center justify-center"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.3 }}
-        >
-         
-
-          <div className="relative w-full max-w-md h-48 flex items-center justify-center">
-            <div className="absolute inset-0 bg-teal-900/20 rounded-xl border border-teal-500/30 flex items-center justify-center">
-              <div className="animate-pulse flex flex-col items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-16 w-16 text-teal-400 mb-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
+        <div className="relative flex flex-col gap-8">
+          {/* Top Carousel */}
+          <div className="overflow-hidden">
+            <motion.div className="flex items-center w-max" animate={controlsTop}>
+              {createInfiniteItems(sponsorGroups[0]).map((sponsor, index) => (
+                <motion.div
+                  key={`top-${sponsor.id}-${index}`}
+                  className="flex-shrink-0 mx-4 bg-gradient-to-br from-black/30 to-teal-900/20 rounded-xl p-6 flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 border border-teal-500/20"
+                  style={{
+                    width: "220px",
+                    height: "140px",
+                    transition: "all 0.3s ease",
+                  }}
+                  whileHover={{
+                    scale: 1.05,
+                    boxShadow: "0 10px 25px -5px rgba(0, 252, 184, 0.2)"
+                  }}
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={1.5}
-                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                  <img
+                    src={sponsor.logo}
+                    alt={sponsor.name}
+                    className="max-w-full max-h-full bg-white object-contain"
+                    loading="lazy"
                   />
-                </svg>
-                <span className="text-teal-300 text-lg">Coming Soon</span>
-              </div>
-            </div>
+                </motion.div>
+              ))}
+            </motion.div>
           </div>
-        </motion.div>
 
-        {/* Sponsor Carousel (Hidden until ready) */}
-        <div className="relative flex flex-col gap-8 overflow-hidden opacity-0 h-0">
-          <motion.div className="flex items-center" animate={controlsTop}>
-            {[...sponsorsData, ...sponsorsData].map((sponsor, index) => (
-              <motion.div
-                key={`top-${sponsor.id}-${index}`}
-                className="flex-shrink-0 mx-4 bg-gradient-to-br from-black/30 to-teal-900/20 rounded-xl p-6 flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 border border-teal-500/20"
-                style={{
-                  width: "220px",
-                  height: "140px",
-                  filter: "grayscale(80%)",
-                  transition: "all 0.3s ease",
-                }}
-                whileHover={{
-                  filter: "grayscale(0%)",
-                  scale: 1.05,
-                  boxShadow: "0 10px 25px -5px rgba(0, 252, 184, 0.2)"
-                }}
-              >
-                <img
-                  src={sponsor.logo}
-                  alt={sponsor.name}
-                  className="max-w-full max-h-full object-contain"
-                  loading="lazy"
-                />
-              </motion.div>
-            ))}
-          </motion.div>
+          {/* Middle Carousel */}
+          <div className="overflow-hidden">
+            <motion.div className="flex items-center w-max" animate={controlsMiddle}>
+              {createInfiniteItems(sponsorGroups[1]).map((sponsor, index) => (
+                <motion.div
+                  key={`middle-${sponsor.id}-${index}`}
+                  className="flex-shrink-0 mx-4 bg-gradient-to-br from-black/30 to-teal-900/20 rounded-xl p-6 flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 border border-teal-500/20"
+                  style={{
+                    width: "220px",
+                    height: "140px",
+                    transition: "all 0.3s ease",
+                  }}
+                  whileHover={{
+                    scale: 1.05,
+                    boxShadow: "0 10px 25px -5px rgba(0, 252, 184, 0.2)"
+                  }}
+                >
+                  <img
+                    src={sponsor.logo}
+                    alt={sponsor.name}
+                    className="max-w-full max-h-full bg-white object-contain"
+                    loading="lazy"
+                  />
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
 
-          <motion.div className="flex items-center" animate={controlsBottom}>
-            {[...sponsorsData, ...sponsorsData].map((sponsor, index) => (
-              <motion.div
-                key={`bottom-${sponsor.id}-${index}`}
-                className="flex-shrink-0 mx-4 bg-gradient-to-br from-black/30 to-teal-900/20 rounded-xl p-6 flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 border border-teal-500/20"
-                style={{
-                  width: "220px",
-                  height: "140px",
-                  filter: "grayscale(80%)",
-                  transition: "all 0.3s ease",
-                }}
-                whileHover={{
-                  filter: "grayscale(0%)",
-                  scale: 1.05,
-                  boxShadow: "0 10px 25px -5px rgba(0, 252, 184, 0.2)"
-                }}
-              >
-                <img
-                  src={sponsor.logo}
-                  alt={sponsor.name}
-                  className="max-w-full max-h-full object-contain"
-                  loading="lazy"
-                />
-              </motion.div>
-            ))}
-          </motion.div>
+          {/* Bottom Carousel */}
+          <div className="overflow-hidden">
+            <motion.div className="flex items-center w-max" animate={controlsBottom}>
+              {createInfiniteItems(sponsorGroups[2]).map((sponsor, index) => (
+                <motion.div
+                  key={`bottom-${sponsor.id}-${index}`}
+                  className="flex-shrink-0 mx-4 bg-gradient-to-br from-black/30 to-teal-900/20 rounded-xl p-6 flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 border border-teal-500/20"
+                  style={{
+                    width: "220px",
+                    height: "140px",
+                    transition: "all 0.3s ease",
+                  }}
+                  whileHover={{
+                    scale: 1.05,
+                    boxShadow: "0 10px 25px -5px rgba(0, 252, 184, 0.2)"
+                  }}
+                >
+                  <img
+                    src={sponsor.logo}
+                    alt={sponsor.name}
+                    className="max-w-full bg-white max-h-full object-contain"
+                    loading="lazy"
+                  />
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
         </div>
 
         <motion.div 
