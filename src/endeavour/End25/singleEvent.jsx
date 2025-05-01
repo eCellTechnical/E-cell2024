@@ -300,7 +300,7 @@ function App() {
                         !localStorage.getItem("token")
                       ) {
 
-                        if (eventData.name == "Entertainment Eve" || eventData.name == "Treasure Hunt" || eventData.name == "IPL Mania") {
+                        if (eventData.name == "Entertainment Eve" || eventData.name == "Treasure Hunt") {
                           window.location.href = "/endeavour/login";
                         } else {
                           alert("Registration is closed.");
@@ -309,7 +309,7 @@ function App() {
                         if (!isUserFieldsValid) {
                           setShowProfileIncompletePopup(true);
                         } else {
-                          if (eventData.name == "Entertainment Eve" || eventData.name == "Treasure Hunt" || eventData.name == "IPL Mania") {
+                          if (eventData.name == "Entertainment Eve" || eventData.name == "Treasure Hunt") {
                             setIsRegistrationOpen(true);
                           } else {
                             alert("Registration is closed.");
@@ -320,7 +320,7 @@ function App() {
                   >
                     {isRegistered
                       ? "Dashboard"
-                      : eventData.name == "Entertainment Eve" || eventData.name == "Treasure Hunt" || eventData.name == "IPL Mania"
+                      : eventData.name == "Entertainment Eve" || eventData.name == "Treasure Hunt"
                       ? "Register Now"
                       : "Closed"}
                   </button>
@@ -536,7 +536,7 @@ function App() {
                           !localStorage.getItem("userId") ||
                           !localStorage.getItem("token")
                         ) {
-                          if (eventData.name == "Entertainment Eve" || eventData.name == "Treasure Hunt" || eventData.name == "IPL Mania") {
+                          if (eventData.name == "Entertainment Eve" || eventData.name == "Treasure Hunt") {
                             window.location.href = "/endeavour/login";
                           } else {
                             alert("Registration is closed.");
@@ -545,7 +545,7 @@ function App() {
                           if (!isUserFieldsValid) {
                             setShowProfileIncompletePopup(true);
                           } else {
-                            if (eventData.name == "Entertainment Eve" || eventData.name == "Treasure Hunt" || eventData.name == "IPL Mania") {
+                            if (eventData.name == "Entertainment Eve" || eventData.name == "Treasure Hunt") {
                               setIsRegistrationOpen(true);
                             }
                             else{
@@ -557,7 +557,7 @@ function App() {
                     >
                       {isRegistered
                         ? "GO TO DASHBOARD"
-                        : eventData.name == "Entertainment Eve" || eventData.name == "Treasure Hunt" || eventData.name == "IPL Mania"
+                        : eventData.name == "Entertainment Eve" || eventData.name == "Treasure Hunt"
                         ? "REGISTER NOW"
                         : "CLOSED"}
                     </button>
