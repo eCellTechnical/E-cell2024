@@ -107,7 +107,7 @@ import "aos/dist/aos.css";
 import RecruitmentResult from "./components/RecruitmentResult/RecruitmentResult";
 import PrivacyPolicy2 from "./pages/PrivacyPolicy/Policy2";
 // import CommingSoon from "./endeavour/CommingSoon/CommingSoon";
-// import NewCerti from "./components/newCerti/NewCerti";
+import NewCerti from "./components/newCerti/NewCerti";
 
 // RouteChangeTracker component to detect when we're on the /endeavour route
 const RouteChangeTracker = ({ children }) => {
@@ -173,92 +173,88 @@ function App() {
           <Navbar />
           <ToastContainer />
           <Suspense fallback={<Loader />}>
-          <RouteChangeTracker>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/discover" element={<Discover />} />
-              <Route path="/ourteam" element={<OurTeam />} />
-              <Route path="/pastspeakers" element={<PastSpeakers />} />
-              <Route path="/events" element={<OurInitiatives />} />
-              <Route path="/gallery" element={<Gallery />} />
-              <Route path="/associations" element={<Associations />} />
-              <Route path="/contactus" element={<ContactUs />} />
-              <Route path="/ideasubmissions" element={<IdeaSubmissions />} />
-              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-              <Route path="/privacypolicy" element={<PrivacyPolicy2 />} />
-              <Route
-                path="/recruitment-result-2025"
-                element={<RecruitmentResult />}
-              />
+            <RouteChangeTracker>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/discover" element={<Discover />} />
+                <Route path="/ourteam" element={<OurTeam />} />
+                <Route path="/pastspeakers" element={<PastSpeakers />} />
+                <Route path="/events" element={<OurInitiatives />} />
+                <Route path="/gallery" element={<Gallery />} />
+                <Route path="/associations" element={<Associations />} />
+                <Route path="/contactus" element={<ContactUs />} />
+                <Route path="/ideasubmissions" element={<IdeaSubmissions />} />
+                <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+                <Route path="/privacypolicy" element={<PrivacyPolicy2 />} />
+                <Route
+                  path="/recruitment-result-2025"
+                  element={<RecruitmentResult />}
+                />
 
-              {/* <Route path="/ideatex-certificate" element={<NewCerti />} /> */}
-              <Route path="/ideatex" element={<IdeateX />} />
-              <Route path="/ideatex/register" element={<Register />} />
-              {/* <Route path="/endeavour" element={<ComingSoon />} /> */}
-              
-              {/* <Route path="/endeavour/event/" element={<EndeavourEvent />} /> */}
+                <Route path="/certificate" element={<NewCerti />} />
+                {/* <Route path="/ideatex" element={<IdeateX />} />
+              <Route path="/ideatex/register" element={<Register />} /> */}
+                {/* <Route path="/endeavour" element={<ComingSoon />} /> */}
 
-              {/* <Route path="/endeavour/eve" element={<Eve />} /> */}
+                {/* <Route path="/endeavour/event/" element={<EndeavourEvent />} /> */}
 
+                {/* <Route path="/endeavour/eve" element={<Eve />} /> */}
 
+                {/* Important  */}
+                <Route path="/endeavour" element={<EndeavourHomePage />} />
+                <Route path="/endeavour/eve" element={<End25Eve />} />
 
+                <Route path="/endeavour/login" element={<EndeavourLogin />} />
+                <Route
+                  path="/endeavour/forget-password"
+                  element={<ForgetPassword />}
+                />
+                <Route path="/endeavour/events" element={<EndEventPage />} />
+                <Route
+                  path="/endeavour/reset-password/"
+                  element={<ResetPassword />}
+                />
+                <Route
+                  path="/endeavour/register-event/"
+                  element={<RegisterEvent />}
+                />
+                <Route path="/endeavour/verify-otp" element={<VerifyOtp />} />
+                <Route
+                  path="endeavour/register"
+                  element={<EndeavourRegister />}
+                />
+                <Route path="/endeavour/:userId" element={<Profile />} />
+                <Route
+                  path="/endeavour/events/:eventSlug"
+                  element={<SingleEvent />}
+                />
+                <Route
+                  path="/endeavour/events/register/:eventSlug"
+                  element={<RegisterEventForm />}
+                />
 
-
-              {/* Important  */}
-            <Route path="/endeavour" element={<EndeavourHomePage />} />
-            <Route path="/endeavour/eve" element={<End25Eve />} />
-
-             <Route path="/endeavour/login" element={<EndeavourLogin />} />
-              <Route
-                path="/endeavour/forget-password"
-                element={<ForgetPassword />}
-              />
-              <Route
-                path="/endeavour/events"
-                element={<EndEventPage />}
-              />
-              <Route
-                path="/endeavour/reset-password/"
-                element={<ResetPassword />}
-              />
-              <Route
-                path="/endeavour/register-event/"
-                element={<RegisterEvent />}
-              />
-              <Route
-                path="/endeavour/verify-otp"
-                element={<VerifyOtp />}
-              />
-              <Route
-                path="endeavour/register"
-                element={<EndeavourRegister />}
-              />
-              <Route path="/endeavour/:userId" element={<Profile />} />
-              <Route path="/endeavour/events/:eventSlug" element={<SingleEvent />} />
-              <Route path="/endeavour/events/register/:eventSlug" element={<RegisterEventForm />} />
-              
-              {/* <Route
+                {/* <Route
                 path="endeavour/winner"
                 element={<EndWinner />}
               /> */}
 
-              {/* <Route path="/endeavour/admin/:admin" element={<Admin />} /> */}
-              {/* <Route
+                {/* <Route path="/endeavour/admin/:admin" element={<Admin />} /> */}
+                {/* <Route
                 path="/endeavour/super-admin/:superAdmin"
                 element={<SuperAdmin />}
               />
               
               <Route path="/endeavour/studentpass" element={<StudentPass />} />
               <Route path="/endeavour/events" element={<AllEvents />} /> */}
-              
-              {/* <Route
+
+                {/* <Route
                 path="/endeavour/events/:eventId"
                 element={<SpecificEvent />}
               />
               <Route path="/endeavour/sponsors" element={<Sponsors />} />
               <Route path="/endeavour/speakers" element={<Speakers />} />  */}
-              <Route path="*" element={<Error404 />} />
-            </Routes>
+                <Route path="*" element={<Error404 />} />
+              </Routes>
             </RouteChangeTracker>
           </Suspense>
           <Footer />

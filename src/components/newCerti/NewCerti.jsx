@@ -1,350 +1,684 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { exportComponentAsPNG } from "react-component-export-image";
-import { useRef } from "react";
-import certTemplate from "../../assets/Certificate Of Participation (1).png";
-import certTemplateWinners from "../../assets/Certificate Of Participation (1).png";
+import certTemplate from "../../assets/ficate Endeavour FINAL[1].pdf.png";
+import certTemplateWinners from "../../assets/ficate Endeavour FINAL[1].pdf.png";
 import "./NewCerti.css";
 import confetti from "canvas-confetti";
-// import Leave from "../../assets/leaves1.png";
 
 const NewCerti = () => {
+  const [email, setEmail] = useState("");
   const [name, setName] = useState("");
-  const [isNameValid, setIsNameValid] = useState(null);
-  const certificateRef = useRef();
+  const [college, setCollege] = useState("");
+  const [step, setStep] = useState(1);
+  const [isVerified, setIsVerified] = useState(false);
   const [isWinner, setIsWinner] = useState(false);
+  const certificateRef = useRef();
 
-  const handleChange = (e) => {
-    setName(e.target.value);
-    setIsWinner(false);
+  const validEmails = [
+    "Mayank.2327ec1057@kiet.edu",
+    "saubhagya.2327cse118@kiet.edu",
+    "yash.2327cseml1079@kiet.edu",
+    "ujjawal.2327cseml102@kiet.edu",
+    "ojas.2428ece763@kiet.edu",
+    "srijan.2428cse1829@kiet.edu",
+    "abhishek.2428ece1776@kiet.edu",
+    "yugratna.2428ece2488@kiet.edu",
+    "ravi.2428cseaiml573@kiet.edu",
+    "saurabh.2428cseaiml7@kiet.edu",
+    "sushant.2428cseaiml5@kiet.edu",
+    "srishjana@gmail.com",
+    "keshav.2428cseaiml37@kiet.edu",
+    "parkhi.2428cseaiml21@kiet.edu",
+    "kushagravarshney45@gmail.com",
+    "ayush.2327cse1104@kiet.edu",
+    "yash.2327cseml1062@kiet.edu",
+    "chaitanya.2226cseml1@kiet.edu",
+    "dhruvsaxena672@gmail.com",
+    "naman.2327cse1091@kiet.edu",
+    "samarth.2327cseml117@kiet.edu",
+    "satyam.2428cse2239@kiet.edu",
+    "shri.2327cseai1205@kiet.edu",
+    "ishubhamchaudhary005@gmail.com",
+    "shantanuyadav117@gmail.com",
+    "ayushsingh91200@gmail.com",
+    "varun.2426mba050@kiet.edu",
+    "vedansh.2426mba403@kiet.edu",
+    "akshabhalla27@gmail.com",
+    "yamandeep.2327it1058@kiet.edu",
+    "hashmiayan90@gmail.com",
+    "nitish.2428cseai1297@kiet.edu",
+    "sanjay.2428cseai1638@kiet.edu",
+    "krishan.2325ph1013@kiet.edu",
+    "Hrishi.assemble@gmail.com",
+    "yashgreat0908@gmail.com",
+    "vansh06raina@gmail.com",
+    "anshuman.2327cse1064@kiet.edu",
+    "vansh.2327cse1145@kiet.edu",
+    "parnav.2428csit908@kiet.edu",
+    "niyati.2428csit1818@kiet.edu",
+    "parul.2428csit2416@kiet.edu",
+    "mayank.2428csit1927@kiet.edu",
+    "kmaayush03@gmail.com",
+    "aakif.msiddiqui@gmail.com",
+    "sriapurv789@gmail.com",
+    "pwizard401@gmail.com",
+    "prakhar.2428it966@kiet.edu",
+    "shreyansh.2428cs1248@kiet.edu",
+    "shreyansh.2428cs933@kiet.edu",
+    "tanishka.2428cs976@kiet.edu",
+    "ishika.2125bph1082@kiet.edu",
+    "raghav.2428eee1781@kiet.edu",
+    "tushar.2125bph1100@kiet.edu",
+    "subrat.2428cs1323@kiet.edu",
+    "hom288028@gmail.com",
+    "paridhichauhan30jan@gmail.com",
+    "amisharaj041@gmail.com",
+    "tripti.2428it842@kiet.edu",
+    "thealokmishra14@gmail.com",
+    "ajeet.2428cs1722@kiet.edu",
+    "amit.2428cs1541@kiet.edu",
+    "amrendra.2428cseai16@kiet.edu",
+    "kaustuv360@gmail.com",
+    "himanshu.2428cseaiml@kiet.edu",
+    "gaurav.2428cseaiml10@kiet.edu",
+    "kundan.2428ece986@kiet.edu",
+    "nandini.2428bph2728@kiet.edu",
+    "manvi.2428bph2727@kiet.edu",
+    "prince.2428bph2757@kiet.edu",
+    "krishtimalik09@gmail.com",
+    "devansh.2428it1887@kiet.edu",
+    "divyam.2428cseai1632@kiet.edu",
+    "agastyaverma31122004@gmail.com",
+    "aman.2428cseai257@kiet.edu",
+    "ayushi.2428bph2751@kiet.edu",
+    "agarwalakshat739@gmail.com",
+    "anjali.2226bph1026@kiet.edu",
+    "himanshu.2226bph1003@kiet.edu",
+    "aastha.2428cse1592@kiet.edu",
+    "ananya.2428cs1532@kiet.edu",
+    "piyush.2428cs2051@kiet.edu",
+    "sumit.2428cs1665@kiet.edu",
+    "bhavna.2327cseai1208@kiet.edu",
+    "khushi.2327cseai1141@kiet.edu",
+    "akshita.2327cseai103@kiet.edu",
+    "iktisha013@gmail.com",
+    "abhay.2428ece903@kiet.edu",
+    "prithvi.2428cseai965@kiet.edu",
+    "prateek.2428cseai366@kiet.edu",
+    "navneet.2428ece1655@kiet.edu",
+    "divyanshi.2428cse119@kiet.edu",
+    "bhoomigarg52@gmail.com",
+    "dhruv.2428cse352@kiet.edu",
+    "gaurav.2428cse1361@kiet.edu",
+    "kartik.2428ece1734@kiet.edu",
+    "harsh.2428ece1560@kiet.edu",
+    "nilesh.2428ece2513@kiet.edu",
+    "lok987kendra@gmail.com",
+    "risheshshukla12@gmail.com",
+    "siddharth.mtc09@gmail.com",
+    "anshtyagi15937@gmail.com",
+    "anmol.2327cs1023@kiet.edu",
+    "vedant.2428it914@kiet.edu",
+    "ujjawal.singh74152@gmail.com",
+    "shashank.2428eee442@kiet.edu",
+    "shobhitverma038@gmail.com",
+    "tapesh.2327cseai1020@kiet.edu",
+    "satyam.2327cseai1186@kiet.edu",
+    "harshit.2327cseai120@kiet.edu",
+    "ravi.2327cseai1144@kiet.edu",
+    "divyanshi.2428eee773@kiet.edu",
+    "avni.2428ece2595@kiet.edu",
+    "aastha.2428ece756@kiet.edu",
+    "aditi.2428ece759@kiet.edu",
+    "manav.2428cseai920@kiet.edu",
+    "abhishek.2428cs1026@kiet.edu",
+    "mukesh.2428cseai1022@kiet.edu",
+    "prince9653511013@gmail.com",
+    "akarshi.2428ece1066@kiet.edu",
+    "sugandh.2428it1799@kiet.edu",
+    "palak.gupta22125@gmail.com",
+    "harsh.2428cs1370@kiet.edu",
+    "ajjusharma275@gmail.com",
+    "anubhav.2428ece613@kiet.edu",
+    "aman.2428ece2029@kiet.edu",
+    "abhigyanpatel26@gmail.com",
+    "priyanshi.2428cseai1@kiet.edu",
+    "rachitgarg2404@gmail.com",
+    "smrity.2428ece1950@kiet.edu",
+    "devansh.2428cs1991@kiet.edu",
+    "anchal.2428cseai1491@kiet.edu",
+    "sharwari.2428elce150@kiet.edu",
+    "deeksha.2428cse1517@kiet.edu",
+    "harsh201385@gmail.com",
+    "adx7544@gmail.com",
+    "anurag.2428cs1056@kiet.edu",
+    "shivansh.2428cseai91@kiet.edu",
+    "priya.2327cseml1087@kiet.edu",
+    "urvashi.2327it1112@kiet.edu",
+    "aditya.2327it1135@kiet.edu",
+    "sudarshan.2327it1042@kiet.edu",
+    "himanshu.2428elce113@kiet.edu",
+    "shikha.2428ece1110@kiet.edu",
+    "ritesh.2428cseai831@kiet.edu",
+    "vanshagarwal4030@gmail.com",
+    "tarun.2428csit295@kiet.edu",
+    "mazid.2428cse1380@kiet.edu",
+    "samarth.2428cse2006@kiet.edu",
+    "abmanyusingh2006@gmail.com",
+    "vipul.2428it1430@kiet.edu",
+    "tushar.2428it1569@kiet.edu",
+    "sushant.2428me619@kiet.edu",
+    "sankalp.2428me1497@kiet.edu",
+    "udit.2428it415@kiet.edu",
+    "saksham.2428cse1040@kiet.edu",
+    "udit.2428me575@kiet.edu",
+    "pulkit.2428me569@kiet.edu",
+    "meet.2428eee437@kiet.edu",
+    "firegame8581@gmail.com",
+    "mayank.2428ece854@kiet.edu",
+    "vaibhavi.2428elce891@kiet.edu",
+    "rajanya.2428elce1348@kiet.edu",
+    "kushagra.2428elce157@kiet.edu",
+    "ambuj.2428elce1006@kiet.edu",
+    "keshav.2428cseaiml37@kiet.edu",
+    "kirti.2428cseaiml278@kiet.edu",
+    "parkhi.2428cseaiml21@kiet.edu",
+    "kk8174569@gmail.com",
+    "ayush.2428cseaiml141@kiet.edu",
+    "abhishek.2428cseaiml@kiet.edu",
+    "deep.2428cs1235@kiet.edu",
+    "danish.2428cseaiml25@kiet.edu",
+    "shuklaakshatascom@gmail.com",
+    "tanish.2327cse1082@kiet.edu",
+    "pandeyhere23@gmail.com",
+    "dipanshu.2428cse1403@kiet.edu",
+    "deepesh.2428cseai143@kiet.edu",
+    "abyakt.2428eee2461@kiet.edu",
+    "rituraj.2428cseai223@kiet.edu",
+    "mahi.2428ece1838@kiet.edu",
+    "akashdeep.2428ece211@kiet.edu",
+    "divyansh.2428cseai@kiet.edu",
+    "pratyaksh.2428ece166@kiet.edu",
+    "vishek.2428it2473@kiet.edu",
+    "tarun.2428it1231@kiet.edu",
+    "swatantra.2428it2393@kiet.edu",
+    "vidya.2428it973@kiet.edu",
+    "dev.2428cse1428@kiet.edu",
+    "ayush.2428cse1748@kiet.edu",
+    "deependra.2428cse160@kiet.edu",
+    "Bushraali1911@gmail.com",
+    "anant.2428cs1474@kiet.edu",
+    "kritarth.2428cs851@kiet.edu",
+    "teena.2428cs1203@kiet.edu",
+    "avni.2428it1175@kiet.edu",
+    "kshama.2428cs2046@kiet.edu",
+    "anubhav.2428cs2357@kiet.edu",
+    "ankitmodi2428@gmail.com",
+    "anshuman.2428cs1447@kiet.edu",
+    "anurag.2428me482@kiet.edu",
+    "varnit.2428elce1134@kiet.edu",
+    "vidyanshi.2428elce25@kiet.edu",
+    "pratham.2428elce2587@kiet.edu",
+    "pushpanjali.2428me16@kiet.edu",
+    "manvi.2428eee2157@kiet.edu",
+    "amrendra.2428eee2358@kiet.edu",
+    "krishna.2428me605@kiet.edu",
+    "diya.2428it384@kiet.edu",
+    "krish.2428cseai1160@kiet.edu",
+    "ganesh.2428cseai2233@kiet.edu",
+    "akshit.2428cseai934@kiet.edu",
+    "arnav.2428cseai2534@kiet.edu",
+    "vanasvi.2428csit2531@kiet.edu",
+    "mishratarang2000@gmail.com",
+    "tiwarisp1810@gmail.com",
+    "vanshika.2428cse1689@kiet.edu",
+    "deepanshutyagi776@gmail.com",
+    "jiya.2428cse353@kiet.edu",
+    "avantika.2428ece447@kiet.edu",
+    "mohd.2428cse880@kiet.edu",
+    "srivastavakavita906@gmail.com",
+    "mritunjay.2428ece157@kiet.edu",
+    "rahul.2428ece1956@kiet.edu",
+    "divyanshtiwari2630@gmail.com",
+    "shreya090906@gmail.com",
+    "vikas.2428cseaiml174@kiet.edu",
+    "siddhi.2428cseaiml50@kiet.edu",
+    "anushika.2428cseaiml@kiet.edu",
+    "aditya.2428cs533@kiet.edu",
+    "shivam.2428cs1351@kiet.edu",
+    "apoorva.2428eee430@kiet.edu",
+    "utkarsh.2428cse1603@kiet.edu",
+    "bhavya.2426mba094@kiet.edu",
+    "vedansh.2426mba403@kiet.edu",
+    "aditya.2426mba082@kiet.edu",
+    "vartika.2426mba143@kiet.edu",
+    "prateek.2327cseai115@kiet.edu",
+    "anushka.2327cse1234@kiet.edu",
+    "veer.2327cseai1165@kiet.edu",
+    "faisal.2327cseai1213@kiet.edu",
+    "divankar.2428cse2312@kiet.edu",
+    "kashyap.2428cse1347@kiet.edu",
+    "rajat.2428csit2106@kiet.edu",
+    "rajat.2428it792@kiet.edu",
+    "abhinav.2327cse1212@kiet.edu",
+    "ambar.2327cse1058@kiet.edu",
+    "arya.2327me1015@kiet.edu",
+    "pandeyharsh2503@gmail.com",
+    "garv.2327ec1044@kiet.edu",
+    "avinashp26124@gmail.com",
+    "anitatripathi7905@gmail.com",
+    "vivek.new27@gmail.com",
+    "kushagrarawat70@gmail.com",
+    "mayank.2327en1083@kiet.edu",
+    "rawatkushagra65@gmail.com",
+    "atharv.2428cse1715@kiet.edu",
+    "arorayashvardhan123@gmail.com",
+    "iamsauravkumar74@gmail.com",
+    "himanshiaroraxx@gmail.com",
+    "Meetdubey3132019@gmail.com",
+    "aarushtiwari004@gmail.com",
+    "rangerpower3132019@gmail.com",
+    "cabbag369@gmail.com",
+    "Yashdeep7017@gmail.com",
+    "piyush.2428it1918@kiet.edu",
+    "akarsh.2428bph2700@kiet.edu",
+    "prakhar.2428cseai147@kiet.edu",
+    "yatharth.2428ece1265@kiet.edu",
+    "brajesh.2428cseai125@kiet.edu",
+    "dixitsamar977@gmail.com",
+    "dwivedi90022@gmail.com",
+    "dhanshee.2428csit932@kiet.edu",
+    "yukta.2428cs2198@kiet.edu",
+    "taranjeet.2428cseai1@kiet.edu",
+    "aditya2005pddusdv@gmail.com",
+    "abhyanshu.2327cseai1@kiet.edu",
+    "parveen.2327it1132@kiet.edu",
+    "mohd.2327cse1181@kiet.edu",
+    "sidharthg4298@gmail.com",
+    "Mayank.2327ec1057@kiet.edu",
+    "veer.2327cseai1165@kiet.edu",
+    "manmath.2327cse1243@kiet.edu",
+    "abhiest.2327cseai105@kiet.edu",
+    "deepak.2428cseai1090@kiet.edu",
+    "mauryakrishna2022@gmail.com",
+    "prashantsingh96416@gmail.com",
+    "ashok.2428cse1036@kiet.edu",
+    "ayush.2428cseaiml113@kiet.edu",
+    "palabhishek085@gmail.com",
+    "akarsh.2428csit879@kiet.edu",
+    "ayush.2428cse878@kiet.edu",
+    "aman.2428ece2029@kiet.edu",
+    "ajjusharma275@gmail.com",
+    "anubhav.2428ece613@kiet.edu",
+    "abhigyanpatel26@gmail.com",
+    "abhishek.2327it1225@kiet.edu",
+    "abhinav.2327it1182@kiet.edu",
+    "meta29abhay@gmail.com",
+    "yrishav019@gmail.com",
+    "abhishek.2428cse1622@kiet.edu",
+    "tanishq.2428cs233@kiet.edu",
+    "vaasu.2428cs1760@kiet.edu",
+    "vikul.2428cs894@kiet.edu",
+    "syedaliahamad66@gmail.com",
+    "anubhav.2226ec1091@kiet.edu",
+    "archie.2428cseaiml27@kiet.edu",
+    "kashish.2428elce2371@kiet.edu",
+    "prince9653511013@gmail.com",
+    "vishwakarmapiyush19@gmail.com",
+    "spraveer135@gmail.com",
+    "mukesh.2428cseai1022@kiet.edu",
+    "mridul.2327cse1042@kiet.edu",
+    "ansh.2327cse1156@kiet.edu",
+    "shreyansh.2327cse116@kiet.edu",
+    "keshav.2327cse1052@kiet.edu",
+    "anurag.2428it2244@kiet.edu",
+    "anush.2428it559@kiet.edu",
+    "aryan.2428it1424@kiet.edu",
+    "arjun.2428it1417@kiet.edu",
+    "ujjwal.2428it416@kiet.edu",
+    "sparsh.2428cse253@kiet.edu",
+    "gaurav.2428cse982@kiet.edu",
+    "sv1205589@gmail.com",
+    "dipanshu.2428cse1403@kiet.edu",
+    "deepesh.2428cseai143@kiet.edu",
+    "vishek.2428it2473@kiet.edu",
+    "abyakt.2428eee2461@kiet.edu",
+    "abhay.2327ec1074@kiet.edu",
+    "humpetohhaihinaw@gmail.com",
+    "ravismk5417@gmail.com",
+    "adarsh.2327it1089@kiet.edu",
+    "paraslahauriya8577@gmail.com",
+    "harpal.2327cseml1135@kiet.edu",
+    "prakharv824@gmail.com",
+    "yamandeep.2327it1058@kiet.edu",
+    "hashmiayan90@gmail.com",
+    "saurav.2327it1094@kiet.edu",
+    "pratiksingh8957@gmail.com",
+    "rahul.2428it1286@kiet.edu",
+    "naitikchaudhary317@gmail.com",
+    "tejashv.2428cse754@kiet.edu",
+    "satyam.2428cseai266@kiet.edu",
+    "priyanka.2428cseai20@kiet.edu",
+    "mayan.2428cseai2541@kiet.edu",
+    "dev.2428cse241@kiet.edu",
+    "tarun.2428it1231@kiet.edu",
+    "ayushsingh57112@gmail.com",
+    "ayush0215singh@gmail.com",
+    "harshit.2428ece930@kiet.edu",
+    "sainisamarth35@gmail.com",
+    "aditya.2428cs533@kiet.edu",
+    "shivam.2428cs1351@kiet.edu",
+    "krishnakansal20@gmail.com",
+    "ahasasraghav123@gmail.com",
+    "amulya.2428eee1891@kiet.edu",
+    "rohanrock4019@gmail.com",
+    "shivam620165@gmail.com",
+    "mohd.2428csit2502@kiet.edu",
+    "omveeromku@gmail.com",
+    "divankar.2428cse2312@kiet.edu",
+    "rajat.2428it792@kiet.edu",
+    "rajat.2428csit2106@kiet.edu",
+    "kashyap.2428cse1347@kiet.edu",
+    "myselfsouravsharma2006@gmail.com",
+    "meetmanan75@gmail.com",
+    "varun.2426mba050@kiet.edu",
+    "sumit.2426mba400@kiet.edu",
+    "varun.2426mba041@kiet.edu",
+    "nishant.2327en1038@kiet.edu",
+    "abhishek.2125csit@kiet.edu",
+    "vivek.new27@gmail.com",
+    "mayank.2327en1083@kiet.edu",
+    "ananty977@gmail.com",
+    "yuvraj.2428cseai2004@kiet.edu",
+    "krishan.2325ph1013@kiet.edu",
+    "anshul.2426mba032@kiet.edu",
+    "tushar.2426mba745@kiet.edu",
+    "avika.2426mba683@kiet.edu",
+    "anshul.2426mba149@kiet.edu",
+    "srivastavakavita906@gmail.com",
+    "aditya.2428ece518@kiet.edu",
+    "kishan.2428cse834@kiet.edu",
+    "kratika.2428cse1158@kiet.edu",
+    "harshvardhan.2428cse@kiet.edu",
+    "swayamsrivastava10a@gmail.com",
+    "utkarsh.2428cseai146@kiet.edu",
+    "shashank.2428cseai17@kiet.edu",
+    "yogeshverma0107july@gmail.com",
+    "shashibhushan.mgs3541@gmail.com",
+    "pratyaksh.2428ece166@kiet.edu",
+    "akashdeep.2428ece211@kiet.edu",
+    "divyansh.2428cseai@kiet.edu",
+    "sunilkumartyagi900@gmail.com",
+    "rohansingh251003@gmail.com",
+    "bhardwajvishant52@gmail.com",
+    "vishalpandey0121@gmail.com",
+    "utkarshpandey.up.2004@gmail.com",
+    "abhinav.2428cse1425@kiet.edu",
+    "krishna.2428cseai11@kiet.edu",
+    "shubham.2428cs1168@kiet.edu",
+    "abhishekengineer2327@gmail.com",
+    "harshitanathrani1@gmail.com",
+    "manasmodi603@gmail.com",
+    "naman.2327cseml1022@kiet.edu",
+    "yugratna.2428ece2488@kiet.edu",
+    "sandrbh.2428ece1012@kiet.edu",
+    "saksham.2428ece2481@kiet.edu",
+    "riya.2428cs231@kiet.edu",
+    "ritesh.2428cs951@kiet.edu",
+    "sakshi.2428cs1561@kiet.edu",
+    "navya.2428cs228@kiet.edu",
+    "adit.2428cs1345@kiet.edu",
+    "aditya.2428cs1695@kiet.edu",
+    "alok.2428cs1282@kiet.edu",
+    "aditi.2428cs492@kiet.edu",
+    "rashika.2428cseai367@kiet.edu",
+    "aditya2005pddusdv@gmail.com",
+    "jahnavi.2428cseai127@kiet.edu",
+    "aditya.2428cse2143@kiet.edu",
+    "ashish.2428csit1802@kiet.edu",
+    "sharwari.2428elce150@kiet.edu",
+    "ishwar.2428it672@kiet.edu",
+    "aditya.2428csit2475@kiet.edu",
+    "tanishkgupta8000@gmail.com",
+    "gangwarraamanjal@gmail.com",
+    "krishgupta28706@gmail.com",
+    "kanav.2428eee435@kiet.edu",
+    "apoorva.2428eee430@kiet.edu",
+    "utkarsh.2428cse1603@kiet.edu",
+    "shivam.2428cs1351@kiet.edu",
+    "aditya.2428cs533@kiet.edu",
+    "arpitsingh222004@gmail.com",
+    "faisal.2327cseai1213@kiet.edu",
+    "yash.2327cseai1174@kiet.edu",
+    "deepak.2327cseai1197@kiet.edu",
+    "nitya.2428ece2123@kiet.edu",
+    "sanskriti.2428cseai1@kiet.edu",
+    "samriddhi.2428cseai1@kiet.edu",
+    "yatin.2428cse508@kiet.edu",
+    "devendrakumaryadav532@gmail.com",
+    "kaustuv360@gmail.com",
+    "prashant.2327cseai11@kiet.edu",
+    "princevishwa09@gmail.com",
+    "manvi.2327cseai1108@kiet.edu",
+    "aviralagarwal190006@gmail.com",
+    "dabhinav464@gmail.com",
+    "aryaveer.2327csit114@kiet.edu",
+    "atharv.2428cse1715@kiet.edu",
+    "shubhanshu.2428elce3@kiet.edu",
+    "animesh.2428cse238@kiet.edu",
+    "rahul.2428ece1956@kiet.edu",
+    "dev.2327cse1151@kiet.edu",
+    "abhishek.2327cse1198@kiet.edu",
+    "ankit.2327cse1098@kiet.edu",
+    "brahmansh.2327cse10@kiet.edu",
+    "khushijain102004@gmail.com",
+    "ayaaz.2428me483@kiet.edu",
+    "palak.2428eee439@kiet.edu",
+    "anurag.2428me482@kiet.edu",
+    "saurabh.2428me615@kiet.edu",
+    "himanshu.2428cseaiml@kiet.edu",
+    "gaurav.2428cseaiml10@kiet.edu",
+    "kundan.2428ece986@kiet.edu",
+    "krishna.2428it1679@kiet.edu",
+    "hardik.2428cse1086@kiet.edu",
+    "mohit.2428cse1083@kiet.edu",
+    "kumarsharshit5592@gmail.com",
+    "realdhirendra3@gmail.com",
+    "keshav.2428cseaiml37@kiet.edu",
+    "parkhi.2428cseaiml21@kiet.edu",
+    "udit.2428me575@kiet.edu",
+    "aryantiwari9506@gmail.com",
+    "mansi.2428elce1353@kiet.edu",
+    "dhruv.2428elce896@kiet.edu",
+    "rajrishirr6122004@gmail.com",
+    "sumedha.2428cseai169@kiet.edu",
+    "saumya.2428cseai2310@kiet.edu",
+    "sudhanshu.2428cseai1@kiet.edu",
+    "shani2405sk@gmail.com",
+    "mansigarg754@gmail.com",
+    "gunjan.2426mca631@kiet.edu",
+    "manishkusingh35@gmail.com",
+    "divyansh.2426mca656@kiet.edu",
+    "sharma.adityaaa0001@gmail.com",
+    "anuj.2327cse1171@kiet.edu",
+    "ankitkumaralok746@gmail.com",
+    "kunal.2327cs1262@kiet.edu",
+    "ujjwalsharma3033@gmail.com",
+    "jainharshdev26@gmail.com",
+    "vartika.2327cseai108@kiet.edu",
+    "nimaditi7@gmail.com",
+    "adhya.2327cs1132@kiet.edu",
+    "time.atulya@gmail.com",
+    "raianshuman36@gmail.com",
+    "hirdesh.2428it487@kiet.edu",
+    "gauravshukla1601@gmail.com",
+    "mahek.2428it1995@kiet.edu",
+    "ananya.2428eee428@kiet.edu",
+    "anant.2428ece844@kiet.edu",
+    "kanak.2428cs1931@kiet.edu",
+    "kritarth.2428cs851@kiet.edu",
+    "kanika.2428cse1933@kiet.edu",
+    "vidhi.2428ece1234@kiet.edu",
+    "kartikey.2426mca2378@kiet.edu",
+    "krishna.2428cseai11@kiet.edu",
+    "divyanshi.2428cse119@kiet.edu",
+    "bhoomigarg52@gmail.com",
+    "agarwalakshat739@gmail.com",
+    "yugratna.2428ece2488@kiet.edu",
+    "eisha.2428cseai1400@kiet.edu",
+    "ayushi.2428cseai1535@kiet.edu",
+    "khushi.2327cseai1141@kiet.edu",
+    "himanshu.2327cseai10@kiet.edu",
+    "anubhav.2226ec1091@kiet.edu",
+    "kashish.2428elce2371@kiet.edu",
+    "sugandh.2428it1799@kiet.edu",
+    "anant.2428it556@kiet.edu",
+    "mridul.2327cse1042@kiet.edu",
+    "rachit.2327cse1053@kiet.edu",
+    "priyanshi.2428cseai1@kiet.edu",
+    "rachitgarg2404@gmail.com",
+    "srishreyash16@gmail.com",
+    "gurubaksh.2428cs2033@kiet.edu",
+    "atharv.2428cse1715@kiet.edu",
+    "arnav.2428cseai2534@kiet.edu",
+    "yuvraj.2428cseai2004@kiet.edu",
+    "sunny.2428cseaiml186@kiet.edu",
+    "agarwalakshat739@gmail.com",
+    "Mayank.2327ec1057@kiet.edu",
+    "tanish.2327cse1230@kiet.edu",
+    "manmath.2327cse1243@kiet.edu",
+    "saubhagya.2327cse118@kiet.edu",
+    "tanishk.2428it2552@kiet.edu",
+    "yuvraj.2428it860@kiet.edu",
+    "yograj.2428it1952@kiet.edu",
+    "yashpradeep2005@gmail.com",
+    "ammar.2327cse1288@kiet.edu",
+    "anmol.2327cse1037@kiet.edu",
+    "karthik.2327cseml103@kiet.edu",
+    "taranjeet.2428cseai1@kiet.edu",
+    "adyanshi.2428cseai97@kiet.edu",
+    "dhanshee.2428csit932@kiet.edu",
+    "gaurav.2428cse1361@kiet.edu",
+    "atharv.2428cse1715@kiet.edu",
+    "harsh.2428cseai1960@kiet.edu",
+    "anant.2428it556@kiet.edu",
+    "shreya.2428cseaiml14@kiet.edu",
+    "ghalotdev92@gmail.com",
+    "adarsh.2327EC1055@kiet.edu",
+    "deepanshu.2327ec1222@kiet.edu",
+    "ansh.2327ec1201@kiet.edu",
+    // Add more...
+  ];
+
+  const handleEmailSubmit = (e) => {
+    e.preventDefault();
+    const emailExists = validEmails.some(
+      (entry) => entry.trim().toLowerCase() === email.trim().toLowerCase()
+    );
+
+    if (emailExists) {
+      setStep(2);
+      setIsVerified(true);
+      confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
+    } else {
+      alert(
+        "Email not found. Please check your email or you have not participated."
+      );
+    }
   };
 
-  const handleSubmit = async (e) => {
+  const handleNameSubmit = (e) => {
     e.preventDefault();
-    try {
-      const winners = [];
-      const participants = [
-        "Shriyansh",
-        "Nipun Mittal",
-        "Akshat Aggarwal",
-        "Keshav Gupta",
-        "Pratyaksh Varshney",
-        "Naman Singhal",
-        "Shorya Mittal",
-        "Vansh Agarwal",
-        "Dheeraj Bansal",
-        "Priyanshu Mishra",
-        "Aditya Rajawat",
-        "Khushi Saini",
-        "Aastha Singh",
-        "Abhigyan Patel",
-        "Sugandh garj",
-        "Vibhanshu arya",
-        "Pari gupta",
-        "Shreya punani",
-        "Shail panwar",
-        "Yash Kumar Gaur",
-        "Pratibha Singh",
-        "Nilesh Yadav",
-        "Pari garg",
-        "Nimisha Agrarwal",
-        "Kundan Yadav",
-        "Sanjay Kumar Gupta",
-        "Radhika",
-        "Palak Tiwari",
-        "Rudrika",
-        "Ananya Garg",
-        "Anant Singh",
-        "Abdul Rafey",
-        "Syed Ali Ahmad",
-        "Shavyam Chitranshi",
-        "Saurabh Kashyap",
-        "Rehan Ahmad",
-        "Abhilash Maurya",
-        "Devansh Jadon",
-        "Sanskar Gupta",
-        "Nitish Pal",
-        "Nishant Tripathi",
-        "Shashank  singh",
-        "Sneha yadav",
-        "Somya mishra",
-        "Swayam srivastava",
-        "Varshit Sharma",
-        "Krish jain",
-        "Shivraj",
-        "Naman Kansal",
-        "HImanshu Soni",
-        "Mukesh Pal",
-        "Anshika Chaurasia",
-        "Aman Yadav",
-        "Aadi Jain",
-        "Dhruv Jain",
-        "Kasak Jain",
-        "Ayushi Saini",
-        "Bhoomika Singh",
-        "Divyanshi Singh Karakoti",
-        "Diksha Jha",
-        "Gaurav",
-        "Satvik Kumar",
-        "Arman",
-        "Vishal",
-        "Sakshi Singh",
-        "Ridhima Goyal",
-        "Tushar Singh",
-        "Abhay Singh",
-        "Shivansh Baranwal",
-        "Yash Kumar",
-        "Harsh Pratap Yadav",
-        "Nitin Pandey",
-        "Keshav Gopalka",
-        "Harsh Anand",
-        "Aakil",
-        "Farhan",
-        "Abinash Mishra",
-        "Kartik Gupta",
-        "Himanshu",
-        "Manas Bhaintwal",
-        "Ritesh gautam",
-        "somesh tiwari",
-        "Saharsh Singh",
-        "Rudra Sharma",
-        "Gaurav Soni",
-        "Prathamesh Singh",
-        "Ishan Gupta",
-        "Harshit",
-        "Subrat Dwivedi",
-        "Jitendra Nainwal",
-        "Vaibhav Chaturvedi",
-        "Sakshi Rana",
-        "Niharika Chaurasia",
-        "Ojasv Mishra",
-        "Shrashti Agarwal",
-        "Prateek Singh",
-        "ARPIT SINGH",
-        "Anpurnima Sain",
-        "Anurag Dwivedi",
-        "Arpita sahu",
-        "Arsal Masood",
-        "Divyam Asthana",
-        "Aman Kumar",
-        "Ayush",
-        "Anubhav Mittal",
-        "Ajmuni bhardwaj",
-        "Aniket vishwakarma",
-        "Prateek Srivastava",
-        "Prateek dubey",
-        "Nikhil",
-        "Prerna Kashyap",
-        "Ishika Singh",
-        "Vaibhav Tayal",
-        "Muskan Verma",
-        "Anirudh Kumar",
-        "Raghav Pathak",
-        "Mayank Motla",
-        "Paarth Aggarwal",
-        "Mangan kumar",
-        "Chitwan Bajpai",
-        "Harshita Nathrani",
-        "Abhishek Kumar",
-        "Mayank Pal",
-        "Vanshika Agarwal",
-        "Atharv Gupta",
-        "Harshit Gupta",
-        "Aayansh Singh",
-        "Aayushi Gupta",
-        "Jahnavi Pandey",
-        "Arpit Agarwal",
-        "Rahul Kumar",
-        "Rajan Kushwaha",
-        "Prashant Jain",
-        "Aditya Tyagi",
-        "Ayush Vaish",
-        "Shivansh Srivastava",
-        "Anshuman Tirpathi",
-        "Kritagya Jha",
-        "Mahek Bhatia",
-        "Abhinav Singh",
-        "Aditi Sharma",
-        "Akshat Saxena",
-        "Divyanshu",
-        "Harshit Gupta",
-        "Himanshu maurya",
-        "Kavin gupta",
-        "Prashant Rai",
-        "Anshika Goel",
-        "Anushree Bose",
-        "ADITYA RAUNIYAR",
-        "AARUSHI GUPTA",
-        "ABHINAV SRIVASTAVA",
-        "ABHISHEK CHAUDHARY",
-        "Shivam Singh",
-        "Yash Singhal",
-        "Tushar Singh",
-        "Madhu Kasaudhan",
-        "Purnima Deep",
-        "Lovelesh Yadav",
-        "Ujjwal upadhyay",
-        "Sumit pandey",
-        "Vanshika mudgal",
-        "Sonali verma",
-        "Aman Mishra",
-        "Ujjwal Tiwari",
-        "Suyash Yadav",
-        "Vasu Arora",
-        "Prasant Singh",
-        "Abhishek Kumar",
-        "TANISH GOEL",
-        "DEEPANSHU BHARDWAJ",
-        "AVINASH SHARMA",
-        "DAKSH SINGH",
-        "Sarthak Sharma",
-        "Satvick Shekhawat",
-        "Gargi Kaushik",
-        "Krishna kumar",
-        "Kashika Maurya",
-        "DIVYANSH TIWARI",
-        "DIVANKAR SINGH",
-        "Dipanshu",
-        "AYUSH VISHWAKARMA",
-        "RADHIKA SAXENA",
-        "Amit Kumar",
-        "Ayush Prasad",
-        "NUMAN AHMAD",
-        "Abdul rehman",
-        "Arman vora",
-        "Ayush gupta",
-        "Garv Agarwal",
-        "Shashwat Singh",
-        "Anay Sharma",
-        "Raghvender tyagi",
-        "Vishant Bhardwaj",
-        "Vishal Kumar Pandey",
-        "Aditya Singh",
-        "Krishnam",
-        "Achin Sahu",
-        "Srijan Dwivedi",
-        "Tejashv Srivastava",
-        "GAURAV SHUKLA",
-        "MANISH SINGH",
-        "TEJASVI GUPTA",
-        "GARV ADITYA SHANDILYA",
-        "Adyanshi Singh",
-        "Anmol Khurana",
-        "Abhinav Tyagi",
-        "Samarth Tyagi",
-        "Shivam kumar",
-        "Shubham Mishra",
-        "Siddhant Tiwari",
-        "Saumya Dubey",
-        "GANESH KANOJIYA",
-        "AYUSH PRATAP SINGH",
-        "Kunal Gautam",
-        "Anuj Gautam",
-        "Akanksha Mandal",
-        "Shivanshu Gupta",
-        "Dev Pandey",
-        "Paridhi Joshi",
-        "Vatsal Awasthi",
-        "Prince Singh Baghel",
-        "Rishabh Srivastava",
-        "Abhishek Sharma",
-        "Shashwat Gupta",
-        "Ayush Raj",
-        "Pallavi",
-        "Shivani yadav",
-        "Prince Kumar Gupta",
-        "Ashish Kumar keshri",
-        "Vibhuti Agrawal",
-      ];
-      const participantsExists = participants.some(
-        (entry) => entry.toLowerCase().trim() === name.toLowerCase().trim()
-      );
-      const winnerExists = winners.some(
-        (entry) => entry.toLowerCase().trim() === name.toLowerCase().trim()
-      );
-
-      if (participantsExists || winnerExists) {
-        if (winnerExists) setIsWinner(winnerExists);
-        setIsNameValid(true);
-
-        confetti({
-          particleCount: 100,
-          spread: 70,
-          origin: { y: 0.6 },
-        });
-      } else {
-        setIsNameValid(false);
-        alert(
-          "Name not found. Please check your name or you have not participated in this event."
-        );
-      }
-    } catch (error) {
-      alert("Error checking name.");
+    if (name.trim() && college.trim()) {
+      setIsWinner(false); // Optional
     }
   };
 
   return (
     <div className="flex gap-10 flex-col lg:flex-row items-center justify-center relative bg-custom-gradient min-h-screen pt-14 px-4 bg-white/90 dark:bg-[#0c0c0c]">
-      {/* Form Column */}
-      {/* <img
-        loading="lazy"
-        src={Leave}
-        alt=""
-        className="absolute top-[7rem] left-0  block "
-      /> */}
       <div className="flex flex-col w-full lg:w-1/2 max-w-md mr-0 md:mr-14">
         <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold pb-4 lg:py-6 text-center md:text-start text-black/90 dark:text-white/90">
           IdeateX <span className="text-[#4d55bb]">Certificate</span>
         </h1>
-        <form onSubmit={handleSubmit} className="flex flex-col items-center">
-          <input
-            type="text"
-            name="name"
-            placeholder="Enter your name"
-            className="mb-4 p-2 border-2 border-gray-400 rounded-lg w-full bg-transparent text-black-90 dark:text-white/90 font-medium"
-            value={name}
-            onChange={(e) => {
-              handleChange(e);
-              setIsNameValid(false);
-            }}
-            required
-          />
-          <button
-            type="submit"
-            className="bg-[#4d55bb] text-white px-4 py-2 rounded-lg w-full z-10"
+
+        {step === 1 && (
+          <form
+            onSubmit={handleEmailSubmit}
+            className="flex flex-col items-center"
           >
-            Get Your Certificate
-          </button>
-        </form>
+            <input
+              type="email"
+              placeholder="Enter your email"
+              className="mb-4 p-2 border-2 border-gray-400 rounded-lg w-full bg-transparent text-black-90 dark:text-white/90 font-medium"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+            <button
+              type="submit"
+              className="bg-[#4d55bb] text-white px-4 py-2 rounded-lg w-full"
+            >
+              Verify Email
+            </button>
+          </form>
+        )}
+
+        {step === 2 && (
+          <form
+            onSubmit={handleNameSubmit}
+            className="flex flex-col items-center mt-4"
+          >
+            <input
+              type="text"
+              placeholder="Enter your name"
+              className="mb-4 p-2 border-2 border-gray-400 rounded-lg w-full bg-transparent text-black-90 dark:text-white/90 font-medium"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+            />
+            <input
+              type="text"
+              placeholder="Enter your college name"
+              className="mb-4 p-2 border-2 border-gray-400 rounded-lg w-full bg-transparent text-black-90 dark:text-white/90 font-medium"
+              value={college}
+              onChange={(e) => setCollege(e.target.value)}
+              required
+            />
+            <button
+              type="submit"
+              className="bg-[#4d55bb] text-white px-4 py-2 rounded-lg w-full"
+            >
+              Generate Certificate
+            </button>
+          </form>
+        )}
       </div>
 
-      {/* Certificate Preview Column */}
-      {isNameValid && (
-        <>
-          <div
-            className={`flex flex-col  w-full lg:w-1/2 mt-10 lg:mt-0 items-center justify-center`}
-          >
-            <div className="relative" ref={certificateRef}>
-              <img
-                loading="lazy"
-                src={isWinner ? certTemplateWinners : certTemplate}
-                alt=""
-                className="w-full pr-0 md:pr-5 h-full"
-              />
-              <div className="absolute w-full top-[50%] md:top-[51%] left-1/2 -translate-x-1/2 text-center  text-black font-semibold text-xl md:text-3xl">
-                <p className="text-center certiFields ">{name}</p>
-              </div>
+      {isVerified && name && college && (
+        <div className="flex flex-col w-full lg:w-1/2 mt-10 lg:mt-0 items-center justify-center">
+          <div className="relative" ref={certificateRef}>
+            <img
+              loading="lazy"
+              src={isWinner ? certTemplateWinners : certTemplate}
+              alt="certificate"
+              className="w-full pr-0 md:pr-5 h-full"
+            />
+            <div className="absolute w-full top-[56.5%] md:top-[56.5%] left-1/2 -translate-x-1/2 text-center text-black font-semibold text-md md:text-3xl">
+              <p className="certiFields">{name}</p>
             </div>
-            <button
-              onClick={(e) => {
-                e.preventDefault();
-                exportComponentAsPNG(certificateRef);
-              }}
-              className="bg-[#4d55bb] text-white px-4 py-2 rounded-lg mt-4 mb-10 z-10"
-            >
-              Download Certificate
-            </button>
+            <div className="absolute w-full top-[64.2%] md:top-[66.5%] left-[46.5%] -translate-x-1/2 text-center text-black font-semibold">
+              <p className="certiFields font-semibold text-xs md:text-sm">
+                {college}
+              </p>
+            </div>
           </div>
-        </>
+          <button
+            onClick={() => exportComponentAsPNG(certificateRef)}
+            className="bg-[#4d55bb] text-white px-4 py-2 rounded-lg mt-4 mb-10"
+          >
+            Download Certificate
+          </button>
+        </div>
       )}
     </div>
   );
