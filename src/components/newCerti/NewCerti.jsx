@@ -598,7 +598,7 @@ const NewCerti = () => {
     <div className="flex gap-10 flex-col lg:flex-row items-center justify-center relative bg-custom-gradient min-h-screen pt-14 px-4 bg-white/90 dark:bg-[#0c0c0c]">
       <div className="flex flex-col w-full lg:w-1/2 max-w-md mr-0 md:mr-14">
         <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold pb-4 lg:py-6 text-center md:text-start text-black/90 dark:text-white/90">
-          IdeateX <span className="text-[#4d55bb]">Certificate</span>
+          Endeavour'25 <span className="text-[#4d55bb]">Certificate</span>
         </h1>
 
         {step === 1 && (
