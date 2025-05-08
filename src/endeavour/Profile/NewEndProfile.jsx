@@ -193,7 +193,6 @@ function Profile() {
         }
       );
 
-      console.log(response.data.data.teams);
 
       if (response.data.success) {
         setRegisteredEvents(response.data.data.teams);
