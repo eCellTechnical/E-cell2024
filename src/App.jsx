@@ -107,7 +107,7 @@ import "aos/dist/aos.css";
 import RecruitmentResult from "./components/RecruitmentResult/RecruitmentResult";
 import PrivacyPolicy2 from "./pages/PrivacyPolicy/Policy2";
 // import CommingSoon from "./endeavour/CommingSoon/CommingSoon";
-import NewCerti from "./components/newCerti/NewCerti";
+// import NewCerti from "./components/newCerti/NewCerti";
 
 // RouteChangeTracker component to detect when we're on the /endeavour route
 const RouteChangeTracker = ({ children }) => {
@@ -191,7 +191,7 @@ function App() {
                   element={<RecruitmentResult />}
                 />
 
-                <Route path="/certificate" element={<NewCerti />} />
+                {/* <Route path="/certificate" element={<NewCerti />} /> */}
                 {/* <Route path="/ideatex" element={<IdeateX />} />
               <Route path="/ideatex/register" element={<Register />} /> */}
                 {/* <Route path="/endeavour" element={<ComingSoon />} /> */}

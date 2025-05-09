@@ -269,12 +269,12 @@ function Navbar() {
               >
                 Endeavour
               </a>
-              <a
+              {/* <a
                 onClick={() => (window.location.href = "/certificate")}
                 className="endeavour font-medium text-black dark:text-white px-5"
               >
                 Certificate
-              </a>
+              </a> */}
               <a
                 href="https://tbi-kiet.in/"
                 target="_blank"
@@ -751,12 +751,12 @@ function Navbar() {
             >
               Endeavour
             </a>
-            <a
+            {/* <a
               onClick={() => (window.location.href = "/certificate")}
               className=""
             >
               Certificate
-            </a>
+            </a> */}
             <a
               href="https://tbi-kiet.in/"
               target="_blank"
