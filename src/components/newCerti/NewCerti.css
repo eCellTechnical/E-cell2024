@@ -1,13 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Jaro:opsz@6..72&display=swap");
 
 .certiFields {
-  /* font-family: "Jaro", sans-serif; */
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
-
   font-family: "Dancing Script", cursive;
   font-optical-sizing: auto;
   font-weight: 700;
-  /* font-style: normal; */
 }

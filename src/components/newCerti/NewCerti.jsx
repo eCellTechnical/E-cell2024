@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import { exportComponentAsPNG } from "react-component-export-image";
-import certTemplate from "../../assets/ficate Endeavour FINAL[1].pdf.png";
+import certTemplate from "../../assets/end25-cer.png";
 import certTemplateWinners from "../../assets/ficate Endeavour FINAL[1].pdf.png";
 import "./NewCerti.css";
 import confetti from "canvas-confetti";
@@ -15,6 +15,7 @@ const NewCerti = () => {
   const certificateRef = useRef();
 
   const validEmails = [
+    "vaibhav@gmail.com",
     "Mayank.2327ec1057@kiet.edu",
     "saubhagya.2327cse118@kiet.edu",
     "yash.2327cseml1079@kiet.edu",
@@ -680,7 +681,6 @@ const NewCerti = () => {
     "vanshika.2428cse2035@kiet.edu",
     "arpit.2428csit1313@kiet.edu",
     "kshama.2428cs2046@kiet.edu",
-    // Add more...
   ];
 
   const handleEmailSubmit = (e) => {
@@ -776,12 +776,17 @@ const NewCerti = () => {
               alt="certificate"
               className="w-full pr-0 md:pr-5 h-full"
             />
-            <div className="absolute w-full top-[56.5%] md:top-[56.5%] left-1/2 -translate-x-1/2 text-center text-black font-semibold text-md md:text-3xl">
+            <div className="absolute w-full top-[52.5%] md:top-[53%] left-1/2 -translate-x-1/2 text-center text-black font-semibold text-md md:text-3xl">
               <p className="certiFields">{name}</p>
             </div>
-            <div className="absolute w-full top-[64.2%] md:top-[66.5%] left-[46.5%] -translate-x-1/2 text-center text-black font-semibold">
-              <p className="certiFields font-semibold text-xs md:text-sm">
+            <div className="absolute w-full top-[63.5%] md:top-[64%] left-[46.5%] -translate-x-1/2 text-center text-black font-semibold">
+              <p className="certiFields font-semibold text-[8px] md:text-sm">
                 {college}
+              </p>
+            </div>
+            <div className="absolute w-full top-[68%] md:top-[68%] left-[40%] -translate-x-1/2 text-center text-black font-semibold">
+              <p className="certiFields font-semibold text-[8px] md:text-sm">
+              IPL Mania
               </p>
             </div>
           </div>

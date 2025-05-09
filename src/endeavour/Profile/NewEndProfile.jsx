@@ -3,8 +3,8 @@ import TeamManagementPopup from "./TeamManagement";
 import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
-import EventRegistrationPopup from "../End25/PayementPopup";
 import PaymentModal from "../End25/CompletePayement";
+import certTemplate from "../../assets/end25-cer.png";
 
 function Profile() {
   const navigate = useNavigate();
@@ -42,10 +42,6 @@ function Profile() {
   const [registeredEvents, setRegisteredEvents] = useState([]);
   const [eventLoading, setEventLoading] = useState(true);
 
-  const [currentPasswordVisible, setCurrentPasswordVisible] = useState(false);
-  const [newPasswordVisible, setNewPasswordVisible] = useState(false);
-  const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
-
   const { search } = useLocation();
   const query = new URLSearchParams(search);
 
@@ -61,7 +57,7 @@ function Profile() {
     fetchRegisteredEvents();
   }, [location.pathname]);
 
-  useEffect(()=>{
+  useEffect(() => {
     if (query.get("success") === "true") {
       toast.success("Payment successful!", {
         position: "top-center",
@@ -79,7 +75,7 @@ function Profile() {
         theme: "colored",
       });
     }
-  }, [query.get("success")])
+  }, [query.get("success")]);
   const fetchUserData = async () => {
     setLoading(true);
     const token = localStorage.getItem("token");
@@ -133,6 +129,50 @@ function Profile() {
     }
   };
 
+  const handleDownloadCertificate = (name, college, eventName) => {
+    const canvas = document.createElement('canvas');
+    const img = new Image();
+    img.src =  certTemplate;
+    
+    img.onload = () => {
+      canvas.width = img.width;
+      canvas.height = img.height;
+      const ctx = canvas.getContext('2d');
+  
+      // Draw the certificate template
+      ctx.drawImage(img, 0, 0);
+  
+      // Set text styles
+      ctx.fillStyle = '#000000'; // Black text
+      ctx.textAlign = 'left'; // Changed to left for precise measurement
+      
+      // 1. Participant Name
+      ctx.font = 'bold 42px Poppins, sans-serif';
+      const nameWidth = ctx.measureText(name).width;
+      ctx.fillText(name, (canvas.width - nameWidth) / 2, canvas.height * 0.59);
+  
+      // 2. College Name
+      ctx.font = 'bold 32px Poppins, sans-serif';
+      const collegeWidth = ctx.measureText(college).width;
+      ctx.fillText(college, (canvas.width - collegeWidth) / 2.2, canvas.height * 0.67);
+  
+      // 3. Event Name
+      ctx.font = 'bold 32px Poppins, sans-serif';
+      const eventWidth = ctx.measureText(eventName).width;
+      ctx.fillText(eventName, (canvas.width - eventWidth) / 2.5, canvas.height * 0.71);
+  
+      // Trigger download
+      const link = document.createElement('a');
+      link.download = `Endeavour25_Certificate_${name.replace(/\s+/g, '_')}.png`;
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    };
+  
+    img.onerror = () => {
+      console.error('Error loading certificate template');
+    };
+  };
+
   const fetchRegisteredEvents = async () => {
     setEventLoading(true);
     const token = localStorage.getItem("token");
@@ -152,6 +192,7 @@ function Profile() {
           },
         }
       );
+
 
       if (response.data.success) {
         setRegisteredEvents(response.data.data.teams);
@@ -353,19 +394,21 @@ function Profile() {
           <div className="flex space-x-4 p-1 rounded-full bg-gray-900">
             <button
               onClick={() => setActiveTab("profile")}
-              className={`px-6 py-2 rounded-full transition-all ${activeTab === "profile"
+              className={`px-6 py-2 rounded-full transition-all ${
+                activeTab === "profile"
                   ? "bg-[#007827] text-white font-bold"
                   : "text-gray-400 hover:text-white"
-                }`}
+              }`}
             >
               Profile
             </button>
             <button
               onClick={() => setActiveTab("events")}
-              className={`px-6 py-2 rounded-full transition-all ${activeTab === "events"
+              className={`px-6 py-2 rounded-full transition-all ${
+                activeTab === "events"
                   ? "bg-[#007827] text-white font-bold"
                   : "text-gray-400 hover:text-white"
-                }`}
+              }`}
             >
               Events
             </button>
@@ -378,8 +421,9 @@ function Profile() {
               <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-gradient-to-r from-[#00f699] to-[#00f8bd] flex items-center justify-center text-[#007827] text-xl md:text-2xl font-bold">
                 {user.name ? (
                   <img
-                    src={`https://avatar.iran.liara.run/public/${user.gender === "male" ? "`girl`" : "boy"
-                      }`}
+                    src={`https://avatar.iran.liara.run/public/${
+                      user.gender === "male" ? "`girl`" : "boy"
+                    }`}
                     loading="lazy"
                     alt="Profile"
                   />
@@ -710,14 +754,14 @@ function Profile() {
                             >
                               View Event
                             </button>
-                            {(!team.isVerified && team.paymentTransactionId === "000000000000") ? (
-                              
+                            {!team.isVerified &&
+                            team.paymentTransactionId === "000000000000" ? (
                               <button
-                              onClick={() => openPaymentPopup(team)}
-                              className="bg-[#007827] text-white px-4 py-2 rounded-full hover:bg-[#00582d] transition-colors"
-                            >
-                              Complete Payment
-                            </button>
+                                onClick={() => openPaymentPopup(team)}
+                                className="bg-[#007827] text-white px-4 py-2 rounded-full hover:bg-[#00582d] transition-colors"
+                              >
+                                Complete Payment
+                              </button>
                             ) : (
                               <button
                                 onClick={() => handleTeamClick(team._id)}
@@ -726,6 +770,18 @@ function Profile() {
                                 Manage Team
                               </button>
                             )}
+                            {team.eventId.name !== "Entertainment Eve" && <button
+                              onClick={() =>
+                                handleDownloadCertificate(
+                                  user.name,
+                                  user.college || "KIET Group of Institutions",
+                                  team.eventId.name || "Endeavour 25"
+                                )
+                              }
+                              className="bg-[#007827] text-white px-4 py-2 rounded-full hover:bg-[#00582d] transition-colors"
+                            >
+                              Download Certificate
+                            </button>}
                           </div>
                         </div>
                         <div className="mt-4 pt-3 border-t border-gray-800">
