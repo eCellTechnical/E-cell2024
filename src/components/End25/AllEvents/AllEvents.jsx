@@ -164,7 +164,7 @@ const AllEvents = () => {
 
                     <div className="mb-6">
                       <p className="text-xs text-gray-400 mb-1">REGISTRATION</p>
-                      <p className="text-2xl font-bold text-[#00FCB8]">{event.name === "Treasure Hunt" ? "OPEN" : "CLOSED"}</p>
+                      <p className="text-2xl font-bold text-[#00FCB8]">{"CLOSED"}</p>
                     </div>
 
                     {/* Divider line with animation */}

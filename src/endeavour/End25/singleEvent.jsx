@@ -299,30 +299,17 @@ function App() {
                         !localStorage.getItem("userId") ||
                         !localStorage.getItem("token")
                       ) {
-
-                        if (eventData.name == "Entertainment Eve" || eventData.name == "Treasure Hunt") {
-                          window.location.href = "/endeavour/login";
-                        } else {
-                          alert("Registration is closed.");
-                        }
+                        alert("Registration is closed.");
                       } else {
                         if (!isUserFieldsValid) {
                           setShowProfileIncompletePopup(true);
                         } else {
-                          if (eventData.name == "Entertainment Eve" || eventData.name == "Treasure Hunt") {
-                            setIsRegistrationOpen(true);
-                          } else {
-                            alert("Registration is closed.");
-                          }
+                          alert("Registration is closed.");
                         }
                       }
                     }}
                   >
-                    {isRegistered
-                      ? "Dashboard"
-                      : eventData.name == "Entertainment Eve" || eventData.name == "Treasure Hunt"
-                      ? "Register Now"
-                      : "Closed"}
+                    {isRegistered ? "Dashboard" : "Closed"}
                   </button>
                 </div>
                 <hr className="w-full h-2 opacity-20" />
@@ -536,29 +523,22 @@ function App() {
                           !localStorage.getItem("userId") ||
                           !localStorage.getItem("token")
                         ) {
-                          if (eventData.name == "Entertainment Eve" || eventData.name == "Treasure Hunt") {
-                            window.location.href = "/endeavour/login";
-                          } else {
+                          
                             alert("Registration is closed.");
-                          }
+                          
                         } else {
                           if (!isUserFieldsValid) {
                             setShowProfileIncompletePopup(true);
                           } else {
-                            if (eventData.name == "Entertainment Eve" || eventData.name == "Treasure Hunt") {
-                              setIsRegistrationOpen(true);
-                            }
-                            else{
+                           
                               alert("Registration is closed.");
-                            }
+                            
                           }
                         }
                       }}
                     >
                       {isRegistered
                         ? "GO TO DASHBOARD"
-                        : eventData.name == "Entertainment Eve" || eventData.name == "Treasure Hunt"
-                        ? "REGISTER NOW"
                         : "CLOSED"}
                     </button>
                     <button
