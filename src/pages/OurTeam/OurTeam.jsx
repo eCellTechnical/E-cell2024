@@ -1786,7 +1786,7 @@ function OurTeam() {
       </div>
       {/* Administrative & Financial Secretariat */}
       <div className="mt-10">
-        <h1 className="text-xl md:text-3xl font-bold text-black dark:text-white">
+        <h1 className="text-xl md:text-3xl text-center px-4 font-bold text-black dark:text-white">
           Administrative & Financial Secretariat
         </h1>
       </div>

@@ -111,21 +111,21 @@ import PrivacyPolicy2 from "./pages/PrivacyPolicy/Policy2";
 
 // RouteChangeTracker component to detect when we're on the /endeavour route
 const RouteChangeTracker = ({ children }) => {
-  const location = useLocation();
-  const [showPopup, setShowPopup] = useState(false);
+  // const location = useLocation();
+  // const [showPopup, setShowPopup] = useState(false);
 
-  useEffect(() => {
+  // useEffect(() => {
     // Check if current path is /endeavour exactly
-    if (location.pathname === '/') {
-      setShowPopup(true);
-    } else {
-      setShowPopup(false);
-    }
-  }, [location]);
+  //   if (location.pathname === '/') {
+  //     setShowPopup(true);
+  //   } else {
+  //     setShowPopup(false);
+  //   }
+  // }, [location]);
 
   return (
     <>
-      {showPopup && <ImagePopup onClose={() => setShowPopup(false)} />}
+      {/* {showPopup && <ImagePopup onClose={() => setShowPopup(false)} />} */}
       {children}
     </>
   );
