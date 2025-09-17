@@ -396,9 +396,8 @@ export default function Application() {
             reason: formData.reason2.trim(),
           },
         };
-        await axios.post(`${API_BASE_URL}/api/users`, submitData, {
-          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        });
+        // Remove custom headers and add timeout to avoid hanging requests
+        await axios.post(`${API_BASE_URL}/api/users`, submitData, { timeout: 15000 });
         showToast('Application submitted successfully!', 'success');
         setFormData({
           name: '',
@@ -418,7 +417,11 @@ export default function Application() {
         setErrors({});
         setCurrentStep(3);
       } catch (error) {
-        const errorMessage = error.response?.data?.message || error.message;
+        const isCorsOrNetwork = !error.response && error.request;
+        const errorMessage = isCorsOrNetwork
+          ? 'Network/CORS error — request blocked or timed out'
+          : (error.response?.data?.message || error.message);
+        console.error('Submission failed:', error);
         showToast(`Error: ${errorMessage}`, 'error');
       } finally {
         setIsSubmitting(false);
@@ -696,7 +699,8 @@ export default function Application() {
 
             {currentStep === 1 || currentStep === 2 ? (
               <button
-                onClick={currentStep === 2 ? handleSubmit : nextStep}
+                // rely on form submit; do not call handleSubmit here
+                onClick={currentStep === 2 ? undefined : nextStep}
                 type={currentStep === 2 ? 'submit' : 'button'}
                 disabled={isSubmitting}
                 className="btn w-[80%] rounded-lg py-2 mt-3 cursor-pointer text-center text-black dark:text-white border border-[#4d55ba] bg-white dark:bg-transparent"
