@@ -22,12 +22,12 @@ const AnimatedProgress = ({ currentStep }) => {
     <div className="w-full mb-8 ">
       <div className="relative flex justify-between lg:ml-25 lg:mr-25 items-center">
         {/* Thinner base line */}
-        <div className="absolute top-4 left-6 right-4 h-px bg-white rounded-full z-0"></div>
+        <div className="absolute top-4 left-6 right-6 h-px bg-white rounded-full z-0"></div>
 
         {/* Thinner animated fill line (no circle) */}
         <div
-          className="absolute top-4 left-7 h-px bg-[white] rounded-full z-0 transition-all duration-700 ease-in-out"
-          style={{ width: `calc((100% - 2rem) * ${progressPct / 100})` }}
+          className="absolute top-4 left-6 h-px bg-[white] rounded-full z-0 transition-all duration-700 ease-in-out"
+          style={{ width: `calc((100% - 3rem) * ${progressPct / 100})` }}
         />
 
         {/* Step circles */}
@@ -130,7 +130,6 @@ const InputField = React.memo(({ placeholder, value, onChange, type = 'text', re
   </div>
 ));
 
-// REPLACED TextAreaField to match accepted version
 const TextAreaField = React.memo(({ placeholder, value, onChange, required = false, error, className = '', label }) => (
   <div className="mb-2 w-full">
     {label && <label className="block text-white text-lg mb-1">{label}</label>}
@@ -161,7 +160,7 @@ const TextAreaField = React.memo(({ placeholder, value, onChange, required = fal
   </div>
 ));
 
-const CustomSelect = React.memo(({ placeholder, value, onChange, options = [], required = false, error, label }) => {
+const CustomSelect = React.memo(({ placeholder, value, onChange, options = [], required = false, error, label, isLastField = false }) => {
   const [open, setOpen] = useState(false);
   const wrapRef = useRef(null);
 
@@ -190,7 +189,7 @@ const CustomSelect = React.memo(({ placeholder, value, onChange, options = [], r
         <ChevronDown className={`w-4 h-4 transition-transform ${open ? 'rotate-180' : ''}`} />
       </button>
       {open && (
-        <ul className="absolute left-0 top-full mt-1 w-full max-h-44 overflow-auto rounded-md bg-[#111] border border-gray-700 shadow-lg z-20">
+        <ul className={`absolute left-0 ${isLastField ? 'bottom-full mb-1' : 'top-full mt-1'} w-full max-h-44 overflow-auto rounded-md bg-[#111] border border-gray-700 shadow-lg z-20 scrollbar-hide`}>
           {options.map(opt => (
             <li
               key={opt}
@@ -264,7 +263,7 @@ const YearSelect = ({ value, onChange, options = [], error, label, placeholder =
         <ChevronDown className={`w-4 h-4 transition-transform ${open ? 'rotate-180' : ''}`} />
       </button>
       {open && (
-        <ul className="absolute left-0 top-full mt-1 w-full max-h-44 overflow-auto rounded-md bg-[#111] border border-gray-700 shadow-lg z-20">
+        <ul className="absolute left-0 top-full mt-1 w-full max-h-44 overflow-auto rounded-md bg-[#111] border border-gray-700 shadow-lg z-20 scrollbar-hide">
           {options.map(opt => (
             <li
               key={opt}
@@ -644,6 +643,7 @@ export default function Application() {
                 required={true}
                 error={errors.preferredDomain1}
                 label="Preferred Domain 1:"
+                isLastField={true}
               />
               <CustomSelect
                 placeholder="Select Domain 2"
@@ -653,6 +653,7 @@ export default function Application() {
                 required={true}
                 error={errors.preferredDomain2}
                 label="Preferred Domain 2:"
+                isLastField={true}
               />
             </div>
           </div>
@@ -690,6 +691,13 @@ export default function Application() {
     style.textContent = `
       .no-horizontal-scrollbar::-webkit-scrollbar { display: none; }
       .no-horizontal-scrollbar { scrollbar-width: none; }
+      .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+      }
     `;
     document.head.appendChild(style);
     return () => document.head.removeChild(style);
