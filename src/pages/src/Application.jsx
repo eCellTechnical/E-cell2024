@@ -14,7 +14,7 @@ const AnimatedProgress = ({ currentStep }) => {
     { id: 1, name: 'Basic Details' },
     { id: 2, name: 'Personal Details' },
     { id: 3, name: 'Recruitment Details' },
-    { id: 4, name: 'Submitted' }
+    { id: 4, name: 'Final Submit' }
   ];
   const progressPct = ((currentStep - 1) / (steps.length - 1)) * 100;
 
