@@ -396,7 +396,6 @@ export default function Application() {
             reason: formData.reason2.trim(),
           },
         };
-        // Remove custom headers and add timeout to avoid hanging requests
         await axios.post(`${API_BASE_URL}/api/users`, submitData, { timeout: 15000 });
         showToast('Application submitted successfully!', 'success');
         setFormData({
@@ -418,9 +417,30 @@ export default function Application() {
         setCurrentStep(3);
       } catch (error) {
         const isCorsOrNetwork = !error.response && error.request;
-        const errorMessage = isCorsOrNetwork
-          ? 'Network/CORS error — request blocked or timed out'
-          : (error.response?.data?.message || error.message);
+        let errorMessage;
+        
+        if (isCorsOrNetwork) {
+          errorMessage = 'Network/CORS error — request blocked or timed out';
+        } else if (error.response?.status === 400 || error.response?.status === 409) {
+          // Check both 'detail' and 'message' fields in the response
+          const responseData = error.response?.data || {};
+          const responseDetail = responseData.detail || '';
+          const responseMessage = responseData.message || '';
+          const combinedMessage = responseDetail || responseMessage;
+          
+          if (combinedMessage.toLowerCase().includes('email') && 
+              combinedMessage.toLowerCase().includes('already exists')) {
+            errorMessage = 'email  already registered';
+          } else if (combinedMessage.toLowerCase().includes('duplicate') || 
+                     combinedMessage.toLowerCase().includes('already')) {
+            errorMessage = 'User already exists. Please check your information.';
+          } else {
+            errorMessage = combinedMessage || 'Invalid data submitted. Please check your information.';
+          }
+        } else {
+          errorMessage = error.response?.data?.detail || error.response?.data?.message || error.message || 'An unexpected error occurred';
+        }
+        
         console.error('Submission failed:', error);
         showToast(`Error: ${errorMessage}`, 'error');
       } finally {
@@ -484,7 +504,7 @@ export default function Application() {
                 label="Phone Number:"
               />
               <InputField
-                placeholder="Library ID (2529ITXYZ)"
+                placeholder="2529IT1615"
                 value={formData.lib_id}
                 onChange={(value) => handleInputChange('lib_id', value)}
                 required={true}
