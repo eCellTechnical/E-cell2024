@@ -1,16 +1,8 @@
 import React, { useState, useCallback, useMemo, useRef, useEffect } from 'react';
 import {
   ChevronDown,
-  User,
-  Mail,
-  Phone,
-  Linkedin,
-  GitBranch,
-  Briefcase,
-  GraduationCap,
   AlertCircle,
   Check,
-  IdCard,
 } from 'lucide-react';
 import axios from 'axios';
 import Lottie from 'lottie-react';
@@ -20,20 +12,21 @@ import animationData from './assets/data.json';
 const AnimatedProgress = ({ currentStep }) => {
   const steps = [
     { id: 1, name: 'Basic Details' },
-    { id: 2, name: 'Domain Preferences' },
-    { id: 3, name: 'Submitted' }
+    { id: 2, name: 'Personal Details' },
+    { id: 3, name: 'Recruitment Details' },
+    { id: 4, name: 'Submitted' }
   ];
   const progressPct = ((currentStep - 1) / (steps.length - 1)) * 100;
 
   return (
     <div className="w-full mb-8 ">
-      <div className="relative flex justify-between  lg:ml-25 lg:mr-25 items-center">
+      <div className="relative flex justify-between lg:ml-25 lg:mr-25 items-center">
         {/* Thinner base line */}
         <div className="absolute top-4 left-6 right-4 h-px bg-white rounded-full z-0"></div>
 
         {/* Thinner animated fill line (no circle) */}
         <div
-          className="absolute top-4 left-7 h-px bg-[white rounded-full z-0 transition-all duration-700 ease-in-out"
+          className="absolute top-4 left-7 h-px bg-[white] rounded-full z-0 transition-all duration-700 ease-in-out"
           style={{ width: `calc((100% - 2rem) * ${progressPct / 100})` }}
         />
 
@@ -41,6 +34,8 @@ const AnimatedProgress = ({ currentStep }) => {
         {steps.map(step => {
           const isActive = currentStep === step.id;
           const isCompleted = currentStep > step.id || (isActive && step.id === steps.length);
+          const nameParts = step.name.split(' ');
+
           return (
             <div key={step.id} className="relative z-10 flex flex-col items-center text-center">
               <div
@@ -54,10 +49,17 @@ const AnimatedProgress = ({ currentStep }) => {
               >
                 {isCompleted ? <Check className="w-4 h-4" strokeWidth={3} /> : step.id}
               </div>
-              <span className={`mt-2 text-[10px] sm:text-xs font-medium whitespace-nowrap ${
+              <span className={`mt-2 text-[10px] sm:text-xs font-medium ${
                 (isActive || isCompleted) ? 'text-white' : 'text-gray-400'
               }`}>
-                {step.name}
+                {nameParts.length > 1 ? (
+                  <>
+                    <span className="block">{nameParts[0]}</span>
+                    <span className="block">{nameParts.slice(1).join(' ')}</span>
+                  </>
+                ) : (
+                  step.name
+                )}
               </span>
             </div>
           );
@@ -159,37 +161,58 @@ const TextAreaField = React.memo(({ placeholder, value, onChange, required = fal
   </div>
 ));
 
-const CustomSelect = React.memo(({ placeholder, value, onChange, options = [], required = false, error, label }) => (
-  <div className="mb-5 w-full lg:w-[45%]">
-    {label && <label className="block text-white text-lg mb-1">{label}</label>}
-    <select
-      className="w-full bg-transparent !border-0 !border-b-2 !border-gray-400 !rounded-none mt-1 p-2 text-white focus:border-[#4d55ba] focus:outline-none"
-      value={value}
-      onChange={(e) => onChange(e.target.value)}
-      onKeyDown={(e) => {
-        if (e.key === ' ') {
-          e.stopPropagation();
-        }
-      }}
-      required={required}
-    >
-      <option value="" className="text-black">
-        {placeholder}
-      </option>
-      {options.map((option, index) => (
-        <option key={index} value={option} className="text-black">
-          {option}
-        </option>
-      ))}
-    </select>
-    {error && (
-      <div className="mt-1 px-1 flex items-center text-red-400 text-xs">
-        <AlertCircle className="w-3.5 h-3.5 mr-1" />
-        <p>{error}</p>
-      </div>
-    )}
-  </div>
-));
+const CustomSelect = React.memo(({ placeholder, value, onChange, options = [], required = false, error, label }) => {
+  const [open, setOpen] = useState(false);
+  const wrapRef = useRef(null);
+
+  useEffect(() => {
+    const handler = (e) => {
+      if (!wrapRef.current || wrapRef.current.contains(e.target)) return;
+      setOpen(false);
+    };
+    document.addEventListener('mousedown', handler);
+    document.addEventListener('touchstart', handler);
+    return () => {
+      document.removeEventListener('mousedown', handler);
+      document.removeEventListener('touchstart', handler);
+    };
+  }, []);
+
+  return (
+    <div className="mb-5 w-full lg:w-[45%] relative" ref={wrapRef}>
+      {label && <label className="block text-white text-lg mb-1">{label}</label>}
+      <button
+        type="button"
+        onClick={() => setOpen(o => !o)}
+        className={`w-full text-left bg-transparent !border-0 !border-b-2 !rounded-none p-2 text-white placeholder-gray-400 focus:outline-none focus:border-[#4d55ba] !border-gray-400 flex justify-between items-center`}
+      >
+        <span>{value || placeholder}</span>
+        <ChevronDown className={`w-4 h-4 transition-transform ${open ? 'rotate-180' : ''}`} />
+      </button>
+      {open && (
+        <ul className="absolute left-0 top-full mt-1 w-full max-h-44 overflow-auto rounded-md bg-[#111] border border-gray-700 shadow-lg z-20">
+          {options.map(opt => (
+            <li
+              key={opt}
+              onClick={() => { onChange(opt); setOpen(false); }}
+              className={`px-3 py-2 text-sm cursor-pointer hover:bg-[#222] ${
+                opt === value ? 'text-[#4d55ba] font-semibold' : 'text-gray-200'
+              }`}
+            >
+              {opt}
+            </li>
+          ))}
+        </ul>
+      )}
+      {error && (
+        <div className="mt-1 px-1 flex items-center text-red-400 text-xs">
+          <AlertCircle className="w-3.5 h-3.5 mr-1" />
+          <p>{error}</p>
+        </div>
+      )}
+    </div>
+  );
+});
 
 const RadioField = React.memo(({ options, value, onChange, label }) => (
   <div className="mb-5 w-[90%] lg:w-full">
@@ -230,61 +253,37 @@ const YearSelect = ({ value, onChange, options = [], error, label, placeholder =
   }, []);
 
   return (
-    <div className="mb-5 w-full lg:w-[45%]">
+    <div className="mb-5 w-full lg:w-[45%] relative" ref={wrapRef}>
       {label && <label className="block text-white text-lg mb-1">{label}</label>}
-      {/* Mobile custom (hidden on lg) */}
-      <div ref={wrapRef} className="relative block lg:hidden">
-        <button
-          type="button"
-          onClick={() => setOpen(o => !o)}
-          className={`w-full text-left bg-transparent !border-0 !border-b-2 !rounded-none p-2 text-white placeholder-gray-400 focus:outline-none focus:border-[#4d55ba] !border-gray-400 flex justify-between items-center`}
-        >
-          <span>{value || placeholder}</span>
-          <ChevronDown className={`w-4 h-4 transition-transform ${open ? 'rotate-180' : ''}`} />
-        </button>
-        {open && (
-          <ul className="absolute left-0 top-full mt-1 w-full max-h-44 overflow-auto rounded-md bg-[#111] border border-gray-700 shadow-lg z-20">
-            {options.map(opt => (
-              <li
-                key={opt}
-                onClick={() => { onChange(opt); setOpen(false); }}
-                className={`px-3 py-2 text-sm cursor-pointer hover:bg-[#222] ${
-                  opt === value ? 'text-[#4d55ba] font-semibold' : 'text-gray-200'
-                }`}
-              >
-                {opt}
-              </li>
-            ))}
-          </ul>
-        )}
-        {error && (
-          <div className="mt-1 px-1 flex items-center text-red-400 text-xs">
-            <AlertCircle className="w-3.5 h-3.5 mr-1" />
-            <p>{error}</p>
-          </div>
-        )}
-      </div>
-      {/* Desktop native select */}
-      <div className="hidden lg:block">
-        <select
-          className="w-full bg-transparent !border-0 !border-b-2 !border-gray-400 !rounded-none mt-1 p-2 text-white focus:border-[#4d55ba] focus:outline-none"
-          value={value}
-          onChange={(e) => onChange(e.target.value)}
-        >
-          <option value="" className="text-black">{placeholder}</option>
-          {options.map((option) => (
-            <option key={option} value={option} className="text-black">
-              {option}
-            </option>
+      <button
+        type="button"
+        onClick={() => setOpen(o => !o)}
+        className={`w-full text-left bg-transparent !border-0 !border-b-2 !rounded-none p-2 text-white placeholder-gray-400 focus:outline-none focus:border-[#4d55ba] !border-gray-400 flex justify-between items-center`}
+      >
+        <span>{value || placeholder}</span>
+        <ChevronDown className={`w-4 h-4 transition-transform ${open ? 'rotate-180' : ''}`} />
+      </button>
+      {open && (
+        <ul className="absolute left-0 top-full mt-1 w-full max-h-44 overflow-auto rounded-md bg-[#111] border border-gray-700 shadow-lg z-20">
+          {options.map(opt => (
+            <li
+              key={opt}
+              onClick={() => { onChange(opt); setOpen(false); }}
+              className={`px-3 py-2 text-sm cursor-pointer hover:bg-[#222] ${
+                opt === value ? 'text-[#4d55ba] font-semibold' : 'text-gray-200'
+              }`}
+            >
+              {opt}
+            </li>
           ))}
-        </select>
-        {error && (
-          <div className="mt-1 px-1 flex items-center text-red-400 text-xs">
-            <AlertCircle className="w-3.5 h-3.5 mr-1" />
-            <p>{error}</p>
-          </div>
-        )}
-      </div>
+        </ul>
+      )}
+      {error && (
+        <div className="mt-1 px-1 flex items-center text-red-400 text-xs">
+          <AlertCircle className="w-3.5 h-3.5 mr-1" />
+          <p>{error}</p>
+        </div>
+      )}
     </div>
   );
 };
@@ -294,18 +293,21 @@ const STEP_MIN_HEIGHT = 380; // further reduced to pull buttons higher
 export default function Application() {
   const [formData, setFormData] = useState({
     name: '',
-    email: '',
-    phone: '',
+    collegeEmail: '',
     lib_id: '',
     year: '',
+    course: '',
     branch: '',
-    domains: [],
+    personalEmail: '',
+    phone: '',
+    gender: '',
+    residence: '',
+    achievements: '',
+    linkedIn: '',
+    motivation: '',
+    whyEcell: '',
     preferredDomain1: '',
     preferredDomain2: '',
-    reason1: '',
-    reason2: '',
-    whyEcell: '',
-    linkedIn: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState({});
@@ -325,21 +327,31 @@ export default function Application() {
     const newErrors = {};
     switch (step) {
       case 1: {
-        const basicFields = ['name', 'email', 'phone', 'lib_id', 'year', 'branch'];
+        const basicFields = ['name', 'collegeEmail', 'lib_id', 'year', 'course', 'branch'];
         basicFields.forEach((field) => {
           if (!trimVal(formData[field])) newErrors[field] = 'This field is required';
         });
-        if (trimVal(formData.email) && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
-          newErrors.email = 'Please enter a valid email address';
+        if (trimVal(formData.collegeEmail) && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.collegeEmail.trim())) {
+          newErrors.collegeEmail = 'Please enter a valid email address';
+        }
+        break;
+      }
+      case 2: {
+        const personalFields = ['personalEmail', 'phone', 'gender', 'residence'];
+        personalFields.forEach((field) => {
+          if (!trimVal(formData[field])) newErrors[field] = 'This field is required';
+        });
+        if (trimVal(formData.personalEmail) && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.personalEmail.trim())) {
+          newErrors.personalEmail = 'Please enter a valid email address';
         }
         if (trimVal(formData.phone) && !/^\d{10}$/.test(formData.phone.replace(/\D/g, ''))) {
           newErrors.phone = 'Please enter a valid 10-digit phone number';
         }
         break;
       }
-      case 2: {
-        const domainFields = ['whyEcell', 'preferredDomain1', 'preferredDomain2', 'reason1', 'reason2'];
-        domainFields.forEach((field) => {
+      case 3: {
+        const recruitmentFields = ['motivation', 'whyEcell', 'preferredDomain1', 'preferredDomain2'];
+        recruitmentFields.forEach((field) => {
           if (!trimVal(formData[field])) newErrors[field] = 'This field is required';
         });
         if (formData.preferredDomain1 === formData.preferredDomain2) {
@@ -369,7 +381,7 @@ export default function Application() {
   const handleSubmit = useCallback(
     async (e) => {
       e.preventDefault();
-      if (!validateStep(2)) {
+      if (!validateStep(3)) {
         showToast('Please fill in all required fields correctly', 'error');
         return;
       }
@@ -378,43 +390,47 @@ export default function Application() {
         const yearMap = { '1st Year': 1, '2nd Year': 2 };
         const submitData = {
           name: formData.name.trim(),
-          email: formData.email.trim().toLowerCase(),
+          collegeEmail: formData.collegeEmail.trim().toLowerCase(),
+          personalEmail: formData.personalEmail.trim().toLowerCase(),
           phone: Number(formData.phone.replace(/\D/g, '')),
           year: yearMap[formData.year],
           lib_id: formData.lib_id.trim().toUpperCase(),
+          course: formData.course,
           branch: formData.branch,
-          why_ecell: formData.whyEcell.trim(),
+          gender: formData.gender,
+          residence: formData.residence,
+          achievements: formData.achievements.trim(),
           linkedIn: formData.linkedIn.startsWith('http') ? formData.linkedIn.trim() : 'https://linkedin.com/in/none',
-          domains: [formData.preferredDomain1, formData.preferredDomain2],
-          groupNumber: 0,
-          domain_pref_one: {
-            name: formData.preferredDomain1,
-            reason: formData.reason1.trim(),
-          },
-          domain_pref_two: {
-            name: formData.preferredDomain2,
-            reason: formData.reason2.trim(),
-          },
+          motivation: formData.motivation.trim(),
+          whyEcell: formData.whyEcell.trim(),
+          preferredDomain1: formData.preferredDomain1,
+          preferredDomain2: formData.preferredDomain2,
         };
+
+        // Note: The original backend API might not support all these new fields.
+        // This is a comprehensive update to the form and data structure.
         await axios.post(`${API_BASE_URL}/api/users`, submitData, { timeout: 15000 });
         showToast('Application submitted successfully!', 'success');
         setFormData({
           name: '',
-          email: '',
-          phone: '',
+          collegeEmail: '',
           lib_id: '',
           year: '',
+          course: '',
           branch: '',
-          domains: [],
+          personalEmail: '',
+          phone: '',
+          gender: '',
+          residence: '',
+          achievements: '',
+          linkedIn: '',
+          motivation: '',
+          whyEcell: '',
           preferredDomain1: '',
           preferredDomain2: '',
-          reason1: '',
-          reason2: '',
-          whyEcell: '',
-          linkedIn: '',
         });
         setErrors({});
-        setCurrentStep(3);
+        setCurrentStep(4);
       } catch (error) {
         const isCorsOrNetwork = !error.response && error.request;
         let errorMessage;
@@ -422,7 +438,6 @@ export default function Application() {
         if (isCorsOrNetwork) {
           errorMessage = 'Network/CORS error — request blocked or timed out';
         } else if (error.response?.status === 400 || error.response?.status === 409) {
-          // Check both 'detail' and 'message' fields in the response
           const responseData = error.response?.data || {};
           const responseDetail = responseData.detail || '';
           const responseMessage = responseData.message || '';
@@ -430,7 +445,7 @@ export default function Application() {
           
           if (combinedMessage.toLowerCase().includes('email') && 
               combinedMessage.toLowerCase().includes('already exists')) {
-            errorMessage = 'email  already registered';
+            errorMessage = ' email already registered';
           } else if (combinedMessage.toLowerCase().includes('duplicate') || 
                      combinedMessage.toLowerCase().includes('already')) {
             errorMessage = 'User already exists. Please check your information.';
@@ -463,13 +478,7 @@ export default function Application() {
       setCurrentStep((prev) => prev - 1);
     }
   };
-
-  const steps = [
-    { key: 1, label: "Basic Details" },
-    { key: 2, label: "Domain Preferences" },
-    { key: 3, label: "Submitted" },
-  ];
-
+  
   const renderStep = () => {
     switch (currentStep) {
       case 1:
@@ -484,32 +493,14 @@ export default function Application() {
                 error={errors.name}
                 label="Full Name:"
               />
-              <InputField
-                placeholder="E-mail"
-                value={formData.email}
-                onChange={(value) => handleInputChange('email', value)}
-                type="email"
+              <CustomSelect
+                placeholder="Select Course"
+                value={formData.course}
+                onChange={(value) => handleInputChange('course', value)}
+                options={courseOptions}
                 required={true}
-                error={errors.email}
-                label="E-mail:"
-              />
-            </div>
-            <div className="flex flex-col lg:flex-row lg:justify-between w-[90%] lg:w-full gap-4">
-              <InputField
-                placeholder="Phone Number"
-                value={formData.phone}
-                onChange={(value) => handleInputChange('phone', value)}
-                required={true}
-                error={errors.phone}
-                label="Phone Number:"
-              />
-              <InputField
-                placeholder="2529IT1615"
-                value={formData.lib_id}
-                onChange={(value) => handleInputChange('lib_id', value)}
-                required={true}
-                error={errors.lib_id}
-                label="Library ID:"
+                error={errors.course}
+                label="Course:"
               />
             </div>
             <div className="flex flex-col lg:flex-row lg:justify-between w-[90%] lg:w-full gap-4">
@@ -530,9 +521,84 @@ export default function Application() {
                 label="Branch:"
               />
             </div>
+            <div className="flex flex-col lg:flex-row lg:justify-between w-[90%] lg:w-full gap-4">
+              <InputField
+                placeholder="College E-mail"
+                value={formData.collegeEmail}
+                onChange={(value) => handleInputChange('collegeEmail', value)}
+                type="email"
+                required={true}
+                error={errors.collegeEmail}
+                label="College E-mail:"
+              />
+              <InputField
+                placeholder="2529IT1615"
+                value={formData.lib_id}
+                onChange={(value) => handleInputChange('lib_id', value)}
+                required={true}
+                error={errors.lib_id}
+                label="Library ID:"
+              />
+            </div>
+          </div>
+        );
+
+      case 2:
+        return (
+          <div className="w-full text-lg lg:flex lg:flex-col lg:justify-center lg:items-center flex flex-col items-center justify-center">
+            <div className="flex flex-col lg:flex-row lg:justify-between w-[90%] lg:w-full gap-4">
+              <InputField
+                placeholder="Personal E-mail"
+                value={formData.personalEmail}
+                onChange={(value) => handleInputChange('personalEmail', value)}
+                type="email"
+                required={true}
+                error={errors.personalEmail}
+                label="Personal E-mail:"
+              />
+              <InputField
+                placeholder="Phone Number"
+                value={formData.phone}
+                onChange={(value) => handleInputChange('phone', value)}
+                required={true}
+                error={errors.phone}
+                label="Phone Number:"
+              />
+            </div>
+            <div className="flex flex-col lg:flex-row lg:justify-between w-[90%] lg:w-full gap-4">
+              <CustomSelect
+                placeholder="Select Gender"
+                value={formData.gender}
+                onChange={(value) => handleInputChange('gender', value)}
+                options={genderOptions}
+                required={true}
+                error={errors.gender}
+                label="Gender:"
+              />
+              <CustomSelect
+                placeholder="Select Residence"
+                value={formData.residence}
+                onChange={(value) => handleInputChange('residence', value)}
+                options={residenceOptions}
+                required={true}
+                error={errors.residence}
+                label="Residence:"
+              />
+            </div>
+            <div className="flex flex-col lg:flex-row lg:justify-between w-[90%] lg:w-full gap-4">
+              <TextAreaField
+                placeholder="Personal Achievements / Past experiences (optional)"
+                value={formData.achievements}
+                onChange={(value) => handleInputChange('achievements', value)}
+                required={false}
+                error={errors.achievements}
+                label="Achievements:"
+                className="h-12"
+              />
+            </div>
             <div className="w-[90%] lg:w-full">
               <InputField
-                placeholder="LinkedIn Profile URL"
+                placeholder="LinkedIn Profile URL (optional)"
                 value={formData.linkedIn}
                 onChange={(value) => handleInputChange('linkedIn', value)}
                 required={false}
@@ -544,56 +610,23 @@ export default function Application() {
           </div>
         );
 
-      case 2:
+      case 3:
         return (
           <div className="w-full text-lg lg:flex lg:flex-col lg:justify-center lg:items-center flex flex-col items-center justify-center">
-            <div className="flex flex-col lg:flex-row lg:justify-between w-[90%] lg:w-full gap-4">
-              <CustomSelect
-                placeholder="Select Domain"
-                value={formData.preferredDomain1}
-                onChange={(value) => handleInputChange('preferredDomain1', value)}
-                options={domainOptions}
+            <div className="w-[90%] lg:w-full">
+              <TextAreaField
+                placeholder="What motivates your interest in entrepreneurship and the startup ecosystem?"
+                value={formData.motivation}
+                onChange={(value) => handleInputChange('motivation', value)}
                 required={true}
-                error={errors.preferredDomain1}
-                label="Preferred Domain One:"
+                error={errors.motivation}
+                className="h-12"
+                label="Motivation for Entrepreneurship:"
               />
-              <CustomSelect
-                placeholder="Select Domain"
-                value={formData.preferredDomain2}
-                onChange={(value) => handleInputChange('preferredDomain2', value)}
-                options={domainOptions}
-                required={true}
-                error={errors.preferredDomain2}
-                label="Preferred Domain Two:"
-              />
-            </div>
-            <div className="flex flex-col lg:flex-row lg:justify-between w-[90%] lg:w-full  gap-4">
-              <div className="w-full lg:w-[45%]">
-                <TextAreaField
-                  placeholder="Why do you prefer this domain?"
-                  value={formData.reason1}
-                  onChange={(value) => handleInputChange('reason1', value)}
-                  required={true}
-                  error={errors.reason1}
-                  className="h-12 p-2"
-                  label="Reason for Domain One:"
-                />
-              </div>
-              <div className="w-full lg:w-[45%]">
-                <TextAreaField
-                  placeholder="Why do you prefer this domain?"
-                  value={formData.reason2}
-                  onChange={(value) => handleInputChange('reason2', value)}
-                  required={true}
-                  error={errors.reason2}
-                  className="h-12 p-2"
-                  label="Reason for Domain Two:"
-                />
-              </div>
             </div>
             <div className="w-[90%] lg:w-full">
               <TextAreaField
-                placeholder="Tell us why you want to join E-Cell..."
+                placeholder="Why do you wish to be a part of the E-Cell?"
                 value={formData.whyEcell}
                 onChange={(value) => handleInputChange('whyEcell', value)}
                 required={true}
@@ -602,11 +635,30 @@ export default function Application() {
                 label="Why E-Cell:"
               />
             </div>
+            <div className="flex flex-col lg:flex-row lg:justify-between w-[90%] lg:w-full gap-4">
+              <CustomSelect
+                placeholder="Select Domain 1"
+                value={formData.preferredDomain1}
+                onChange={(value) => handleInputChange('preferredDomain1', value)}
+                options={domainOptions}
+                required={true}
+                error={errors.preferredDomain1}
+                label="Preferred Domain 1:"
+              />
+              <CustomSelect
+                placeholder="Select Domain 2"
+                value={formData.preferredDomain2}
+                onChange={(value) => handleInputChange('preferredDomain2', value)}
+                options={domainOptions}
+                required={true}
+                error={errors.preferredDomain2}
+                label="Preferred Domain 2:"
+              />
+            </div>
           </div>
         );
 
-      case 3:
-        // REPLACED compact thank-you with accepted full submitted UI
+      case 4:
         return (
           <div className="w-full flex flex-col items-center justify-center py-10">
             <div className="w-[90%] lg:w-full max-w-3xl mx-auto p-6 sm:p-8 rounded-xl shadow-2xl bg-[#1C1C1E]/40 backdrop-blur-md border border-gray-800">
@@ -647,11 +699,17 @@ export default function Application() {
 
   const yearOptions = useMemo(() => ['1st Year', '2nd Year'], []);
 
+  const courseOptions = useMemo(() => ['B-Tech', 'B-Pharm', 'MBA', 'MCA'], []);
+
+  const genderOptions = useMemo(() => ['Male', 'Female'], []);
+
+  const residenceOptions = useMemo(() => ['Hosteller', 'Day Scholar / PG'], []);
+
   const branchOptions = useMemo(
     () => [
       'CS',
       'IT',
-      'mechanical',
+      'ME',
       'EEE',
       'ECE',
       'VLSI',
@@ -662,6 +720,8 @@ export default function Application() {
       'CSE(AIML)',
       'CSE(AI)',
       'CSE',
+      'Advanced Mechatronics and Industrial Automation (AMIA)',
+      'Other'
     ],
     []
   );
@@ -694,7 +754,6 @@ export default function Application() {
           onSubmit={handleSubmit}
           className="flex flex-col items-center overflow-hidden mt-8 lg:!w-[70%] mb-0 lg:mb-10 w-full text-white"
         >
-          {/* Replaced multiple conditional wrappers with single fixed-height container */}
           <div
             className="w-full flex justify-center items-start"
             style={{ minHeight: STEP_MIN_HEIGHT }}
@@ -710,22 +769,28 @@ export default function Application() {
             <button
               onClick={prevStep}
               className={`${
-                currentStep === 1 || currentStep === 3 ? 'hidden' : ''
+                currentStep === 1 || currentStep === 4 ? 'hidden' : ''
               } btn w-[80%] rounded-lg py-2 mt-3 cursor-pointer text-center mr-5 text-white border border-gray-600`}
               type="button"
             >
               Previous
             </button>
 
-            {currentStep === 1 || currentStep === 2 ? (
+            {currentStep < 3 ? (
               <button
-                // rely on form submit; do not call handleSubmit here
-                onClick={currentStep === 2 ? undefined : nextStep}
-                type={currentStep === 2 ? 'submit' : 'button'}
+                onClick={nextStep}
+                type="button"
+                className="btn w-[80%] rounded-lg py-2 mt-3 cursor-pointer text-center text-black dark:text-white border border-[#4d55ba] bg-white dark:bg-transparent"
+              >
+                Next
+              </button>
+            ) : currentStep === 3 ? (
+              <button
+                type="submit"
                 disabled={isSubmitting}
                 className="btn w-[80%] rounded-lg py-2 mt-3 cursor-pointer text-center text-black dark:text-white border border-[#4d55ba] bg-white dark:bg-transparent"
               >
-                {isSubmitting ? <LoadingSpinner /> : currentStep === 2 ? 'Submit' : 'Next'}
+                {isSubmitting ? <LoadingSpinner /> : 'Submit'}
               </button>
             ) : null}
           </div>
