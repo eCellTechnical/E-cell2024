@@ -8,7 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Register from "./IdeateX/Register";
 // Lazy-loaded components
 import RegisterEvent from "./endeavour/Profile/RegisteredEvent"
-const ApplicationForm = React.lazy(()=>import("../src/pages/src/Application"));
+const ApplicationForm = React.lazy(()=>import("./pages/ApplicationForm/Application"));
 const Loader = React.lazy(() => import("./components/Loader/Loader"));
 const Navbar = React.lazy(() => import("./components/Navbar/Navbar"));
 const IdeateX = React.lazy(() => import("./IdeateX/index"));

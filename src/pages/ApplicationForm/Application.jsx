@@ -6,7 +6,7 @@ import {
 } from 'lucide-react';
 import axios from 'axios';
 import Lottie from 'lottie-react';
-import animationData from './assets/data.json';
+import animationData from '../../assets/ApplicationForm/data.json';
 
 // New compact animated progress (same sizing)
 const AnimatedProgress = ({ currentStep }) => {
@@ -292,7 +292,7 @@ const STEP_MIN_HEIGHT = 380; // further reduced to pull buttons higher
 export default function Application() {
   const [formData, setFormData] = useState({
     name: '',
-    collegeEmail: '',
+    email: '',
     lib_id: '',
     year: '',
     course: '',
@@ -307,6 +307,8 @@ export default function Application() {
     whyEcell: '',
     preferredDomain1: '',
     preferredDomain2: '',
+    domain1Reason: '',
+    domain2Reason: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState({});
@@ -326,12 +328,12 @@ export default function Application() {
     const newErrors = {};
     switch (step) {
       case 1: {
-        const basicFields = ['name', 'collegeEmail', 'lib_id', 'year', 'course', 'branch'];
+        const basicFields = ['name', 'email', 'lib_id', 'year', 'course', 'branch'];
         basicFields.forEach((field) => {
           if (!trimVal(formData[field])) newErrors[field] = 'This field is required';
         });
-        if (trimVal(formData.collegeEmail) && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.collegeEmail.trim())) {
-          newErrors.collegeEmail = 'Please enter a valid email address';
+        if (trimVal(formData.email) && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
+          newErrors[email] = 'Please enter a valid email address';
         }
         break;
       }
@@ -349,7 +351,7 @@ export default function Application() {
         break;
       }
       case 3: {
-        const recruitmentFields = ['motivation', 'whyEcell', 'preferredDomain1', 'preferredDomain2'];
+        const recruitmentFields = ['motivation', 'whyEcell', 'preferredDomain1', 'preferredDomain2', 'domain1Reason', 'domain2Reason'];
         recruitmentFields.forEach((field) => {
           if (!trimVal(formData[field])) newErrors[field] = 'This field is required';
         });
@@ -389,30 +391,34 @@ export default function Application() {
         const yearMap = { '1st Year': 1, '2nd Year': 2 };
         const submitData = {
           name: formData.name.trim(),
-          collegeEmail: formData.collegeEmail.trim().toLowerCase(),
-          personalEmail: formData.personalEmail.trim().toLowerCase(),
+          email: formData.email.trim().toLowerCase(),
           phone: Number(formData.phone.replace(/\D/g, '')),
           year: yearMap[formData.year],
           lib_id: formData.lib_id.trim().toUpperCase(),
           course: formData.course,
           branch: formData.branch,
           gender: formData.gender,
-          residence: formData.residence,
-          achievements: formData.achievements.trim(),
+          why_ecell: formData.whyEcell.trim(),
+          what_motivates_you: formData.motivation.trim(),
           linkedIn: formData.linkedIn.startsWith('http') ? formData.linkedIn.trim() : 'https://linkedin.com/in/none',
-          motivation: formData.motivation.trim(),
-          whyEcell: formData.whyEcell.trim(),
-          preferredDomain1: formData.preferredDomain1,
-          preferredDomain2: formData.preferredDomain2,
+          domains: [formData.preferredDomain1, formData.preferredDomain2],
+          isHosteller: formData.residence === 'Hosteller',
+          pastAchievement: formData.achievements.trim(),
+          domain_pref_one: {
+            name: formData.preferredDomain1,
+            reason: formData.domain1Reason.trim()
+          },
+          domain_pref_two: {
+            name: formData.preferredDomain2,
+            reason: formData.domain2Reason.trim()
+          }
         };
 
-        // Note: The original backend API might not support all these new fields.
-        // This is a comprehensive update to the form and data structure.
         await axios.post(`${API_BASE_URL}/api/users`, submitData, { timeout: 15000 });
         showToast('Application submitted successfully!', 'success');
         setFormData({
           name: '',
-          collegeEmail: '',
+          email: '',
           lib_id: '',
           year: '',
           course: '',
@@ -427,6 +433,8 @@ export default function Application() {
           whyEcell: '',
           preferredDomain1: '',
           preferredDomain2: '',
+          domain1Reason: '',
+          domain2Reason: '',
         });
         setErrors({});
         setCurrentStep(4);
@@ -523,11 +531,11 @@ export default function Application() {
             <div className="flex flex-col lg:flex-row lg:justify-between w-[90%] lg:w-full gap-4">
               <InputField
                 placeholder="College E-mail"
-                value={formData.collegeEmail}
-                onChange={(value) => handleInputChange('collegeEmail', value)}
+                value={formData.email}
+                onChange={(value) => handleInputChange('email', value)}
                 type="email"
                 required={true}
-                error={errors.collegeEmail}
+                error={errors.email}
                 label="College E-mail:"
               />
               <InputField
@@ -656,6 +664,28 @@ export default function Application() {
                 isLastField={true}
               />
             </div>
+            <div className="w-[90%] lg:w-full">
+              <TextAreaField
+                placeholder="Why do you want to join this domain? (Domain 1)"
+                value={formData.domain1Reason}
+                onChange={(value) => handleInputChange('domain1Reason', value)}
+                required={true}
+                error={errors.domain1Reason}
+                className="h-12"
+                label="Domain 1 Reason:"
+              />
+            </div>
+            <div className="w-[90%] lg:w-full">
+              <TextAreaField
+                placeholder="Why do you want to join this domain? (Domain 2)"
+                value={formData.domain2Reason}
+                onChange={(value) => handleInputChange('domain2Reason', value)}
+                required={true}
+                error={errors.domain2Reason}
+                className="h-12"
+                label="Domain 2 Reason:"
+              />
+            </div>
           </div>
         );
 
@@ -671,7 +701,7 @@ export default function Application() {
               </p>
               <div className="flex flex-col items-center gap-3 mb-6">
                 <a
-                  href="/downloads/app.apk"
+                  href="https://play.google.com/store/apps/details?id=com.devshiv.ecellapp"
                   download
                   className="px-6 py-2 rounded-md border border-[#4D55BA] text-[#4D55BA] hover:bg-[#4D55BA] hover:text-white transition-colors text-sm font-medium"
                 >
@@ -703,7 +733,7 @@ export default function Application() {
     return () => document.head.removeChild(style);
   }, []);
 
-  const domainOptions = useMemo(() => ['Technical', 'Public Relations', 'Corporate Relations', 'Events', 'Graphics'], []);
+  const domainOptions = useMemo(() => ['Corporate', 'Graphics', 'Public Relations', 'Events', 'Technical'], []);
 
   const yearOptions = useMemo(() => ['1st Year', '2nd Year'], []);
 
