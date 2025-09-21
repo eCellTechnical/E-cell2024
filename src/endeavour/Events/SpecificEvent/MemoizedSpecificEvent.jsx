@@ -380,7 +380,7 @@ const SpecificEvent = () => {
             ))
           ) : (
             <div className="w-full flex justify-center items-center text-center mt-5 font-medium">
-              Loading...
+              Loading....
             </div>
           )}
         </div>
