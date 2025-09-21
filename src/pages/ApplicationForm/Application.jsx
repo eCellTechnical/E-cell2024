@@ -361,8 +361,7 @@ export default function Application() {
         // LinkedIn URL validation (optional field)
         if (trimVal(formData.linkedIn)) {
           const linkedInUrl = formData.linkedIn.trim();
-          const linkedInRegex = /^(https?:\/\/)?(www\.)?linkedin\.com\/(in|pub)\/[a-zA-Z0-9-]+\/?$/;
-          if (!linkedInRegex.test(linkedInUrl)) {
+          if (!linkedInUrl.toLowerCase().includes('linkedin.com')) {
             newErrors.linkedIn = 'Please enter a valid LinkedIn profile URL';
           }
         }
@@ -421,7 +420,7 @@ export default function Application() {
           what_motivates_you: formData.motivation.trim(),
           linkedIn: formData.linkedIn.trim() ? 
             (formData.linkedIn.startsWith('http') ? formData.linkedIn.trim() : `https://${formData.linkedIn.trim()}`) : 
-            'https://linkedin.com/in/none',
+            'https://linkedin.com/',
           domains: [formData.preferredDomain1, formData.preferredDomain2],
           isHosteller: formData.residence === 'Hosteller',
           pastAchievement: formData.achievements.trim(),
@@ -626,7 +625,7 @@ export default function Application() {
             </div>
             <div className="w-[90%] lg:w-full">
               <InputField
-                placeholder="LinkedIn Profile URL (e.g., linkedin.com/in/yourname)"
+                placeholder="LinkedIn Profile URL (e.g., https://www.linkedin.com/in/yourname)"
                 value={formData.linkedIn}
                 onChange={(value) => handleInputChange('linkedIn', value)}
                 required={false}
