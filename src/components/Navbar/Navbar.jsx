@@ -78,8 +78,8 @@ function Navbar() {
             <img
               src={
                 themeMode == "dark"
-                  ? "https://firebasestorage.googleapis.com/v0/b/endevaour-2023.appspot.com/o/webassets%2Fwhite%20logo%20br.png?alt=media&token=50662b36-d955-4f24-985c-bd73a9101e01"
-                  : "https://firebasestorage.googleapis.com/v0/b/endevaour-2023.appspot.com/o/webassets%2Fblack%20logo%20br.png?alt=media&token=d45e4438-bc54-47dd-9d9c-14f4d41991d1"
+                  ? "https://res.cloudinary.com/jatinn/image/upload/v1758476815/Secondary_Darkbglogoecell-removebg-preview_1_y593u3.png"
+                  : "https://res.cloudinary.com/jatinn/image/upload/v1758477122/1ecell_black_logo_j6qdvn.png"
               }
               onClick={() => history("/")}
               className="w-14 h-14 lg:w-14 lg:h-14 z-20 cursor-pointer"
