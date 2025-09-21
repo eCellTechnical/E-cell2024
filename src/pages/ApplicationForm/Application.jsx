@@ -559,12 +559,12 @@ export default function Application() {
                 label="College E-mail:"
               />
               <InputField
-                placeholder="2529IT1615"
+                placeholder="202501100100092"
                 value={formData.lib_id}
                 onChange={(value) => handleInputChange('lib_id', value)}
                 required={true}
                 error={errors.lib_id}
-                label="Library ID:"
+                label="Registration Number:"
               />
             </div>
           </div>
