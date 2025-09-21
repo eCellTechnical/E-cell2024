@@ -564,7 +564,7 @@ export default function Application() {
                 onChange={(value) => handleInputChange('lib_id', value)}
                 required={true}
                 error={errors.lib_id}
-                label="Registration Number:"
+                label="Registration No./Library Id:"
               />
             </div>
           </div>
@@ -753,7 +753,7 @@ export default function Application() {
     return () => document.head.removeChild(style);
   }, []);
 
-  const domainOptions = useMemo(() => ['Corporate', 'Graphics', 'Public Relations', 'Events', 'Technical'], []);
+  const domainOptions = useMemo(() => ['Corporate Relations', 'Graphics', 'Public Relations', 'Events', 'Technical'], []);
 
   const yearOptions = useMemo(() => ['1st Year', '2nd Year'], []);
 
