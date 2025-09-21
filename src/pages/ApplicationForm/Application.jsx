@@ -332,8 +332,13 @@ export default function Application() {
         basicFields.forEach((field) => {
           if (!trimVal(formData[field])) newErrors[field] = 'This field is required';
         });
-        if (trimVal(formData.email) && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
-          newErrors[email] = 'Please enter a valid email address';
+        if (trimVal(formData.email)) {
+          const email = formData.email.trim();
+          if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            newErrors.email = 'Please enter a valid email address';
+          } else if (!email.toLowerCase().endsWith('@kiet.edu')) {
+            newErrors.email = 'Please use your KIET college email (@kiet.edu)';
+          }
         }
         break;
       }
@@ -342,11 +347,24 @@ export default function Application() {
         personalFields.forEach((field) => {
           if (!trimVal(formData[field])) newErrors[field] = 'This field is required';
         });
-        if (trimVal(formData.personalEmail) && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.personalEmail.trim())) {
-          newErrors.personalEmail = 'Please enter a valid email address';
+        if (trimVal(formData.personalEmail)) {
+          const personalEmail = formData.personalEmail.trim();
+          if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(personalEmail)) {
+            newErrors.personalEmail = 'Please enter a valid email address';
+          } else if (!personalEmail.toLowerCase().endsWith('@gmail.com')) {
+            newErrors.personalEmail = 'Please use a Gmail address (@gmail.com)';
+          }
         }
         if (trimVal(formData.phone) && !/^\d{10}$/.test(formData.phone.replace(/\D/g, ''))) {
           newErrors.phone = 'Please enter a valid 10-digit phone number';
+        }
+        // LinkedIn URL validation (optional field)
+        if (trimVal(formData.linkedIn)) {
+          const linkedInUrl = formData.linkedIn.trim();
+          const linkedInRegex = /^(https?:\/\/)?(www\.)?linkedin\.com\/(in|pub)\/[a-zA-Z0-9-]+\/?$/;
+          if (!linkedInRegex.test(linkedInUrl)) {
+            newErrors.linkedIn = 'Please enter a valid LinkedIn profile URL';
+          }
         }
         break;
       }
@@ -400,7 +418,9 @@ export default function Application() {
           gender: formData.gender,
           why_ecell: formData.whyEcell.trim(),
           what_motivates_you: formData.motivation.trim(),
-          linkedIn: formData.linkedIn.startsWith('http') ? formData.linkedIn.trim() : 'https://linkedin.com/in/none',
+          linkedIn: formData.linkedIn.trim() ? 
+            (formData.linkedIn.startsWith('http') ? formData.linkedIn.trim() : `https://${formData.linkedIn.trim()}`) : 
+            'https://linkedin.com/in/none',
           domains: [formData.preferredDomain1, formData.preferredDomain2],
           isHosteller: formData.residence === 'Hosteller',
           pastAchievement: formData.achievements.trim(),
@@ -605,7 +625,7 @@ export default function Application() {
             </div>
             <div className="w-[90%] lg:w-full">
               <InputField
-                placeholder="LinkedIn Profile URL (optional)"
+                placeholder="LinkedIn Profile URL (e.g., linkedin.com/in/yourname)"
                 value={formData.linkedIn}
                 onChange={(value) => handleInputChange('linkedIn', value)}
                 required={false}
@@ -745,19 +765,19 @@ export default function Application() {
 
   const branchOptions = useMemo(
     () => [
-      'CS',
-      'IT',
-      'ME',
-      'EEE',
-      'ECE',
-      'VLSI',
-      'CSE(Cyber Security)',
-      'ELCE',
-      'CSE(DS)',
-      'CSIT',
-      'CSE(AIML)',
-      'CSE(AI)',
       'CSE',
+      'IT',
+      'CSIT',
+      'CS',
+      'CSE-AI',
+      'CSE-AIML',
+      'ECE',
+      'ELCE',
+      'EEE',
+      'ME',
+      'CSE - Cyber Security',
+      'CSE - Data Science',
+      'ECE - VLSI',
       'Advanced Mechatronics and Industrial Automation (AMIA)',
       'Other'
     ],
