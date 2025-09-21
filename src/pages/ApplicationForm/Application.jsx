@@ -416,6 +416,7 @@ export default function Application() {
           course: formData.course,
           branch: formData.branch,
           gender: formData.gender,
+          personal_email: formData.personalEmail.trim().toLowerCase(),
           why_ecell: formData.whyEcell.trim(),
           what_motivates_you: formData.motivation.trim(),
           linkedIn: formData.linkedIn.trim() ? 
