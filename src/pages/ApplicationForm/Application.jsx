@@ -396,6 +396,29 @@ export default function Application() {
 
   const API_BASE_URL = 'https://rec-backend-z2qa.onrender.com';
 
+  const sendConfirmationEmail = async (applicantName, applicantEmail) => {
+    try {
+      const payload = {
+        subject: "Your Application Has Been Successfully Received | E-Cell KIET",
+        emails: [applicantEmail],
+        body: `
+          <p>Dear ${applicantName},</p>
+          <p>Thank you for submitting your application to E-Cell KIET. We’ve received your details and will be reviewing them shortly.</p>
+          <p>We’re glad about your interest in joining us and will keep you updated with the next steps soon.</p>
+          <p>Sincerely,</p>
+          <p>Team E-Cell KIET</p>
+        `,
+        custom: {
+          name: [applicantName],
+          email: [applicantEmail],
+        },
+      };
+      await axios.post(`${API_BASE_URL}/api/emails/send`, payload);
+    } catch (emailError) {
+      console.error("Failed to send confirmation email:", emailError);
+    }
+  };
+
   const handleSubmit = useCallback(
     async (e) => {
       e.preventDefault();
@@ -435,7 +458,10 @@ export default function Application() {
         };
 
         await axios.post(`${API_BASE_URL}/api/users`, submitData, { timeout: 15000 });
-        showToast('Application submitted successfully!', 'success');
+        showToast('Application submitted successfully!', 'success');        
+        // Send confirmation email to college email
+        await sendConfirmationEmail(formData.name.trim(), formData.email.trim().toLowerCase());
+        
         setFormData({
           name: '',
           email: '',
