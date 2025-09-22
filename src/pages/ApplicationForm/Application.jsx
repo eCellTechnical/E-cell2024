@@ -118,8 +118,19 @@ const InputField = React.memo(({ placeholder, value, onChange, type = 'text', re
       type={type}
       placeholder={placeholder}
       value={value}
-      onChange={(e) => onChange(e.target.value)}
+      onChange={(e) => {
+        // Special handling for phone number input
+        if (type === 'tel') {
+          const numericValue = e.target.value.replace(/\D/g, ''); // Remove non-numeric characters
+          if (numericValue.length <= 10) { // Limit to 10 digits
+            onChange(numericValue);
+          }
+        } else {
+          onChange(e.target.value);
+        }
+      }}
       autoComplete="off"
+      maxLength={type === 'tel' ? 10 : undefined}
     />
     {error && (
       <div className="mt-1 px-1 flex items-center text-red-400 text-xs">
@@ -396,6 +407,23 @@ export default function Application() {
 
   const API_BASE_URL = 'https://rec-backend-z2qa.onrender.com';
 
+  const sendConfirmationEmail = async (applicantName, applicantEmail) => {
+    try {
+      const payload = {
+        subject: "Your Application Has Been Successfully Received | E-Cell KIET",
+        emails: [applicantEmail],
+        body: `<!DOCTYPE html>\n<html>\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>E-Cell KIET Application Confirmation</title>\n  </head>\n  <body style=\"margin:0; padding:0; background-color:#f3f4f6; font-family:'Segoe UI', Arial, sans-serif; color:#333;\">\n    <table align=\"center\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" style=\"padding:20px 0;\">\n      <tr>\n        <td align=\"center\">\n          <table cellpadding=\"0\" cellspacing=\"0\" width=\"600\" style=\"max-width:600px; background:#ffffff; border-radius:12px; overflow:hidden; box-shadow:0 6px 20px rgba(0,0,0,0.08);\">\n            \n            <!-- Header Banner -->\n            <tr>\n              <td align=\"center\" style=\"background:linear-gradient(90deg,#4b39ef,#6d4aff); padding:24px;\">\n                <h1 style=\"margin:0; font-size:22px; color:#ffffff; font-weight:600;\">E-Cell KIET</h1>\n              </td>\n            </tr>\n\n            <!-- Body -->\n            <tr>\n              <td style=\"padding:28px 24px 20px 24px; font-size:15px; line-height:1.7; color:#444;\">\n                <p style=\"margin:0 0 16px 0;\">Dear {{name[0]}},</p>\n                <p style=\"margin:0 0 16px 0;\">Thank you for submitting your application to <strong>E-Cell KIET</strong>. We’ve received your details and will be reviewing them shortly.</p>\n                <p style=\"margin:0 0 16px 0;\">We’re glad about your interest in joining us and will keep you updated with the next steps soon.</p>\n                <p style=\"margin:0 0 12px 0;\">To stay connected and get all the latest updates directly on your phone, we encourage you to download our official app:</p>\n              </td>\n            </tr>\n\n            <!-- Button -->\n            <tr>\n              <td align=\"center\" style=\"padding:0 0 28px 0;\">\n                <a href=\"https://play.google.com/store/apps/details?id=com.devshiv.ecellapp\" \n                   target=\"_blank\" \n                   style=\"background:linear-gradient(90deg,#4b39ef,#6d4aff); color:#ffffff; text-decoration:none; padding:12px 28px; border-radius:50px; font-weight:600; font-size:15px; display:inline-block; box-shadow:0 4px 10px rgba(75,57,239,0.25);\">\n                  📲 Download the E-Cell KIET App\n                </a>\n              </td>\n            </tr>\n\n            <!-- Footer -->\n            <tr>\n              <td style=\"padding:0 24px 24px 24px; font-size:13px; line-height:1.6; color:#666;\">\n                <p style=\"margin:0;\">Sincerely,</p>\n                <p style=\"margin:0; font-weight:600; color:#333;\">Team E-Cell KIET</p>\n              </td>\n            </tr>\n\n          </table>\n        </td>\n      </tr>\n    </table>\n  </body>\n</html>\n`,
+        custom: {
+          name: [applicantName],
+          email: [applicantEmail],
+        },
+      };
+      await axios.post(`${API_BASE_URL}/api/emails/send`, payload);
+    } catch (emailError) {
+      console.error("Failed to send confirmation email:", emailError);
+    }
+  };
+
   const handleSubmit = useCallback(
     async (e) => {
       e.preventDefault();
@@ -435,7 +463,10 @@ export default function Application() {
         };
 
         await axios.post(`${API_BASE_URL}/api/users`, submitData, { timeout: 15000 });
-        showToast('Application submitted successfully!', 'success');
+        showToast('Application submitted successfully!', 'success');        
+        // Send confirmation email to college email
+        await sendConfirmationEmail(formData.name.trim(), formData.email.trim().toLowerCase());
+        
         setFormData({
           name: '',
           email: '',
@@ -587,6 +618,7 @@ export default function Application() {
                 placeholder="Phone Number"
                 value={formData.phone}
                 onChange={(value) => handleInputChange('phone', value)}
+                type="tel"
                 required={true}
                 error={errors.phone}
                 label="Phone Number:"
@@ -757,7 +789,7 @@ export default function Application() {
 
   const yearOptions = useMemo(() => ['1st Year', '2nd Year'], []);
 
-  const courseOptions = useMemo(() => ['B-Tech', 'B-Pharm', 'MBA', 'MCA'], []);
+  const courseOptions = useMemo(() => ['B-Tech', 'B-Pharma', 'MBA', 'MCA'], []);
 
   const genderOptions = useMemo(() => ['Male', 'Female'], []);
 
