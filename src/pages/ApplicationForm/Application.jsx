@@ -405,7 +405,7 @@ export default function Application() {
     [errors]
   );
 
-  const API_BASE_URL = 'https://rec-backend-z2qa.onrender.com';
+  const API_BASE_URL = 'http://194.164.151.243:8080';
 
   const sendConfirmationEmail = async (applicantName, applicantEmail) => {
     try {
@@ -463,10 +463,11 @@ export default function Application() {
         };
 
         await axios.post(`${API_BASE_URL}/api/users`, submitData, { timeout: 15000 });
-        showToast('Application submitted successfully!', 'success');        
+        
         // Send confirmation email to college email
         await sendConfirmationEmail(formData.name.trim(), formData.email.trim().toLowerCase());
         
+        // Reset form data
         setFormData({
           name: '',
           email: '',
@@ -488,6 +489,9 @@ export default function Application() {
           domain2Reason: '',
         });
         setErrors({});
+        
+        // Show success message and navigate to success page
+        showToast('Application submitted successfully!', 'success');
         setCurrentStep(4);
       } catch (error) {
         const isCorsOrNetwork = !error.response && error.request;
