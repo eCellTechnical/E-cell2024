@@ -405,7 +405,7 @@ export default function Application() {
     [errors]
   );
 
-  const API_BASE_URL = 'http://194.164.151.243:8080';
+  const API_BASE_URL = 'https://rec-backend-z2qa.onrender.com';
 
   const sendConfirmationEmail = async (applicantName, applicantEmail) => {
     try {
