@@ -405,7 +405,7 @@ export default function Application() {
     [errors]
   );
 
-  const API_BASE_URL = 'https://rec-backend-z2qa.onrender.com';
+  const API_BASE_URL = 'https://ecellrecruits.shdevsolutions.com';
 
   const sendConfirmationEmail = async (applicantName, applicantEmail) => {
     try {
@@ -655,7 +655,7 @@ export default function Application() {
                 onChange={(value) => handleInputChange('achievements', value)}
                 required={false}
                 error={errors.achievements}
-                label="Achievements:"
+                label="Achievements: (Optional)"
                 className="h-12"
               />
             </div>
@@ -666,7 +666,7 @@ export default function Application() {
                 onChange={(value) => handleInputChange('linkedIn', value)}
                 required={false}
                 error={errors.linkedIn}
-                label="LinkedIn Profile:"
+                label="LinkedIn Profile: (Optional)"
                 fullWidth={true}
               />
             </div>
