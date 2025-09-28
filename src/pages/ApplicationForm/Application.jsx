@@ -405,7 +405,7 @@ export default function Application() {
     [errors]
   );
 
-  const API_BASE_URL = 'https://rec-backend-z2qa.onrender.com';
+  const API_BASE_URL = 'https://ecellrecruits.shdevsolutions.com';
 
   const sendConfirmationEmail = async (applicantName, applicantEmail) => {
     try {
