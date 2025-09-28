@@ -655,7 +655,7 @@ export default function Application() {
                 onChange={(value) => handleInputChange('achievements', value)}
                 required={false}
                 error={errors.achievements}
-                label="Achievements:"
+                label="Achievements: (Optional)"
                 className="h-12"
               />
             </div>
@@ -666,7 +666,7 @@ export default function Application() {
                 onChange={(value) => handleInputChange('linkedIn', value)}
                 required={false}
                 error={errors.linkedIn}
-                label="LinkedIn Profile:"
+                label="LinkedIn Profile: (Optional)"
                 fullWidth={true}
               />
             </div>
