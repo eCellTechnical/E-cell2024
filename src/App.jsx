@@ -8,7 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Register from "./IdeateX/Register";
 // Lazy-loaded components
 import RegisterEvent from "./endeavour/Profile/RegisteredEvent"
-const ApplicationForm = React.lazy(()=>import("./pages/ApplicationForm/Application"));
+const ApplicationClosed = React.lazy(()=>import("./pages/ApplicationForm/ApplicationClosed"));
 const Loader = React.lazy(() => import("./components/Loader/Loader"));
 const Navbar = React.lazy(() => import("./components/Navbar/Navbar"));
 const IdeateX = React.lazy(() => import("./IdeateX/index"));
@@ -177,7 +177,7 @@ function App() {
             <RouteChangeTracker>
               <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/applicationform"element={<ApplicationForm/>}/>
+                <Route path="/applicationform" element={<ApplicationClosed/>} />
                 <Route path="/discover" element={<Discover />} />
                 <Route path="/ourteam" element={<OurTeam />} />
                 <Route path="/pastspeakers" element={<PastSpeakers />} />
