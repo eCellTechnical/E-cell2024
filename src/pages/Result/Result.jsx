@@ -58,7 +58,7 @@ const recruitsData = [
   { id: 43, name: "Piyush Mishra", email: "piyush.25004237@kiet.edu", branch: "CSE-AIML", year: "1st", domain: "Graphics", task: "https://drive.google.com/file/d/19Yfj8y6Bc2-KgtpUmejQzf5ouVgNYiOZ/view" },
   { id: 44, name: "Anurag Singh", email: "anurag.25006032@kiet.edu", branch: "IT", year: "1st", domain: "Graphics", task: "https://drive.google.com/file/d/1Yy3HViFJE2k8P2yHpGAbnDxRB_ebo4mB/view?usp=drivesdk" },
   { id: 45, name: "Abhishek Raghav", email: "abhishek.25006009@kiet.edu", branch: "IT", year: "1st", domain: "Graphics", task: "https://drive.google.com/file/d/18H8k_FmD1tMykYJxnSQjmn4AOVQDOrKh/view?usp=sharing" },
-  { id: 46, name: "Harshit Singh", email: "harshit.2428cs2009@kiet.edu", branch: "CS", year: "1st", domain: "Graphics", task: "https://drive.google.com/drive/folders/1R4XiUCZ-X5ONpU2pJ52k0HmjwQoVoK_l?usp=sharing" },
+  { id: 46, name: "Harshit Singh", email: "harshit.25004155@kiet.edu", branch: "CSE-AIML", year: "1st", domain: "Graphics", task: "https://drive.google.com/drive/folders/1R4XiUCZ-X5ONpU2pJ52k0HmjwQoVoK_l?usp=sharing" },
   { id: 47, name: "Rudransh Singh", email: "rudransh.25004267@kiet.edu", branch: "CSE-AIML", year: "1st", domain: "Graphics", task: "https://drive.google.com/drive/folders/1KKpMFu4mr-1gbkn1yRvDOyy6E05F-B8B" },
   { id: 48, name: "Divyansh Mishra", email: "divyansh.25001100@kiet.edu", branch: "CS", year: "1st", domain: "Graphics", task: "https://drive.google.com/file/d/1vSrY_iY_foaXZhT1_PaOEqdrO_lvrpal/view?usp=drivesdk" },
   { id: 49, name: "Tanishq Sharma", email: "tanishq.25004337@kiet.edu", branch: "CSE-AIML", year: "1st", domain: "Graphics", task: "https://drive.google.com/drive/folders/111__h1bT2ULr1ZFmjPF233arUoiKT6iP" },
