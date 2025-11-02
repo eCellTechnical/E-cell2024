@@ -31,7 +31,6 @@ const recruitsData = [
   { id: 22, name: "Nikita Gupta", email: "nikita.25004229@kiet.edu", branch: "CSE-AIML", year: "1st", domain: "Public Relations" },
 
   // Corporate Relations
-  { id: 23, name: "Krishna Sharma", email: "krishna.25005119@kiet.edu", branch: "CSIT", year: "1st", domain: "Corporate Relations" },
   { id: 24, name: "Archit Mittal", email: "archit.25001059@kiet.edu", branch: "CS", year: "1st", domain: "Corporate Relations" },
   { id: 25, name: "Rohit Chauhan", email: "rohit.2428cse2064@kiet.edu", branch: "CSE", year: "2nd", domain: "Corporate Relations" },
   { id: 26, name: "Dherya Varshney", email: "dherya.25005093@kiet.edu", branch: "CSIT", year: "1st", domain: "Corporate Relations" },
