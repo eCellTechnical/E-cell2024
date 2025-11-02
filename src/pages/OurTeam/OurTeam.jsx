@@ -276,13 +276,7 @@ function OurTeam() {
     //   linkedIn: "https://www.linkedin.com/in/aditi-narang-766544217?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
     //   gmail: "narangaditi709@gmail.com"
     // },
-    {
-      name: "Ananya Baranwal",
-      domain: "Events Member",
-      imgUrl: "https://e-cell.in/assets/Ananya-Ve1TkB5w.jpg",
-      linkedIn: "https://www.linkedin.com/in/ananya-baranwal-a78323354/",
-      gmail: "baranwalananya2006@gmail.com"
-    },
+   
     {
       name: "Antas Dubey",
       domain: "Events Member",
@@ -383,6 +377,13 @@ function OurTeam() {
       imgUrl: Karn,
       linkedIn: "http://www.linkedin.com/in/karnveer-dixit-9b5bb3333",
       gmail: "dtanishq46@gmail.com"
+    },
+    {
+      name: "Ananya Baranwal",
+      domain: "Events Member",
+      imgUrl: "https://e-cell.in/assets/Ananya-Ve1TkB5w.jpg",
+      linkedIn: "https://www.linkedin.com/in/ananya-baranwal-a78323354/",
+      gmail: "baranwalananya2006@gmail.com"
     },
     // {
     //   name: "Nishant Vishwakarma",
