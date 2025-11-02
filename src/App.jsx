@@ -8,6 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Register from "./IdeateX/Register";
 // Lazy-loaded components
 import RegisterEvent from "./endeavour/Profile/RegisteredEvent"
+const Result = React.lazy(()=>import("./pages/Result/Result"));
 const ApplicationClosed = React.lazy(()=>import("./pages/ApplicationForm/ApplicationClosed"));
 const Loader = React.lazy(() => import("./components/Loader/Loader"));
 const Navbar = React.lazy(() => import("./components/Navbar/Navbar"));
@@ -123,7 +124,6 @@ const RouteChangeTracker = ({ children }) => {
   //     setShowPopup(false);
   //   }
   // }, [location]);
-
   return (
     <>
       {/* {showPopup && <ImagePopup onClose={() => setShowPopup(false)} />} */}
@@ -189,8 +189,8 @@ function App() {
                 <Route path="/privacy-policy" element={<PrivacyPolicy />} />
                 <Route path="/privacypolicy" element={<PrivacyPolicy2 />} />
                 <Route
-                  path="/recruitment-result-2025"
-                  element={<RecruitmentResult />}
+                  path="/recruitment-result-2026"
+                  element={<Result/>}
                 />
 
                 {/* <Route path="/certificate" element={<NewCerti />} /> */}
@@ -255,7 +255,9 @@ function App() {
               />
               <Route path="/endeavour/sponsors" element={<Sponsors />} />
               <Route path="/endeavour/speakers" element={<Speakers />} />  */}
+
                 <Route path="*" element={<Error404 />} />
+
               </Routes>
             </RouteChangeTracker>
           </Suspense>

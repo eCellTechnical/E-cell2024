@@ -269,13 +269,13 @@ function OurTeam() {
       linkedIn: "https://www.linkedin.com/in/priyanz-varshney-8a0309215?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
       gmail: "priyanzvarshney2005@gmail.com"
     },
-    {
-      name: "Aditi Narang",
-      domain: "Events Member",
-      imgUrl: "https://firebasestorage.googleapis.com/v0/b/e-cell-main-app-68d8c.appspot.com/o/narangaditi709%40gmail.com.jpg?alt=media&token=c6b4553c-ff70-4db4-970c-7dbbf632e19e",
-      linkedIn: "https://www.linkedin.com/in/aditi-narang-766544217?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-      gmail: "narangaditi709@gmail.com"
-    },
+    // {
+    //   name: "Aditi Narang",
+    //   domain: "Events Member",
+    //   imgUrl: "https://firebasestorage.googleapis.com/v0/b/e-cell-main-app-68d8c.appspot.com/o/narangaditi709%40gmail.com.jpg?alt=media&token=c6b4553c-ff70-4db4-970c-7dbbf632e19e",
+    //   linkedIn: "https://www.linkedin.com/in/aditi-narang-766544217?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+    //   gmail: "narangaditi709@gmail.com"
+    // },
     {
       name: "Ananya Baranwal",
       domain: "Events Member",
@@ -297,13 +297,13 @@ function OurTeam() {
       linkedIn: "https://www.linkedin.com/in/dhruv-chaudhary-370544328?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
       gmail: "b.techdhruvchaudhary@gmail.com"
     },
-    {
-      name: "Dipali Singh",
-      domain: "Events Member",
-      imgUrl: "https://e-cell.in/assets/Dipali-0I405_94.jpg",
-      linkedIn: "https://www.linkedin.com/in/dipali-singh-3988b6326",
-      gmail: "dipali.2428ece1107@kiet.edu"
-    },
+    // {
+    //   name: "Dipali Singh",
+    //   domain: "Events Member",
+    //   imgUrl: "https://e-cell.in/assets/Dipali-0I405_94.jpg",
+    //   linkedIn: "https://www.linkedin.com/in/dipali-singh-3988b6326",
+    //   gmail: "dipali.2428ece1107@kiet.edu"
+    // },
     {
       name: "Janak Singh",
       domain: "Events Member",
@@ -342,20 +342,20 @@ function OurTeam() {
   ];
 
   const GraphicsMembers = [
-    {
-      name: "Riddhi Yadav",
-      domain: "Graphics Member",
-      imgUrl: "https://firebasestorage.googleapis.com/v0/b/e-cell-main-app-68d8c.appspot.com/o/yriddhi51%40gmail.com.jpg?alt=media&token=3d9cfb94-6c99-468e-bf27-e87354541698",
-      linkedIn: "https://www.linkedin.com/in/riddhi-yadav-901b28293",
-      gmail: "yriddhi51@gmail.com"
-    },
-    {
-      name: "Yashica Agarwal",
-      domain: "Graphics Member",
-      imgUrl: yashica,
-      linkedIn: "https://www.linkedin.com/in/yashica-agarwal-9b1493297?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-      gmail: "yashica.2327cse1019@kiet.edu"
-    },
+    // {
+    //   name: "Riddhi Yadav",
+    //   domain: "Graphics Member",
+    //   imgUrl: "https://firebasestorage.googleapis.com/v0/b/e-cell-main-app-68d8c.appspot.com/o/yriddhi51%40gmail.com.jpg?alt=media&token=3d9cfb94-6c99-468e-bf27-e87354541698",
+    //   linkedIn: "https://www.linkedin.com/in/riddhi-yadav-901b28293",
+    //   gmail: "yriddhi51@gmail.com"
+    // },
+    // {
+    //   name: "Yashica Agarwal",
+    //   domain: "Graphics Member",
+    //   imgUrl: yashica,
+    //   linkedIn: "https://www.linkedin.com/in/yashica-agarwal-9b1493297?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+    //   gmail: "yashica.2327cse1019@kiet.edu"
+    // },
     {
       name: "ABHIJEET KUMAR GAUTAM",
       domain: "Graphics Member",
@@ -370,13 +370,13 @@ function OurTeam() {
       linkedIn: "https://www.linkedin.com/in/avani-singhal-9a348826a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
       gmail: "avani.2428elce1954@kiet.edu"
     },
-    {
-      name: "Ayush Kumar",
-      domain: "Graphics Member",
-      imgUrl: "https://firebasestorage.googleapis.com/v0/b/e-cell-main-app-68d8c.appspot.com/o/ayushpersonal20%40gmail.com.jpg?alt=media&token=2606b2ff-d309-474b-99df-fdb71b37ed52",
-      linkedIn: "https://www.linkedin.com/in/ayush-kumar-undefined-695632334/",
-      gmail: "ayushpersonal20@gmail.com"
-    },
+    // {
+    //   name: "Ayush Kumar",
+    //   domain: "Graphics Member",
+    //   imgUrl: "https://firebasestorage.googleapis.com/v0/b/e-cell-main-app-68d8c.appspot.com/o/ayushpersonal20%40gmail.com.jpg?alt=media&token=2606b2ff-d309-474b-99df-fdb71b37ed52",
+    //   linkedIn: "https://www.linkedin.com/in/ayush-kumar-undefined-695632334/",
+    //   gmail: "ayushpersonal20@gmail.com"
+    // },
     {
       name: "Karnveer Dixit",
       domain: "Graphics Member",
@@ -384,20 +384,20 @@ function OurTeam() {
       linkedIn: "http://www.linkedin.com/in/karnveer-dixit-9b5bb3333",
       gmail: "dtanishq46@gmail.com"
     },
-    {
-      name: "Nishant Vishwakarma",
-      domain: "Graphics Member",
-      imgUrl: "https://e-cell.in/assets/Nishant2-5ciF020g.jpg",
-      linkedIn: "https://www.linkedin.com/in/nishant-vishwakarma-875a34328",
-      gmail: "nishantvishwakarma6789@gmail.com"
-    },
-    {
-      name: "Preeti Singh",
-      domain: "Graphics Member",
-      imgUrl: "https://firebasestorage.googleapis.com/v0/b/e-cell-main-app-68d8c.appspot.com/o/preetisinghthakur07%40gmail.com.jpg?alt=media&token=27e8a81c-053c-47ee-9636-08a41e38d2fc",
-      linkedIn: "http://www.linkedin.com/in/preeti-singh-9b8554328",
-      gmail: "preetisinghthakur07@gmail.com"
-    }
+    // {
+    //   name: "Nishant Vishwakarma",
+    //   domain: "Graphics Member",
+    //   imgUrl: "https://e-cell.in/assets/Nishant2-5ciF020g.jpg",
+    //   linkedIn: "https://www.linkedin.com/in/nishant-vishwakarma-875a34328",
+    //   gmail: "nishantvishwakarma6789@gmail.com"
+    // },
+    // {
+    //   name: "Preeti Singh",
+    //   domain: "Graphics Member",
+    //   imgUrl: "https://firebasestorage.googleapis.com/v0/b/e-cell-main-app-68d8c.appspot.com/o/preetisinghthakur07%40gmail.com.jpg?alt=media&token=27e8a81c-053c-47ee-9636-08a41e38d2fc",
+    //   linkedIn: "http://www.linkedin.com/in/preeti-singh-9b8554328",
+    //   gmail: "preetisinghthakur07@gmail.com"
+    // }
   ];
 
   const TechnicalMembers = [
@@ -415,13 +415,13 @@ function OurTeam() {
       linkedIn: "https://www.linkedin.com/in/shiv-kumar-gupta-b74125280/",
       gmail: "contactshivgupta@gmail.com"
     },
-    {
-      name: "Siddhant Gupta",
-      domain: "Technical Member",
-      imgUrl: "https://e-cell.in/assets/Siddhant-OPnrWRpU.jpg",
-      linkedIn: "https://www.linkedin.com/in/siddhant-gupta-065794287",
-      gmail: "siddhant.2327cseai10@kiet.edu"
-    },
+    // {
+    //   name: "Siddhant Gupta",
+    //   domain: "Technical Member",
+    //   imgUrl: "https://e-cell.in/assets/Siddhant-OPnrWRpU.jpg",
+    //   linkedIn: "https://www.linkedin.com/in/siddhant-gupta-065794287",
+    //   gmail: "siddhant.2327cseai10@kiet.edu"
+    // },
     {
       name: "Sonali Tyagi",
       domain: "Technical Member",
@@ -485,13 +485,13 @@ function OurTeam() {
       linkedIn: "https://www.linkedin.com/in/vanshika-arora-325323308",
       gmail: "vanshika.2428cseaiml@kiet.edu"
     },
-    {
-      name: "Yuvika Jindal",
-      domain: "Technical Member",
-      imgUrl: "https://firebasestorage.googleapis.com/v0/b/e-cell-main-app-68d8c.appspot.com/o/yuvika.2428cs2163%40kiet.edu.jpg?alt=media&token=b85250aa-1768-4792-983e-0e2da080b3bc",
-      linkedIn: "https://www.linkedin.com/in/yuvika-jindal-6b3181328/",
-      gmail: "yuvika.2428cs2163@kiet.edu"
-    }
+    // {
+    //   name: "Yuvika Jindal",
+    //   domain: "Technical Member",
+    //   imgUrl: "https://firebasestorage.googleapis.com/v0/b/e-cell-main-app-68d8c.appspot.com/o/yuvika.2428cs2163%40kiet.edu.jpg?alt=media&token=b85250aa-1768-4792-983e-0e2da080b3bc",
+    //   linkedIn: "https://www.linkedin.com/in/yuvika-jindal-6b3181328/",
+    //   gmail: "yuvika.2428cs2163@kiet.edu"
+    // }
   ];
 
 
