@@ -54,6 +54,7 @@ function Navbar() {
   //   setEndeavourMainMenu(!endeavourMainMenu);
   // };
 
+
   const handleThemeChange = (e) => {
     const modeStatus = e.currentTarget.checked;
     if (modeStatus) {
@@ -68,6 +69,10 @@ function Navbar() {
   //   setEndeavourMainMenu(0);
   //   history("/endeavour");
   // };
+
+  if(  isEndeavour.pathname.slice(1, 18).includes("ideatex") ){
+    return null
+  }
 
   return (
     <div className="w-[100vw]">
@@ -777,6 +782,7 @@ function Navbar() {
           </div>
         </div>
       ) : (
+
         <Header />
       )}
     </div>
