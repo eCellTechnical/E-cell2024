@@ -1,10 +1,12 @@
 import { Copy, Upload, X, CheckCircle } from "lucide-react";
 import { useState } from "react";
 
-export default function PaymentDialog({ isOpen, onClose, onSubmit, formData }) {
+export default function PaymentDialog({ isOpen, onClose, onSubmit, formData, paymentSuccess }) {
   const [transactionId, setTransactionId] = useState("");
   const [screenshot, setScreenshot] = useState(null);
   const [copied, setCopied] = useState(false);
+  const [teamName, setTeamName] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const upiId = "example@upi";
 
@@ -32,22 +34,30 @@ export default function PaymentDialog({ isOpen, onClose, onSubmit, formData }) {
     }
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    if (!transactionId || !screenshot) {
+    if (!transactionId || !screenshot || !teamName) {
       // You could show an error message here
-      console.error("Transaction ID and Screenshot are required.");
+      console.error("Team Name, Transaction ID and Screenshot are required.");
       return;
     }
-    onSubmit({
-      transactionId,
-      screenshot,
-      formData,
-    });
-    // Reset form
-    setTransactionId("");
-    setScreenshot(null);
-    onClose(); // Close the dialog on successful submit
+    setIsSubmitting(true);
+    try {
+      await onSubmit({
+        transactionId,
+        screenshot,
+        teamName,
+        formData,
+      });
+      // Reset form
+      setTransactionId("");
+      setScreenshot(null);
+      setTeamName("");
+    } catch (error) {
+      console.error("Payment submission failed:", error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (!isOpen) {
@@ -121,6 +131,33 @@ export default function PaymentDialog({ isOpen, onClose, onSubmit, formData }) {
                 </button>
               </div>
 
+              {paymentSuccess && (
+                <div className="bg-green-500/10 border border-green-500/20 rounded-lg p-4 mt-4">
+                  <div className="flex items-center space-x-2">
+                    <CheckCircle className="h-5 w-5 text-green-500" />
+                    <span className="text-green-400 font-medium">Payment successful!</span>
+                  </div>
+                </div>
+              )}
+
+              {/* Team Name Input */}
+              <div className="space-y-2">
+                <label
+                  htmlFor="teamName"
+                  className="text-sm text-gray-400 font-medium"
+                >
+                  Team Name <span className="text-red-400">*</span>
+                </label>
+                <input
+                  id="teamName"
+                  value={teamName}
+                  onChange={(e) => setTeamName(e.target.value)}
+                  placeholder="Enter team name"
+                  className="block px-4 py-3.5 w-full text-gray-100 bg-[#2a2a2a] border border-gray-700 rounded-xl focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all outline-none placeholder-gray-500"
+                  required
+                />
+              </div>
+
               <div className="space-y-2">
                 <label
                   htmlFor="transactionId"
@@ -176,11 +213,10 @@ export default function PaymentDialog({ isOpen, onClose, onSubmit, formData }) {
               {/* Submit Button */}
               <button
                 type="submit"
-                className="w-full py-3 bg-[#9700d1] hover:bg-[#b800ff] text-white font-semibold rounded-full hover:shadow-xl transition-all disabled:opacity-50"
-                disabled={!transactionId || !screenshot}
-                onClick={() => window.location.href = '/ideatex/dashboard'}
+                className="w-full py-3 bg-[#9700d1] hover:bg-[#b800ff] text-white font-semibold rounded-full hover:shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                disabled={!teamName || !transactionId || !screenshot || isSubmitting || paymentSuccess}
               >
-                Submit Payment
+                {isSubmitting ? "Submitting..." : paymentSuccess ? "Redirecting..." : "Submit Payment"}
               </button>
             </div>
           </div>

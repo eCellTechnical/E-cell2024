@@ -87,44 +87,59 @@ const FAQSection = () => {
   const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
   const [openIndex, setOpenIndex] = useState(null);
 
-  const faqData = [
-    {
-      question: "What is Endeavour?",
-      answer: "Endeavour is E-Cell KIET's annual entrepreneurial fest — a high-energy mix of ideas, innovation, and inspiration.",
-    },
-    {
-      question: "Who can attend?",
-      answer: "Anyone with a spark — students, founders, creators, techies, or just the curious.",
-    },
-    {
-      question: "What's in it for me?",
-      answer: "Meet industry pros, join workshops, win hackathons, and vibe with cultural nights.",
-    },
-    {
-      question: "Who's been here before?",
-      answer: "Leaders from RazorPay, Innov8, Paytm, GeeksForGeeks, and many more.",
-    },
-    {
-      question: "Is there a fee?",
-      answer: "Some events might have a small fee — we'll drop details soon.",
-    },
-    {
-      question: "How do I register?",
-      answer: "Keep an eye on our socials — registrations go live soon!",
-    },
-    {
-      question: "How can I stay updated?",
-      answer: "Follow @kietecell on Instagram and visit e-cell.in for all updates, schedules, and announcements.",
-    },
-    {
-      question: "Will I get a certificate for participation?",
-      answer: "Yes, all participants will receive digital certificates. Winners and top performers may receive additional recognition and awards.",
-    },
-    {
-      question: "How can I register for the summit/events?",
-      answer: "Registrations will be open soon on the official E-Cell KIET website and social media handles. You can register for individual events of the summit.",
-    },
-  ];
+const faqData = [
+  {
+    question: "What is IdeateX 3.0?",
+    answer:
+      "IdeateX 3.0 is the flagship innovation and entrepreneurship challenge organized by E-Cell KIET. It provides a platform for students to ideate, innovate, and pitch their business ideas to industry mentors and investors.",
+  },
+  {
+    question: "Who can participate in IdeateX 3.0?",
+    answer:
+      "Students from any college, university, or discipline who have an innovative idea or startup concept are eligible to participate.",
+  },
+  {
+    question: "Do I need a fully developed startup to register?",
+    answer:
+      "No, it is not necessary to have a running startup. Participants can register even with just an idea, and our mentors will guide them in shaping it into a viable business model.",
+  },
+  {
+    question: "How can I register for IdeateX 3.0?",
+    answer:
+      "Registration can be done through the official E-Cell KIET website or app, where the registration form and event details are available.",
+  },
+  {
+    question: "Can I participate individually or in a team?",
+    answer:
+      "Participants can register either individually or in a team of up to four members. Team participation is encouraged for better collaboration and idea development.",
+  },
+  {
+    question: "Is there any registration fee?",
+    answer:
+      "Will be updated soon", // Keep it blank, will be updated soon
+  },
+  {
+    question: "What will participants gain from the event?",
+    answer:
+      "Participants will gain access to expert mentorship, real-time feedback, networking opportunities, and the chance for incubation or funding support to turn their ideas into reality.",
+  },
+  {
+    question: "Will there be any winners or prizes?",
+    answer:
+      "Yes, the best-performing teams will be recognized with prizes, certificates, and potential incubation support from TBI-KIET and other partners.",
+  },
+  {
+    question: "What is the format of the event?",
+    answer:
+      "The event consists of multiple stages, including idea submission, shortlisting, mentorship sessions, and final pitching before an expert jury panel.",
+  },
+  {
+    question: "Why should I participate in IdeateX 3.0?",
+    answer:
+      "IdeateX 3.0 is more than just a competition. It serves as a launchpad for entrepreneurial journeys, providing students with the right exposure, mentorship, and opportunities to turn their passion into purpose.",
+  },
+];
+
 
   const containerVariants = {
     hidden: { opacity: 0 },

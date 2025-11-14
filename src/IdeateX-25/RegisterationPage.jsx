@@ -1,10 +1,12 @@
 import { useState } from "react";
 import PaymentDialog from "./Components/PaymentDialog";
+import OTPVerification from "./Components/OTPVerification";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import Header from "./Components/Header";
 import { Eye, EyeOff } from "lucide-react";
 import axios from "axios";
+import { useAuth } from "./context/AuthContext";
 
 export default function RegistrationPage() {
   // navigation to separate page removed; we'll open payment dialog instead
@@ -25,10 +27,16 @@ export default function RegistrationPage() {
   const [fetchedTeamName, setFetchedTeamName] = useState("");
   const [fetchedTeamLeader, setFetchedTeamLeader] = useState("");
   const [showAlreadyRegistered, setShowAlreadyRegistered] = useState(false);
+  const [showSuccessPopup, setShowSuccessPopup] = useState(false);
+  const [paymentSuccess, setPaymentSuccess] = useState(false);
   const [showPaymentDialog, setShowPaymentDialog] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [showOtpVerification, setShowOtpVerification] = useState(false);
+  const [isVerifyingOtp, setIsVerifyingOtp] = useState(false);
+
+  const { login } = useAuth();
 
   const validateForm = () => {
     if (!formData.name.trim()) return "Name is required";
@@ -92,13 +100,13 @@ export default function RegistrationPage() {
 
     try {
       const response = await axios.post(
-        "https://ideatex-backend.onrender.com/api/v1/user/register",
+        "https://p9kq5k4g-3003.inc1.devtunnels.ms/api/v1/user/register",
         payload
       );
       if (response.status === 201) {
-        // Registration successful, open payment dialog
-        console.log("User registered successfully, opening payment dialog", formData);
-        setShowPaymentDialog(true);
+        // Registration successful, show OTP verification
+        console.log("User registered successfully, showing OTP verification", formData);
+        setShowOtpVerification(true);
       }
     } catch (err) {
       console.error("Registration failed:", err);
@@ -115,42 +123,125 @@ export default function RegistrationPage() {
     }
   };
 
-  const handleJoinTeam = () => {
-    setShowJoinPopup(true);
+  const handleVerifyOtp = async (otpValue) => {
+    setIsVerifyingOtp(true);
+
+    try {
+      const response = await axios.post(
+        "https://p9kq5k4g-3003.inc1.devtunnels.ms/api/v1/user/verify-otp",
+        {
+          email: formData.email,
+          otp: otpValue
+        }
+      );
+      if (response.status === 200 && response.data.success) {
+        // Save the auth token
+        const token = response.data.data.token;
+        if (token) {
+          login(token, response.data.data);
+        }
+
+        setShowOtpVerification(false);
+        setShowSuccessPopup(true);
+      }
+    } catch (err) {
+      console.error("OTP verification failed:", err);
+      throw new Error(
+        err.response?.data?.message || "OTP verification failed. Please try again."
+      );
+    } finally {
+      setIsVerifyingOtp(false);
+    }
   };
 
-  const handleJoinSubmit = () => {
-    console.log(
-      "Joining team with code:",
-      teamCode,
-      "Team Name:",
-      fetchedTeamName,
-      "Leader:",
-      fetchedTeamLeader,
-      formData
-    );
-    // Add your join team logic here
-    setShowJoinPopup(false);
-    setTeamCode("");
-    setFetchedTeamName("");
-    setFetchedTeamLeader("");
+  const handleJoinSubmit = async () => {
+    if (!teamCode.trim()) {
+      setError("Team code is required");
+      return;
+    }
+
+    setIsLoading(true);
+    setError("");
+
+    try {
+      const response = await axios.post('https://p9kq5k4g-3003.inc1.devtunnels.ms/api/v1/joinTeam', {
+        teamCode: teamCode
+      }, {
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('ideatex_token')}`,
+        },
+      });
+
+      if (response.data.success === true) {
+        console.log("Joined team successfully:", response.data);
+        // Save team data if needed
+        localStorage.setItem('ideatex_teamID', response.data.data.team._id);
+        localStorage.setItem('ideatex_userID', response.data.data.userId);
+        setShowSuccessPopup(true);
+      } else {
+        setError(response.data.message || "Failed to join team");
+      }
+    } catch (err) {
+      console.error("Join team error:", err);
+      setError(
+        err.response?.data?.message || "Failed to join team. Please try again."
+      );
+    } finally {
+      setIsLoading(false);
+      setShowJoinPopup(false);
+      setTeamCode("");
+      setFetchedTeamName("");
+      setFetchedTeamLeader("");
+    }
   };
 
   const handleCancelJoin = () => {
     setShowJoinPopup(false);
-    setTeamCode("");
-    setFetchedTeamName("");
-    setFetchedTeamLeader("");
+    setShowSuccessPopup(true);
   };
 
-  const handlePaymentSubmit = (paymentData) => {
-    console.log("Payment submitted:", paymentData);
-    alert("Payment successful!");
-    setShowPaymentDialog(false);
+  const handlePaymentSubmit = async (paymentData) => {
+    try {
+      const formData = new FormData();
+      formData.append('teamName', paymentData.teamName);
+      formData.append('paymentTransactionId', paymentData.transactionId);
+      formData.append('paymentScreenshot', paymentData.screenshot);
+
+      const response = await axios.post('https://p9kq5k4g-3003.inc1.devtunnels.ms/api/v1/addTeam', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          'Authorization': `Bearer ${localStorage.getItem('ideatex_token')}`,
+        },
+      });
+
+      console.log(response.success, response);
+      if (response.data.success === true) {
+        console.log("Team created successfully:", response.data);
+        setPaymentSuccess(true);
+        
+        // Save team data to localStorage
+        localStorage.setItem('ideatex_teamID', response.data.data.team._id);
+        localStorage.setItem('ideatex_userID', response.data.data.team.leaderId);
+
+        setTimeout(() => {
+          window.location.href = '/ideatex/dashboard';
+        }, 3000);
+      } else {
+        console.error("Unexpected response status:", response.status);
+        setError("Failed to create team. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error creating team:", error);
+      if (error.response && error.response.status === 400) {
+        setError("Invalid data provided. Please check your inputs.");
+      } else {
+        setError("Failed to create team. Please try again.");
+      }
+    }
   };
 
   return (
-    <div className="relative bg-black overflow-hidden min-h-screen">
+    <div className="relative bg-gradient-to-r from-[#211E3F] to-black overflow-hidden min-h-screen">
       <div className="flex justify-center items-center">
         <Header />
       </div>
@@ -185,7 +276,7 @@ export default function RegistrationPage() {
           </div>
 
           <div className="md:w-[60%] w-full md:ml-[40%] md:p-8 p-6 pb-16 flex items-start justify-center">
-            <div className="w-full mx-auto bg-[#1a1a1a] border-2 border-purple-500/30 text-gray-100 rounded-2xl shadow-2xl ">
+            <div className="w-full mx-auto bg-white/5 backdrop-blur-xl border-2 border-purple-500/30 text-gray-100 rounded-2xl shadow-2xl ">
               <div className="px-6 py-4 border-b border-purple-500/10">
                 <h2 className="text-2xl font-bold text-center text-gray-100">
                   Registration
@@ -193,7 +284,7 @@ export default function RegistrationPage() {
               </div>
               <div className="space-y-6 p-6">
                 {/* Individual Registration Form */}
-                <div className="space-y-4 p-6 rounded-xl bg-[#232323] border border-gray-800">
+                <div className="space-y-4 p-6 rounded-xl bg-white/5 backdrop-blur-xl border border-gray-800">
                   <h3 className="font-semibold text-gray-300 text-lg mb-4">
                     Personal Information
                   </h3>
@@ -389,23 +480,15 @@ export default function RegistrationPage() {
                   </div>
                 )}
 
-                {/* Action Buttons */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4">
+                {/* Action Button */}
+                <div className="grid grid-cols-1 gap-4 pt-4">
                   <motion.button
-                    className="w-full py-3 bg-[#9700d1] hover:bg-[#b800ff]  text-white font-semibold rounded-full shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full py-3 bg-[#9700d1] hover:bg-[#b800ff] text-white font-semibold rounded-full shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                     whileTap={{ scale: 0.95 }}
                     onClick={handleCreateTeam}
                     disabled={isLoading}
                   >
-                    {isLoading ? "Registering..." : "Create Team"}
-                  </motion.button>
-
-                  <motion.button
-                    className="bg-white hover:bg-[#b800ff] text-black hover:text-white font-semibold px-8 py-4 rounded-full transition-all duration-200"
-                    whileTap={{ scale: 0.95 }}
-                    onClick={handleJoinTeam}
-                  >
-                    Join Team
+                    {isLoading ? "Registering..." : "Register Now"}
                   </motion.button>
                 </div>
               </div>
@@ -413,6 +496,22 @@ export default function RegistrationPage() {
           </div>
         </div>
       </div>
+
+      {/* OTP Verification Section */}
+      <OTPVerification
+        isOpen={showOtpVerification}
+        onClose={() => {
+          setShowOtpVerification(false);
+          setError("");
+        }}
+        email={formData.email}
+        onVerify={handleVerifyOtp}
+        onBack={() => {
+          setShowOtpVerification(false);
+          setError("");
+        }}
+        isVerifying={isVerifyingOtp}
+      />
 
       {/* Join Team Popup */}
       {showJoinPopup && (
@@ -477,6 +576,41 @@ export default function RegistrationPage() {
         </div>
       )}
 
+      {/* Success Popup */}
+      {showSuccessPopup && (
+        <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-[#1a1a1a] border-2 border-purple-500/50 rounded-xl shadow-2xl max-w-md w-full p-6 space-y-4">
+            <h3 className="text-xl font-bold text-gray-100 text-center">Registration Successful!</h3>
+            <p className="text-sm text-gray-400 text-center">
+              Welcome to IdeateX 2025! Choose how you&apos;d like to proceed.
+            </p>
+
+            <div className="flex gap-3 pt-2">
+              <motion.button
+                onClick={() => {
+                  setShowSuccessPopup(false);
+                  setShowPaymentDialog(true);
+                }}
+                whileTap={{ scale: 0.95 }}
+                className="w-full py-3 bg-[#9700d1] hover:bg-[#b800ff] text-white font-semibold rounded-xl shadow-lg transition-all"
+              >
+                Create Team
+              </motion.button>
+              <motion.button
+                onClick={() => {
+                  setShowSuccessPopup(false);
+                  setShowJoinPopup(true);
+                }}
+                whileTap={{ scale: 0.95 }}
+                className="w-full py-3 bg-white hover:bg-[#b800ff] text-black hover:text-white font-semibold rounded-xl shadow-lg transition-all"
+              >
+                Join Team
+              </motion.button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Already Registered Popup */}
       {showAlreadyRegistered && (
         <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4">
@@ -514,9 +648,13 @@ export default function RegistrationPage() {
       {/* Payment Dialog (opens instead of navigating to /payment) */}
       <PaymentDialog
         isOpen={showPaymentDialog}
-        onClose={() => setShowPaymentDialog(false)}
+        onClose={() => {
+          setShowPaymentDialog(false);
+          setShowSuccessPopup(true);
+        }}
         onSubmit={handlePaymentSubmit}
         formData={formData}
+        paymentSuccess={paymentSuccess}
       />
     </div>
   );

@@ -1,6 +1,7 @@
 import React, { Suspense, useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { ThemeProvider } from "./context/theme";
+import { AuthProvider } from "./IdeateX-25/context/AuthContext";
 import { Analytics } from "@vercel/analytics/react";
 
 import { ToastContainer } from "react-toastify";
@@ -101,6 +102,8 @@ import PrivacyPolicy2 from "./pages/PrivacyPolicy/Policy2";
 import RegistrationPage from "./IdeateX-25/RegisterationPage";
 import PaymentPage from "./IdeateX-25/Components/PaymentPage";
 import TeamDashboardPage from "./IdeateX-25/Components/TeamDashboardPage";
+import LoginPage from "./IdeateX-25/LoginPage";
+import PasswordResetPage from "./IdeateX-25/ResetPassPage";
 // import CommingSoon from "./endeavour/CommingSoon/CommingSoon";
 // import NewCerti from "./components/newCerti/NewCerti";
 
@@ -187,15 +190,45 @@ function App() {
                 <Route path="/recruitment-result-2026" element={<Result />} />
 
                 {/* <Route path="/certificate" element={<NewCerti />} /> */}
-                <Route path="/ideatex" element={<IdeateX />} />
+                <Route path="/ideatex" element={
+                  <AuthProvider>
+                    <IdeateX />
+                  </AuthProvider>
+                } />
                 <Route
                   path="/ideatex/register"
-                  element={<RegistrationPage />}
+                  element={
+                    <AuthProvider>
+                      <RegistrationPage />
+                    </AuthProvider>
+                  }
+                />
+
+                <Route
+                  path="/ideatex/login"
+                  element={
+                    <AuthProvider>
+                      <LoginPage />
+                    </AuthProvider>
+                  }
+                />
+
+                 <Route
+                  path="/ideatex/reset-password"
+                  element={
+                    <AuthProvider>
+                      <PasswordResetPage />
+                    </AuthProvider>
+                  }
                 />
 
                 <Route
                   path="/ideatex/dashboard"
-                  element={<TeamDashboardPage />}
+                  element={
+                    <AuthProvider>
+                      <TeamDashboardPage />
+                    </AuthProvider>
+                  }
                 />
 
                 {/* <Route path="/payment" element={<PaymentPage />} /> */}

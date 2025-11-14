@@ -56,14 +56,12 @@ export default function EventSection() {
           {/* Right descriptive column - small paragraph placed right in image */}
           <div className="pt-2">
             <p className="text-gray-300 text-base leading-relaxed">
-              E-Cell&apos;s IDEATEX 2.0 is a platform to unleash your creativity,
-              showcase your business insight, and bring your entrepreneurial
-              spirit to life. Join us to present innovative ideas, gain valuable
-              feedback, and connect with mentors and investors.
+        
+              Participants get the unique opportunity to showcase their vision, receive real-world feedback, and connect with the startup ecosystem through mentoring and incubation support.
+                  
               <br />
               <br />
-              Make your mark, stand out, and drive change—this is your
-              opportunity to turn ideas into impact!
+              In an era where innovation drives progress, IdeateX 3.0 stands as a catalyst for entrepreneurial learning and growth, inspiring young minds to turn ideas into impactful realities.
             </p>
           </div>
         </div>
