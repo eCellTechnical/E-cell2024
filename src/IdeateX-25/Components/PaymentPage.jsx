@@ -48,7 +48,7 @@ export default function PaymentPage() {
     }
     
     // Navigate to team dashboard with team data
-    navigate('/team-dashboard', { state: { teamData } })
+    navigate('/ideatex/dashboard', { state: { teamData } })
   }
 
   return (

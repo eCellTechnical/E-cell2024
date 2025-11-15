@@ -35,7 +35,7 @@ const PasswordResetPage = () => {
 
     try {
       const response = await fetch(
-        "https://p9kq5k4g-3003.inc1.devtunnels.ms/api/v1/user/forgot-password",
+        "http://localhost:3003/api/v1/user/forgot-password",
         {
           method: "POST",
           headers: {
@@ -69,7 +69,7 @@ const PasswordResetPage = () => {
     try {
       // Fixed API URL to be consistent
       const response = await fetch(
-        "https://p9kq5k4g-3003.inc1.devtunnels.ms/api/v1/user/resend-otp",
+        "http://localhost:3003/api/v1/user/resend-otp",
         {
           method: "POST",
           headers: {
@@ -128,7 +128,7 @@ const PasswordResetPage = () => {
     try {
       // Fixed API URL to be consistent
       const response = await fetch(
-        "https://p9kq5k4g-3003.inc1.devtunnels.ms/api/v1/user/reset-password",
+        "http://localhost:3003/api/v1/user/reset-password",
         {
           method: "POST",
           headers: {

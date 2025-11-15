@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import Header from "./Components/Header";
 import { motion } from "framer-motion";
 import axios from "axios";
 import { useAuth } from "./context/AuthContext";
+import OTPVerification from "./Components/OTPVerification";
 const LoginPage = () => {
   const [formData, setFormData] = useState({
     email: "",
@@ -14,15 +15,25 @@ const LoginPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const [showRegisterPopup, setShowRegisterPopup] = useState(false);
+  const [showOtpVerification, setShowOtpVerification] = useState(false);
+  const [isVerifyingOtp, setIsVerifyingOtp] = useState(false);
   const navigate = useNavigate();
-  const { login } = useAuth();
-
+  const { isAuthenticated, login } = useAuth();
   const handleChange = (field, value) => {
     setFormData((prev) => ({
       ...prev,
       [field]: value,
     }));
   };
+
+
+  useEffect(() => {
+     if (isAuthenticated) {
+        setError("User authenticated")
+        navigate("/ideatex/dashboard");
+        return
+      }
+  }, [isAuthenticated, navigate]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -31,7 +42,7 @@ const LoginPage = () => {
 
     try {
       const response = await axios.post(
-        "https://p9kq5k4g-3003.inc1.devtunnels.ms/api/v1/user/login",
+        "http://localhost:3003/api/v1/user/login",
         {
           email: formData.email,
           password: formData.password,
@@ -58,6 +69,12 @@ const LoginPage = () => {
       ) {
         // User not registered, show register popup
         setShowRegisterPopup(true);
+      } else if (
+        err.response?.data?.message?.toLowerCase().includes("not verified") ||
+        err.response?.data?.message?.toLowerCase().includes("verify your email")
+      ) {
+        // User not verified, show OTP verification popup
+        setShowOtpVerification(true);
       } else {
         setError(
           err.response?.data?.message || "Login failed. Please try again."
@@ -65,6 +82,37 @@ const LoginPage = () => {
       }
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  const handleVerifyOtp = async (otpValue) => {
+    setIsVerifyingOtp(true);
+
+    try {
+      const response = await axios.post(
+        "http://localhost:3003/api/v1/user/verify-otp",
+        {
+          email: formData.email,
+          otp: otpValue
+        }
+      );
+      if (response.status === 200 && response.data.success) {
+        // Save the auth token
+        const token = response.data.data.token;
+        if (token) {
+          login(token, response.data.data);
+        }
+
+        setShowOtpVerification(false);
+        navigate("/ideatex/dashboard");
+      }
+    } catch (err) {
+      console.error("OTP verification failed:", err);
+      throw new Error(
+        err.response?.data?.message || "OTP verification failed. Please try again."
+      );
+    } finally {
+      setIsVerifyingOtp(false);
     }
   };
 
@@ -94,7 +142,7 @@ const LoginPage = () => {
 
       {/* Content */}
       <div className=" z-10">
-        <div className="flex pt-16 md:pt-28  min-h-screen justify-center w-full">
+        <div className="flex pt-28 md:pt-28   min-h-screen justify-center w-full">
           <div className="w-[60%] p-8 md:flex hidden items-center justify-center fixed left-0 top-0 h-screen">
             <div className="relative flex items-center justify-center">
               {/* Large Purple Lightbulb */}
@@ -278,6 +326,22 @@ const LoginPage = () => {
           </motion.div>
         </div>
       )}
+
+      {/* OTP Verification */}
+      <OTPVerification
+        isOpen={showOtpVerification}
+        onClose={() => {
+          setShowOtpVerification(false);
+          setError("");
+        }}
+        email={formData.email}
+        onVerify={handleVerifyOtp}
+        onBack={() => {
+          setShowOtpVerification(false);
+          setError("");
+        }}
+        isVerifying={isVerifyingOtp}
+      />
     </div>
   );
 };

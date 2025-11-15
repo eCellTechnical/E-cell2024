@@ -11,7 +11,7 @@ const Header = () => {
   const backgroundOpacity = useTransform(scrollY, [0, 100], [0.1, 0.1]);
   const blurIntensity = useTransform(scrollY, [0, 100], [0.9, 0.9]);
   const navigate = useNavigate();
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, logout } = useAuth();
 
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -42,7 +42,11 @@ const Header = () => {
       >
         {/* Logo */}
         <div className="flex items-center gap-2">
-          <img src="/assets/ideatex-logo.png" alt="Ideatex Logo" className="w-8" />
+          <img
+            src="/assets/ideatex-logo.png"
+            alt="Ideatex Logo"
+            className="w-8"
+          />
           <h1 className="text-xl md:text-2xl font-bold text-white">IDEATEX</h1>
         </div>
 
@@ -56,7 +60,7 @@ const Header = () => {
             About
           </motion.a>
           <motion.a
-            href="#sponsors"
+            href="/ideatex#sponsors"
             onClick={(e) => handleSmoothScroll(e, "#sponsors")}
             className="hover:text-purple-200 transition-colors duration-200 cursor-pointer"
           >
@@ -81,13 +85,26 @@ const Header = () => {
         {/* Desktop Buttons */}
         <div className="hidden md:flex gap-4">
           {isAuthenticated ? (
-            <motion.button
-              className="bg-[#9700d1] hover:bg-[#b800ff] text-white font-semibold px-8 py-3 rounded-full transition-all duration-200"
-              whileTap={{ scale: 0.95 }}
-              onClick={() => navigate("/ideatex/dashboard")}
-            >
-              DASHBOARD
-            </motion.button>
+            <div className="flex gap-4">
+              <motion.button
+                className="bg-[#9700d1] hover:bg-[#b800ff] text-white font-semibold px-8 py-3 rounded-full transition-all duration-200"
+                whileTap={{ scale: 0.95 }}
+                onClick={() => navigate("/ideatex/dashboard")}
+              >
+                DASHBOARD
+              </motion.button>
+              <motion.button
+                className="bg-white  text-[#9700d1] font-semibold px-6 py-3 rounded-full w-full transition-all duration-200"
+                whileTap={{ scale: 0.95 }}
+                onClick={() => {
+                  logout();
+                  setMenuOpen(false);
+                  navigate("/ideatex/login");
+                }}
+              >
+                Logout
+              </motion.button>
+            </div>
           ) : (
             <>
               <motion.button
@@ -169,16 +186,30 @@ const Header = () => {
 
           <div className="flex flex-col gap-4 mt-6 w-4/5">
             {isAuthenticated ? (
-              <motion.button
-                className="bg-[#9700d1] hover:bg-[#b800ff] text-white font-semibold px-6 py-3 rounded-full w-full transition-all duration-200"
-                whileTap={{ scale: 0.95 }}
-                onClick={() => {
-                  navigate("/ideatex/dashboard");
-                  setMenuOpen(false);
-                }}
-              >
-                DASHBOARD
-              </motion.button>
+              <div className="flex flex-col gap-4">
+                <motion.button
+                  className="bg-[#9700d1] hover:bg-[#b800ff] text-white font-semibold px-6 py-3 rounded-full w-full transition-all duration-200"
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => {
+                    navigate("/ideatex/dashboard");
+                    setMenuOpen(false);
+                  }}
+                >
+                  DASHBOARD
+                </motion.button>
+
+                <motion.button
+                  className="bg-white  text-[#9700d1] font-semibold px-6 py-3 rounded-full w-full transition-all duration-200"
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => {
+                    logout();
+                    setMenuOpen(false);
+                    navigate("/ideatex/login");
+                  }}
+                >
+                  Logout
+                </motion.button>
+              </div>
             ) : (
               <>
                 <motion.button

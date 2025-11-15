@@ -99,11 +99,11 @@ import Aos from "aos";
 import "aos/dist/aos.css";
 import RecruitmentResult from "./components/RecruitmentResult/RecruitmentResult";
 import PrivacyPolicy2 from "./pages/PrivacyPolicy/Policy2";
-import RegistrationPage from "./IdeateX-25/RegisterationPage";
-import PaymentPage from "./IdeateX-25/Components/PaymentPage";
-import TeamDashboardPage from "./IdeateX-25/Components/TeamDashboardPage";
-import LoginPage from "./IdeateX-25/LoginPage";
-import PasswordResetPage from "./IdeateX-25/ResetPassPage";
+const RegistrationPage = React.lazy(() => import("./IdeateX-25/RegisterationPage"));
+const PaymentPage = React.lazy(() => import("./IdeateX-25/Components/PaymentPage"));
+const TeamDashboardPage = React.lazy(() => import("./IdeateX-25/Components/TeamDashboardPage"));
+const LoginPage = React.lazy(() => import("./IdeateX-25/LoginPage"));
+const PasswordResetPage = React.lazy(() => import("./IdeateX-25/ResetPassPage"));
 // import CommingSoon from "./endeavour/CommingSoon/CommingSoon";
 // import NewCerti from "./components/newCerti/NewCerti";
 
@@ -231,7 +231,14 @@ function App() {
                   }
                 />
 
-                {/* <Route path="/payment" element={<PaymentPage />} /> */}
+                <Route
+                  path="/ideatex/payment"
+                  element={
+                    <AuthProvider>
+                      <PaymentPage />
+                    </AuthProvider>
+                  }
+                />
                 {/* <Route path="/endeavour" element={<ComingSoon />} /> */}
 
                 {/* <Route path="/endeavour/event/" element={<EndeavourEvent />} /> */}

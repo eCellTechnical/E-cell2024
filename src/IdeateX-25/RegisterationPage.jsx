@@ -9,7 +9,6 @@ import axios from "axios";
 import { useAuth } from "./context/AuthContext";
 
 export default function RegistrationPage() {
-  // navigation to separate page removed; we'll open payment dialog instead
   const [formData, setFormData] = useState({
     name: "",
     year: "",
@@ -24,8 +23,6 @@ export default function RegistrationPage() {
   });
   const [showJoinPopup, setShowJoinPopup] = useState(false);
   const [teamCode, setTeamCode] = useState("");
-  const [fetchedTeamName, setFetchedTeamName] = useState("");
-  const [fetchedTeamLeader, setFetchedTeamLeader] = useState("");
   const [showAlreadyRegistered, setShowAlreadyRegistered] = useState(false);
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
   const [paymentSuccess, setPaymentSuccess] = useState(false);
@@ -35,17 +32,18 @@ export default function RegistrationPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [showOtpVerification, setShowOtpVerification] = useState(false);
   const [isVerifyingOtp, setIsVerifyingOtp] = useState(false);
-
   const { login } = useAuth();
 
   const validateForm = () => {
     if (!formData.name.trim()) return "Name is required";
-    if (!formData.email.trim() || !/\S+@\S+\.\S+/.test(formData.email)) return "Valid email is required";
-    if (!formData.contact.trim() || !/^\d{10}$/.test(formData.contact)) return "Valid 10-digit contact number is required";
+    if (!formData.email.trim() || !/\S+@\S+\.\S+/.test(formData.email))
+      return "Valid email is required";
+    if (!formData.contact.trim() || !/^\d{10}$/.test(formData.contact))
+      return "Valid 10-digit contact number is required";
     if (!formData.password.trim()) return "Password is required";
     if (!formData.rollNo.trim()) return "Roll Number is required";
     if (!formData.college.trim()) return "College is required";
-    if (!formData.libraryId.trim()) return "Library ID is required";
+    // if (!formData.libraryId.trim()) return "Library ID is required";
     if (!formData.gender) return "Gender is required";
     return null;
   };
@@ -55,26 +53,6 @@ export default function RegistrationPage() {
   };
 
   // Simulate fetching team name based on team code
-  const handleTeamCodeChange = (code) => {
-    setTeamCode(code);
-
-    if (code.length === 6) {
-      const mockTeams = {
-        ABCDEF: { name: "Team Alpha", leader: "Arpit" },
-        123456: { name: "Team Tulls", leader: "Vaibhav" },
-        DEF456: { name: "Team Warriors", leader: "Anant" },
-      };
-      const teamData = mockTeams[code] || {
-        name: "Team " + code,
-        leader: "Unknown Leader",
-      };
-      setFetchedTeamName(teamData.name);
-      setFetchedTeamLeader(teamData.leader);
-    } else {
-      setFetchedTeamName("");
-      setFetchedTeamLeader("");
-    }
-  };
 
   const handleCreateTeam = async () => {
     // Validate form
@@ -94,28 +72,40 @@ export default function RegistrationPage() {
       password: formData.password,
       rollNo: formData.rollNo,
       college: formData.college,
-      libId: formData.libraryId,
+      libId: formData.rollNo,
       gender: formData.gender,
     };
 
     try {
       const response = await axios.post(
-        "https://p9kq5k4g-3003.inc1.devtunnels.ms/api/v1/user/register",
+        "http://localhost:3003/api/v1/user/register",
         payload
       );
       if (response.status === 201) {
-        // Registration successful, show OTP verification
-        console.log("User registered successfully, showing OTP verification", formData);
+        console.log(
+          "User registered successfully, showing OTP verification",
+          formData
+        );
         setShowOtpVerification(true);
       }
     } catch (err) {
       console.error("Registration failed:", err);
-      if (err.response?.status === 400 && err.response?.data?.message?.toLowerCase().includes("exist")) {
+      if (
+        err.response?.status === 400 &&
+        err.response?.data?.message?.toLowerCase().includes("exist")
+      ) {
         // User already exists, show already registered popup
         setShowAlreadyRegistered(true);
+      } else if (
+        err.response?.data?.message?.includes("E11000") &&
+        err.response?.data?.message?.includes("phone_1")
+      ) {
+        // Phone number already registered
+        setError("Mobile Number already registered");
       } else {
         setError(
-          err.response?.data?.message || "Registration failed. Please try again."
+          err.response?.data?.message ||
+            "Registration failed. Please try again."
         );
       }
     } finally {
@@ -128,10 +118,10 @@ export default function RegistrationPage() {
 
     try {
       const response = await axios.post(
-        "https://p9kq5k4g-3003.inc1.devtunnels.ms/api/v1/user/verify-otp",
+        "http://localhost:3003/api/v1/user/verify-otp",
         {
           email: formData.email,
-          otp: otpValue
+          otp: otpValue,
         }
       );
       if (response.status === 200 && response.data.success) {
@@ -147,7 +137,8 @@ export default function RegistrationPage() {
     } catch (err) {
       console.error("OTP verification failed:", err);
       throw new Error(
-        err.response?.data?.message || "OTP verification failed. Please try again."
+        err.response?.data?.message ||
+          "OTP verification failed. Please try again."
       );
     } finally {
       setIsVerifyingOtp(false);
@@ -164,19 +155,27 @@ export default function RegistrationPage() {
     setError("");
 
     try {
-      const response = await axios.post('https://p9kq5k4g-3003.inc1.devtunnels.ms/api/v1/joinTeam', {
-        teamCode: teamCode
-      }, {
-        headers: {
-          'Authorization': `Bearer ${localStorage.getItem('ideatex_token')}`,
+      const response = await axios.post(
+        "http://localhost:3003/api/v1/joinTeam",
+        {
+          teamCode: teamCode,
         },
-      });
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("ideatex_token")}`,
+          },
+        }
+      );
 
       if (response.data.success === true) {
         console.log("Joined team successfully:", response.data);
         // Save team data if needed
-        localStorage.setItem('ideatex_teamID', response.data.data.team._id);
-        localStorage.setItem('ideatex_userID', response.data.data.userId);
+        localStorage.setItem("ideatex_teamID", response.data.data.team._id);
+        localStorage.setItem("ideatex_userID", response.data.data.userId);
+        setTimeout(() => {
+          window.location.href = "/ideatex/dashboard";
+        }, 2000);
+
         setShowSuccessPopup(true);
       } else {
         setError(response.data.message || "Failed to join team");
@@ -190,8 +189,6 @@ export default function RegistrationPage() {
       setIsLoading(false);
       setShowJoinPopup(false);
       setTeamCode("");
-      setFetchedTeamName("");
-      setFetchedTeamLeader("");
     }
   };
 
@@ -203,28 +200,35 @@ export default function RegistrationPage() {
   const handlePaymentSubmit = async (paymentData) => {
     try {
       const formData = new FormData();
-      formData.append('teamName', paymentData.teamName);
-      formData.append('paymentTransactionId', paymentData.transactionId);
-      formData.append('paymentScreenshot', paymentData.screenshot);
+      formData.append("teamName", paymentData.teamName);
+      formData.append("paymentTransactionId", paymentData.transactionId);
+      formData.append("paymentScreenshot", paymentData.screenshot);
 
-      const response = await axios.post('https://p9kq5k4g-3003.inc1.devtunnels.ms/api/v1/addTeam', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-          'Authorization': `Bearer ${localStorage.getItem('ideatex_token')}`,
-        },
-      });
+      const response = await axios.post(
+        "http://localhost:3003/api/v1/addTeam",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${localStorage.getItem("ideatex_token")}`,
+          },
+        }
+      );
 
       console.log(response.success, response);
       if (response.data.success === true) {
         console.log("Team created successfully:", response.data);
         setPaymentSuccess(true);
-        
+
         // Save team data to localStorage
-        localStorage.setItem('ideatex_teamID', response.data.data.team._id);
-        localStorage.setItem('ideatex_userID', response.data.data.team.leaderId);
+        localStorage.setItem("ideatex_teamID", response.data.data.team._id);
+        localStorage.setItem(
+          "ideatex_userID",
+          response.data.data.team.leaderId
+        );
 
         setTimeout(() => {
-          window.location.href = '/ideatex/dashboard';
+          window.location.href = "/ideatex/dashboard";
         }, 3000);
       } else {
         console.error("Unexpected response status:", response.status);
@@ -332,7 +336,7 @@ export default function RegistrationPage() {
                       </label>
                     </div>
 
-                    <div className="relative">
+                    {/* <div className="relative">
                       <input
                         type="text"
                         id="libraryId"
@@ -349,7 +353,7 @@ export default function RegistrationPage() {
                       >
                         Library ID
                       </label>
-                    </div>
+                    </div> */}
 
                     <div className="relative">
                       <input
@@ -466,9 +470,15 @@ export default function RegistrationPage() {
                         type="button"
                         onClick={() => setShowPassword(!showPassword)}
                         className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-purple-400 transition-colors"
-                        aria-label={showPassword ? "Hide password" : "Show password"}
+                        aria-label={
+                          showPassword ? "Hide password" : "Show password"
+                        }
                       >
-                        {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+                        {showPassword ? (
+                          <EyeOff className="h-5 w-5" />
+                        ) : (
+                          <Eye className="h-5 w-5" />
+                        )}
                       </button>
                     </div>
                   </div>
@@ -481,7 +491,7 @@ export default function RegistrationPage() {
                 )}
 
                 {/* Action Button */}
-                <div className="grid grid-cols-1 gap-4 pt-4">
+                <div className="grid grid-cols-1 gap-4">
                   <motion.button
                     className="w-full py-3 bg-[#9700d1] hover:bg-[#b800ff] text-white font-semibold rounded-full shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                     whileTap={{ scale: 0.95 }}
@@ -527,17 +537,15 @@ export default function RegistrationPage() {
                 <input
                   type="text"
                   value={teamCode}
-                  onChange={(e) =>
-                    handleTeamCodeChange(e.target.value.toUpperCase())
-                  }
                   placeholder="Enter Team Code"
+                  onChange={(e) => setTeamCode(e.target.value.toUpperCase())}
                   className="w-full px-4 py-3 text-gray-100 bg-[#2a2a2a] border border-gray-700 rounded-lg focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 outline-none uppercase tracking-widest text-center text-lg font-semibold"
                   maxLength={6}
                 />
               </div>
 
               {/* Team Name Display */}
-              {fetchedTeamName && (
+              {/* {fetchedTeamName && (
                 <div className="p-4 bg-purple-500/10 border border-purple-500/30 rounded-lg space-y-2">
                   <div>
                     <p className="text-xs text-gray-400 mb-1">Team Name</p>
@@ -552,7 +560,7 @@ export default function RegistrationPage() {
                     </p>
                   </div>
                 </div>
-              )}
+              )} */}
             </div>
 
             <div className="flex gap-3 pt-2">
@@ -580,7 +588,9 @@ export default function RegistrationPage() {
       {showSuccessPopup && (
         <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4">
           <div className="bg-[#1a1a1a] border-2 border-purple-500/50 rounded-xl shadow-2xl max-w-md w-full p-6 space-y-4">
-            <h3 className="text-xl font-bold text-gray-100 text-center">Registration Successful!</h3>
+            <h3 className="text-xl font-bold text-gray-100 text-center">
+              Registration Successful!
+            </h3>
             <p className="text-sm text-gray-400 text-center">
               Welcome to IdeateX 2025! Choose how you&apos;d like to proceed.
             </p>
@@ -615,9 +625,12 @@ export default function RegistrationPage() {
       {showAlreadyRegistered && (
         <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4">
           <div className="bg-[#1a1a1a] border-2 border-purple-500/50 rounded-xl shadow-2xl max-w-md w-full p-6 space-y-4">
-            <h3 className="text-xl font-bold text-gray-100 text-center">Already Registered</h3>
+            <h3 className="text-xl font-bold text-gray-100 text-center">
+              Already Registered
+            </h3>
             <p className="text-sm text-gray-400 text-center">
-              You have already registered with this email. Please sign in to continue.
+              You have already registered with this email. Please sign in to
+              continue.
             </p>
 
             <div className="flex gap-3 pt-2">
@@ -633,7 +646,7 @@ export default function RegistrationPage() {
                   // Navigate to sign in page or handle sign in
                   setShowAlreadyRegistered(false);
                   // You can add navigation logic here, e.g., window.location.href = '/signin';
-                  alert('Redirecting to sign in...');
+                  alert("Redirecting to sign in...");
                 }}
                 whileTap={{ scale: 0.95 }}
                 className="w-full py-3 bg-[#9700d1] hover:bg-[#b800ff] text-white font-semibold rounded-xl shadow-lg transition-all"
