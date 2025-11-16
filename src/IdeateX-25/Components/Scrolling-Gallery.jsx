@@ -1,27 +1,33 @@
+import one from "../../assets/Ideatex25/one.jpeg";
+import two from "../../assets/Ideatex25/two.jpeg";
+import three from "../../assets/Ideatex25/three.jpeg";
+import four from "../../assets/Ideatex25/four.jpeg";
+import five from "../../assets/Ideatex25/five.jpeg";
+import six from "../../assets/Ideatex25/six.jpeg";
 'use client';
 import { useState, useEffect, useRef } from "react";
 import { motion, useAnimationFrame, useMotionValue } from "framer-motion";
 import PropTypes from "prop-types";
 
 const images = [
-  "https://picsum.photos/300/200?random=1",
-  "https://picsum.photos/300/200?random=2",
-  "https://picsum.photos/300/200?random=3",
-  "https://picsum.photos/300/200?random=4",
-  "https://picsum.photos/300/200?random=5",
-  "https://picsum.photos/300/200?random=6",
-  "https://picsum.photos/300/200?random=7",
-  "https://picsum.photos/300/200?random=8",
-  "https://picsum.photos/300/200?random=9",
-  "https://picsum.photos/300/200?random=10",
-  "https://picsum.photos/300/200?random=11",
-  "https://picsum.photos/300/200?random=12",
-  "https://picsum.photos/300/200?random=13",
-  "https://picsum.photos/300/200?random=14",
-  "https://picsum.photos/300/200?random=15",
-  "https://picsum.photos/300/200?random=16",
-  "https://picsum.photos/300/200?random=17",
-  "https://picsum.photos/300/200?random=18",
+  one,
+  two,
+  three,
+  four,
+  five,
+  six,
+  one,
+  two,
+  three,
+  four,
+  five,
+  six,
+  one,
+  two,
+  three,
+  four,
+  five,
+  six,
 ];
 
 
@@ -109,7 +115,7 @@ const ScrollingGallery = ({ direction = "left", speed = 50 }) => {
           {images.map((src, index) => (
             <div key={`row1-${index}`} className="min-w-[300px] h-[200px] rounded-lg overflow-hidden flex-shrink-0">
               <img
-                src="https://picsum.photos/300/200?random=1"
+                src={src}
                 alt={`Gallery image ${index + 1}`}
                 width={300}
                 height={200}

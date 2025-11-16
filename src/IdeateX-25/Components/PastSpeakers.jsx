@@ -1,42 +1,51 @@
 "use client";
 import { motion } from "framer-motion";
+import abhishek_singh from "../../assets/speakers/people/sandeep.jpg";
+import aditi from "../../assets/speakers/people/aditi.jpg";
+import anmol from "../../assets/speakers/people/anmol.jpeg";
+import divya from "../../assets/speakers/people/divya.jpg";
+import himanshi_singh from "../../assets/speakers/people/himanshi_singh.jpeg";
 
 const speakers = [
   {
     id: 1,
-    name: "Laury Dunn",
-    role: "CEO, TechX Solution",
-    img: "https://picsum.photos/500/700?random=11",
+    name: "Sandeep Singh",
+    role: "Founder & CEO, GFG",
+    img: abhishek_singh,
   },
   {
     id: 2,
-    name: "Dave Boerstler",
-    role: "AI Research Lead",
-    img: "https://picsum.photos/400/300?random=12",
+    name: "Aditi Sharma",
+    role: "Innovation Lead",
+    img: aditi,
   },
   {
     id: 3,
-    name: "Gordon Bieber",
-    role: "Cybersecurity Expert",
-    img: "https://picsum.photos/400/300?random=13",
+    name: "Anmol Gupta",
+    role: "Startup Advisor",
+    img: anmol,
   },
   {
     id: 4,
-    name: "Neville Whittle",
-    role: "Branding",
-    img: "https://picsum.photos/400/300?random=14",
+    name: "Divya Patel",
+    role: "Technology Expert",
+    img: divya,
   },
   {
     id: 5,
-    name: "Mary Bydlon",
-    role: "Quantum Technologies",
-    img: "https://picsum.photos/400/300?random=15",
+    name: "Himanshi Singh",
+    role: "Business Strategist",
+    img: himanshi_singh,
   },
 ];
 
 export default function PastSpeakers() {
   return (
-    <section className="relative bg-gradient-to-r from-[#211E3F] to-black text-white py-12 px-6" id="speakers">
+    <section
+      className="relative bg-gradient-to-r from-[#211E3F] to-black text-white py-12 px-6"
+      id="speakers"
+    >
+      {/* Background blur */}
       <div
         className="absolute inset-0 pointer-events-none z-0"
         style={{
@@ -46,6 +55,7 @@ export default function PastSpeakers() {
         }}
       />
 
+      {/* Floating shape */}
       <motion.img
         src="https://expert-themes.com/wp/konfer/wp-content/themes/konfer/assets/images/icons/shape-twentysix.png"
         alt="shape-left"
@@ -55,6 +65,7 @@ export default function PastSpeakers() {
       />
 
       <div className="relative z-0 max-w-6xl mx-auto">
+        {/* Heading */}
         <div className="text-center mb-16">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
@@ -72,35 +83,39 @@ export default function PastSpeakers() {
           </motion.div>
         </div>
 
+        {/* Main layout */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
-          {/* Large left image */}
+          {/* 🔥 Big top card (mobile first, desktop left) */}
           <div className="order-1 lg:order-none lg:col-span-1">
             <motion.div
               initial={{ scale: 1 }}
               className="group rounded-lg overflow-hidden bg-white/5 backdrop-blur-xl border border-white/10 shadow-xl"
             >
-              <div className="relative w-full h-[80vh] overflow-hidden">
+              <div className="relative w-full h-[70vh] lg:h-[80vh] overflow-hidden">
                 <img
                   src={speakers[0].img}
                   alt={speakers[0].name}
                   className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105"
                   loading="lazy"
                 />
+
+                {/* Shine effect */}
                 <div className="absolute inset-0 pointer-events-none overflow-hidden">
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-out">
                     <div
                       className="absolute -top-1/2 -left-1/2 w-[150%] h-[200%]
-                 bg-gradient-to-tr from-transparent via-white/30 to-transparent
-                 rotate-[25deg]
-                 translate-x-[-150%]
-                 blur-[2px]
-                 transition-transform duration-700 ease-in-out
-                 group-hover:translate-x-[200%]"
+                      bg-gradient-to-tr from-transparent via-white/30 to-transparent
+                      rotate-[25deg]
+                      translate-x-[-150%]
+                      blur-[2px]
+                      transition-transform duration-700 ease-in-out
+                      group-hover:translate-x-[200%]"
                     />
                   </div>
                 </div>
               </div>
-              <div className="bg-white/5 backdrop-blur-md rounded-b-md -mt-1 p-4 border border-white/10">
+
+              <div className="bg-white/5 backdrop-blur-md p-4 border border-white/10">
                 <h3 className="text-xl font-bold text-white">
                   {speakers[0].name}
                 </h3>
@@ -109,13 +124,13 @@ export default function PastSpeakers() {
             </motion.div>
           </div>
 
-          {/* Right grid */}
-          <div className="lg:col-span-2 grid grid-cols-2 gap-6">
+          {/* 🔥 2×2 grid (mobile bottom, desktop right) */}
+          <div className="order-2 lg:order-none lg:col-span-2 grid grid-cols-2 gap-6">
             {speakers.slice(1).map((s) => (
               <motion.div
                 key={s.id}
                 initial={{ y: 0 }}
-                className="group rounded-lg overflow-hidden bg-white/5 backdrop-blur-xl border border-white/10 shadow-lg flex flex-col justify-end z-10"
+                className="group rounded-lg overflow-hidden bg-white/5 backdrop-blur-xl border border-white/10 shadow-lg flex flex-col justify-end"
               >
                 <div className="relative w-full h-56 overflow-hidden">
                   <img
@@ -124,10 +139,13 @@ export default function PastSpeakers() {
                     className="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-105"
                     loading="lazy"
                   />
-                  <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-0 group-hover:opacity-100 transition-opacity duration-150">
+
+                  {/* Shine effect */}
+                  <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-150">
                     <div className="absolute top-0 -left-[40%] h-full w-1/4 bg-gradient-to-r from-transparent via-white/20 to-transparent blur-sm transform transition-transform duration-300 group-hover:translate-x-[220%]" />
                   </div>
                 </div>
+
                 <div className="bg-white/5 backdrop-blur-md p-4 border border-white/10">
                   <h4 className="text-lg font-semibold text-white">{s.name}</h4>
                   <p className="text-sm text-gray-300">{s.role}</p>

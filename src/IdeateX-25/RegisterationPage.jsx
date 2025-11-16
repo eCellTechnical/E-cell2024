@@ -500,6 +500,17 @@ export default function RegistrationPage() {
                   >
                     {isLoading ? "Registering..." : "Register Now"}
                   </motion.button>
+                   <div className="text-center text-gray-400 text-sm">
+                    {"Already Registered? "}
+                    <button
+                      type="button"
+                      // 7. Use navigate for SPA-friendly routing
+                      onClick={() => window.open("/ideatex/login")}
+                      className="ml-1 text-purple-400 hover:text-purple-300 font-semibold underline"
+                    >
+                      Sign In
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>

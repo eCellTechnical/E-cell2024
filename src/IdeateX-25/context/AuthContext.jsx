@@ -101,6 +101,8 @@ export const AuthProvider = ({ children }) => {
   const handleLogout = () => {
     // Clear localStorage
     localStorage.removeItem('ideatex_token');
+    localStorage.removeItem('ideatex_user');
+    localStorage.removeItem('ideatex_teamID');
 
     // Update state
     setUser(null);

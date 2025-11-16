@@ -22,10 +22,10 @@ function Page() {
     <div className="bg-black overflow-hidden">
       <motion.div
         ref={scrollRef}
-        className=""
+        className="overflow-x-hidden"
         style={{ y }}
       >
-        <div className="flex justify-center items-center">
+        <div className="flex justify-center items-center ">
           <Header />
         </div>
         <div className="w-full">

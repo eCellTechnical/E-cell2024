@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
@@ -10,22 +10,37 @@ const Header = () => {
   const { scrollY } = useScroll();
   const backgroundOpacity = useTransform(scrollY, [0, 100], [0.1, 0.1]);
   const blurIntensity = useTransform(scrollY, [0, 100], [0.9, 0.9]);
+
   const navigate = useNavigate();
   const { isAuthenticated, logout } = useAuth();
 
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // Smooth scroll handler with offset for fixed header
+  // Prevent background scroll when sidebar is open
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+  }, [menuOpen]);
+
+  // Smooth scroll with offset
   const handleSmoothScroll = useCallback((e, id) => {
     e.preventDefault();
+
     const section = document.querySelector(id);
     if (section) {
       const headerOffset = 100;
-      const sectionPosition =
-        section.getBoundingClientRect().top + window.scrollY - headerOffset;
-      window.scrollTo({ top: sectionPosition, behavior: "smooth" });
-      setMenuOpen(false); // close menu on click
+      const position =
+        section.getBoundingClientRect().top +
+        window.scrollY -
+        headerOffset;
+
+      window.scrollTo({ top: position, behavior: "smooth" });
     }
+
+    setMenuOpen(false);
   }, []);
 
   return (
@@ -36,104 +51,96 @@ const Header = () => {
       }}
       className="fixed top-0 z-50 w-full py-3 md:py-4 px-4 md:px-6 flex justify-center"
     >
-      <motion.div
-        className="w-full max-w-7xl bg-white/10 backdrop-blur-md border border-white/20 rounded-full shadow-md flex items-center justify-between px-4 md:px-6 py-3"
-        transition={{ type: "spring", stiffness: 300 }}
-      >
+      <motion.div className="w-full max-w-7xl bg-white/10 backdrop-blur-md border border-white/20 rounded-full shadow-md flex items-center justify-between px-4 md:px-6 py-3">
         {/* Logo */}
         <div className="flex items-center gap-2">
-          <img
-            src="/assets/ideatex-logo.png"
-            alt="Ideatex Logo"
-            className="w-8"
-          />
-          <h1 className="text-xl md:text-2xl font-bold text-white">IDEATEX</h1>
+          <img src="/assets/ideatex-logo.png" alt="Ideatex Logo" className="w-8" />
+         <img src="https://res.cloudinary.com/jatinn/image/upload/v1758476815/Secondary_Darkbglogoecell-removebg-preview_1_y593u3.png" alt="Ideatex Logo" className="w-12" />
         </div>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex space-x-6 text-[16px] font-medium text-white">
-          <motion.a
-            href="#about"
-            onClick={(e) => handleSmoothScroll(e, "#about")}
-            className="hover:text-purple-200 transition-colors duration-200 cursor-pointer"
+          <a
+href="/ideatex#about"
+            onClick={(e) => handleSmoothScroll( "/ideatex#about")}
+            className="hover:text-purple-200 transition"
           >
             About
-          </motion.a>
-          <motion.a
+          </a>
+
+          <a
             href="/ideatex#sponsors"
-            onClick={(e) => handleSmoothScroll(e, "#sponsors")}
-            className="hover:text-purple-200 transition-colors duration-200 cursor-pointer"
+            onClick={(e) => handleSmoothScroll( "/ideatex#sponsors")}
+            className="hover:text-purple-200 transition"
           >
             Sponsors
-          </motion.a>
-          <motion.a
-            href="#speakers"
-            onClick={(e) => handleSmoothScroll(e, "#speakers")}
-            className="hover:text-purple-200 transition-colors duration-200 cursor-pointer"
+          </a>
+
+          <a
+            href="/ideatex#speakers"
+            onClick={(e) => handleSmoothScroll( "/ideatex#speakers")}
+            className="hover:text-purple-200 transition"
           >
             Speakers
-          </motion.a>
-          <motion.a
-            href="#faq"
-            onClick={(e) => handleSmoothScroll(e, "#faq")}
-            className="hover:text-purple-200 transition-colors duration-200 cursor-pointer"
+          </a>
+
+          <a
+            href="/ideatex#faq"
+            onClick={(e) => handleSmoothScroll( "/ideatex#faq")}
+            className="hover:text-purple-200 transition"
           >
             FAQ
-          </motion.a>
+          </a>
         </nav>
 
         {/* Desktop Buttons */}
         <div className="hidden md:flex gap-4">
           {isAuthenticated ? (
             <div className="flex gap-4">
-              <motion.button
-                className="bg-[#9700d1] hover:bg-[#b800ff] text-white font-semibold px-8 py-3 rounded-full transition-all duration-200"
-                whileTap={{ scale: 0.95 }}
+              <button
+                className="bg-[#9700d1] hover:bg-[#b800ff] text-white font-semibold px-8 py-3 rounded-full"
                 onClick={() => navigate("/ideatex/dashboard")}
               >
                 DASHBOARD
-              </motion.button>
-              <motion.button
-                className="bg-white  text-[#9700d1] font-semibold px-6 py-3 rounded-full w-full transition-all duration-200"
-                whileTap={{ scale: 0.95 }}
+              </button>
+
+              <button
+                className="bg-white text-[#9700d1] font-semibold px-6 py-3 rounded-full"
                 onClick={() => {
                   logout();
-                  setMenuOpen(false);
                   navigate("/ideatex/login");
                 }}
               >
                 Logout
-              </motion.button>
+              </button>
             </div>
           ) : (
             <>
-              <motion.button
-                className="bg-white text-[#9700d1] font-semibold px-8 py-3 rounded-full transition-all duration-200"
-                whileTap={{ scale: 0.95 }}
+              <button
+                className="bg-white text-[#9700d1] font-semibold px-8 py-3 rounded-full"
                 onClick={() => navigate("/ideatex/login")}
               >
                 SIGN IN
-              </motion.button>
-              <motion.button
-                className="bg-[#9700d1] hover:bg-[#b800ff] text-white font-semibold px-8 py-3 rounded-full transition-all duration-200"
-                whileTap={{ scale: 0.95 }}
+              </button>
+
+              <button
+                className="bg-[#9700d1] hover:bg-[#b800ff] text-white font-semibold px-8 py-3 rounded-full"
                 onClick={() => navigate("/ideatex/register")}
               >
                 REGISTER
-              </motion.button>
+              </button>
             </>
           )}
         </div>
 
         {/* Mobile Hamburger Icon */}
         <div className="md:hidden flex items-center">
-          <motion.button
-            whileTap={{ scale: 0.9 }}
+          <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="text-white focus:outline-none"
+            className="text-white"
           >
             {menuOpen ? <X size={28} /> : <Menu size={28} />}
-          </motion.button>
+          </button>
         </div>
       </motion.div>
 
@@ -144,94 +151,77 @@ const Header = () => {
           animate={{ x: 0 }}
           exit={{ x: "100%" }}
           transition={{ type: "spring", stiffness: 80, damping: 15 }}
-          className="fixed top-0 right-0 h-full w-3/4 sm:w-1/2 bg-[#1a1a2e]/95 backdrop-blur-md shadow-lg z-50 flex flex-col items-center pt-24 space-y-6 text-white"
+          className="
+            fixed top-0 right-0 h-full w-3/4 sm:w-1/2 
+            bg-[#1a1a2e]/95 backdrop-blur-md shadow-lg z-50 
+            flex flex-col items-center pt-24 space-y-6 text-white 
+            overflow-y-auto
+          "
         >
-          {/* Close Button */}
-          <div className="absolute top-4 right-4">
-            <button
-              onClick={() => setMenuOpen(false)}
-              className="text-white hover:text-purple-300 transition-colors focus:outline-none"
-            >
-              <X size={24} />
-            </button>
-          </div>
-          <motion.a
-            href="#about"
-            onClick={(e) => handleSmoothScroll(e, "#about")}
-            className="text-lg hover:text-purple-300 transition-colors"
-          >
-            About
-          </motion.a>
-          <motion.a
-            href="#sponsors"
-            onClick={(e) => handleSmoothScroll(e, "#sponsors")}
-            className="text-lg hover:text-purple-300 transition-colors"
-          >
-            Sponsors
-          </motion.a>
-          <motion.a
-            href="#speakers"
-            onClick={(e) => handleSmoothScroll(e, "#speakers")}
-            className="text-lg hover:text-purple-300 transition-colors"
-          >
-            Speakers
-          </motion.a>
-          <motion.a
-            href="#faq"
-            onClick={(e) => handleSmoothScroll(e, "#faq")}
-            className="text-lg hover:text-purple-300 transition-colors"
-          >
-            FAQ
-          </motion.a>
+          {/* Close button */}
+          <button className="absolute top-4 right-4" onClick={() => setMenuOpen(false)}>
+            <X size={24} className="text-white" />
+          </button>
 
+          <a className="text-lg" href="#about" onClick={(e) => handleSmoothScroll(e, "#about")}>
+            About
+          </a>
+          <a className="text-lg" href="#sponsors" onClick={(e) => handleSmoothScroll(e, "#sponsors")}>
+            Sponsors
+          </a>
+          <a className="text-lg" href="#speakers" onClick={(e) => handleSmoothScroll(e, "#speakers")}>
+            Speakers
+          </a>
+          <a className="text-lg" href="#faq" onClick={(e) => handleSmoothScroll(e, "#faq")}>
+            FAQ
+          </a>
+
+          {/* Buttons */}
           <div className="flex flex-col gap-4 mt-6 w-4/5">
             {isAuthenticated ? (
-              <div className="flex flex-col gap-4">
-                <motion.button
-                  className="bg-[#9700d1] hover:bg-[#b800ff] text-white font-semibold px-6 py-3 rounded-full w-full transition-all duration-200"
-                  whileTap={{ scale: 0.95 }}
+              <>
+                <button
+                  className="bg-[#9700d1] hover:bg-[#b800ff] text-white font-semibold px-6 py-3 rounded-full"
                   onClick={() => {
                     navigate("/ideatex/dashboard");
                     setMenuOpen(false);
                   }}
                 >
                   DASHBOARD
-                </motion.button>
+                </button>
 
-                <motion.button
-                  className="bg-white  text-[#9700d1] font-semibold px-6 py-3 rounded-full w-full transition-all duration-200"
-                  whileTap={{ scale: 0.95 }}
+                <button
+                  className="bg-white text-[#9700d1] font-semibold px-6 py-3 rounded-full"
                   onClick={() => {
                     logout();
-                    setMenuOpen(false);
                     navigate("/ideatex/login");
+                    setMenuOpen(false);
                   }}
                 >
                   Logout
-                </motion.button>
-              </div>
+                </button>
+              </>
             ) : (
               <>
-                <motion.button
-                  className="bg-white text-[#9700d1] font-semibold px-6 py-3 rounded-full w-full transition-all duration-200"
-                  whileTap={{ scale: 0.95 }}
+                <button
+                  className="bg-white text-[#9700d1] font-semibold px-6 py-3 rounded-full"
                   onClick={() => {
                     navigate("/ideatex/login");
                     setMenuOpen(false);
                   }}
                 >
                   SIGN IN
-                </motion.button>
-                <motion.button
-                  className="bg-[#9700d1] hover:bg-[#b800ff] text-white font-semibold px-6 py-3 rounded-full w-full transition-all duration-200"
-                  whileTap={{ scale: 0.95 }}
+                </button>
+
+                <button
+                  className="bg-[#9700d1] hover:bg-[#b800ff] text-white font-semibold px-6 py-3 rounded-full"
                   onClick={() => {
                     navigate("/ideatex/register");
                     setMenuOpen(false);
                   }}
                 >
                   REGISTER
-                </motion.button>
+                </button>
               </>
             )}
           </div>

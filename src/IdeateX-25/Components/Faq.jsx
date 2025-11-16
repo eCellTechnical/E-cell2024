@@ -194,9 +194,9 @@ const faqData = [
             animate={isInView ? { opacity: 1 } : { opacity: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
-            {"Everything you need to know about Ideatex 3.0. Can't find your answer? Feel free to"}
+            {"Everything you need to know about Ideatex 3.0. Can't find your answer? Feel free to "}
             <a
-              href="#contact"
+              href="https://e-cell.in/contactus"
               className="text-[#e4affc] hover:text-[#b800ff] underline"
             >
               contact us

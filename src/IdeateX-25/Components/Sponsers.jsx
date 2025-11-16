@@ -28,7 +28,6 @@ import Wolfram from "../../assets/EndeavorLogoSponsors/EndeavorLogoSponsors/wolf
 import XCentic from "../../assets/EndeavorLogoSponsors/EndeavorLogoSponsors/XCENTIC.webp";
 import YouthIncorporated from "../../assets/EndeavorLogoSponsors/EndeavorLogoSponsors/youthincorporsatedd.jpg";
 
-
 const SponsorsCarousel = () => {
   const controlsTop = useAnimation();
   const controlsMiddle = useAnimation();
@@ -156,15 +155,15 @@ const SponsorsCarousel = () => {
       logo: `${Wolfram}`,
     },
     {
-        id : 25 ,
-        name : "XCentric" ,
-        logo : `${XCentic}`
-     },
-     {
-        id : 26 ,
-        name : "Youth Incorporated" ,
-        logo : `${YouthIncorporated}`
-    }
+      id: 25,
+      name: "XCentric",
+      logo: `${XCentic}`,
+    },
+    {
+      id: 26,
+      name: "Youth Incorporated",
+      logo: `${YouthIncorporated}`,
+    },
   ];
 
   const chunkSize = Math.ceil(sponsorsData.length / 3);
@@ -224,10 +223,12 @@ const SponsorsCarousel = () => {
     startAnimation();
   }, [controlsTop, controlsMiddle, controlsBottom]);
 
-  return (
-    <div className="w-full py-16 overflow-hidden bg-black relative" id="sponsors">
-      {/* Background glow effects */}
-
+return (
+    <div
+      className="w-full py-12 sm:py-16 overflow-hidden bg-black relative"
+      id="sponsors"
+    >
+      {/* Background glow */}
       <div
         className="absolute inset-0 pointer-events-none z-0"
         style={{
@@ -237,8 +238,8 @@ const SponsorsCarousel = () => {
         }}
       />
 
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-16">
+      <div className="container mx-auto px-3 sm:px-4 relative z-10">
+        <div className="text-center mb-10 sm:mb-16">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -249,30 +250,27 @@ const SponsorsCarousel = () => {
                 OUR PARTNERS
               </p>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-              OUR <span className="text-[#e4affc]">SPONSORS</span>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-2 sm:mb-4">
+              OUR PAST <span className="text-[#e4affc]">SPONSORS</span>
             </h1>
-          
           </motion.div>
         </div>
 
-        <div className="relative flex flex-col gap-8">
+        {/* CAROUSELS */}
+        <div className="relative flex flex-col gap-6 sm:gap-8">
+
           {/* Top Carousel */}
-          <div className="overflow-hidden">
+          <div className="overflow-hidden touch-pan-x">
             <motion.div className="flex items-center w-max" animate={controlsTop}>
               {createInfiniteItems(sponsorGroups[0]).map((sponsor, index) => (
                 <motion.div
                   key={`top-${sponsor.id}-${index}`}
-                  className="flex-shrink-0 mx-4 bg-white/5 backdrop-blur-xl border border-white/20 rounded-xl p-6 flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:border-[#9700d1] hover:bg-white/10"
+                  className="flex-shrink-0 mx-2 sm:mx-4 bg-white/5 backdrop-blur-xl border border-white/20 rounded-xl p-3 sm:p-6 flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:border-[#9700d1] hover:bg-white/10"
                   style={{
-                    width: "220px",
-                    height: "140px",
-                    transition: "all 0.3s ease",
+                    width: "150px",
+                    height: "90px",
                   }}
-                  whileHover={{
-                    scale: 1.05,
-                    boxShadow: "0 10px 25px -5px rgba(151, 0, 209, 0.3)"
-                  }}
+                  whileHover={{ scale: 1.05 }}
                 >
                   <img
                     src={sponsor.logo}
@@ -286,21 +284,17 @@ const SponsorsCarousel = () => {
           </div>
 
           {/* Middle Carousel */}
-          <div className="overflow-hidden">
+          <div className="overflow-hidden touch-pan-x">
             <motion.div className="flex items-center w-max" animate={controlsMiddle}>
               {createInfiniteItems(sponsorGroups[1]).map((sponsor, index) => (
                 <motion.div
                   key={`middle-${sponsor.id}-${index}`}
-                  className="flex-shrink-0 mx-4 bg-white/5 backdrop-blur-xl border border-white/20 rounded-xl p-6 flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:border-[#9700d1] hover:bg-white/10"
+                  className="flex-shrink-0 mx-2 sm:mx-4 bg-white/5 backdrop-blur-xl border border-white/20 rounded-xl p-3 sm:p-6 flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:border-[#9700d1] hover:bg-white/10"
                   style={{
-                    width: "220px",
-                    height: "140px",
-                    transition: "all 0.3s ease",
+                    width: "150px",
+                    height: "90px",
                   }}
-                  whileHover={{
-                    scale: 1.05,
-                    boxShadow: "0 10px 25px -5px rgba(151, 0, 209, 0.3)"
-                  }}
+                  whileHover={{ scale: 1.05 }}
                 >
                   <img
                     src={sponsor.logo}
@@ -314,26 +308,22 @@ const SponsorsCarousel = () => {
           </div>
 
           {/* Bottom Carousel */}
-          <div className="overflow-hidden">
+          <div className="overflow-hidden touch-pan-x">
             <motion.div className="flex items-center w-max" animate={controlsBottom}>
               {createInfiniteItems(sponsorGroups[2]).map((sponsor, index) => (
                 <motion.div
                   key={`bottom-${sponsor.id}-${index}`}
-                  className="flex-shrink-0 mx-4 bg-gradient-to-br from-black/30 to-teal-900/20 rounded-xl p-6 flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 border border-teal-500/20"
+                  className="flex-shrink-0 mx-2 sm:mx-4 bg-gradient-to-br from-black/30 to-teal-900/20 rounded-xl p-3 sm:p-6 flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 border border-teal-500/20"
                   style={{
-                    width: "220px",
-                    height: "140px",
-                    transition: "all 0.3s ease",
+                    width: "150px",
+                    height: "90px",
                   }}
-                  whileHover={{
-                    scale: 1.05,
-                    boxShadow: "0 10px 25px -5px rgba(0, 252, 184, 0.2)"
-                  }}
+                  whileHover={{ scale: 1.05 }}
                 >
                   <img
                     src={sponsor.logo}
                     alt={sponsor.name}
-                    className="max-w-full bg-white max-h-full object-contain"
+                    className="max-w-full max-h-full object-contain"
                     loading="lazy"
                   />
                 </motion.div>
@@ -342,18 +332,20 @@ const SponsorsCarousel = () => {
           </div>
         </div>
 
-        <motion.div 
-          className="text-center mt-16"
+        {/* BUTTON */}
+        <motion.div
+          className="text-center mt-10 sm:mt-16"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6 }}
         >
-         <motion.button
-          className="bg-[#9700d1] hover:bg-[#b800ff] text-white font-semibold px-12 py-4 rounded-full transition-all duration-200"
-          whileTap={{ scale: 0.95 }}
-        >
-          BECOME SPONSOR
-        </motion.button>
+          <motion.button
+            className="bg-[#9700d1] hover:bg-[#b800ff] text-white font-semibold px-10 py-3 sm:px-12 sm:py-4 rounded-full transition-all duration-200"
+            whileTap={{ scale: 0.95 }}
+            onClick={() => window.open("https://e-cell.in/contactus")}
+          >
+            BECOME SPONSOR
+          </motion.button>
         </motion.div>
       </div>
     </div>
