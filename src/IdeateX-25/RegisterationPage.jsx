@@ -78,7 +78,7 @@ export default function RegistrationPage() {
 
     try {
       const response = await axios.post(
-        "http://localhost:3003/api/v1/user/register",
+          `${import.meta.env.VITE_IDEATEX_API_BASE_URL}/api/v1/user/register`,
         payload
       );
       if (response.status === 201) {
@@ -118,7 +118,7 @@ export default function RegistrationPage() {
 
     try {
       const response = await axios.post(
-        "http://localhost:3003/api/v1/user/verify-otp",
+        `${import.meta.env.VITE_IDEATEX_API_BASE_URL}/api/v1/user/verify-otp`,
         {
           email: formData.email,
           otp: otpValue,
@@ -156,7 +156,7 @@ export default function RegistrationPage() {
 
     try {
       const response = await axios.post(
-        "http://localhost:3003/api/v1/joinTeam",
+        `${import.meta.env.VITE_IDEATEX_API_BASE_URL}/api/v1/joinTeam`,
         {
           teamCode: teamCode,
         },
@@ -205,7 +205,7 @@ export default function RegistrationPage() {
       formData.append("paymentScreenshot", paymentData.screenshot);
 
       const response = await axios.post(
-        "http://localhost:3003/api/v1/addTeam",
+        `${import.meta.env.VITE_IDEATEX_API_BASE_URL}/api/v1/addTeam`,
         formData,
         {
           headers: {

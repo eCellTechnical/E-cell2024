@@ -35,7 +35,7 @@ const PasswordResetPage = () => {
 
     try {
       const response = await fetch(
-        "http://localhost:3003/api/v1/user/forgot-password",
+        `${import.meta.env.VITE_IDEATEX_API_BASE_URL}/api/v1/user/forgot-password`,
         {
           method: "POST",
           headers: {
@@ -69,7 +69,7 @@ const PasswordResetPage = () => {
     try {
       // Fixed API URL to be consistent
       const response = await fetch(
-        "http://localhost:3003/api/v1/user/resend-otp",
+        `${import.meta.env.VITE_IDEATEX_API_BASE_URL}/api/v1/user/resend-otp`,
         {
           method: "POST",
           headers: {
@@ -128,7 +128,7 @@ const PasswordResetPage = () => {
     try {
       // Fixed API URL to be consistent
       const response = await fetch(
-        "http://localhost:3003/api/v1/user/reset-password",
+        `${import.meta.env.VITE_IDEATEX_API_BASE_URL}/api/v1/user/reset-password`,
         {
           method: "POST",
           headers: {

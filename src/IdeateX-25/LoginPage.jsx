@@ -42,7 +42,7 @@ const LoginPage = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3003/api/v1/user/login",
+        `${import.meta.env.VITE_IDEATEX_API_BASE_URL}/api/v1/user/login`,
         {
           email: formData.email,
           password: formData.password,
@@ -90,7 +90,7 @@ const LoginPage = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3003/api/v1/user/verify-otp",
+        `${import.meta.env.VITE_IDEATEX_API_BASE_URL}/api/v1/user/verify-otp`,
         {
           email: formData.email,
           otp: otpValue

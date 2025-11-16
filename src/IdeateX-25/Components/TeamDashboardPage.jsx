@@ -66,7 +66,7 @@ export default function TeamDashboardPage() {
       }
 
       const response = await axios.post(
-        "http://localhost:3003/api/v1/team/members",
+        `${import.meta.env.VITE_IDEATEX_API_BASE_URL}/api/v1/team/members`,
         { teamId },
         {
           headers: {
@@ -85,7 +85,7 @@ export default function TeamDashboardPage() {
           apiMembers.map(async (member) => {
             try {
               const userResponse = await axios.get(
-                `http://localhost:3003/api/v1/user/${member.userId}`,
+                `${import.meta.env.VITE_IDEATEX_API_BASE_URL}/api/v1/user/${member.userId}`,
                 {
                   headers: {
                     Authorization: `Bearer ${localStorage.getItem(
@@ -191,7 +191,7 @@ export default function TeamDashboardPage() {
     setLoading(true);
     try {
       const response = await axios.post(
-        "http://localhost:3003/api/v1/joinTeam",
+        `${import.meta.env.VITE_IDEATEX_API_BASE_URL}/api/v1/joinTeam`,
         { teamCode },
         {
           headers: {
@@ -226,7 +226,7 @@ export default function TeamDashboardPage() {
       formData.append("paymentScreenshot", paymentData.screenshot);
 
       const response = await axios.post(
-        "http://localhost:3003/api/v1/addTeam",
+        `${import.meta.env.VITE_IDEATEX_API_BASE_URL}/api/v1/addTeam`,
         formData,
         {
           headers: {

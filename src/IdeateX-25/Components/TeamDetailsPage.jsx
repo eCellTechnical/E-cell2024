@@ -43,7 +43,7 @@ export default function TeamDetailsPage({
           return;
         }
 
-        const response = await axios.get(`http://localhost:3003/api/v1/user/${userId}`, {
+        const response = await axios.get(`${import.meta.env.VITE_IDEATEX_API_BASE_URL}/api/v1/user/${userId}`, {
           headers: {
             'Authorization': `Bearer ${localStorage.getItem('ideatex_token')}`,
             'Content-Type': 'application/json',
@@ -117,7 +117,7 @@ export default function TeamDetailsPage({
 
     try {
       const userId = localStorage.getItem('ideatex_userID');
-      const response = await axios.put(`http://localhost:3003/api/v1/user/${userId}`, {
+      const response = await axios.put(`${import.meta.env.VITE_IDEATEX_API_BASE_URL}/api/v1/user/${userId}`, {
         name: editFormData.name,
         rollNo: editFormData.rollNo,
         college: editFormData.college,
@@ -154,7 +154,7 @@ export default function TeamDetailsPage({
     setQrLoading(true);
     try {
       const response = await axios.get(
-        "http://localhost:3003/api/v1/teams/qrcode/scan",
+        `${import.meta.env.VITE_IDEATEX_API_BASE_URL}/api/v1/teams/qrcode/scan`,
         {
           teamId: teamId,
         },
@@ -539,7 +539,7 @@ export default function TeamDetailsPage({
                 <img
                   src={
                     qrCodeData.qrCloudUrl ||
-                    `http://localhost:3003/api/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(
+                    `${import.meta.env.VITE_IDEATEX_API_BASE_URL}/api/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(
                       qrCodeData.qrCloudUrl || "QR Code Data"
                     )}`
                   }
