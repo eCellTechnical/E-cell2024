@@ -28,13 +28,11 @@ export default function TeamDetailsPage({
   const [currentUser, setCurrentUser] = useState(null);
   const [userLoading, setUserLoading] = useState(true);
 
-  console.log(teamData);
 
 
   // Fetch current user details
   useEffect(() => {
     const fetchUserDetails = async () => {
-      console.log("Fetching user details...");
       try {
         const userId = localStorage.getItem('ideatex_userID');
         if (!userId) {
@@ -50,7 +48,6 @@ export default function TeamDetailsPage({
           },
         });
 
-        console.log(response)
         if (response.data.success) {
           setCurrentUser(response.data.data.user);
         } else {
@@ -69,7 +66,7 @@ export default function TeamDetailsPage({
   // Determine if current user is the team leader
   const isCurrentUserLeader = () => {
     if (!currentUser || !teamData) return false;
-    return currentUser.libraryId === teamData.leader.libraryId;
+    return currentUser.libId === teamData.leader.libraryId;
   };
 
 
@@ -168,7 +165,6 @@ export default function TeamDetailsPage({
 
       if (response.data.success) {
         setQrCodeData(response.data.data);
-        console.log(response.data.data);
         setShowQrCode(true);
       } else {
         console.error("Failed to generate QR code:", response.data.message);
@@ -596,7 +592,6 @@ export default function TeamDetailsPage({
               <button
                 onClick={() => {
                   setShowEditProfile(false);
-                  console.log(editFormData);
                 }}
                 className="text-gray-400 hover:text-white transition-colors"
               >
