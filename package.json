@@ -32,7 +32,7 @@
     "emailjs-com": "^3.2.0",
     "firebase": "^10.14.1",
     "framer-motion": "^11.18.2",
-    "gsap": "^3.12.5",
+    "gsap": "^3.13.0",
     "lottie-react": "^2.4.1",
     "lucide-react": "^0.460.0",
     "radix-ui": "^1.0.1",

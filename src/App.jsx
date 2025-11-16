@@ -1,18 +1,21 @@
 import React, { Suspense, useEffect, useState } from "react";
-import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { ThemeProvider } from "./context/theme";
+import { AuthProvider } from "./IdeateX-25/context/AuthContext";
 import { Analytics } from "@vercel/analytics/react";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Register from "./IdeateX/Register";
+// import Register from "./IdeateX/Register";
 // Lazy-loaded components
-import RegisterEvent from "./endeavour/Profile/RegisteredEvent"
-const Result = React.lazy(()=>import("./pages/Result/Result"));
-const ApplicationClosed = React.lazy(()=>import("./pages/ApplicationForm/ApplicationClosed"));
+import RegisterEvent from "./endeavour/Profile/RegisteredEvent";
+const Result = React.lazy(() => import("./pages/Result/Result"));
+const ApplicationClosed = React.lazy(() =>
+  import("./pages/ApplicationForm/ApplicationClosed")
+);
 const Loader = React.lazy(() => import("./components/Loader/Loader"));
 const Navbar = React.lazy(() => import("./components/Navbar/Navbar"));
-const IdeateX = React.lazy(() => import("./IdeateX/index"));
+const IdeateX = React.lazy(() => import("./IdeateX-25/page"));
 const Home = React.lazy(() => import("./pages/Home/Home"));
 const Discover = React.lazy(() => import("./pages/discover/Discover"));
 const OurTeam = React.lazy(() => import("./pages/OurTeam/OurTeam"));
@@ -47,20 +50,14 @@ const EndeavourHomePage = React.lazy(() =>
   import("./endeavour/Home/EndeavourHomePage")
 );
 
-const EndWinner = React.lazy(() =>
-  import("./endeavour/End25/WinnerPage")
-);
+const EndWinner = React.lazy(() => import("./endeavour/End25/WinnerPage"));
 
-const End25Eve = React.lazy(() =>
-  import("./endeavour/Eve25/Eve25")
-);
+const End25Eve = React.lazy(() => import("./endeavour/Eve25/Eve25"));
 
 const EndeavourLogin = React.lazy(() =>
   import("./endeavour/Login/EndeavourLogin")
 );
-const VerifyOtp  = React.lazy(() =>
-  import("./endeavour/Register/OtpVerify")
-);
+const VerifyOtp = React.lazy(() => import("./endeavour/Register/OtpVerify"));
 const ForgetPassword = React.lazy(() =>
   import("./endeavour/Login/ForgetPassword/ForgetPassword")
 );
@@ -76,9 +73,7 @@ const RegisterEventForm = React.lazy(() =>
   import("./endeavour/End25/RegisterEventForm")
 );
 
-const EndEventPage = React.lazy(() =>
-  import("./endeavour/End25/EventPage")
-);
+const EndEventPage = React.lazy(() => import("./endeavour/End25/EventPage"));
 
 // const StudentPass = React.lazy(() =>
 //   import("./endeavour/StudentPass/StudentPass")
@@ -91,13 +86,9 @@ const EndEventPage = React.lazy(() =>
 // const SpecificEvent = React.lazy(() =>
 //   import("./endeavour/Events/SpecificEvent/MemoizedSpecificEvent")
 // );
-const Profile = React.lazy(() =>
-  import("./endeavour/Profile/NewEndProfile")
-);
+const Profile = React.lazy(() => import("./endeavour/Profile/NewEndProfile"));
 
-const SingleEvent = React.lazy(() =>
-  import("./endeavour/End25/singleEvent")
-);
+const SingleEvent = React.lazy(() => import("./endeavour/End25/singleEvent"));
 
 const PrivacyPolicy = React.lazy(() => import("./pages/PrivacyPolicy/Policy"));
 // const Admin = React.lazy(() => import("./endeavour/Admin/EndeavourAdmin"));
@@ -108,6 +99,11 @@ import Aos from "aos";
 import "aos/dist/aos.css";
 import RecruitmentResult from "./components/RecruitmentResult/RecruitmentResult";
 import PrivacyPolicy2 from "./pages/PrivacyPolicy/Policy2";
+const RegistrationPage = React.lazy(() => import("./IdeateX-25/RegisterationPage"));
+const PaymentPage = React.lazy(() => import("./IdeateX-25/Components/PaymentPage"));
+const TeamDashboardPage = React.lazy(() => import("./IdeateX-25/Components/TeamDashboardPage"));
+const LoginPage = React.lazy(() => import("./IdeateX-25/LoginPage"));
+const PasswordResetPage = React.lazy(() => import("./IdeateX-25/ResetPassPage"));
 // import CommingSoon from "./endeavour/CommingSoon/CommingSoon";
 // import NewCerti from "./components/newCerti/NewCerti";
 
@@ -117,7 +113,7 @@ const RouteChangeTracker = ({ children }) => {
   // const [showPopup, setShowPopup] = useState(false);
 
   // useEffect(() => {
-    // Check if current path is /endeavour exactly
+  // Check if current path is /endeavour exactly
   //   if (location.pathname === '/') {
   //     setShowPopup(true);
   //   } else {
@@ -177,7 +173,10 @@ function App() {
             <RouteChangeTracker>
               <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/applicationform" element={<ApplicationClosed/>} />
+                <Route
+                  path="/applicationform"
+                  element={<ApplicationClosed />}
+                />
                 <Route path="/discover" element={<Discover />} />
                 <Route path="/ourteam" element={<OurTeam />} />
                 <Route path="/pastspeakers" element={<PastSpeakers />} />
@@ -188,14 +187,58 @@ function App() {
                 <Route path="/ideasubmissions" element={<IdeaSubmissions />} />
                 <Route path="/privacy-policy" element={<PrivacyPolicy />} />
                 <Route path="/privacypolicy" element={<PrivacyPolicy2 />} />
-                <Route
-                  path="/recruitment-result-2026"
-                  element={<Result/>}
-                />
+                <Route path="/recruitment-result-2026" element={<Result />} />
 
                 {/* <Route path="/certificate" element={<NewCerti />} /> */}
-                {/* <Route path="/ideatex" element={<IdeateX />} />
-              <Route path="/ideatex/register" element={<Register />} /> */}
+                <Route path="/ideatex" element={
+                  <AuthProvider>
+                    <IdeateX />
+                  </AuthProvider>
+                } />
+                <Route
+                  path="/ideatex/register"
+                  element={
+                    <AuthProvider>
+                      <RegistrationPage />
+                    </AuthProvider>
+                  }
+                />
+
+                <Route
+                  path="/ideatex/login"
+                  element={
+                    <AuthProvider>
+                      <LoginPage />
+                    </AuthProvider>
+                  }
+                />
+
+                 <Route
+                  path="/ideatex/reset-password"
+                  element={
+                    <AuthProvider>
+                      <PasswordResetPage />
+                    </AuthProvider>
+                  }
+                />
+
+                <Route
+                  path="/ideatex/dashboard"
+                  element={
+                    <AuthProvider>
+                      <TeamDashboardPage />
+                    </AuthProvider>
+                  }
+                />
+
+                <Route
+                  path="/ideatex/payment"
+                  element={
+                    <AuthProvider>
+                      <PaymentPage />
+                    </AuthProvider>
+                  }
+                />
                 {/* <Route path="/endeavour" element={<ComingSoon />} /> */}
 
                 {/* <Route path="/endeavour/event/" element={<EndeavourEvent />} /> */}
@@ -257,7 +300,6 @@ function App() {
               <Route path="/endeavour/speakers" element={<Speakers />} />  */}
 
                 <Route path="*" element={<Error404 />} />
-
               </Routes>
             </RouteChangeTracker>
           </Suspense>
